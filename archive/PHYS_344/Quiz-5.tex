@@ -1,0 +1,21 @@
+\documentclass[english]{article}
+\usepackage{physics}
+\usepackage{multicol}
+\usepackage{verbatim}
+\begin{document}
+\author{Johannes Byle}
+\title{Quiz 5}
+\maketitle
+\subsection*{1}
+$$\delta_l=-\frac{2mk}{\hbar^2}\int_0^{\infty}V(r)j_l(kr)^2r^2dr$$
+$$V=V_0\theta(R-r)$$
+$$\delta_0=-\frac{2mkV_0}{\hbar^2}\int_0^{R}j_0(kr)^2r^2dr$$
+$$\delta_0=-\frac{2mkV_0}{\hbar^2}\int_0^{R}\frac{\sin^2(kr)}{k^2r^2}r^2dr$$
+$$\delta_0=\frac{2mkV_0}{\hbar^2}\left(\frac{\sin(2kR)-2kR}{4k^3}\right)=\frac{2mkV_0}{\hbar^2}\left(\frac{2kRj_0(2\chi)-2kR}{4k^3}\right)$$
+$$\delta_0=\frac{mV_0R^2}{\hbar^2}\left(\frac{j_0(2\chi)-1}{\chi}\right)=-\frac{mV_0R^2}{\hbar^2}\left(\frac{1-j_0(2\chi)}{\chi}\right)$$
+\subsection*{2}
+$$\delta_l=-\frac{2mk}{\hbar^2}\int_0^{\infty}V(r)\left(\frac{1}{n!}\left(\frac{kr}{2}\right)^n\right)^2 r^2dr$$
+$$V=V_0\theta(R-r)$$
+$$\delta_l=-\frac{2mkV_0}{\hbar^2}\int_0^{R}\left(\frac{1}{l!}\left(\frac{kr}{2}\right)^l\right)^2 r^2dr$$
+$$\delta_l=-\frac{2mkV_0}{\hbar^2}\frac{4^{-l}R^3\left(kR\right)^{2l}}{(2l+3)(l!)^2}$$
+\end{document}

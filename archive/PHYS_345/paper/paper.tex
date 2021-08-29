@@ -1,0 +1,171 @@
+\documentclass[12pt]{spieman}  % 12pt font required by SPIE;
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{graphicx}
+\usepackage{tocloft}
+
+\title{Determining the value of Planck's Constant using LEDs}
+
+\author{Johannes Byle}
+\affil{Wheaton College, Physics and Astronomy, 501 College Ave, Wheaton, USA, 60187}
+
+\renewcommand{\cftdotsep}{\cftnodots}
+\cftpagenumbersoff{figure}
+\cftpagenumbersoff{table}
+\begin{document}
+    \maketitle
+
+    \begin{abstract}
+        % Discussion of Method
+        The fundamental physical principles by which LEDs operate are completely quantum mechanical, making it
+        possible to observe quantum effects using macroscopic measurements.
+        Using a dataset of the knee voltages of LEDs at different wavelengths, the value of Planck's constant is
+        extracted by curve fitting and compared to the expected value.
+        % Discussion of Results
+        The results of this curve fitting show that LEDs can be used to determine the value of $h$, as the
+        relationship between the knee voltage and wavelength matches the quantum mechanical model.
+        However, the value of $h$ extracted from these measurements differs significantly from expected value.
+        % Conclusion
+        Therefore, though it is seemingly possible to extract Planck's constant from the knee voltage of an LED, this
+        data set probably has some significant systematic error.
+    \end{abstract}
+
+    \keywords{LED, Planck's Constant}
+
+    {\noindent \footnotesize\textbf{*}Johannes Byle, \linkable{johannes.byle@my.wheaton.edu}}
+
+    \begin{spacing}{2}
+
+        \section{Introduction}\label{sec:intro}
+        % Brief review of topic
+        The ubiquity of devices that rely on quantum effects in our daily lives makes it relatively easy to measure
+        constants without the need for specialized equipment.
+        One such measurement is the measurement of Planck's constant using a light emitting diode or LED\@.
+        Because the wavelength of an LED is determined solely by the band gap of the material, the minimum voltage
+        needed for current pass through it (the knee voltage) is directly related to the wavelength of the LED\@.
+        The following equation governing this relationship was discovered by Russian scientist Oleg Vladimirovich
+        Losev long before the physics of LEDs was fully understood.\cite{Zheludev_2007}
+        \begin{equation}
+            \label{eq:master}
+            v=\frac{eV}{h}
+        \end{equation}
+        % Motivation of the work
+        This equation makes it possible to measure the constants of quantum mechanics outside of the physics laboratory.
+        % Summary of the model and method used in your work
+        By measuring the knee voltage of LEDs of different wavelengths it is possible to extract the value for $h$ by
+        curve fitting.
+        % Summary of the model and method used in your work
+        Ultimately, this makes it possible to compare whether or not this experimental value of $h$ is in agreement
+        with the known value of $h$.
+
+
+        \section{Theoretical Background}\label{sec:theoretical-background}
+        Ideal LEDs are simply diodes;
+        when a current is applied in one direction, provided it has sufficient voltage, it will cause electrons to
+        jump across the band gap and when these electrons recombine with the holes they left behind they release a
+        photon.\cite{GAYRAL2017453}
+        The energy of this photon is thus determined by the band gap, and therefore each LED will emit light at a
+        single wavelength determined by its band gap.
+        However, because LED are made of real materials there are several sources of uncertainty.
+        For instance, because these LEDs are not operated at 0 K, and because the band gap of real materials isn't a
+        simple constant, there will be some broadening of the band gap, and thus the wavelength will not be a single
+        value but rather range of values.\cite{brown2019iii}
+        However, equation~\eqref{eq:master} is still valid as this broadening is small relative to the other sources
+        of error.
+        The only changes that need to be made are accounting for $V_0$ and converting from frequency to wavelength.
+        \begin{equation}
+            \label{eq:middle}
+            \frac{c}{\lambda}=\frac{e(V+V_0)}{h}
+        \end{equation}
+        Rearranging to make $V$ a function of $\lambda$:
+        \begin{equation}
+            \label{eq:final}
+            V=\frac{hc}{e\lambda}-V_0
+        \end{equation}
+        The values for $c$, the speed of light and $e$, the electron charge, are 299792458 m and $1
+        .602176634\times10^{-19}$ C respectively.\cite{Newell_2018}
+        Making $V_0$ and $h$ fitting parameters will allow us to extract these values from the data set.
+        The value of $h$ extracted from the curve fit will be compared to the known value of $6
+        .62607004\times10^{-34}$ m$^2$ kg / s.\cite{Newell_2018}
+
+
+        \section{Methods}\label{sec:methods}
+        The LED data was collected in two different sets using two different methods.
+        In the first set the knee voltage was measured by measuring when current began flowing through the LED using an
+        oscilloscope.
+        In the second set the knee voltage was measured by measuring the intensity of the light emitted by the LED\@.
+        In theory, both of these methods should produce identical results, however it is possible that current and
+        intensity are not linearly related, and thus the broadening in the band gap may produce systematic
+        differences between the two measurements.
+
+        Both data sets were analyzed identically;
+        the voltage and wavelength data was fit to equation~\eqref{eq:final} with the inverse of the voltage
+        uncertainties used as weights for the fitting function.
+        The values for the uncertainties of the fitting parameters were calculated from the square root of the
+        diagonal of the covariance matrix.
+        The probability of discrepancy was calculated using the following equations:
+        \begin{equation}
+            \label{eq:t-value}
+            t=\frac{h_{\text{fit}}-h}{\sqrt{\delta h_{\text{fit}}^2-\delta h^2}}
+        \end{equation}
+        \begin{equation}
+            \label{eq:prob}
+            \text{Probability of discrepancy}=\int_{-t}^{-t}\frac{1}{2\pi}{-\frac{1}{2}x^2}dx
+        \end{equation}
+
+
+        \section{Results}\label{sec:results}
+
+        The curve fits, as plotted below, demonstrated that the relationship between LED wavelength and knee voltage
+        was governed by equation~\eqref{eq:master}.
+        However, the extracted values for $h$ were different from the expected value, and were also significantly
+        different from each other, as can be seen in table~\ref{tab:results}.
+        This suggests that there is some systematic error in the data;
+        either from the broadening of the band gap, or from systematic errors in the experimental setup.
+        These errors could also account for the large difference between the measurements.
+
+        \begin{figure}[H]
+            \label{fig:figure1}
+            \begin{center}
+                \begin{tabular}{c}
+                    \includegraphics[height=5.5cm]{set.eps}
+                \end{tabular}
+            \end{center}
+            \caption {Plot of the data sets and fits. The lines are the plots of equation~\eqref{eq:final} with the
+            fitting parameters from the respective dataset.}
+        \end{figure}
+
+        \begin{table}[H]
+            \caption{The fitting parameters extracted from the data. $h$ is the value of Planck's constant extracted
+            through the fit, $\delta h$ is the uncertainty in $h$, and the probability column is the probability that
+            the expected and observed values of $h$ are in fact different.}
+            \label{tab:results}
+            \begin{center}
+                \begin{tabular}{|l|l|l|}
+                    \hline
+                    & $h$                                     & probability of discrepancy \\
+                    \hline
+                    set 1 & $7.64\pm 0.5\times 10^{-34}$ J$\cdot$ s & 0.37                       \\
+                    set 2 & $9.91\pm 0.5\times 10^{-34}$ J$\cdot$ s & 0.40                       \\
+                    \hline
+                \end{tabular}
+            \end{center}
+        \end{table}
+
+
+        \section{Conclusion}\label{sec:conclusion}
+        This work demonstrated that the value of Planck's constant can be extracted from the knee voltage of LEDs.
+        However, the difference between the two datasets, as well as the large uncertainty of the data, suggests that
+        there is some systematic error in the measurements.
+        Thus, although it seems LED knee voltages are governed by equation~\eqref{eq:master} this data does not
+        conclusively confirm that there is a difference in the value of $h$.
+        Future work would benefit from examining the voltage dependence of the luminescence of the LEDs for a range
+        on the electromagnetic spectrum in order to more accurately determine the wavelength of the LED\@.
+
+    \end{spacing}
+
+
+    \bibliography{report}   % bibliography data in report.bib
+    \bibliographystyle{spiejour}   % makes bibtex use spiejour.bst
+
+
+\end{document}

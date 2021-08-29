@@ -1,0 +1,55 @@
+\documentclass[1pt]{report}
+\usepackage{multicol}
+\setlength{\columnseprule}{0.2pt}
+\usepackage[T1]{fontenc}
+\usepackage[document]{ragged2e}
+\usepackage[latin9]{inputenc}
+\usepackage[left=.5cm, right=.5cm, top=.5cm]{geometry}
+\usepackage{babel}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage{physymb}
+\begin{document}
+\begin{multicols}{3}
+\begin{flushleft}
+
+$\nabla\cdot E=\frac{1}{\epsilon_0}\rho$\\
+$\nabla\times E=-\frac{\delta B}{\delta t}$\\
+$\nabla\cdot B=0$\\
+$\nabla\times B=\mu_0J+\mu_0\epsilon_0\frac{\delta E}{\delta t}$\\
+
+$N=m\times b$ $_{N=Torque}$\\
+$F_{loop}=\nabla(m\cdot B)$\\
+$J_b=\nabla\times M$ $_{J_b=VolumeBoundCurrent}$\\
+$K_b=M\times\hat{n}$ $_{K_b=SurfaceBoundCurrent}$\\
+$H\equiv\frac{1}{\mu_0}B-M$\\
+$\nabla\times H=J_f$ | $\oint H\cdot dl=I_{f_{enc}}$\\
+$\nabla\cdot H=-\nabla\cdot M$\\
+$M=\chi_m H$ $_{\chi_m=MagneticSusceptibility}$\\
+$B=\mu H$\\
+$\mu\equiv\mu_0 (1+\chi_m)$\\
+
+$F=ma=qE$\\
+$J=\sigma(E+v\times B)$ $_{\sigma=Conductivity}$\\
+$J=\sigma E$ $(Ohm's Law)$\\
+$J_d=\epsilon_0\frac{\delta E}{\delta t}$\\
+$I=\sigma\int E\cdot da$\\
+$P=VI=I^2R$\\
+$V=IR$\\
+$\tau=RC$\\
+$\varepsilon\equiv\oint f\cdot dl=\oint f_s\cdot dl$ $_{\varepsilon=ElectromotiveForce}$\\
+$\varepsilon=-\frac{d\Phi}{dt}$\\
+$\varepsilon=IR$\\
+A Changing magnetic field induces an electric field\\
+Nature abhors a change in flux\\
+$F_{mag}=\int I(dl\times B)$\\
+$F_{mag}=Q(v\times B)$\\
+$\Phi=LI$ $_{L=SelfInductance}$\\
+$\varepsilon=-L\frac{dI}{dt}$\\
+$W=\frac{1}{2}LI^2$\\
+$W=\frac{1}{2\mu_0}\int_{all space} B^2d\tau$\\
+\includegraphics[scale=.6]{Griffiths.png}
+\includegraphics[scale=.6]{Griffiths2.png}
+\end{flushleft}
+\end{multicols}
+\end{document}

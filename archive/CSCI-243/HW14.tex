@@ -1,0 +1,71 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usepackage{venndiagram}
+\usepackage{enumitem}
+\usepackage{amsfonts}
+\usetikzlibrary{patterns}
+
+
+\title{HW 14}
+\author{Johannes Byle}
+\newcommand{\pset}[1]{$$\mathbb{P}(#1)}
+
+\begin{document}
+    % 4.9.(1, 3, 4, 6)
+    \maketitle
+    \noindent
+    \textbf{4.9.1}\\
+%    \textbf{Proof.} Suppose $B\subseteq A$.
+%    Further suppose $X\in \mathbb{P}(B)-\mathbb{P}(A)$.\\
+%    By definition of difference, $X\in\mathbb{P}(B)$ and $X\notin\mathbb{P}(A)$.
+%    By definition of powerset, $X\subseteq B$ and $X\subseteq A$.\\
+%    Suppose $X\in X$.
+%    By definition of subset, $x\in B$.
+%    By definition of subset agains, $x\in A$.
+%    By definition subset yet again (this time synthetically), $X\subseteq A$.
+%    Contradiction.
+%    Therefore $X\in\mathbb{P}(B)-\mathbb{P}(A)=\emptyset$ $\square$\\
+    \textbf{Proof.} Suppose $A\subseteq B$.
+    Further suppose $X\in\mathbb{P}(A)$.
+    Then, by definition of powerset $X\subseteq A$.
+    By definition of subset $X\subseteq B$.\\
+    Then by definition of powerset $X\in\mathbb{P}(B)$, therefore by definition of subset $\mathbb{P}(A)\subseteq\mathbb{P}(B)$ $\square$.\\
+
+
+    \maketitle
+    \noindent
+    \textbf{4.9.3}\\
+    \textbf{Proof.} Suppose $X\in\mathbb{P}(A)\cap\mathbb{P}(B)$.
+    Then, by definition of intersect $X\in\mathbb{P}(A)$ and $X\in\pset{B}$.
+    By definition of powerset $X\subseteq A$.
+    By definition of powerset $X\subseteq B$.
+    Then, by definition of intersect $X\subseteq A\cap B$.\\
+    Therefore by definition of powerset $X\in\pset{A\cap B}$ $\square$.\\
+
+    \maketitle
+    \noindent
+    \textbf{4.9.4}\\
+    \textbf{Proof.} Suppose $B\in\pset{A-C}$.
+    Further suppose $x\in B$.
+    By definition of powerset $B\subseteq A-C$.
+    Then, by definition of subset $x\in A-C$
+    Then, by definition of difference $x\in A$ and $x\notin C$.
+    Then, by definition of subset $B\subseteq A$.\\
+    Therefore, by definition of powerset $B\in\pset{A}$ $\square$.\\
+
+    \maketitle
+    \noindent
+    \textbf{4.9.6}\\
+    \textbf{Proof.} Suppose $a\in A$.
+    Further suppose $X\in\pset{A-\{a\}}\cap\{C\cup\{a\}|C\in \pset{A-\{a\}}\}$.
+    By definition of intersect $X\in\pset{A-\{a\}}$ and $X\in\{C\cup\{a\}|C\in \pset{A-\{a\}}\}$
+    By definition of powerset $X\subseteq A-\{a\}$.
+    Suppose $x\in X$.
+    By definition of subset $x\in A-\{a\}$
+    Then, by definition of difference, $X\in A$ and $x\notin \{a\}$.
+    By definition of union $a\in X\forall X\in\{C\cup\{a\}|C\in \pset{A-\{a\}}\}$, therefore $X\in\pset{A-\{a\}}\cap\{C\cup\{a\}|C\in \pset{A-\{a\}}\}=\emptysetw.
+
+\end{document}

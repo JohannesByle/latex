@@ -1,0 +1,112 @@
+\documentclass[english]{article}
+\usepackage{multicol}
+\usepackage{physics}
+\usepackage[margin=.75in]{geometry}
+\usepackage{amsmath}
+\usepackage{verbatim}
+\begin{document}
+\textbf{Johannes Byle}\\
+\noindent
+\textbf{7.2}
+\[
+\hat{a}^{\dagger}\rightarrow
+\begin{bmatrix}
+0 & 0 & 0 & \dots\\
+\sqrt{1} & 0 & 0\\
+0 & \sqrt{2} & 0\\
+0 & 0 & \sqrt{3}\\
+\vdots
+\end{bmatrix}
+,\ 
+\hat{a}\rightarrow
+\begin{bmatrix}
+0 & \sqrt{1} & 0 & 0 &\dots\\
+0 & 0 & \sqrt{2} & 0\\
+0 & 0 & 0 & \sqrt{3}\\
+\vdots
+\end{bmatrix}
+\]
+\[\hat{x}=\sqrt{\frac{\hbar}{2m\omega}}\left(\hat{a}+\hat{a}^{\dagger}\right)\rightarrow\sqrt{\frac{\hbar}{2m\omega}}
+\begin{bmatrix}
+0 & \sqrt{1} & 0 & 0 &\dots\\
+\sqrt{1} & 0 & \sqrt{2} & 0\\
+0 & \sqrt{2} & 0 & \sqrt{3}\\
+0 & 0 & \sqrt{3} & 0\\
+\vdots
+\end{bmatrix}
+\]
+\[\hat{p}_x=-i\sqrt{\frac{m\omega\hbar}{2}}\left(\hat{a}-\hat{a}^{\dagger}\right)\rightarrow-i\sqrt{\frac{m\omega\hbar}{2}}
+\begin{bmatrix}
+0 & \sqrt{1} & 0 & 0 &\dots\\
+-\sqrt{1} & 0 & \sqrt{2} & 0\\
+0 & -\sqrt{2} & 0 & \sqrt{3}\\
+0 & 0 & -\sqrt{3} & 0\\
+\vdots
+\end{bmatrix}
+\]
+$$\left[\hat{x},\hat{p}_x\right]=\hat{x}\hat{p}_x-\hat{p}_x\hat{x}=i\hbar$$
+$$\sqrt{\frac{\hbar}{2m\omega}}\left(-i\sqrt{\frac{m\omega\hbar}{2}}\right)=-i\frac{\hbar}{2}$$
+\[
+\left(\hat{a}+\hat{a}^{\dagger}\right)\left(\hat{a}-\hat{a}^{\dagger}\right)-\left(\hat{a}+\hat{a}^{\dagger}\right)\left(\hat{a}-\hat{a}^{\dagger}\right)=
+\begin{bmatrix}
+2 & 0 & 0 & 0 &\dots\\
+0 & 2 & 0 & 0\\
+0 & 0 & 2 & 0\\
+0 & 0 & 0 & 2\\
+\vdots
+\end{bmatrix}
+\]
+\[
+-i\frac{\hbar}{2}
+\begin{bmatrix}
+2 & 0 & 0 & 0 &\dots\\
+0 & 2 & 0 & 0\\
+0 & 0 & 2 & 0\\
+0 & 0 & 0 & 2\\
+\vdots
+\end{bmatrix}
+=i\hbar
+\]
+\begin{multicols}{2}
+\noindent
+\textbf{7.4}
+$$\hat{a}=\sqrt{\frac{m\omega}{2\hbar}}\left(\hat{x}+\frac{i}{m\omega}\hat{p}_x\right)$$
+$$\bra{p}\sqrt{\frac{m\omega}{2\hbar}}\left(\hat{x}+\frac{i}{m\omega}\hat{p}_x\right)\ket{0}=\sqrt{\frac{m\omega}{2\hbar}}\left(\bra{p}\hat{x}\ket{0}+\bra{p}\frac{i}{m\omega}\hat{p}_x\ket{0}\right)$$
+$$\sqrt{\frac{m\omega}{2\hbar}}\left(i\hbar\frac{\delta}{\delta p}\bra{p}\ket{0}+\frac{i\hat{p}_x}{m\omega}\bra{p}\ket{0}\right)=0$$
+$$\frac{\delta}{\delta p}\bra{p}\ket{0}=-\frac{\hat{p}_x}{m\omega\hbar}\bra{p}\ket{0}$$
+$$\int\frac{1}{\psi}d\psi=-\frac{1}{m\omega\hbar}\int pdp$$
+$$C\ln\psi=-\frac{p^2}{2m\omega\hbar}$$
+$$\psi=Ce^{-p^2/2m\omega\hbar}$$
+$$\int_{-\infty}^{\infty}Ce^{-p^2/2m\omega\hbar}dp=C\sqrt{4\pi m\omega\hbar}=1$$
+$$\psi=\frac{1}{\sqrt{4\pi m\omega\hbar}}e^{-p^2/2m\omega\hbar}$$
+\noindent
+\textbf{7.12}
+$$-\frac{\hbar^2}{2m}\frac{d^2}{dx^2}\bra{x}\ket{E}+\frac{1}{2}m\omega^2x^2\bra{x}\ket{E}=E\bra{x}\ket{E}$$
+$$-\frac{\hbar^2}{2m}\frac{d^2}{dx^2}Ne^{-ax^2}+\frac{1}{2}m\omega^2x^2Ne^{-ax^2}=ENe^{-ax^2}$$
+$$-\frac{\hbar^2}{2m}2aNe^{-a x^2}\left(2ax^2-1\right)+\frac{1}{2}m\omega^2x^2Ne^{-ax^2}=ENe^{-ax^2}$$
+$$-\frac{\hbar^2}{2m}2a\left(2ax^2-1\right)+\frac{1}{2}m\omega^2x^2=E$$
+$$-\frac{\hbar^2}{2m}4a^2x^2-\frac{\hbar^2}{2m}2a+\frac{1}{2}m\omega^2x^2-E=0$$
+$$\left(\frac{1}{2}m\omega^2-\frac{\hbar^2}{m}2a^2\right)x^2+\frac{\hbar^2}{m}a-E=0$$
+$$a=\frac{m\omega}{2\hbar}$$
+$$E=\frac{\hbar^2}{m}a=\frac{\hbar\omega}{2}$$
+\end{multicols}
+\noindent
+\textbf{7.15}
+$$\frac{a_{k+2}}{a_k}=\frac{2k+1-\varepsilon}{\left(k+2\right)\left(k+1\right)}$$
+$$\varepsilon=2n+1$$
+$$\frac{a_{k+2}}{a_k}=\frac{2\left(k-n\right)}{\left(k+2\right)\left(k+1\right)}$$
+$$n=0,\ \frac{a_2}{a_0}=0,\ 1$$
+$$n=1,\ \frac{a_2}{a_0}=-1,\ y$$
+$$n=2,\ \frac{a_2}{a_0}=-2,\ 1-2y^2$$
+$$n=3,\ \frac{a_3}{a_1}=-\frac{2}{3},\ 6-4y^3$$
+$$n=4,\ \frac{a_3}{a_1}=-1,\ \frac{a_2}{a_0}=-4,\ y^3+4y^2+y$$
+\noindent
+\textbf{7.17}
+$$\left|\bra{x}\ket{0}\right|^2=\frac{m\omega}{\pi\hbar}e^{-m\omega x^2/\hbar}$$
+Equation C.18 in appendix C:
+$$\delta\left(x\right)=\lim_{\alpha\rightarrow\infty}\sqrt{\frac{\alpha}{\pi}}e^{-\alpha x^2}$$
+We know that:
+$$\lim_{\hbar\rightarrow 0}\frac{m\omega}{\hbar}=\lim_{\alpha\rightarrow\infty}\alpha$$
+Thus:
+$$\lim_{\hbar\rightarrow 0}\frac{m\omega}{\pi\hbar}e^{-m\omega x^2/\hbar}=\lim_{\alpha\rightarrow\infty}\sqrt{\frac{\alpha}{\pi}}e^{-\alpha x^2}$$
+\end{document}

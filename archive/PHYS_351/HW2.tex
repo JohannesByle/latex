@@ -1,0 +1,69 @@
+\documentclass[12pt]{article}
+\usepackage{graphicx}
+\usepackage{subfiles}
+\usepackage{circuitikz}
+\author{Johannes Byle}
+\title{HW Set 2}
+\begin{document}
+    \maketitle
+
+    \noindent
+    \textbf{1.a} $Z=R+j\omega L$\\
+    \textbf{1.b} \textbb{f = linspace(0, 10, 1001);}\\
+    \textbf{1.c} \textbb{Z = 10 + 1i*2*pi*10*10^(-3).*f;}\\
+    \textbf{1.d} \includegraphics[]{HW2_plot.eps}\\
+
+    \noindent
+    \textbf{1.e} At the low frequency the $R^{2}$ term dominates, and thus the line starts of horizontal,
+    however at high frequencies the $\omega^{2}L^2$ term dominates, and since the whole thing is under a square root it
+    approaches a straight line function.
+
+    \bigskip
+    \noindent
+    \textbf{2.a} $Z=\left(\frac{1}{Z_R}+\frac{1}{Z_C}+\frac{1}{Z_L}\right)$\\
+    $Z_{R}=R,\quad Z_{C}=\frac{1}{j\omega C},\quad Z_{L}=j\omega L$\\
+    $Z_{tot}=\left(\frac{1}{R}+j\omega C+\frac{1}{j\omega L}\right)$\\
+    \textbf{2.b} $|Z|=\sqrt{\left(\frac{1}{R}+j\omega C+\frac{1}{j\omega L}\right)
+    \left(\frac{1}{R}-j\omega C-\frac{1}{j\omega L}\right)}=\sqrt{\frac{1}{R^2}+\frac{(\omega^{2}CL-1)
+    ^2}{\omega^{2}L^2}}$\\
+    \textbf{2.c} $V_{0}e^{j\frac{\pi}{2}}$ The magnitude is $V_0$ and the phase is $\frac{\pi}{2}$.\\
+    \textbf{2.d} $\tilde{I_s}=\frac{\tilde{V_s}}{\tilde{Z_s}}=\frac{V_{0}e^{j\frac{\pi}{2}}}{\left
+    (\frac{1}{R}+j\omega C+\frac{1}{j\omega L}\right)}$\\
+    $|\tilde{I_s}|=\left(\frac{V_{0}e^{j\frac{\pi}{2}}}{\left(\frac{1}{R}+j\omega C+\frac{1}{j\omega L}\right)
+    }\right)\left(\frac{V_{0}e^{-j\frac{\pi}{2}}}{\left(\frac{1}{R}-j\omega C+\frac{1}{-j\omega L}\right)
+    }\right)=\frac{LRV_0\omega}{\sqrt{R^{2}(CL\omega^2-1)^{2}+L^2\omega^2}}$\\
+    \textbf{2.e} $\tilde{I_R}=\frac{V_{0}e^{j\frac{\pi}{2}}}{R}$\\
+    $\tilde{I_C}=V_{0}e^{j\frac{\pi}{2}}j\omega C$\\
+    $\tilde{I_L}=\frac{V_{0}e^{j\frac{\pi}{2}}}{j\omega L}$\\
+
+    \bigskip
+    \noindent
+    \textbf{3.a} If the frequency is very low:\\
+    \begin{circuitikz}[american]
+        \draw (0, 0) to [sV=$V_1$, -*] (0, -3);
+        \draw (0, -3) to (0, -4) node[ground]{};
+        \draw (0, -3) to (10, -3);
+        \draw (0, 0) to [R=$R_1$] (4, 0);
+        \draw (4, 0) to [R=$R_2$] (8, 0);
+        \draw (8, 0) to (10, 0);
+%        \draw (4, 0) to (4, -1) node[ocirc]{};
+%        \draw (4, -3) to (4, -2) node[ocirc]{};
+%        \draw (8, 0) to (8, -1) node[ocirc]{};
+%        \draw (8, -3) to (8, -2) node[ocirc]{};
+    \end{circuitikz}\\
+    If the frequency is very high:\\
+    \begin{circuitikz}[american]
+        \draw (0, 0) to [sV=$V_1$, -*] (0, -3);
+        \draw (0, -3) to (0, -4) node[ground]{};
+        \draw (0, -3) to (10, -3);
+        \draw (0, 0) to [R=$R_1$, -*] (4, 0);
+        \draw (4, 0) to [R=$R_2$, -*] (8, 0);
+        \draw (8, 0) to (10, 0);
+        \draw (4, 0) to [short, -*] (4, -3);
+        \draw (8, 0) to [short, -*] (8, -3);
+    \end{circuitikz}\\
+    \textbf{3.b} $Z=R_1+\left(j\omega C_1+\frac{1}{R_2+\frac{1}{j\omega C_2}}\right)^{-1}$\\
+    \textbf{3.c} $\tilde{I}_{tot}=\frac{\tilde{V}_{1}e^{j\phi}}{R_1+\left(j\omega C_1+\frac{1}{R_2+\frac{1}{j\omega
+    C_2}}\right)^{-1}}$
+    \textbf{3.d}
+\end{document}

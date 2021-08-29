@@ -1,0 +1,61 @@
+\documentclass[english]{article}
+\usepackage{physics}
+\usepackage{multicol}
+\begin{document}
+\author{Johannes Byle}
+\title{Quiz 3}
+\maketitle
+\section*{a)}
+
+\textbf{Normalization}
+$$\psi_0=Ae^{-ar^2/2}$$
+$$a=\frac{m\omega}{\hbar}=\frac{\sqrt{mk}}{\hbar}$$
+$$\int_0^{2\pi}\int_0^{\pi}\int_0^{\infty}A^2e^{-ar^2}r^2\sin\phi drd\phi d\theta=1$$
+$$\frac{\sqrt{\pi}A^2}{4a^{3/2}}\int_0^{2\pi}\int_0^{\pi}\sin\phi d\phi d\theta=1$$
+$$\frac{\sqrt{\pi}A^2}{2a^{3/2}}\int_0^{2\pi}d\theta=1$$
+$$\frac{\pi^{3/2}A^2}{a^{3/2}}=1$$
+$$A=\left(\frac{a}{\pi}\right)^{3/4}$$
+
+\textbf{Units}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|l|}
+\hline
+Variable & Units\\ \hline
+$m$ & $kg$\\
+$\omega$ & $rad/s$\\
+$r$ & $m$\\
+$\hbar$ & $kg\cdot m^2 \cdot s^{-1}$\\
+\hline
+\end{tabular}
+\end{table}
+
+$$\psi_0=\left(\frac{m\omega}{\hbar}\right)^{3/4}e^{-\frac{m\omega}{\hbar}r^2/2}$$
+$$\psi_0=\left(\frac{kg\cdot rad/s}{kg\cdot m^2 \cdot s^{-1}}\right)^{3/4}e^{-\frac{kg\cdot rad/s}{kg\cdot m^2 \cdot s^{-1}}m^2/2}$$
+$$\psi_0=\left(\frac{rad}{m^2}\right)^{3/4}$$
+
+\section*{b)}
+$$\bra{\psi_0}z^2\ket{\psi_0}=\bra{\psi_0}r^2\cos^2\theta\ket{\psi_0}$$
+$$\int_0^{2\pi}\int_0^{\pi}\int_0^{\infty}A^2e^{-ar^2}r^4\cos^2\theta\sin\phi drd\phi d\theta$$
+$$\frac{3\sqrt{\pi}A^2}{8a^{5/2}}\int_0^{2\pi}\int_0^{\pi}\cos^2\theta\sin\phi d\phi d\theta$$
+$$\frac{3\sqrt{\pi}A^2}{4a^{5/2}}\int_0^{2\pi}\cos^2\theta d\theta$$
+$$\frac{3\pi^{3/2}A^2}{4a^{5/2}}=\frac{3\pi^{3/2}}{4a^{5/2}}\left(\frac{a}{\pi}\right)^{3/2}=\frac{3}{4a}$$
+
+\section*{c)}
+$$\bra{\psi_0}x^2\ket{\psi_0}=\bra{\psi_0}r^2\sin^2\theta\cos^2\phi\ket{\psi_0}$$
+$$\int_0^{2\pi}\int_0^{\pi}\int_0^{\infty}A^2e^{-ar^2}r^4\sin^2\theta\cos^2\phi\sin\phi drd\phi d\theta$$
+$$\frac{3\sqrt{\pi}A^2}{8a^{5/2}}\int_0^{2\pi}\int_0^{\pi}\sin^2\theta\cos^2\phi\sin\phi d\phi d\theta$$
+$$\frac{\sqrt{\pi}A^2}{4a^{5/2}}\int_0^{2\pi}\sin^2\theta d\theta$$
+$$\frac{\pi^{3/2}A^2}{4a^{5/2}}=\frac{\pi^{3/2}}{4a^{5/2}}\left(\frac{a}{\pi}\right)^{3/2}=\frac{1}{4a}$$
+
+\section*{d)}
+$$\bra{\psi_0}\frac{1}{2}kr^2\ket{\psi_0}$$
+$$\int_0^{2\pi}\int_0^{\pi}\int_0^{\infty}A^2e^{-ar^2}\frac{1}{2}kr^4\sin\phi drd\phi d\theta$$
+$$\frac{3\sqrt{\pi}kA^2}{16a^{5/2}}\int_0^{2\pi}\int_0^{\pi}\sin\phi d\phi d\theta$$
+$$\frac{3\sqrt{\pi}kA^2}{8a^{5/2}}\int_0^{2\pi}d\theta$$
+$$\frac{3\pi^{3/2}kA^2}{4a^{5/2}}=\frac{3\pi^{3/2}k}{4a^{5/2}}\left(\frac{a}{\pi}\right)^{3/2}=\frac{3k}{4a}$$
+$$V=kg\cdot m^2\cdot s^{-3}\cdot A^{-1}$$
+$$\frac{k\hbar}{m\omega}=\frac{k\cdot kg\cdot m^2 \cdot s^{-1}}{kg\cdot rad/s}=k\cdot m^2$$
+$$k=kg\cdot s^{-3}\cdot A^{-1}$$
+\end{document}

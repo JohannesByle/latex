@@ -1,0 +1,97 @@
+\documentclass[english]{article}
+\usepackage{multicol}
+\usepackage{physics}
+\usepackage[margin=.75in]{geometry}
+\usepackage{amsmath}
+\usepackage{verbatim}
+\usepackage{pgfplots}
+\begin{document}
+\textbf{Johannes Byle}\\
+\textbf{12.1}
+$$\left(\frac{1}{\sqrt{2}}\ket{\vb{r}_1,\vb{r}_2}-\frac{1}{\sqrt{2}}\ket{\vb{r}_2,\vb{r}_1}\right)\left(\frac{1}{\sqrt{2}}\bra{\vb{r}_1,\vb{r}_2}\ket{\psi_A}-\frac{1}{\sqrt{2}}\bra{\vb{r}_2,\vb{r}_1}\ket{\psi_A}\right)$$
+$$\frac{1}{2}\ket{\vb{r}_1,\vb{r}_2}\bra{\vb{r}_1,\vb{r}_2}\ket{\psi_A}-\frac{1}{2}\ket{\vb{r}_1,\vb{r}_2}\bra{\vb{r}_2,\vb{r}_1}\ket{\psi_A}-\frac{1}{2}\ket{\vb{r}_2,\vb{r}_1}\bra{\vb{r}_1,\vb{r}_2}\ket{\psi_A}+\frac{1}{2}\ket{\vb{r}_2,\vb{r}_1}\bra{\vb{r}_2,\vb{r}_1}\ket{\psi_A}$$
+$$\bra{\vb{r}_1,\vb{r}_2}\ket{\psi_S}=-\bra{\vb{r}_2,\vb{r}_1}\ket{\psi_S}$$
+$$\ket{\vb{r}_1,\vb{r}_2}\ket{\vb{r}_1,\vb{r}_2}\ket{\psi_A}+\ket{\vb{r}_2,\vb{r}_1}\ket{\vb{r}_2,\vb{r}_1}\ket{\psi_A}$$
+Since $\vb{r}_1$ and $\vb{r}_2$ are arbitrary they can be switched:
+$$\left(\frac{1}{\sqrt{2}}\ket{\vb{r}_1,\vb{r}_2}-\frac{1}{\sqrt{2}}\ket{\vb{r}_2,\vb{r}_1}\right)\left(\frac{1}{\sqrt{2}}\bra{\vb{r}_1,\vb{r}_2}\ket{\psi_A}-\frac{1}{\sqrt{2}}\bra{\vb{r}_2,\vb{r}_1}\ket{\psi_A}\right)=2\ket{\vb{r}_1,\vb{r}_2}\ket{\vb{r}_1,\vb{r}_2}\ket{\psi_A}$$
+\textbf{12.2}\\
+\textbf{a)}
+$$E\left(n_1,n_2\right)=\left(n_1+n_2+1\right)\hbar\omega$$
+$$E_0=\hbar\omega$$
+$$E_1=2\hbar\omega$$
+\begin{multicols}{2}
+$$\left(\frac{1}{\sqrt{2}}\ket{1,0}+\frac{1}{\sqrt{2}}\ket{0,1}\right)\ket{0,0}$$
+$$\left(\frac{1}{\sqrt{2}}\ket{1,0}-\frac{1}{\sqrt{2}}\ket{0,1}\right)\ket{1,0}$$
+$$\left(\frac{1}{\sqrt{2}}\ket{1,0}-\frac{1}{\sqrt{2}}\ket{0,1}\right)\ket{1,-1}$$
+$$\left(\frac{1}{\sqrt{2}}\ket{1,0}-\frac{1}{\sqrt{2}}\ket{0,1}\right)\ket{1,1}$$
+\end{multicols}
+\textbf{b)}
+The energy is lowest when the particles are close together, the particles that can come closest are particles that are in the ground state, thus the spin-0 state will be lowered more than the spin-1 state.\\
+\textbf{12.4}\\
+$$\psi=e^{-cx^2}$$
+$$\hat{\vb{H}}\psi=\frac{-\hbar^2}{2m}\frac{\delta^2\psi}{\delta x^2}+\lambda x^4\psi=\frac{-\hbar^2}{2m}\left(2ce^{-cx^2}\right)\left(2cx^2-1\right)+\lambda x^2e^{-cx^2}$$
+$$\int_{-\infty}^{\infty}\psi\hat{\vb{H}}\psi dx=\int_{-\infty}^{\infty}e^{-2cx^2}\left(\lambda\psi^4-\frac{2\hbar^2c^2}{m}x^2+\frac{\hbar^2c}{m}\right)dx=\sqrt{\frac{\pi}{2c}}\left(\frac{3\lambda}{16}\frac{1}{c^2}+\frac{\hbar^2c}{2m}\right)$$
+$$\int_{-\infty}^{\infty}e^{-2cx^2}dx=\sqrt{\frac{\pi}{2c}}$$
+$$E=\frac{3\lambda}{16c^2}+\frac{\hbar^2c}{2m}$$
+$$\frac{dE}{dc}=\frac{6\lambda}{16c^3}+\frac{\hbar^2}{2m}=0$$
+$$c=\sqrt[3]{\frac{3\lambda m}{4\hbar^2}}$$
+$$E=\left(\frac{3\sqrt[3]{3}}{4}\right)\lambda^{1/3}\left(\frac{\hbar^2}{2m}\right)^{2/3}\approx1.082\lambda^{1/3}\left(\frac{\hbar^2}{2m}\right)^{2/3}$$
+\textbf{13.2}
+$$\vb{j}_{sc}=\frac{\hbar}{2\mu i}\left(\psi^*\nabla\psi-\psi\nabla\psi^*\right)$$
+$$\vb{j}_{sc}\xrightarrow[r\rightarrow\infty]{}\frac{\hbar}{2\mu i}\left(Af(\theta,\phi)\frac{e^{-ikr}}{r}\nabla Af(\theta,\phi)\frac{e^{ikr}}{r}-Af(\theta,\phi)\frac{e^{ikr}}{r}\nabla Af(\theta,\phi)\frac{e^{-ikr}}{r}\right)$$
+$$\vb{j}_{sc}\xrightarrow[r\rightarrow\infty]{}\frac{\hbar A^2}{2\mu i}f(\theta,\phi)\left(\frac{e^{-ikr}}{r}\nabla f(\theta,\phi)\frac{e^{ikr}}{r}-
+\frac{e^{ikr}}{r}\nabla f(\theta,\phi)\frac{e^{-ikr}}{r}\right)$$
+$$\nabla f(\theta,\phi)\frac{e^{ikr}}{r}=\left(\frac{\delta}{\delta r}\hat{\vb{r}}+\frac{1}{r}\frac{\delta}{\delta\theta}\hat{\vb{\theta}}+\frac{1}{r\sin\theta}\frac{\delta}{\delta\phi}\hat{\vb{\phi}}\right)f(\theta,\phi)\frac{e^{ikr}}{r}$$
+$$\nabla f(\theta,\phi)\frac{e^{ikr}}{r}=f(\theta,\phi)\frac{ie^{ikr}(kr+i)}{r^2}\hat{\vb{r}}+\frac{e^{ikr}}{r}\left(\frac{1}{r}\frac{\delta}{\delta\theta}\hat{\vb{\theta}}+\frac{1}{r\sin\theta}\frac{\delta}{\delta\phi}\hat{\vb{\phi}}\right)f(\theta,\phi)$$
+$$\nabla f(\theta,\phi)\frac{e^{-ikr}}{r}=\left(\frac{\delta}{\delta r}\hat{\vb{r}}+\frac{1}{r}\frac{\delta}{\delta\theta}\hat{\vb{\theta}}+\frac{1}{r\sin\theta}\frac{\delta}{\delta\phi}\hat{\vb{\phi}}\right)f(\theta,\phi)\frac{e^{-ikr}}{r}$$
+$$\nabla f(\theta,\phi)\frac{e^{-ikr}}{r}=f(\theta,\phi)\frac{e^{-ikr}(-1-ikr)}{r^2}\hat{\vb{r}}+\frac{e^{-ikr}}{r}\left(\frac{1}{r}\frac{\delta}{\delta\theta}\hat{\vb{\theta}}+\frac{1}{r\sin\theta}\frac{\delta}{\delta\phi}\hat{\vb{\phi}}\right)f(\theta,\phi)$$
+$$\vb{j}_{sc}\xrightarrow[r\rightarrow\infty]{}\frac{\hbar A^2}{2\mu i}f(\theta,\phi)\left(f(\theta,\phi)\frac{kr+i}{r^3}-f(\theta,\phi)\frac{-1-ikr}{r^3}\right)$$
+$$\vb{j}_{sc}\xrightarrow[r\rightarrow\infty]{}\frac{\hbar A^2}{2\mu i}f(\theta,\phi)^2\vb{u}_r$$
+\textbf{13.4 a)}
+$$\left(\nabla^2+k^2\right)\psi(x)=\frac{2m}{\hbar^2}V(x)\psi(x)$$
+$$\left(\nabla^2+k^2\right)G(x)=\frac{\delta^2}{\delta x^2}G(x,x')+k^2G(x,x')=\delta(x-x')$$
+$$\psi(x)=\int \frac{2m}{\hbar^2}V(x')\psi(x')\delta(x-x')dx'$$
+In order to get the general solution:
+$$\psi(x)=Ae^{ikx}+\int \frac{2m}{\hbar^2}V(x')\psi(x')G(x,x')dx'$$
+\textbf{b)}
+$$\frac{\delta^2}{\delta x^2}G(x,x')+k^2G(x,x')=\delta(x-x')$$
+$$\int_{x'+\varepsilon}^{x'-\varepsilon}\frac{\delta^2}{\delta x^2}G(x,x')dx=\int_{x'+\varepsilon}^{x'-\varepsilon}\delta(x-x')-k^2G(x,x')dx$$
+$$\frac{\delta}{\delta x}G(x,x')=1-\int_{x'+\varepsilon}^{x'-\varepsilon}k^2G(x,x')dx$$
+$$\left(\frac{\delta G}{\delta x}\right)_{x=x'_+}-\left(\frac{\delta G}{\delta x}\right)_{x=x'_-}=1$$
+$$\left(\frac{\delta}{\delta x}\left(\frac{1}{2ik}e^{ik(x-x')}\right)\right)_{x=x'_+}-\left(\frac{\delta}{\delta x}\left(\frac{1}{2ik}e^{-ik(x-x')}\right)\right)_{x=x'_-}=1$$
+\textbf{c)}
+$$\psi(x)=Ae^{ikx}+\int \frac{2m}{\hbar^2}V(x')\psi(x')\frac{1}{2ik}e^{-ik(x-x')}dx'$$
+$$\psi(x)=Ae^{ikx}+Ae^{-ikx'}\int \frac{2m}{\hbar^2}V(x')\frac{1}{2ik}e^{-ik(x-x')}dx'$$
+$$\psi\xrightarrow[r\rightarrow-\infty]{}Ae^{ikx}+Ae^{-ikx'}\int_{-\infty}^{\infty} \frac{2m}{\hbar^2}V(x')\frac{1}{2ik}e^{-ik(x-x')}dx'$$
+$$R=\left|\frac{m}{ik\hbar^2}\int_{-\infty}^{\infty}e^{2ikx'}V(x')dx'\right|^2$$
+\textbf{d)}
+$$\left|\frac{m}{ik\hbar^2}\int_{-\infty}^{\infty}e^{2ikx'}V(x')dx'\right|^2=1-\left(1+\left[V_0^2/4E(E-V_0)\right]\sin^2\sqrt{2m/\hbar)(E-V_0)a}\right)^{-1}$$
+\textbf{13.6}
+$$f(\theta,\phi)=-\frac{\mu C}{2\pi\hbar^2}\int_0^{\infty}dr\int_0^{2\pi}d\phi\int_0^{\pi} d\theta\sin\theta e^{iqr\cos\theta}$$
+$$f(\theta,\phi)=-\frac{\mu C}{\hbar^2}\int_0^{\infty}dr\int_0^{\pi} d\theta\sin\theta e^{iqr\cos\theta}$$
+$$f(\theta,\phi)=-\frac{2\mu C}{\hbar^2}\int_0^{\infty}dr\frac{\sin(qr)}{qr}$$
+$$f(\theta,\phi)=-\frac{\mu C}{\hbar^2}\frac{\pi r}{q\abs{r}}$$
+$$\frac{d\sigma}{d\Omega}=\left|\frac{\mu C}{\hbar^2}\frac{\pi r}{q\abs{r}}\right|^2$$
+$$\frac{d\sigma}{d\Omega}=\frac{\mu^2 C^2\pi^2}{\hbar^4q^2}$$
+\textbf{13.8 a)}\\
+Because the function of $\psi$ is independent of $\phi$ the plane waves only include $Y_{l,0}$'s, and because the plane wave is a free particle the radial functions must be spherical Bessel functions.\\
+\textbf{b)}
+$$c_lj_l(kr)=\frac{1}{\sqrt{(2l)!}}\int d\Omega Y^{*}_{l,l}\left\{\left[\frac{1}{i}e^{i\phi}\left(i\frac{\delta}{\delta\theta}-\cot\theta\frac{\delta}{\delta\phi}\right)\right]^le^{ikr\cos\theta}\right\}$$ 
+$$\left(\frac{\delta}{\delta\phi}\frac{1}{i}e^{i\phi}\right)^l=e^{i\phi l}$$
+$$c_lj_l(kr)=\frac{1}{\sqrt{(2l)!}}\int d\Omega Y^{*}_{l,l}\left[(-1)^le^{i\phi l}\sin^l\theta\frac{d^l}{d(\cos\theta)^l}e^{ikr\cos\theta}\right]$$
+\textbf{c)}
+$$Y_{l,l}=\frac{(-1)^l}{2^ll!}\sqrt{\frac{(2l+1)!}{4\pi}}e^{il\phi}\sin^l\theta$$
+$$c_lj_l(kr)=\frac{1}{\sqrt{(2l)!}}\int d\Omega \frac{(-1)^l}{2^ll!}\sqrt{\frac{(2l+1)!}{4\pi}}e^{-il\phi}\sin^l\theta\left[(-1)^le^{i\phi l}\sin^l\theta\frac{d^l}{d(\cos\theta)^l}e^{ikr\cos\theta}\right]$$
+$$c_lj_l(kr)=(ikr)^l\frac{2^ll!}{\sqrt{(2l)!}}\sqrt{\frac{4\pi}{(2l+1)!}}\int d\Omega\left|Y_{l,l}(\theta,\phi)\right|^2e^{ikr\cos\theta}$$
+\textbf{d)}
+$$c_l\frac{(kr)^l}{(2l+1)!!}\xrightarrow[r\rightarrow0]{}(ikr)^l\frac{2^ll!}{\sqrt{(2l)!}}\sqrt{\frac{4\pi}{(2l+1)!}}\int d\Omega\left|Y_{l,l}(\theta,\phi)\right|^2e^{ikr\cos\theta}$$
+$$c_l\xrightarrow[r\rightarrow0]{}\frac{(2l+1)!!}{(kr)^l}(ikr)^l\frac{2^ll!}{\sqrt{(2l)!}}\sqrt{\frac{4\pi}{(2l+1)!}}\int d\Omega\left|Y_{l,l}(\theta,\phi)\right|^2e^{ikr\cos\theta}$$
+$$c_l\xrightarrow[r\rightarrow0]{}i^l\sqrt{4\pi(2l+1)}$$
+\textbf{13.10}
+$$\psi(\vb{r})\xrightarrow[r\rightarrow\infty]{}\sum_l\left[A_lj_l(kr)-B_l\eta_l(kr)\right]P_l(\cos\theta)$$
+$$\tan\delta_l=\frac{j_l(ka)}{\eta_l(ka)}$$
+For small $x$, $\tan x=x$
+$$j_l(\rho)\propto\rho^l$$
+$$\eta_l(\rho)\propto-\rho^{-(l+1)} $$
+$$\delta_1\approx-\frac{(ka)^3}{3}$$
+\end{document}

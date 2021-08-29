@@ -1,0 +1,136 @@
+\documentclass[english]{article}
+\usepackage{multicol}
+\usepackage{physics}
+\usepackage[margin=.75in]{geometry}
+\usepackage{amsmath}
+\usepackage{verbatim}
+\begin{document}
+\textbf{Johannes Byle}\\
+\noindent
+\textbf{5.1}\\
+\[
+\hat{H}\rightarrow
+\begin{bmatrix}
+A/2 & 0 & 0 & 0\\
+0 & -A/2 & A & 0\\
+0 & A & -A/2 & 0\\
+0 & 0 & 0 & A/2
+\end{bmatrix}
+,\ 
+\omega_0\hat{S}_{1z}\rightarrow
+\begin{bmatrix}
+\tfrac{\hbar\omega_0}{2} & 0 & 0 & 0\\
+0 & \tfrac{\hbar\omega_0}{2} & 0 & 0\\
+0 & 0 & -\tfrac{\hbar\omega_0}{2} & 0\\
+0 & 0 & 0 & -\tfrac{\hbar\omega_0}{2}
+\end{bmatrix}
+\]
+\[
+\hat{H}=\frac{2A}{\hbar^2}\hat{\vb{S}}_1\cdot\hat{\vb{S}}_2+\omega_0\hat{S}_{1z}\rightarrow
+\begin{bmatrix}
+\tfrac{A+\hbar\omega_0}{2} & 0 & 0 & 0\\
+0 & \tfrac{-A+\hbar\omega_0}{2} & A & 0\\
+0 & A & \tfrac{-A-\hbar\omega_0}{2} & 0\\
+0 & 0 & 0 & \tfrac{A-\hbar\omega_0}{2}
+\end{bmatrix}
+\]
+Eigenvalues:
+\[
+\det
+\begin{bmatrix}
+\tfrac{A+\hbar\omega_0}{2}-\lambda & 0 & 0 & 0\\
+0 & \tfrac{-A+\hbar\omega_0}{2}-\lambda & A & 0\\
+0 & A & \tfrac{-A-\hbar\omega_0}{2}-\lambda & 0\\
+0 & 0 & 0 & \tfrac{A-\hbar\omega_0}{2}-\lambda
+\end{bmatrix}
+=- \frac{3 A^{4}}{16} + A^{3} \lambda + \frac{A^{2} \hbar\omega_0^{2}}{8} - \frac{3 A^{2} \lambda^{2}}{2} + \frac{\hbar\omega_0^{4}}{16} - \frac{\hbar\omega_0^{2} \lambda^{2}}{2} + \lambda^{4}
+\]
+$$\lambda = - \frac{A}{2} \pm \frac{\sqrt{4 A^{2} + \hbar\omega_0^{2}}}{2}, \  \frac{A}{2} \pm \frac{\hbar\omega_0}{2}$$
+\begin{multicols}{2}
+Assuming $(1+x)^n\approx1+nx$ and $A\gg\hbar\omega_0$:
+$$\lambda=\frac{1}{2}\left(-A\pm\sqrt{4 A^{2} + \hbar\omega_0^{2}}\right)$$
+$$\lambda=\frac{1}{2}\left(-A\pm A\sqrt{1 + \frac{\hbar\omega_0^{2}}{4A^2}}\right)$$
+$$\lambda=\frac{A}{2} \pm \frac{\hbar\omega_0}{2},\ \frac{1}{2}\left(-A\pm A + \frac{\hbar\omega_0^{2}}{4A}\right)$$
+Assuming $(1+x)^n\approx1+nx$ and $A\ll\hbar\omega_0$:
+$$\lambda=\frac{1}{2}\left(-A\pm\sqrt{4 A^{2} + \hbar\omega_0^{2}}\right)$$
+$$\lambda=\frac{1}{2}\left(-A\pm\hbar\omega_0\sqrt{\frac{4A^{2}}{\hbar\omega_0^2} + 1}\right)$$
+$$\lambda=\frac{A}{2} \pm \frac{\hbar\omega_0}{2},\ \frac{1}{2}\left(-A\pm\hbar\omega_0\right)$$
+\end{multicols}
+\noindent
+\textbf{5.6}\\
+\[
+\hat{H}\rightarrow
+\begin{bmatrix}
+A/2 & 0 & 0 & 0\\
+0 & -A/2 & A & 0\\
+0 & A & -A/2 & 0\\
+0 & 0 & 0 & A/2
+\end{bmatrix}
+,\ 
+\omega_0\left(\hat{S}_{1z}-\hat{S}_{2z}\right)\rightarrow
+\begin{bmatrix}
+0 & 0 & 0 & 0\\
+0 & \hbar\omega_0 & 0 & 0\\
+0 & 0 & -\hbar\omega_0 & 0\\
+0 & 0 & 0 & 0
+\end{bmatrix}
+\]
+\[
+\hat{H}=\frac{2A}{\hbar^2}\hat{\vb{S}}_1\cdot\hat{\vb{S}}_2+\omega_0\left(\hat{S}_{1z}-\hat{S}_{2z}\right)\rightarrow
+\begin{bmatrix}
+A/2-\lambda & 0 & 0 & 0\\
+0 & -A/2+\hbar\omega_0-\lambda & A & 0\\
+0 & A & -A/2-\hbar\omega_0-\lambda & 0\\
+0 & 0 & 0 & A/2-\lambda
+\end{bmatrix}
+\]
+Eigenvalues:
+\[
+\det
+\begin{bmatrix}
+A/2-\lambda & 0 & 0 & 0\\
+0 & -A/2+\hbar\omega_0-\lambda & A & 0\\
+0 & A & -A/2-\hbar\omega_0-\lambda & 0\\
+0 & 0 & 0 & A/2-\lambda
+\end{bmatrix}
+=- \frac{3 A^{4}}{16} + A^{3} \lambda - \frac{A^{2} \hbar\omega_0^{2}}{4} - \frac{3 A^{2} \lambda^{2}}{2} + A \hbar\omega_0^{2} \lambda - \hbar\omega_0^{2} \lambda^{2} + \lambda^{4}
+\]
+$$\lambda =  \frac{A}{2}, \  - \frac{A}{2} - \sqrt{A^{2} + \hbar\omega_0^{2}}, \  - \frac{A}{2} + \sqrt{A^{2} + \hbar\omega_0^{2}}$$
+\begin{comment}
+$$\ket{0,0}=\frac{1}{\sqrt{2}}\ket{+\vb{z},-\vb{z}}-\frac{1}{\sqrt{2}}\ket{-\vb{z},+\vb{z}}$$
+$$\ket{+\vb{n}}=\cos\frac{\theta}{2}\ket{+\vb{z}}+e^{i\phi}\sin\frac{\theta}{2}\ket{-\vb{z}}$$
+$$\ket{-\vb{n}}=\sin\frac{\theta}{2}\ket{+\vb{z}}-e^{i\phi}\cos\frac{\theta}{2}\ket{-\vb{z}}$$
+$$\ket{0,0}=\frac{1}{\sqrt{2}}\left(\cos\frac{\theta}{2}\ket{+\vb{n}}+\sin\frac{\theta}{2}\ket{-\vb{n}}\right)\left(e^{i\phi}\sin\frac{\theta}{2}\ket{+\vb{n}}-e^{i\phi}\cos\frac{\theta}{2}\ket{-\vb{n}}\right)$$$$- \frac{1}{\sqrt{2}}\left(e^{i\phi}\sin\frac{\theta}{2}\ket{+\vb{n}}-e^{i\phi}\cos\frac{\theta}{2}\ket{-\vb{n}}\right)\left(\cos\frac{\theta}{2}\ket{+\vb{n}}+\sin\frac{\theta}{2}\ket{-\vb{n}}\right)$$
+\[
+\ket{0,0}=\frac{1}{\sqrt{2}}\left(
+\begin{bmatrix}
+\cos\tfrac{\theta}{2}e^{i\phi}\sin\tfrac{\theta}{2}\ket{+\vb{n},+\vb{n}} & -e^{i\phi}\cos^2\tfrac{\theta}{2}\ket{+\vb{n},-\vb{n}}\\
+e^{i\phi}\sin^2\tfrac{\theta}{2}\ket{-\vb{n},+\vb{n}} & -\sin\tfrac{\theta}{2}e^{i\phi}\cos\tfrac{\theta}{2}\ket{-\vb{n},-\vb{n}}
+\end{bmatrix}
+-
+\begin{bmatrix}
+\cos\tfrac{\theta}{2}e^{i\phi}\sin\tfrac{\theta}{2}\ket{+\vb{n},+\vb{n}} & e^{i\phi}\sin^2\tfrac{\theta}{2}\ket{+\vb{n},-\vb{n}}\\
+-e^{i\phi}\cos^2\tfrac{\theta}{2}\ket{-\vb{n},+\vb{n}} & -\sin\tfrac{\theta}{2}e^{i\phi}\cos\tfrac{\theta}{2}\ket{-\vb{n},-\vb{n}}
+\end{bmatrix}
+\right)
+\]
+\[
+\ket{0,0}=\frac{1}{\sqrt{2}}
+\begin{bmatrix}
+0 & -e^{i\phi}\ket{+\vb{n},-\vb{n}}\\
+e^{i\phi}\ket{-\vb{n},+\vb{n}} & 0
+\end{bmatrix}
+=\frac{e^{i\phi}}{\sqrt{2}}\ket{-\vb{n},+\vb{n}}-\frac{e^{i\phi}}{\sqrt{2}}\ket{+\vb{n},-\vb{n}}
+\]
+\end{comment}
+\noindent
+\textbf{5.7}\\
+$$\ket{\tfrac{3}{2},\tfrac{3}{2}},\ \ket{\tfrac{3}{2},\tfrac{1}{2}},\ \ket{\tfrac{3}{2},-\tfrac{1}{2}},\ \ket{\tfrac{3}{2},-\tfrac{3}{2}}$$
+\noindent
+\textbf{5.10}\\
+$$\ket{\psi}=\frac{1}{\sqrt{2}}\ket{x,x}+\frac{1}{\sqrt{2}}\ket{y,}$$
+$$P\left(+\vb{a};+\vb{b}\right)=\left|\bra{+\vb{b}}\ket{+\vb{a}}\right|^2=\frac{1}{2}\sin^2 \frac{\theta}{2}$$
+$$P\left(-\vb{a};+\vb{b}\right)=\left|\bra{-\vb{a}}\ket{+\vb{b}}\right|^2=\frac{1}{2}\cos^2 \frac{\theta}{2}$$
+$$E\left(\vb{a},\vb{b}\right)=P_{++}\left(\vb{a},\vb{b}\right)+P_{--}\left(\vb{a},\vb{b}\right)-P_{+-}\left(\vb{a},\vb{b}\right)-P_{-+}\left(\vb{a},\vb{b}\right)$$
+$$E\left(\vb{a},\vb{b}\right)=\sin^2\frac{\theta}{2}-\cos^2\frac{\theta}{2}=\cos\theta$$
+\end{document}

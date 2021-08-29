@@ -1,0 +1,188 @@
+\documentclass[english]{article}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\usepackage{babel}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{float}
+\usepackage{amsmath}
+\begin{document}
+\title{Lab 6: A Family of Competitive-Species Equations}
+\author{Johannes Byle and Andrew Rucin}
+\date{November 4, 2018}
+\maketitle
+\begin{flushleft}
+$$\frac{dx}{dt}=kx-3x^2-4xy$$
+$$\frac{dy}{dt}=42y-3y^2-2xy$$
+\textbf{1.} Equilibrium points:\\
+$$(0,0)$$\\
+$$(0,14)$$\\
+$$(\frac{k}{3},0)$$\\
+$$(3k-168,-2k+126)$$\\
+\textbf{2.} Bifurcation Values:\\
+$$k=0,56,63$$\\
+\textbf{3.} Classifying Equilibrium Points:\\
+$$
+Jacobian=
+\begin{bmatrix}
+k-6x-4y & -4x \\
+-2y & 42-6y-2x
+\end{bmatrix}
+$$
+$$
+(0,0)=
+\begin{bmatrix}
+k & 0 \\
+0 & 42
+\end{bmatrix}
+$$
+$$
+(0,14)=
+\begin{bmatrix}
+k-56 & 0 \\
+-28 & -42
+\end{bmatrix}
+$$
+$$
+(\frac{k}{3},0)=
+\begin{bmatrix}
+-k & -\frac{4}{3}k \\
+0 & 42-\frac{2}{3}k
+\end{bmatrix}
+$$
+$$
+(3k-168,-2k+126)=
+\begin{bmatrix}
+504-9k & 672-12k \\
+4k-252 & 6k-378
+\end{bmatrix}
+$$
+\begin{center}
+ \begin{tabular}{||c c c c c c c||} 
+ \hline
+ Equilibrium Points & k=0 & 0<k<56 & k=56 & 56<k<63 & k=63 & 63<k<$\infty$ \\ [0.5ex] 
+ \hline\hline
+ (0,0) & Source* & Source & Source & Source & Source & Source \\ 
+ \hline
+ (0,14) & Sink & Sink & Sink* & Saddle & Saddle & Saddle \\
+ \hline
+ $(\frac{k}{3},0)$ & Source* & Saddle & Saddle & Saddle & Sink* & Sink \\
+ \hline
+ $(3k-168,-2k+126)$ & Saddle & Saddle & Sink* & Sink & Sink* & Saddle \\ [1ex] 
+ \hline
+\end{tabular}
+\end{center}
+\textit{a * indicates a line of source or sink points}
+
+\textbf{4.} Graphs of x(t) and y(t):\\
+
+\begin{figure}[H]
+\centering
+\begin{minipage}{.5\textwidth}
+  \centering
+  \includegraphics[width=.9\linewidth]{Lab6_1.png}
+  \captionof{figure}{k=0}
+  \label{fig:test1}
+\end{minipage}%
+\begin{minipage}{.5\textwidth}
+  \centering
+  \includegraphics[width=.9\linewidth]{Lab6_2.png}
+  \captionof{figure}{k=20}
+  \label{fig:test2}
+\end{minipage}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\begin{minipage}{.5\textwidth}
+  \centering
+  \includegraphics[width=.9\linewidth]{Lab6_3.png}
+  \captionof{figure}{k=56}
+  \label{fig:test1}
+\end{minipage}%
+\begin{minipage}{.5\textwidth}
+  \centering
+  \includegraphics[width=.9\linewidth]{Lab6_4.png}
+  \captionof{figure}{k=60}
+  \label{fig:test2}
+\end{minipage}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\begin{minipage}{.5\textwidth}
+  \centering
+  \includegraphics[width=.9\linewidth]{Lab6_5.png}
+  \captionof{figure}{k=63}
+  \label{fig:test1}
+\end{minipage}%
+\begin{minipage}{.5\textwidth}
+  \centering
+  \includegraphics[width=.9\linewidth]{Lab6_6.png}
+  \captionof{figure}{k=70}
+  \label{fig:test2}
+\end{minipage}
+\end{figure}
+
+\textbf{5.} Examining the x-population:\\
+The x population only survives if k>56. This is because, in the first quadrant the only equilibrium points where x does not equal 0 are $(\frac{k}{3},0)$ and $(3k-168,-2k+126)$. And if k$\leq$56 then $(\frac{k}{3},0)$ is a saddle and x does not approach that point.
+
+\textbf{6.} Examining the y-population:\\
+The y population will only survive if k<63. This is because the only equilibrium points where y does not equal 0 are $(0,14)$ and $(3k-168,-2k+126)$. And populations that start in the first quadrant will only approach $(0,14)$ if k$\leq$56.
+
+\textbf{7.} Mutual Coexistence:\\
+The only equilibrium point where both x and y are greater than 0 is $(3k-168,-2k+126)$. In this equation both x and y are only greater than 0 where 56<k<63.
+
+\textbf{Summary:} The fastest way to analyze this system of differential equations is to examine the linearization of equilibrium points. We can ignore $(0,0)$ for every value of k this point is a source, and no solutions will approach it. To examine the x population we can see that the only points we must examine are $(\frac{k}{3},0)$ and $(3k-168,-2k+126)$ since these are the only solutions where x has the possibility of not being equal to 0. For the first equilibrium point we can know that the value k=0 will not be important since at k=0 this equilibrium point is a source, this solutions will never approach this value. For the other values of k however we can only be certain of values of k greater than or equal to 63, since those are sinks. For values of k between 63 and 0 we need to consult the graph of x and y since there $(\frac{k}{3},0)$ is a saddle. 
+\begin{figure}[H]
+\centering
+\begin{minipage}{.5\textwidth}
+  \centering
+  \includegraphics[width=.9\linewidth]{Lab6_1.png}
+  \captionof{figure}{k=0}
+  \label{fig:test1}
+\end{minipage}%
+\begin{minipage}{.5\textwidth}
+  \centering
+  \includegraphics[width=.9\linewidth]{Lab6_2.png}
+  \captionof{figure}{k=20}
+  \label{fig:test2}
+\end{minipage}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\begin{minipage}{.5\textwidth}
+  \centering
+  \includegraphics[width=.9\linewidth]{Lab6_3.png}
+  \captionof{figure}{k=56}
+  \label{fig:test1}
+\end{minipage}%
+\begin{minipage}{.5\textwidth}
+  \centering
+  \includegraphics[width=.9\linewidth]{Lab6_4.png}
+  \captionof{figure}{k=60}
+  \label{fig:test2}
+\end{minipage}
+\end{figure}
+From these figures we can see that values that begin in the first quadrant will never approach $(\frac{k}{3},0)$ when k<63.\\
+Examining the y population can be done in the same way. The only points we must examine are $(0,14)$ and $(3k-168,-2k+126)$ since these are the only solutions where y has the possibility of not being equal to 0. Looking at the table in part 3 we can see that all values of k are viable, since all values are either sinks or saddles. Thus we must look at the graphs of the values of k where $(0,14)$ is a saddle to see whether solutions that begin in the first quadrant ever approach that equilibrium point. In both of these examples the y solution approaches 0, thus values that begin in the first quadrant will never approach $(0,14)$ when k>63.
+\begin{figure}[H]
+\centering
+\begin{minipage}{.5\textwidth}
+  \centering
+  \includegraphics[width=.9\linewidth]{Lab6_5.png}
+  \captionof{figure}{k=63}
+  \label{fig:test1}
+\end{minipage}%
+\begin{minipage}{.5\textwidth}
+  \centering
+  \includegraphics[width=.9\linewidth]{Lab6_6.png}
+  \captionof{figure}{k=70}
+  \label{fig:test2}
+\end{minipage}
+\end{figure}
+Since $(3k-168,-2k+126)$ is the only equilibrium point which has the possibility of having both x and y being greater than 0 examining this equilibrium point will tell us for which values of k both x and y can coexist. Looking at the table the only times where this equilibrium point is a true sink is for values of k where k is greater than 56 and less than 63. This makes sense, because above 63 the $-2k+126$ is less than 0 and for values less than 56 $3k-168$ is less than 0. Thus, simply by looking at the table we can see that k must be be greater than 56 and less than 63 for both species to be able to survive. 
+\end{flushleft}
+\end{document}

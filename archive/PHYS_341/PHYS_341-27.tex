@@ -1,0 +1,39 @@
+\documentclass[english]{article}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\usepackage{babel}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{gensymb}
+\usepackage{pgfplots}
+\usepackage{multicol}
+\begin{document}
+\begin{multicols*}{2}
+\textbf{Johannes Byle}\\
+\newcommand{\Lagr}{\mathcal{L}}
+
+\noindent
+\textbf{13.3}\\
+$$T=\frac{1}{2}(m_1+m_2+\frac{1}{2}M)\dot{x}^2$$
+$$U=(m_2-m_1)gx$$
+$$\Lagr=T-U=\frac{1}{2}(m_1+m_2+\frac{1}{2}M)\dot{x}^2-(m_2-m_1)gx$$
+$$p_x=\frac{\delta\Lagr}{\delta \dot{x}}=(m_1+m_2+\frac{1}{2}M)\dot{x}$$
+$$H=p_x\dot{x}-\Lagr=\frac{p_x}{2(m_1+m_2+\frac{1}{2}M)}+(m_2-m_1)gx$$
+$$\dot{x}=\frac{p_x}{(m_1+m_2+\frac{1}{2}M)}$$
+$$\ddot{x}=\frac{\dot{p_x}}{(m_1+m_2+\frac{1}{2}M)}$$
+\noindent
+\textbf{13.10}\\
+$$T=\frac{1}{2}m(\dot{x}^2+\dot{y}^2)$$
+$$F=\nabla U$$
+$$U=-\frac{1}{2}kx^2+Ky$$
+$$H=\frac{1}{2}m(\dot{x}^2+\dot{y}^2)+Ky-\frac{1}{2}kx^2$$
+$$\frac{\delta H}{\delta x}=\frac{\delta}{\delta t}\frac{\delta H}{\delta \dot{x}}=-kx=m\ddot{x}$$
+$$\frac{\delta H}{\delta y}=\frac{\delta}{\delta t}\frac{\delta H}{\delta \dot{x}}=K=m\ddot{y}$$
+$$y=\frac{K}{2m}t^2$$
+$$x=\sin(\sqrt{\frac{k}{m}}t)$$
+\end{multicols*}
+\end{document}

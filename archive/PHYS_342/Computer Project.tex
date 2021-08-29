@@ -1,0 +1,96 @@
+\documentclass[english]{article}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\usepackage{babel}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{float}
+\begin{document}
+\title{Computer Project 1}
+\author{Johannes Byle}
+\date{October 18, 2018}
+\maketitle
+\begin{flushleft}
+\section*{1. Taylor Series Expansion}
+The general equation for a Taylor series is:\footnote{I got this general equation from http://www.math.ubc.ca/\textasciitilde feldman/m200/taylor2dSlides.pdf}
+$$V(x_0+\delta_x,y_0+\delta_y)=\sum_{n=0}^{\infty}\sum_{m=0}^{\infty}\frac{1}{n!m!}\frac{\delta^{m+n}V}{\delta x^n\delta y^m}(x_0+\delta_x,y_0+\delta_y)\delta_x^n \delta_y^m +E_n$$
+n=0
+$$V(x_0+\delta_x,y_0+\delta_y)=V(x_0+y_0)$$
+n=1
+$$V(x_0+\delta_x,y_0+\delta_y)=V_x(x_0,y_0)\delta_x+V_y(x_0,y_0)\delta_y$$
+n=2
+$$V(x_0+\delta_x,y_0+\delta_y)=\frac{1}{2}V_{xx}(x_0,y_0)\delta_x^2+V_{yx}(x_0,y_0)\delta_y\delta_x+\frac{1}{2}V_{yy}(x_0,y_0)\delta_y^2$$
+Thus the second order Taylor series expansion is:
+$$V(x_0+\delta_x,y_0+\delta_y)=V(x_0+y_0)+V_x(x_0,y_0)\delta_x+V_y(x_0,y_0)\delta_y+\frac{1}{2}V_{xx}(x_0,y_0)\delta_x^2+V_{yx}(x_0,y_0)\delta_y\delta_x+\frac{1}{2}V_{yy}(x_0,y_0)\delta_y^2$$
+For all eight points we would repeat the Taylor expansion with different values for $\delta_x$ and $\delta_y$
+\begin{table}[H]
+\begin{tabular}{|c|c|}
+\hline
+$x$ & $y$ \\
+\hline
+$\delta_x$ & $\delta_y$ \\
+$\delta_x$ & $0$ \\
+$\delta_x$ & $-\delta_y$ \\
+$0$ & $-\delta_y$ \\
+$-\delta_x$ & $\delta_y$ \\
+$-\delta_x$ & $0$ \\
+-$\delta_x$ & $-\delta_y$ \\
+$0$ & $\delta_y$ \\
+\hline
+\end{tabular}
+\end{table}
+If we assume Laplace's equation is true ($\frac{\delta^2V}{\delta x^2}+\frac{\delta^2V}{\delta y^2}=0$):
+$$V(x_0+\delta_x,y_0+\delta_y)=V(x_0+y_0)+V_x(x_0,y_0)\delta_x+V_y(x_0,y_0)\delta_y+V_{yx}(x_0,y_0)\delta_y\delta_x$$
+Because of this if we keep $\delta$ small we can use a Taylor series approximation and use the method of relaxation.
+\section*{2. Matlab Plot}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=.5]{CP1-1.png}
+\caption{Contour Plot of Voltage}
+\end{center}
+\end{figure}
+\section*{3. Numerical Solutions}
+\textbf{a.} For the infinitely large plates we assumed that the electric field is constant in between the plates, however in this case we can see that the voltage changes near the edges of the plates at the top and the bottom.
+\linebreak
+\textbf{b.} Since electric field is $\vec{E}=-\nabla V$ wherever the field lines are closest together electric field must be greatest. The field lines look closest together in between the plates. Using the Matlab gradient function I was able to find that the largest Electric field is roughly 1.25$V/M$. (However if, based on my observation in question 4, the answer is off by a factor of 4, electric field may actually be 5$V/M$.)
+\linebreak
+\textbf{c.} For ideal plates $E=\frac{\Delta V}{\Delta X}$ or in our case $E=5V/M$. However, in our example the gradient is -1.25, and thus the electric field is 1.25. At y=5 the Electric field is .97. Both of these answers are lower than they should be, however one can see that the answers are more incorrect as y gets further away from 0, which is what one would expect for non infinite plates. (In the final question I realized that my answers may be off by a factor of 4. I don't know why this is the case, but if it is then at y=0 the electric field is 5, and at y=5 the electric field is 3.9. This would demonstrate that the answers get more and more unreliable the larger the distance from the x axis.)
+
+\textbf{d.} From the graph of the gradient of the voltage in the figure below we can see the places where the electric field, and thus the charge density, are the highest. We can see that it has the largest and smallest values on the corners, and the lowest absolute values towards the center of the plate. In order to find the gradient I used Vgrad = gradient(Vsol) and Vgrad(find(gridy=y),find(gridx==x)). The values of $\nabla V$ are in the table below. got are in the table below. I know that $\nabla \cdot E = \frac{\rho}{\epsilon_0}$ but I'm not sure how to get the divergence of E.
+\begin{table}[H]
+\begin{tabular}{|c|c|}
+\hline
+$x,y$ & $\nabla V$ \\
+\hline
+$-2.25,5$ & $0$ \\
+$-2.5,5$ & $0.8756$ \\
+$-2,5$ & $-1.1540$ \\
+$-2.5,0$ & $0.2862$ \\
+$-2,0$ & $-0.6248$ \\
+\hline
+\end{tabular}
+\end{table}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=.5]{CP1-2.png}
+\caption{Plot of $\nabla V$}
+\end{center}
+\end{figure}
+\textbf{e.} Using Gauss' Law we know that $\epsilon_0E=\sigma$ where sigma is the area charge density. I do not know how to find the charge enclosed numerically however.
+\section*{4. Plotting Ideal $\vec{E}$ vs Method of Relaxation $\vec{E}$}
+When making the plot I realized that my answer for the gradient seemed to be of by a factor of 4, i.e my answer for the real $\vec{E}$ were too small by a factor of $1/4$. I don't know which calculation was wrong, so I just included both plots. One can clearly see that the answers begin to deviate at a separation of a about $6-7m$. I don't know if this is related to the fact that the plates have dimensions of $5m^2$, but if so then the divergence between the two lines occurs once the separation is larger than the area of the plates. I created the plots below by running the program on a while loop, and iterating n, where n was the separation between the plates. At the end of each iteration I stored $\Delta V/n$ in an array, and stored gradient of V at the origin in another array. After the while loop had finished I plotted both arrays. 
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=.5]{CP1-3.png}
+\caption{Plot of $\vec{E}$ vs Separation}
+\end{center}
+\end{figure}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=.5]{CP1-4.png}
+\caption{Plot of $\vec{E}$ vs Separation (Corrected by factor of 4)}
+\end{center}
+\end{figure}
+\end{flushleft}
+\end{document}

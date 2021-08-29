@@ -1,0 +1,45 @@
+\documentclass[english]{article}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\usepackage{babel}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{gensymb}
+\usepackage{pgfplots}
+\usepackage{multicol}
+\begin{document}
+\begin{multicols*}{2}
+\textbf{Johannes Byle}\\
+\newcommand{\Lagr}{\mathcal{L}}
+
+\noindent
+\textbf{9.28(a)}
+$$v_{z0}=v_0\cos\alpha$$
+$$z=v_{z0}t-\frac{1}{2}gt^2$$
+$$\dot{z}=v_{z0}-gt$$
+$$t_{total}=\frac{2v_{z0}}{g}$$
+\textbf{(b)}
+$$\vec{v_0}=(v_{0}\cos\alpha,0,v_0\sin\alpha)$$
+%$$x=v_{0}\cos\alpha t+\Omega(v_0\sin\alpha\sin\theta)t^2+\frac{1}{3}\Omega gt^3\sin\theta$$
+$$y=-\Omega(v_{0}\cos\alpha\cos\theta)t^2$$
+$$y=-\Omega(v_{0}\cos\alpha\cos\theta)\frac{4v_0^2\sin^2\alpha}{g^2}$$
+$$y=-\Omega(v_{0}\cos\alpha\cos40)\frac{4v_0^2\sin^2\alpha}{g^2}$$
+$$y=-\Omega(v_{0}\cos\alpha\cos50)\frac{4v_0^2\sin^2\alpha}{g^2}$$
+
+\noindent
+\textbf{9.31}
+The Coriolis force on either end of the torus are slightly different because of their north south heights. Thus when the torus is flipped the water retains this difference in velocity causing it to spin. 
+$$F_{cor}=2m\dot{r}\times\Omega=2m\dot{r}\Omega\sin\theta$$
+$$R_{earth}\Omega(\theta-\alpha)-R_{earth}\Omega(\theta+\alpha)$$
+Using Product identities:
+$$2r_{earth}\Omega\cos\theta\sin\alpha$$
+Since:
+$$\sin\alpha=\frac{R}{R_{earth}}$$
+$$v=2R\Omega\cos\theta$$
+
+\end{multicols*}
+\end{document}

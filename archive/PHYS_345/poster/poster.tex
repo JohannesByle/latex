@@ -1,0 +1,30 @@
+\documentclass[20pt,margin=1in,innermargin=-4.5in,blockverticalspace=-0.25in]{tikzposter}
+\geometry{paperwidth=42in,paperheight=32.5in}
+\usepackage[utf8]{inputenc}
+\usetikzlibrary{fit}
+
+\makeatletter
+\def\title#1{\gdef\@title{\scalebox{\TP@titletextscale}{%
+\begin{minipage}[t]{\linewidth}
+    \centering
+    #1
+    \par
+    \vspace{0.5em}
+\end{minipage}%
+}}}
+\makeatother
+
+\title{Correlation Between Variation in\protect\\Solar Radiance and Skin Reflectance}
+\author{Johannes Byle}
+\institute{Department of Physics\\
+Wheaton College\\
+501 College Avenue, Wheaton, IL 60187\\
+}
+%\titlegraphic{\includesvg{wheaton.svg}}
+
+% begin document
+\begin{document}
+    \maketitle
+    \centering
+
+\end{document}

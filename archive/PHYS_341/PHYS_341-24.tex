@@ -1,0 +1,60 @@
+\documentclass[english]{article}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\usepackage{babel}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{gensymb}
+\usepackage{pgfplots}
+\usepackage{multicol}
+\begin{document}
+\begin{multicols*}{2}
+\textbf{Johannes Byle}\\
+\newcommand{\Lagr}{\mathcal{L}}
+
+\noindent
+\textbf{10.30}
+$$I_{xx}=\rho\int y^2dy$$
+$$I_{xy}=\rho\int\int xydxdy$$
+$$I_{xz}=0$$
+$$I_{yx}=\rho\int\int xydxdy$$
+$$I_{yy}=\rho\int x^2dx$$
+$$I_{yz}=0$$
+$$I_{zx}=0$$
+$$I_{zy}=0$$
+$$I_{zz}=\rho\int\int x^2+y^2dxdy$$
+$I=
+\begin{bmatrix}
+  \rho\int y^2dy & \rho\int\int xydxdy & 0 \\
+  \rho\int\int xydxdy & \rho\int x^2dx & 0 \\
+  0 & 0 & \rho\int\int x^2+y^2dxdy
+ \end{bmatrix}
+$
+$$\det I= \rho^2\int\int x^2+y^2dxdy\Big[\rho\int y^2dy\int x^2dx-\Big(\int\int xydxdy\Big)^2\Big]$$
+Thus the perpendicular axis is perpendicular to the lamina.
+
+\noindent
+\textbf{10.35(a)}\\
+$I=ma^2
+\begin{bmatrix}
+  17 & 0 & 0 \\
+  0 & 6 & -1 \\
+  0 & -1 & 6
+ \end{bmatrix}
+$\\
+\textbf{(b)}\\
+$$\det(I-\lambda I_3)=5,7,17$$
+$$v_1=(0,1,1)$$
+$$v_2=(0,-1,1)$$
+$$v_3=(1,0,0)$$
+
+\noindent
+\textbf{10.39}\\
+$$\Omega=\frac{MgR}{\lambda\omega}\hat{z}=\frac{MgR}{\frac{3}{10}Mr^2\omega}\hat{z}$$
+$$\Omega=\frac{9.8\times10}{\frac{3}{10}2.5^2\times1800}\approx0.029$$
+\end{multicols*}
+\end{document}

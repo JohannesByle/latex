@@ -1,0 +1,113 @@
+%! Author = Johannes Byle
+%! Date = 8/28/2021
+
+% Preamble
+\documentclass[12pt]{article}
+\title{Math Methods Assignment \#1}
+\author{Johannes Byle}
+
+% Packages
+\usepackage{amsmath}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{lipsum}
+
+% Document
+\begin{document}
+    \maketitle
+    \begin{enumerate}
+        \item
+        \begin{enumerate}
+            \item
+            \begin{gather*}
+                E=\frac{1}{2}mv^2\\
+                P_0=\frac{E}{\Delta t}=\frac{\Delta mv^2}{2\Delta t}\\
+                v=\sqrt{\frac{2P_0\Delta t}{\Delta m}}\\
+                p=\Delta m\sqrt{\frac{2P_0\Delta t}{\Delta m}}=\sqrt{2P_0\Delta m\Delta t}
+            \end{gather*}
+            \item
+            Tsiolkovsky rocket equation from wikipedia:
+            \[
+                \Delta v=v_e\ln\frac{m_0}{m_f}
+            \]
+            Substituting in the answer from part (a):
+            \[
+                v_f=\sqrt{2P_0\frac{\Delta t}{\Delta m}}\ln\left(\frac{m}{m-\Delta m}\right)
+            \]
+            \item
+            From the same wikipedia article, substituting in the answer from part (a) and converting $\Delta$ to $d$:
+            \begin{gather*}
+                mv'=-v_e m'\\
+                mv'+v_e m'=0\\
+                v'=\sqrt{2P_0 \frac{dt}{dm}}\frac{m'}{m}
+            \end{gather*}
+            Assuming $\frac{dt}{dm}=(m')^{-1}$:
+            \begin{gather*}
+                v'=\sqrt{\frac{2P_0}{m'}}\frac{m'}{m}\\
+                v=\sqrt{2P_0}\int_0^{t_f}\sqrt{\frac{1}{m'}}\frac{m'}{m}dt
+            \end{gather*}
+            Using the Euler-Lagrange equation:
+            \begin{gather*}
+                m'\frac{\delta f}{\delta m'}-f=c\\
+                m'\frac{\delta}{\delta m'}\left(\sqrt{\frac{1}{m'}}\frac{m'}{m}\right)-\sqrt{\frac{1}{m'}}\frac{m'}{m}=c\\
+                m'\frac{1}{2 m}\sqrt{\frac{1}{m'}}-\sqrt{\frac{1}{m'}}\frac{m'}{m}=c\\
+                -\frac{m'}{2m}\sqrt{\frac{1}{m'}}=c\\
+                m'=4c^2 m^2
+            \end{gather*}
+            \item
+            Final velocity in part (c), using the equation for v derived in the first part of (c):
+            \begin{gather*}
+                v=\sqrt{2P_0}\int_0^{t_f}\sqrt{\frac{1}{m'}}\frac{m'}{m}dt\\
+                v=\sqrt{2P_0}\int_0^{t_f}\sqrt{\frac{1}{4c^2 m^2}}\frac{4c^2 m^2}{m}dt\\
+                v=\sqrt{2P_0}\int_0^{t_f}2 c^2 m \sqrt{\frac{1}{c^2 m^2}}dt\\
+                v=2c^2 m\sqrt{\frac{2P_0}{c^2 m^2}}t_f
+            \end{gather*}
+            This differs from the answer in part (b) because it does not depend on $m'$?
+        \end{enumerate}
+        \item
+        \begin{enumerate}
+            \item
+            Using the Euler-Lagrange equation:
+            \begin{gather*}
+                y'\frac{\delta f}{\delta y'}-f=c\\
+                y'\frac{\delta}{\delta y'}\left[\left(\frac{\delta y}{\delta x}\right)^2+\alpha y\frac{\delta y}{\delta x}\right]-\left[\left(\frac{\delta y}{\delta x}\right)^2+\alpha y\frac{\delta y}{\delta x}\right]=c\\
+                y'\frac{\delta}{\delta y'}\left[\left(y'\right)^2+\alpha yy'\right]-\left[\left(y'\right)^2+\alpha yy'\right]=c\\
+                y'\cdot\left(2y'+\alpha y\right)-\left[\left(y'\right)^2+\alpha yy'\right]=c\\
+                y'=\sqrt{c}\\
+            \end{gather*}
+            Since $y'$ is constant:
+            \[
+                y=Ax+B
+            \]
+            Since $y(0)=0$ and $y(x_f)=y_f$:
+            \begin{gather*}
+                B=0\\
+                y_f=A\cdot x_f
+                A=\frac{y_f}{x_f}
+            \end{gather*}
+            \item It doesn't?
+        \end{enumerate}
+        \item
+        Differentiating $I(\epsilon)$ with respect to $\epsilon$:
+        \[
+            \frac{dI}{d\epsilon}=\int_{x_A}^{x_B}\left[\frac{\delta f}{\delta y}\frac{dy}{d\epsilon}+\frac{\delta f}{\delta y'}\frac{dy'}{d\epsilon}+\frac{\delta f}{\delta y''}\frac{dy''}{d\epsilon}\right]
+        \]
+        Since $y'$ endpoints are prescribed, the integration by parts trick on page 46 will work on both the $\frac{\delta f}{\delta y'}\frac{dy'}{d\epsilon}$ and $\frac{\delta f}{\delta y''}\frac{dy''}{d\epsilon}$ terms.
+        \[
+            \frac{dI}{d\epsilon}=\int_{x_A}^{x_B}\left[\frac{\delta f}{\delta y}-\frac{d}{dx}\left(\frac{\delta f}{\delta y'}\right)-\frac{d^2}{dx^2}\left(\frac{\delta f}{\delta y'}\right)\right]\frac{dy}{d\epsilon}dx
+        \]
+        This requires that $y(x,\epsilon)$ and all its derivatives through third order are continuous functions of $x$ and $\epsilon$
+        \item
+        From the definition of $ds$:
+        \[
+            ds=\sqrt{1+y'^2}dx
+        \]
+        Using the Euler-Lagrange equation:
+        \begin{gather*}
+            f=\frac{\sqrt{1+y'^2}}{u}\\
+            y'\frac{\delta}{\delta y'}\left[\frac{\sqrt{1+y'^2}}{u}\right]-\frac{\sqrt{1+y'^2}}{u}=\text{const}\\
+            \frac{y'^2}{u\sqrt{y'^2+1}}-\frac{\sqrt{1+y'^2}}{u}=\text{const}\\
+            \frac{y'^2-\left(1+y'^2\right)}{u\sqrt{y'^2+1}}=\text{const}\\
+            \frac{\left(\sqrt{y'^2+1}\right)^{-1}}{u}=\text{const}\\
+        \end{gather*}
+    \end{enumerate}
+\end{document}

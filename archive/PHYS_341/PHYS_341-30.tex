@@ -1,0 +1,82 @@
+\documentclass[english]{article}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\usepackage{babel}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{gensymb}
+\usepackage{pgfplots}
+\usepackage{multicol}
+\begin{document}
+\begin{multicols*}{2}
+\textbf{Johannes Byle}\\
+\newcommand{\Lagr}{\mathcal{L}}
+
+\noindent
+\textbf{15.13(a)}\\
+$$\gamma=\frac{1}{\sqrt{1-\frac{v^2}{c^2}}}$$
+$$
+\begin{bmatrix}
+	\gamma & -\beta\gamma & 0 & 0\\
+	-\beta\gamma & \gamma & 0 & 0\\
+	0 & 0 & 1 & 0\\
+	0 & 0 & 0 & 1
+\end{bmatrix}
+\cdot
+\begin{bmatrix}
+	\cos\theta & \sin\theta & 0 & 0\\
+	-\sin\theta & \cos\theta & 0 & 0\\
+	0 & 0 & 1 & 0\\
+	0 & 0 & 0 & 1
+\end{bmatrix}
+=
+\begin{bmatrix}
+	\gamma\cos\theta+\gamma\beta\sin\theta & \gamma\sin\theta-\gamma\beta\cos\theta & 0 & 0\\
+	-\gamma\beta\cos\theta-\gamma\sin\theta & \gamma\cos\theta-\gamma\beta\sin\theta & 0 & 0\\
+	0 & 0 & 1 & 0\\
+	0 & 0 & 0 & 1
+\end{bmatrix}
+$$
+$$\gamma=\frac{1}{\sqrt{.36}}$$
+$$\beta=.8$$
+$$
+\gamma
+\begin{bmatrix}
+	\frac{1}{2}+\frac{4}{5}\frac{\sqrt{3}}{2} & \frac{\sqrt{3}}{2}-\frac{4}{5}\frac{1}{2} & 0 & 0\\
+	-\frac{4}{5}\frac{1}{2}-\frac{\sqrt{3}}{2} & \frac{1}{2}-\frac{4}{5}\frac{\sqrt{3}}{2} & 0 & 0\\
+	0 & 0 & \gamma^{-1} & 0\\
+	0 & 0 & 0 & \gamma^{-1}
+\end{bmatrix}
+$$
+From the matrix we can see that the distance in x is going to be $0.53$ meters long in the x direction. The total length will be:
+$$\sqrt{.35^2+.87^2}=.91m$$
+\textbf{(b)}\\
+$$\sqrt{.35^2+.87^2}=.91m$$
+\noindent
+\textbf{15.19(a)}\\
+$$x'_F=-d,x'_B=d$$
+$$t'_F=\frac{d}{c},t'_B=\frac{d}{c}$$
+\textbf{(b)}\\
+$$x'_F=\frac{d-Vt}{\sqrt{1-\frac{V^2}{c^2}}},x'_B=\frac{d-Vt}{\sqrt{1-\frac{V^2}{c^2}}}$$
+$$t'_F=\frac{t-(V^2/c^2)d}{\sqrt{1-\frac{V^2}{c^2}}},t'_B=\frac{t+(V^2/c^2)d}{\sqrt{1-\frac{V^2}{c^2}}}$$
+The arrivals are not simultaneous because the other spaceship sees this spaceship as contracted, but the only way for this not to be paradoxical is for the times to be different.
+
+
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\noindent
+\textbf{15.22}\\
+$$v_y=\frac{\sqrt{1-v^2} v'_y}{1+\frac{v}{c}v'_x}=\frac{\sqrt{1-.9^2} .9}{1+\frac{.9}{3\times10^8}.9}\approx0.39c$$
+\end{multicols*}
+\end{document}

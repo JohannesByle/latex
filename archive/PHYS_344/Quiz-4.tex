@@ -1,0 +1,44 @@
+\documentclass[english]{article}
+\usepackage{physics}
+\usepackage{multicol}
+\usepackage{verbatim}
+\begin{document}
+\author{Johannes Byle}
+\title{Quiz 4}
+\maketitle
+\subsection*{1 a)}
+$$E^{(2)}_n=\sum_{k\neq n}\frac{\left|\bra{k}\hat{H}_1\ket{n}\right|^2}{\left(n+\frac{1}{2}\right)\hbar\omega-\left(k+\frac{1}{2}\right)\hbar\omega}$$
+$$\bra{k}\hat{H}_1\ket{n}=-q\vb{\mathcal{E}}\frac{\hbar}{2m\omega}\left(\sqrt{n+1}\bra{k}\ket{n+1}+\sqrt{n}\bra{k}\ket{n-1}\right)$$
+$$E^{(2)}_n=\frac{q^2\vb{\mathcal{E}}^2\hbar}{2m\omega}\left(\frac{n+1}{-\hbar\omega}+\frac{n}{\hbar\omega}\right)=\frac{q^2\vb{\mathcal{E}}^2}{2m\omega^2}$$
+\subsection*{b)}
+$$\hat{H}=\frac{\hat{p}_x^2}{2m}+\frac{1}{2}m\omega^2\hat{x}^2-q\mathcal{E}\hat{x}$$
+$$\hat{H}=\frac{\hat{p}_x^2}{2m}+\frac{1}{2}m\omega^2\left(\hat{x}-\frac{q\mathcal{E}}{m\omega^2}\right)^2-\frac{q^2\mathcal{E}^2}{2m\omega^2}$$
+$$\hat{x}_s=\hat{x}-\frac{q\mathcal{E}}{m\omega^2}$$
+$$\hat{H}=\frac{\hat{p}_x^2}{2m}+\frac{1}{2}m\omega^2\hat{x}_s^2-\frac{q^2\mathcal{E}^2}{2m\omega^2}=\hat{H}_0+\hat{H}_2$$
+$$E_n=\left(n+\frac{1}{2}\right)\hbar\omega-\frac{q^2\mathcal{E}^2}{2m\omega^2}$$
+\subsection*{2 a)}
+$$\psi=Are^{-r/a}$$
+$$\int_0^{2\pi}\int_0^{\pi}\int_0^{\infty}\left(Are^{-r/a}\right)^2r^2\sin\phi drd\phi d\theta=1$$
+$$\frac{3a^5A^2}{4}\int_0^{2\pi}\int_0^{\pi}\sin\phi d\phi d\theta=1$$
+$$3\pi a^5A^2=1$$
+$$A=\sqrt{\frac{1}{3\pi a^5}}$$
+\subsection*{b)}
+$$\left\langle E\right\rangle=\bra{\psi}\hat{H}\ket{\psi}$$
+$$\left\langle E\right\rangle=\int d^3r\psi^*\left[-\frac{\hbar^2}{2\mu}\left(\frac{d^2}{dr^2}+\frac{2}{r}\frac{d}{dr}\right)-\frac{e^2}{r}\right]\psi$$
+From example 12.2:
+$$\left\langle E\right\rangle=\frac{\hbar^2}{2\mu a^2}-\frac{e^2}{a}$$
+$$\frac{d\left\langle E\right\rangle}{da}=-\frac{\hbar^2}{\mu a^3}+\frac{e^2}{a^2}=0$$
+$$a=\frac{\hbar^2}{e^2\mu}$$
+$$E_0\leq\left\langle E\right\rangle=-\frac{e^4\mu}{2\hbar^2}$$
+\subsection*{c)}
+$$\vb{L}^2\ket{\psi}=l\left(l+\frac{1}{2}\right)\hbar^2\ket{\psi}$$
+$$\left\langle E\right\rangle=l\left(l+\frac{1}{2}\right)\hbar^2\int_0^{2\pi}\int_0^{\pi}\int_0^{\infty}\left(Are^{-r/a}\right)^2r^2\sin\phi drd\phi d\theta$$
+$$E_2=2\left(2+\frac{1}{2}\right)\hbar^2=5\hbar^2$$
+\begin{comment}
+$$E_n=-\frac{13.6eV}{n^2}$$
+$$\mu=\frac{0.511MeV}{c^2}$$
+$$-\frac{e^4\mu}{2\hbar^2}=-\frac{e^4 0.511MeV}{2\hbar^2c^2}$$
+$$-\frac{e^4\mu}{2\hbar^2}=-\frac{e^4 0.511MeV}{2(6.58\cdot10^{-16})^2 (3\cdot10^8)^2}\approx-3.58\cdot10^{-20}$$
+$$\left\langle E\right\rangle=\int_0^{2\pi}\int_0^{\pi}\int_0^{\infty}\left(Are^{-r/a}\right)^2r^2\sin\phi drd\phi d\theta$$
+\end{comment}
+\end{document}

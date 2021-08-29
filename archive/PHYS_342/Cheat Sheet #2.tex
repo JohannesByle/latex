@@ -1,0 +1,244 @@
+\documentclass[1pt]{report}
+\usepackage{multicol}
+\setlength{\columnseprule}{0.2pt}
+\usepackage[T1]{fontenc}
+\usepackage[document]{ragged2e}
+\usepackage[latin9]{inputenc}
+\usepackage[left=.5cm, right=.5cm, top=.5cm]{geometry}
+\usepackage{babel}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage{physymb}
+\usepackage{verbatim}
+\begin{document}
+\begin{multicols}{3}
+\begin{flushleft}
+$\oint_S {E_n dA = \frac{1}{{\varepsilon _0 }}} Q_{inside}$
+\linebreak
+$\nabla\cdot E=\frac{1}{\epsilon_0}\rho$|$V(r)=-\int^rE\cdot dl$
+\linebreak
+$E=-\nabla V$|$C=\frac{Q}{V}$
+\linebreak
+$W=\frac{1}{2}CV^2$|$W=\frac{\epsilon_0}{2}\int E^2d\tau$
+\linebreak
+$V(r)=\frac{1}{4\pi\epsilon_0}\int\frac{\rho(r)}{r_s}d\tau$
+\linebreak
+Potential is continuous at boundaries 
+\textbf{Method of Images}
+\begin{itemize}[noitemsep]
+\item Replace the conducting plane with a mirror image charge
+\item Use Gausss law on each charge in isolation
+\item Sum up the electric field contribution from each charge
+\end{itemize}
+Poisson's equation:
+$\nabla^2V=-\frac{1}{\epsilon_0}\rho$
+\linebreak
+Laplace's equation:
+$\nabla^2V=0$
+\linebreak
+Laplace's equation in Cartesian:
+$\frac{\delta^2V}{\delta x^2}\frac{\delta^2V}{\delta y^2}\frac{\delta^2V}{\delta z^2}=0$
+\linebreak
+Converted to PDE
+\linebreak
+$V(x,y)=(Ae^{kx}+B^{-kx})(Csin(ky)+Dcos(ky))$
+Laplace's equation is true if $\rho$ is zero
+\linebreak
+\begin{comment}
+\textbf{First Uniqueness Theorem:}
+The solution to Laplace equation in some volume \textit{V} is uniquely determined if V is specified on the boundary surface \textit{S}
+\textbf{Corollary:}
+The potential in a volume \textit{V} is uniquely determined if (a) the charge density throughout the egion, and (b) the value of V on all boundaries, are specified. 
+\textbf{Second Uniqueness Theorem:}
+In a volume \textit{V} surrounded by a conductors and containing a specified charge density \textit{$\rho$}, the electric field is uniquely determined if the \textit{total charge} on each conductor is given. (The region as a whole can be bounded by another conductor or else unbounded)
+\textbf{Fourier s Trick}
+$V_0(y) = \sum_{n=1}^{\infty} C_n \sin \left(\frac{n \pi y}{a} \right)$
+\linebreak
+$V_0(y) \sin \left(\frac{n' \pi y}{a} \right) =\sum_{n=1}^{\infty} C_n \sin \left(\frac{n \pi y}{a} \right)\sin \left(\frac{n' \pi y}{a} \right)$
+\linebreak
+$ \int_0^a V_0(y) \sin \left(\frac{n' \pi y}{a} \right) \, dy = \sum_{n=1}^{\infty} C_n \int_0^a  \sin \left(\frac{n \pi y}{a} \right)\sin \left(\frac{n' \pi y}{a} \right) \, dy = \frac{a}{2} C_{n'}$
+\linebreak
+$C_{n'} = \frac{2}{a} \int_0^a V_0(y) \sin \left(\frac{n' \pi y}{a} \right) \, dy$
+\linebreak
+\textbf{Legendre Polynomials}
+\linebreak
+$P_0(x) = 1$
+\linebreak
+$P_1(x) = x$
+\linebreak
+$P_2(x) = \frac{1}{2}(3x^2 - 1)$
+\linebreak
+$P_3(x) = \frac{1}{2}(5x^3-3x)$
+\linebreak
+$V(r,\theta)=\sum_{l=0}^{\infty}(A_lr^l+\frac{B^l}{R^{l+1}})P_l(cos\theta)$
+\end{comment}
+\textbf{Monopole Expansions}
+\linebreak
+Monopole $(V~1/r)$
+\linebreak
+Dipole $(V~1/r^2)$
+\linebreak
+Quadrupole $(V~1/r^3)$
+\linebreak
+Octopole $(V~1/r^4)$
+\linebreak
+$\rho=\sum_{i=1}^{n}q_ir_i$
+\linebreak
+$V_{mon}(r)=\frac{1}{4\pi\epsilon_0}\frac{Q}{r}$
+\linebreak
+$V_{dip}(r)=\frac{1}{4\pi\epsilon_0}\frac{\rho\cdot\hat{r}}{r^2}$
+\linebreak
+$E_{dip}(r,\theta)=\frac{\rho}{4\pi\epsilon_0r^3}(2cos\theta\hat{r}+sin\theta\hat{\theta})$
+\linebreak
+Charge is evenly distributed across capacitor plates
+\linebreak
+$F=QE$
+\linebreak
+Volume Charge
+$E(r)=\frac{1}{4\pi\epsilon_0}\int\frac{\rho(r)}{r^2}\hat{r}d\tau$
+\linebreak
+\includegraphics[scale=.5]{Griffiths.png}
+\linebreak
+\textbf{Maxwell's Equations:} Electrostatics
+$\nabla\cdot E=\frac{1}{\epsilon_0}\rho$
+\linebreak
+$\nabla\times E=0$
+\linebreak
+\textbf{Maxwell's Equations:} Magnetostatics
+$\nabla\cdot B=0$
+\linebreak
+$\nabla\times B=\mu_0J$
+\linebreak
+$p=\alpha E$ $_{(\alpha=Atomic Polarizability)}$
+\linebreak
+$p=\alpha_\perp E_\perp +\alpha_\parallel E_\parallel$ $_{(p=Dipole Moment)}$
+\linebreak
+$N=p \times E$ $_{(N=Torgue)}$
+\linebreak
+$F_{dipole}=(p\cdot\nabla)E$
+\linebreak
+$U=-p\cdot E$
+\linebreak
+$\sigma_b=P\cdot\hat{n}$ $_{(P=Dipole Moment Per Unit Volume)}$
+\linebreak
+$\rho_b=-\nabla\cdot P$ $_{(\sigma_b=Surface Bound Charge Density)}$
+\linebreak
+$D=\epsilon_0E+P$ $_{(D=Electric Displacement)}$
+\linebreak
+$\nabla\cdot D=\rho_f$ $_{(\rho_f=Free Charge)}$
+\linebreak
+\textbf{Free Charge:} The free charge might consist of electrons on a conductor or ions embedded in the dielectric material or whatever; and charge, in other words, that is \textit{not} a result of polarization. Free charge is the stuff we control.
+\linebreak
+$\oint D\cdot da=Q_{fenc}$
+\linebreak
+$D=\epsilon E$
+\linebreak
+$D^{\perp}_{above}-D^{\perp}_{below}=\sigma_f$
+\linebreak
+$E^{\perp}_{above}-E^{\perp}_{below}=\frac{1}{\epsilon_0}\sigma$
+\linebreak
+$E^{\parallel}_{above}-E^{\parallel}_{below}=0$
+\linebreak
+$\epsilon=\epsilon_0(1+\chi_e)$
+\linebreak
+$\epsilon_r=1+\chi_e=\frac{\epsilon}{\epsilon_0}$
+\linebreak
+$P=\epsilon_0\chi_eE$
+\linebreak
+$C=\epsilon_rC_{vac}$
+\linebreak
+$\oint B\cdot dl=\mu_0I$
+\linebreak
+$B(r)=\frac{\mu_0}{4\pi}\int\frac{I\times\hat{\pmb{\scriptr}}}{\pmb{\scriptr}^2}dl'=\frac{\mu_0}{4\pi}I\int\frac{dl'\times\hat{\pmb{\scriptr}}}{\pmb{\scriptr}^2}$
+\linebreak
+$B_{loop}=\frac{\mu_0 I}{2r}$
+\linebreak
+$B_{line}=\frac{\mu_0 I}{2\pi r}$
+\linebreak
+$B_{solenoid}=\mu_0nI$
+\linebreak
+$\nabla\cdot J=-\frac{\delta \rho}{\delta t}$
+\linebreak
+$F_{mag}=\int I(dl\times B)$
+\linebreak
+$F_{mag}=Q(v\times B)$
+\linebreak
+$K=\frac{dI}{dl_\perp}=\sigma v$ $_{(K=Surface Current Density)}$
+\linebreak
+$J=\frac{dI}{da_\perp}=\rho v$ $_{(J=Volume Current Density)}$
+\linebreak
+$J=\frac{1}{\mu_0}(\nabla\times B)$
+\linebreak
+$B=\nabla\times A$ $_{(A=Vector Potential)}$
+\linebreak
+$\nabla\cdot A=0$
+\linebreak
+$\nabla^2A=-\mu_0J$
+\linebreak
+$A(r)=\frac{\mu_0}{4\pi}\int\frac{J(r')}{{\pmb{\scriptr}}}d\tau'$
+\linebreak
+$B_{above}-B_{below}=\mu_0(K\times\hat{n})$
+\linebreak
+$A_{above}-A_{below}=0$
+\linebreak
+$A_{dip}(r)=\frac{\mu_0}{4\pi}\frac{m\times\hat{r}}{r^2}$
+\linebreak
+$m=I\int da=Ia$ $_{(m=Magnetic Dipole Moment)}$
+\linebreak
+$B_{dip}(r)=\frac{\mu_0}{4\pi}\lbrack 3(m\cdot\hat{r})\hat{r}-m\rbrack$
+\linebreak
+$B_{line}=\frac{\mu_0I}{4\pi s}(sin\theta_2-sin\theta_1)$
+\linebreak
+$\nabla\times B=\mu_0J$
+\linebreak
+$J_b=\nabla\times M$
+\linebreak
+$K_b=M\times\hat{n}$
+$\nabla\cdot E=\frac{1}{\epsilon_0}\rho$\\
+$\nabla\times E=-\frac{\delta B}{\delta t}$\\
+$\nabla\cdot B=0$\\
+$\nabla\times B=\mu_0J+\mu_0\epsilon_0\frac{\delta E}{\delta t}$\\
+
+$N=m\times b$ $_{N=Torque}$\\
+$F_{loop}=\nabla(m\cdot B)$\\
+$J_b=\nabla\times M$ $_{J_b=VolumeBoundCurrent}$\\
+$K_b=M\times\hat{n}$ $_{K_b=SurfaceBoundCurrent}$\\
+$H\equiv\frac{1}{\mu_0}B-M$\\
+$\nabla\times H=J_f$ | $\oint H\cdot dl=I_{f_{enc}}$\\
+$\nabla\cdot H=-\nabla\cdot M$\\
+$M=\chi_m H$ $_{\chi_m=MagneticSusceptibility}$\\
+$B=\mu H$\\
+$\mu\equiv\mu_0 (1+\chi_m)$\\
+
+$F=ma=qE$\\
+$J=\sigma(E+v\times B)$ $_{\sigma=Conductivity}$\\
+$J=\sigma E$ $(Ohm's Law)$\\
+$J_d=\epsilon_0\frac{\delta E}{\delta t}$\\
+$I=\sigma\int E\cdot da$\\
+$P=VI=I^2R$\\
+$V=IR$\\
+$\tau=RC$\\
+$\varepsilon\equiv\oint f\cdot dl=\oint f_s\cdot dl$ $_{\varepsilon=ElectromotiveForce}$\\
+$\varepsilon=-\frac{d\Phi}{dt}$\\
+$\varepsilon=IR$\\
+A Changing magnetic field induces an electric field\\
+Nature abhors a change in flux\\
+$F_{mag}=\int I(dl\times B)$\\
+$F_{mag}=Q(v\times B)$\\
+$\Phi=LI$ $_{L=SelfInductance}$\\
+$\varepsilon=-L\frac{dI}{dt}$\\
+$W=\frac{1}{2}LI^2$\\
+$W=\frac{1}{2\mu_0}\int_{all space} B^2d\tau$\\
+\includegraphics[scale=.5]{Griffiths2.png}\\
+In homogenous linear material\\
+$J_b=\nabla\times M=\nabla\times(\chi_m H)=\chi_m J_f$\\
+For two coaxial cylinders with constant conductivity\\
+$E=\frac{\lambda}{2\pi\epsilon_0 s}\hat{s}$\\
+$I=\int J\cdot da=\frac{sigma}{\epsilon_0}\lambda L$\\
+$V=-\int_b^a E\cdot dl$\\
+Loop inside magnetic field
+$\varepsilon=\oint f_{mag}\cdot dl=vBh$\\
+$f_{pull}=uB$\\
+\end{flushleft}
+\end{multicols}
+\end{document}

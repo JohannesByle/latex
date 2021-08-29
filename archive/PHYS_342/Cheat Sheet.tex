@@ -1,0 +1,103 @@
+\documentclass[1pt]{report}
+\usepackage{multicol}
+\setlength{\columnseprule}{0.2pt}
+\usepackage[T1]{fontenc}
+\usepackage[document]{ragged2e}
+\usepackage[latin9]{inputenc}
+\usepackage[left=.5cm, right=.5cm, top=.5cm]{geometry}
+\usepackage{babel}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\begin{document}
+\begin{multicols}{3}
+\textbf{Fundamental Inputs}
+\begin{itemize}[noitemsep]
+\item Principle of Superposition
+\item Coulombs Law ($F=\frac{1}{4\pi\epsilon_0}$)
+\end{itemize}
+\begin{flushleft}
+$\oint_S {E_n dA = \frac{1}{{\varepsilon _0 }}} Q_{inside}$
+\linebreak
+$\nabla\cdot E=\frac{1}{\epsilon_0}\rho$|$V(r)=-\int^rE\cdot dl$
+\linebreak
+$E=-\nabla V$|$C=\frac{Q}{V}$
+\linebreak
+$W=\frac{1}{2}CV^2$|$W=\frac{\epsilon_0}{2}\int E^2d\tau$
+\linebreak
+$V(r)=\frac{1}{4\pi\epsilon_0}\int\frac{\rho(r)}{r_s}d\tau$
+\linebreak
+Potential is continuous at boundaries 
+\textbf{Method of Images}
+\begin{itemize}[noitemsep]
+\item Replace the conducting plane with a mirror image charge
+\item Use Gausss law on each charge in isolation
+\item Sum up the electric field contribution from each charge
+\end{itemize}
+Poisson's equation:
+$\nabla^2V=-\frac{1}{\epsilon_0}\rho$
+\linebreak
+Laplace's equation:
+$\nabla^2V=0$
+\linebreak
+Laplace's equation in Cartesian:
+$\frac{\delta^2V}{\delta x^2}\frac{\delta^2V}{\delta y^2}\frac{\delta^2V}{\delta z^2}=0$
+\linebreak
+Converted to PDE
+\linebreak
+$V(x,y)=(Ae^{kx}+B^{-kx})(Csin(ky)+Dcos(ky))$
+Laplace's equation is true if $\rho$ is zero
+\linebreak
+\textbf{First Uniqueness Theorem:}
+The solution to Laplace equation in some volume \textit{V} is uniquely determined if V is specified on the boundary surface \textit{S}
+\textbf{Corollary:}
+The potential in a volume \textit{V} is uniquely determined if (a) the charge density throughout the region, and (b) the value of V on all boundaries, are specified. 
+\textbf{Second Uniqueness Theorem:}
+In a volume \textit{V} surrounded by a conductors and containing a specified charge density \textit{$\rho$}, the electric field is uniquely determined if the \textit{total charge} on each conductor is given. (The region as a whole can be bounded by another conductor or else unbounded)
+\textbf{Fourier s Trick}
+$V_0(y) = \sum_{n=1}^{\infty} C_n \sin \left(\frac{n \pi y}{a} \right)$
+\linebreak
+$V_0(y) \sin \left(\frac{n' \pi y}{a} \right) =\sum_{n=1}^{\infty} C_n \sin \left(\frac{n \pi y}{a} \right)\sin \left(\frac{n' \pi y}{a} \right)$
+\linebreak
+$ \int_0^a V_0(y) \sin \left(\frac{n' \pi y}{a} \right) \, dy = \sum_{n=1}^{\infty} C_n \int_0^a  \sin \left(\frac{n \pi y}{a} \right)\sin \left(\frac{n' \pi y}{a} \right) \, dy = \frac{a}{2} C_{n'}$
+\linebreak
+$C_{n'} = \frac{2}{a} \int_0^a V_0(y) \sin \left(\frac{n' \pi y}{a} \right) \, dy$
+\linebreak
+\textbf{Legendre Polynomials}
+\linebreak
+$P_0(x) = 1$
+\linebreak
+$P_1(x) = x$
+\linebreak
+$P_2(x) = \frac{1}{2}(3x^2 - 1)$
+\linebreak
+$P_3(x) = \frac{1}{2}(5x^3-3x)$
+\linebreak
+$V(r,\theta)=\sum_{l=0}^{\infty}(A_lr^l+\frac{B^l}{R^{l+1}})P_l(cos\theta)$
+\textbf{Monopole Expansions}
+\linebreak
+Monopole $(V~1/r)$
+\linebreak
+Dipole $(V~1/r^2)$
+\linebreak
+Quadrupole $(V~1/r^3)$
+\linebreak
+Octopole $(V~1/r^4)$
+\linebreak
+$\rho=\sum_{i=1}^{n}q_ir_i$
+\linebreak
+$V_{mon}(r)=\frac{1}{4\pi\epsilon_0}\frac{Q}{r}$
+\linebreak
+$V_{dip}(r)=\frac{1}{4\pi\epsilon_0}\frac{\rho\cdot\hat{r}}{r^2}$
+\linebreak
+$E_{dip}(r,\theta)=\frac{\rho}{4\pi\epsilon_0r^3}(2cos\theta\hat{r}+sin\theta\hat{\theta})$
+\linebreak
+Charge is evenly distributed across capacitor plates
+\linebreak
+$F=QE$
+\linebreak
+Volume Charge
+$E(r)=\frac{1}{4\pi\epsilon_0}\int\frac{\rho(r)}{r^2}\hat{r}d\tau$
+\includegraphics[scale=.5]{Griffiths.png}
+\end{flushleft}
+\end{multicols}
+\end{document}

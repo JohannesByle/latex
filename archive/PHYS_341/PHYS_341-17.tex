@@ -1,0 +1,43 @@
+\documentclass[english]{article}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\usepackage{babel}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{gensymb}
+\usepackage{pgfplots}
+\usepackage{multicol}
+\begin{document}
+\begin{multicols*}{2}
+\textbf{HW March 4, Johannes Byle}\\
+\newcommand{\Lagr}{\mathcal{L}}
+
+\noindent
+\textbf{8.4}
+$$\Lagr=\frac{1}{2}\mu\dot{x}^2-U(x)$$
+$$\Lagr=\frac{1}{2}\mu\dot{y}^2-U(y)$$
+$$\Lagr=\frac{1}{2}\mu\dot{z}^2-U(z)$$
+The motion of a single particle in three dimension would be:
+$$\Lagr=\frac{1}{2}\mu(\dot{x}^2+\dot{y}^2+\dot{z}^2)-U(x,y,z)$$
+Since $r=\sqrt{x^2+y^2+z^2}$
+$$\Lagr=\frac{1}{2}\mu(\dot{x}^2+\dot{y}^2+\dot{z}^2)-U(x,y,z)=\frac{1}{2}\mu\dot{r}-U(r)$$
+
+\noindent
+\textbf{8.12 (a)}
+$$U_{eff}(r)=-\frac{Gm_1m_2}{r}+\frac{l^2}{2\mu r^2}$$	
+$$\frac{dU_{eff}}{dr}=\frac{Gm_1m_2}{r^2}-\frac{l^2}{\mu r^3}$$
+$$0=r^2\Big(\frac{1}{Gm_1m_2}-\frac{r}{l^2}\big)$$
+It will orbit at:
+$$r=\frac{l^2}{Gm_1m_2}$$
+\textbf{(b)} $$\frac{d^2U_{eff}}{dr^2}=-\frac{2Gm_1m_2}{r^3}+\frac{3l^2}{\mu r^4}$$
+$$\frac{d^2U_{eff}}{dr^2}=-\frac{2Gm_1m_2}{(\frac{l^2}{Gm_1m_2})^3}+\frac{3l^2}{\mu (\frac{l^2}{Gm_1m_2})^4}$$
+$$\frac{d^2U_{eff}}{dr^2}=-\frac{2(Gm_1m_2)^4}{l^6}+\frac{3(Gm_1m_2)^4l^2}{\mu l^8}$$
+$$\frac{d^2U_{eff}}{dr^2}=-\frac{2(Gm_1m_2)^4}{l^6}+\frac{3(Gm_1m_2)^4l^2}{\mu l^8}$$
+$$\frac{d^2U_{eff}}{dr^2}=\frac{(Gm_1m_2)^4}{l^6}\Big(\frac{3}{\mu}-2\Big)$$
+Whether or it is in a stable orbit is dependent on the value of $\mu$ 
+\end{multicols*}
+\end{document}

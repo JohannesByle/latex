@@ -1,0 +1,54 @@
+\documentclass[english]{article}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\usepackage{babel}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{gensymb}
+\usepackage{pgfplots}
+\usepackage{multicol}
+\begin{document}
+\begin{multicols*}{2}
+\textbf{HW Feb 27, Johannes Byle}\\
+\newcommand{\Lagr}{\mathcal{L}}
+\noindent
+\textbf{6.11} $$\frac{\delta f}{\delta y}-\frac{d}{dx}\frac{\delta f}{\delta y'}=0$$
+Since $\frac{\delta f}{\delta y}$ is $0$, $\frac{\delta f}{\delta y'}$ must be constant:
+$$f=\sqrt{x}\sqrt{1+y'^2}$$
+$$\frac{\delta f}{\delta y'}=\frac{\sqrt{x}y'}{\sqrt{1+y'^2}}=C$$
+$$\frac{xy'^2}{1+y'^2}=C^2$$
+$$\frac{1}{y'^2}=\frac{x}{C^2}-1$$
+$$y'=\sqrt{\frac{C^2}{x-C^2}}$$
+$$\int dy=\int \sqrt{\frac{C^2}{x-C^2}} dx$$
+$$y=2C\sqrt{x-C^2}+C_0$$
+Which is a parabola.
+
+\noindent
+\textbf{6.18} $$\frac{\delta f}{\delta \theta}-\frac{d}{dr}\frac{\delta f}{\delta \theta'}=0$$
+$$dL=\sqrt{dr^2+r^2d\theta^2}$$
+$$f=\sqrt{1+r^2\theta'^2}$$
+$$\frac{\delta f}{\delta \theta}=0$$
+$$\frac{\delta f}{\delta \theta'}=\frac{r^2\theta'}{\sqrt{1+r^2\theta'^2}}=C$$
+
+\noindent
+\textbf{7.1} $$T=\frac{1}{2}m(\dot{x}^2+\dot{y}^2+\dot{z}^2)$$
+$$u=mgy$$
+$$\Lagr=\frac{1}{2}m(\dot{x}^2+\dot{y}^2+\dot{z}^2)-mgz$$
+$$\frac{\delta\Lagr}{\delta q_i}=\frac{d}{dt}\frac{\delta\Lagr}{\delta\dot{q_i}}$$
+$$\frac{\delta\Lagr}{\delta\dot{x}}=m\dot{x}=constant$$
+$$\frac{\delta\Lagr}{\delta\dot{y}}=m\dot{y}=constant$$
+$$\frac{\delta\Lagr}{\delta\dot{z}}=m\dot{z}$$
+$$\frac{\delta\Lagr}{\delta z}=-mg=\frac{d}{dt}m\dot{z}$$
+$$z=-\frac{1}{2}gt^2$$
+
+\noindent
+\textbf{7.1} $$\Lagr=\frac{1}{2}m\dot{x}^2+\frac{1}{2} kx^2$$
+$$kx=\frac{d}{dt}m\dot{x}$$
+$$\frac{k}{m}x=\ddot{x}$$
+$$x=A\sin\sqrt{\frac{k}{m}}t$$
+\end{multicols*}
+\end{document}

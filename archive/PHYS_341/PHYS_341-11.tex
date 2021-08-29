@@ -1,0 +1,46 @@
+\documentclass[english]{article}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\usepackage{babel}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{gensymb}
+\begin{document}
+\textbf{HW Feb 18, Johannes Byle}\\
+
+\noindent
+\textbf{5.1 (a)} $$mg=-kl_1$$
+$$F_{pull}+mg=-kx-kl_1$$
+Since $mg=-kl_1$:
+$$F_{pull}=-kx$$
+
+\noindent
+\textbf{(b)} If $F_{pull}$ is removed, then $F=-kx$:
+$$-\int kxdx=\frac{1}{2}kx^2+C$$
+
+\noindent
+\textbf{5.4 (a)} If we set $mgh$ to be the distance from the center we can set $U=mgh$. The radial location where the rope is contacting the cylinder is also $\phi$. Thus the length of the rope is $l_0+R\phi$. Since the vertical is $y=Rsin\phi$:
+$$U=mg((l_0+R\phi)cos\phi-Rsin\phi)$$ 
+If we assume that $sin\phi=\phi$ and $cos\phi=1-\frac{\phi^2}{2}$
+$$U=mg((l_0+R\phi)(1-\frac{\phi^2}{2})-R\phi)$$
+$$U=mg(l_0-l_0\frac{\phi^2}{2}+R\phi-R\phi\frac{\phi^2}{2}-R\phi)$$
+$$U=mg(l_0-l_0\frac{\phi^2}{2}-R\frac{\phi^3}{2})$$
+If we assume that since $\phi$ is small $\phi^3$ can be ignored:
+$$U=mgl_0\frac{\phi^2}{2}+C$$
+
+\noindent
+\textbf{5.8 (a)} Since $F=m\ddot{x}=-kx$. A solution to this differential equation is $x=Asin(\omega t)$. Thus:
+$$-mA\omega^2sin(\omega t)=-kAsin(\omega t)$$
+$$-m\omega^2=-k$$
+$$\omega=\sqrt{\frac{k}{m}}$$
+$$\omega=\frac{2\pi}{T}=2\pi f$$
+$$T=2\pi\sqrt{\frac{m}{k}},f=\frac{1}{2\pi}\sqrt{\frac{k}{m}}$$
+\noindent
+\textbf{(b)} $$0=Acos(\delta)$$
+$$40=-A\omega sin(\delta)$$
+$$\delta=\pi,A=-\frac{40}{\omega}$$
+\end{document}

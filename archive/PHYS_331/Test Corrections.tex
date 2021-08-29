@@ -1,0 +1,62 @@
+\documentclass{article}
+\usepackage{amssymb,amsmath,amsthm,enumitem}
+\usepackage{comment}
+\usepackage{multicol}
+\usepackage{graphicx}
+\begin{document}
+\title{Exam 1 Corrections}
+\author{Johannes Byle}
+\maketitle
+
+\subsection*{Question 2}
+$$Z_{ABD}=\frac{1}{\sqrt{2}}e^{i\pi}\frac{1}{\sqrt{2}}e^{ikl_1}=-\frac{1}{2}e^{ikl_1}$$
+In my answer I defined $l_1$ as the distance $AB$ and $l_2$ as the distance $AC$. However, I see that it makes more sense to define $l_1$ as $ABC$ and $l_2$ as $ACD$.
+$$Z_{ACD}=\frac{1}{\sqrt{2}}e^{i\pi}e^{i\pi}\frac{1}{\sqrt{2}}e^{ikl_2}=-\frac{1}{2}e^{ikl_2}$$
+In this problem I forgot about the second reflection, which would have added a second factor of $e^{i\pi}$. I also may have made a mistake with the amplitude, as $1-r_1$ would not have been $\frac{1}{\sqrt{2}}$.
+For the second part, although I wrote down how to equation for $Z$ I did not fully work it out. Thus all I need to do is simply plug in and solve from where I left of (using new definitions for $l_1$ and $l_2$).
+$$P_{PM_2}=Z^*Z=\frac{1}{4}(-e^{-ikl_1}+e^{-ikl_2})(-e^{ikl_1}+e^{ikl_2})$$
+$$P_{PM_2}=Z^*Z=\frac{1}{4}(2-e^{-ik(l_1-l_2)}-e^{ik(l_1-l_2)})$$
+I would not have known to use this trig identity, but using Euler's equation and $\sin^2\theta+\cos^2\theta=1$ we get:
+$$P_{PM_2}=\sin^2[\frac{k(l_1-l_2)}{2}]$$
+In  my answer I described what physically would need to occur to get 100\% probability, but I did not solve any equation. If we set $P_{PM_2}$ equal to one and solve the equation we get:
+$$P_{PM_2}=\sin^2[\frac{k(l_1-l_2)}{2}]=1$$
+$$\frac{k(l_1-l_2)}{2}=(n+\frac{1}{2})\pi$$
+
+\subsection*{Question 3}
+I am not 100\% sure if I actually made a mistake by having imaginary exponentials for $x>0$ as I got my equation straight from the book (eq 4.116) and as long as $E<V_0$ $k_0$ is imaginary, making $Ce^{ik_0x}$ real. I also checked my equations in Matlab and Wolfram alpha, and although $T$ gives an imaginary number, $R$ is indeed $1$ as long as long as $E<V_0$ which means the equations should be at least half correct.\\
+$$k=\frac{\sqrt{2mE}}{\hslash}=\sqrt{\frac{2m}{\hslash^2}E}$$
+$$k_0=\sqrt{k^2-\frac{2mV_0}{\hslash^2}}=\sqrt{\frac{2m}{\hslash^2}(E-V_0)}=\sqrt{\frac{2m}{\hslash^2}\alpha}$$
+$$R=\frac{(k-k_0)^2}{(k+k_0)^2}=\frac{(\sqrt{\frac{2m}{\hslash^2} E}-\sqrt{\frac{2m}{\hslash^2}\alpha})^2}{(\sqrt{\frac{2m}{\hslash^2} E}+\sqrt{\frac{2m}{\hslash^2}\alpha})^2}=\frac{(\sqrt{E}-\sqrt{\alpha})^2}{(\sqrt{E}+\sqrt{\alpha})^2}$$
+If $E<V_0$ then $\alpha<0$
+$$R=\frac{(\sqrt{E}-\sqrt{-\alpha})^2}{(\sqrt{E}+\sqrt{-\alpha})^2}=\frac{(\sqrt{E}-i\sqrt{\alpha})^2}{(\sqrt{E}+i\sqrt{\alpha})^2}$$
+$$R^*R=\Bigg(\frac{(\sqrt{E}-i\sqrt{\alpha})^2}{(\sqrt{E}+i\sqrt{\alpha})^2}\Bigg)\Bigg(\frac{(\sqrt{E}+i\sqrt{\alpha})^2}{(\sqrt{E}-i\sqrt{\alpha})^2}\Bigg)=1$$
+
+
+
+\subsection*{Question 4}
+This is the problem that I was the most confused by. I did not write down equation 3.96
+$$c_n=\int_{-\infty}^{\infty}\psi^*_n(x)\Psi(x)dx$$
+and the only equation I had down on my formula sheet for eigenvalues was equation 3.39
+$$c_1(t)=\frac{1}{\sqrt{2}}e^{-iE_1t/\hslash}$$
+Although I remembered the Dirac delta function from E\&M I had no idea how to fit it in a integral, so I just pieced together the equations I had in the hopes of getting the right answer. If I had started correctly I would have probably gotten closer to solving it correctly.
+$$c_n=\int_{-\infty}^{\infty}\psi^*_n(x)\Psi(x)dx$$
+I knew that 
+$$\psi_n=\sin\frac{n\pi x}{L}$$
+Thus
+$$c_1=\int_0^L\sin\frac{\pi x}{L}(x)\delta(x-\frac{L}{2})sdx$$
+Since the delta function only exists where $x=\frac{L}{2}$ the integral becomes:
+$$c_1=\sin\frac{\pi}{2}=1$$
+$$c_2=\sin\frac{2\pi}{2}=0$$
+$$P_n=|c_n|^2$$
+Thus
+$$\frac{P_2}{P_1}=\frac{|c_2|^2}{|c_1|^2}=0$$
+
+\pagebreak
+
+\includegraphics[width=13cm]{Screenshot(2)}
+
+\bigskip
+
+\includegraphics[width=13cm]{PHYS_331_Graph}
+
+\end{document}

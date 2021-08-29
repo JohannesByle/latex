@@ -1,0 +1,73 @@
+\documentclass[english]{article}
+\usepackage{multicol}
+\usepackage{physics}
+\usepackage[margin=.75in]{geometry}
+\usepackage{amsmath}
+\usepackage{verbatim}
+\begin{document}
+\textbf{Johannes Byle}\\
+\noindent
+\textbf{9.4}
+$$\hat{\vb{R}}=\frac{m_1\hat{\vb{r}}_1+m_2\hat{\vb{r}}_2}{m_1+m_2}$$
+$$\hat{\vb{p}}=\frac{m_1\hat{\vb{p}}_1-m_2\hat{\vb{p}}_2}{m_1+m_2}$$
+$$\hat{\vb{r}}=\hat{\vb{r}}_1-\hat{\vb{r}}_2$$
+$$\hat{\vb{P}}=\hat{\vb{p}}_1+\hat{\vb{p}}_2$$
+$$\left[\hat{\vb{p}}_1,\hat{\vb{p}}_2\right]=0$$
+$$\left[\hat{x}_i,\hat{P}_j\right]=\left[\hat{x}_{1i}-\hat{x}_{2i},\hat{p}_{1j}+\hat{p}_{2j}\right]=\left(\hat{x}_{1i}-\hat{x}_{2i}\right)\left(\hat{p}_{1j}+\hat{p}_{2j}\right)-\left(\hat{p}_{1j}+\hat{p}_{2j}\right)\left(\hat{x}_{1i}-\hat{x}_{2i}\right)$$
+$$=\left[\hat{x}_{1i},\hat{p}_{1j}\right]+\left[\hat{x}_{1i},\hat{p}_{2j}\right]-\left[\hat{x}_{2i},\hat{p}_{1j}\right]-\left[\hat{x}_{2i},\hat{p}_{2j}\right]=i\hbar\delta_{ij}-i\hbar\delta_{ij}=0$$
+$$\mu_1=\frac{m_1}{m_1+m_2}$$
+$$\mu_2=\frac{m_2}{m_1+m_2}$$
+$$\left[\hat{X}_i,\hat{P}_j\right]=\left[\mu_1\hat{x}_{1i}+\mu_2\hat{x}_{2i},\hat{p}_{1j}+\hat{p}_{2j}\right]=\left[\mu_1\hat{x}_{1i},\hat{p}_{1j}\right]+\left[\mu_1\hat{x}_{1i},\hat{p}_{2j}\right]+\left[\mu_2\hat{x}_{2i},\hat{p}_{1j}\right]+\left[\mu_2\hat{x}_{2i},\hat{p}_{2j}\right]$$
+$$=\mu_1i\hbar\delta_{ij}+\mu_2i\hbar\delta_{ij}=i\hbar\delta_{ij}$$
+$$\left[\hat{x}_i,\hat{p}_j\right]=\left[\hat{x}_{1i}-\hat{x}_{2i},\mu_1\hat{p}_{1j}-\mu_2\hat{p}_{2j}\right]=\left[\hat{x}_{1i},\mu_1\hat{p}_{1j}\right]-\left[\hat{x}_{1i},\mu_2\hat{p}_{2j}\right]-\left[\hat{x}_{2i},\mu_1\hat{p}_{1j}\right]-\left[\hat{x}_{2i},\mu_2\hat{p}_{2j}\right]$$
+$$=\mu_1i\hbar\delta_{ij}+\mu_2i\hbar\delta_{ij}=i\hbar\delta_{ij}$$
+$$\left[\hat{X}_i,\hat{p}_j\right]=\left[\mu_1\hat{x}_{1i}+\mu_2\hat{x}_{2i},\mu_1\hat{p}_{1j}-\mu_2\hat{p}_{2j}\right]=\left[\mu_1\hat{x}_{1i},\mu_1\hat{p}_{1j}\right]+\left[\mu_1\hat{x}_{1i},\mu_2\hat{p}_{2j}\right]-\left[\mu_2\hat{x}_{2i},\mu_1\hat{p}_{1j}\right]-\left[\mu_2\hat{x}_{2i},\mu_2\hat{p}_{2j}\right]=0$$
+\noindent
+\textbf{9.9}
+$$\Delta E=hf=6.63\cdot10^{-34}\cdot1.15\cdot10^{11}=7.62\cdot10^{-23}J$$
+$$m_C=2.00\cdot10^{-26}kg$$
+$$m_O=2.66\cdot10^{-26}kg$$
+$$\mu=\frac{m_Cm_O}{m_C+m_O}=1.41\cdot10^{-26}kg$$
+$$\Delta E=\frac{l\left(l+1\right)\hbar^2}{2\mu r_0^2}=\frac{\hbar^2}{\mu r_0^2}$$
+$$r_0=\sqrt{\frac{\hbar^2}{\mu\Delta E}}=\sqrt{\frac{\left(1.05\cdot10^{-34}\right)^2}{1.41\cdot10^{-26}\cdot7.62\cdot10^{-23}}}\approx1.12\cdot10^{-10}m$$
+\noindent
+\textbf{9.13}
+$$\bra{lm}L_x\ket{lm}=\bra{lm}L_++L_-\ket{lm}$$
+$$\bra{lm}L_x^2\ket{lm}=\bra{lm}L_+^2+L_-^2+L_+L_-+L_-L_+\ket{lm}$$
+$$L_-\ket{l,m}=\sqrt{l(l+1)-m(m-1)}\hbar\ket{l,m-1}$$
+$$L_+\ket{l,m}=\sqrt{l(l+1)-m(m+1)}\hbar\ket{l,m+1}$$
+$$\bra{lm}L_x\ket{lm}=\bra{lm}\sqrt{l(l+1)-m(m-1)}\hbar\ket{l,m-1}+\bra{lm}\sqrt{l(l+1)-m(m+1)}\hbar\ket{l,m+1}=0$$
+$$L_+^2\ket{l,m}=L_+\sqrt{l(l+1)-m(m+1)}\hbar\ket{l,m+1}=\sqrt{l(l+1)-m(m+1)}\hbar\sqrt{l(l+1)-(m+1)(m+2)}\hbar\ket{l,m+2}$$
+$$\bra{l,m}L_+^2\ket{l,m}=0$$
+$$L_-^2\ket{l,m}=L_-\sqrt{l(l+1)-m(m-1)}\hbar\ket{l,m-1}=\sqrt{l(l+1)-m(m+1)}\hbar\sqrt{l(l+1)-(m-1)(m-2)}\hbar\ket{l,m-2}$$
+$$\bra{l,m}L_-^2\ket{l,m}=0$$
+$$L_+L_-\ket{lm}=L_+\sqrt{l(l+1)-m(m-1)}\hbar\ket{l,m-1}=\sqrt{l(l+1)-(m-1)(m)}\sqrt{l(l+1)-m(m-1)}\hbar^2\ket{l,m}$$
+$$L_+L_-\ket{lm}=\left(l(l+1)-(m-1)m\right)\hbar^2$$
+$$L_-L_+\ket{lm}=L_-\sqrt{l(l+1)-m(m+1)}\hbar\ket{l,m+1}=\sqrt{l(l+1)-(m+1)(m)}\sqrt{l(l+1)-m(m1)}\hbar^2\ket{l,m}$$
+$$L_+L_-\ket{lm}=\left(l(l+1)-(m+1)m\right)\hbar^2$$
+$$\Delta L_x=\bra{lm}L_x^2\ket{lm}-\left(\bra{lm}L_x\ket{lm}\right)^2=\left(2l(l+1)-(m+1)(m-1)m^2\right)\hbar^2$$
+$$\Delta L_y=\bra{lm}L_y^2\ket{lm}-\left(\bra{lm}L_y\ket{lm}\right)^2=\left(2l(l+1)-(m+1)(m-1)m^2\right)\hbar^2$$
+$$\left(2l(l+1)-(m+1)(m-1)m^2\right)^2\hbar^4\geq\frac{\hbar}{2}\left|\left\langle L_z\right\rangle\right|$$
+\noindent
+\textbf{9.16}\\
+\textbf{a)}
+$$\hat{L}_-\rightarrow\frac{\hbar}{i}e^{-i\phi}\left(-i\frac{\delta}{\delta\theta}-\cot\theta\frac{\delta}{\delta\phi}\right)$$
+$$Y_{1,1}=\sqrt{\frac{3}{8\pi}}e^{i\phi}\sin\theta$$
+$$\hat{L}_-Y_{1,1}=\sqrt{\frac{3}{8\pi}}\frac{\hbar}{i}e^{-i\phi}\left(-i\frac{\delta}{\delta\theta}e^{i\phi}\sin\theta-\cot\theta\frac{\delta}{\delta\phi}e^{i\phi}\sin\theta\right)$$
+$$\hat{L}_-Y_{1,1}=\sqrt{\frac{3}{8\pi}}\frac{\hbar}{i}e^{-i\phi}\left(-ie^{i\phi}\cos\theta-ie^{i\phi}\cos\theta\right)=0$$
+\textbf{b)}
+$$Y_{1,1}=\sqrt{\frac{3}{8\pi}}e^{i\phi}\sin\theta$$
+$$\hat{\vb{L}}^2\rightarrow-\hbar^2\left[\frac{1}{\sin\theta}\frac{\delta}{\delta\theta}\left(\sin\theta\frac{\delta}{\delta\theta}\right)+\frac{1}{\sin^2\theta}\frac{\delta^2}{\delta\phi^2}\right]$$
+$$\hat{\vb{L}}^2Y_{1,1}=-\sqrt{\frac{3}{8\pi}}\hbar^2\left[\frac{1}{\sin\theta}\frac{\delta}{\delta\theta}\left(\sin\theta\frac{\delta}{\delta\theta}\right)e^{i\phi}\sin\theta+\frac{1}{\sin^2\theta}\frac{\delta^2}{\delta\phi^2}e^{i\phi}\sin\theta\right]$$
+$$\hat{\vb{L}}^2Y_{1,1}=-\sqrt{\frac{3}{8\pi}}\hbar^2\left[\frac{1}{\sin\theta}\frac{\delta}{\delta\theta}\left(\sin\theta\frac{\delta}{\delta\theta}\right)e^{i\phi}\sin\theta-\frac{1}{\sin\theta}e^{i\phi}\right]$$
+$$\hat{\vb{L}}^2Y_{1,1}=-\sqrt{\frac{3}{8\pi}}\hbar^2\left[\frac{1}{\sin\theta}\frac{\delta}{\delta\theta}\sin\theta\cos\theta e^{i\phi}-\frac{1}{\sin\theta}e^{i\phi}\right]$$
+$$\hat{\vb{L}}^2Y_{1,1}=-\sqrt{\frac{3}{8\pi}}\hbar^2\left[\frac{1}{\sin\theta}\left(\cos^2\theta-\sin^2\theta\right) e^{i\phi}-\frac{1}{\sin\theta}e^{i\phi}\right]$$
+$$\hat{\vb{L}}^2Y_{1,1}=-\sqrt{\frac{3}{8\pi}}\hbar^2\left[\frac{1}{\sin\theta}\left(1-2\sin^2\theta\right) e^{i\phi}-\frac{1}{\sin\theta}e^{i\phi}\right]$$
+$$\hat{\vb{L}}^2Y_{1,1}=-\sqrt{\frac{3}{8\pi}}\hbar^2\left[-2\sin^2\theta e^{i\phi}\right]$$
+\noindent
+\textbf{9.21}
+$$\ket{\psi(t)}=e^{-i\hat{H}t/\hbar}$$
+$$\ket{\psi(t)}=e^{-i\left(\frac{\hat{\vb{L}}^2}{2I}+\omega_0\hat{L}_z\right)t/\hbar}$$
+$$\sqrt{\frac{3}{4\pi}}\sin\theta\sin\phi=Y_{1,1}+Y_{1,-1}$$
+$$\bra{\theta,\phi}\ket{\psi(t)}=e^{-i\left(\frac{\hat{\vb{L}}^2}{2I}+\omega_0\hat{L}_z\right)t/\hbar}\left(Y_{1,1}+Y_{1,-1}\right)$$
+\end{document}

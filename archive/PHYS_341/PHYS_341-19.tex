@@ -1,0 +1,31 @@
+\documentclass[english]{article}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\usepackage{babel}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{gensymb}
+\usepackage{pgfplots}
+\usepackage{multicol}
+\begin{document}
+\begin{multicols*}{2}
+\textbf{Johannes Byle}\\
+\newcommand{\Lagr}{\mathcal{L}}
+
+\noindent
+\textbf{9.6}
+$$U_{tid}=-GM_mm\Big(\frac{1}{d}+\frac{x}{d_0^2}\Big)$$
+$$d=\sqrt{T^2+d_0^2-2Td_0\cos\theta}$$
+$$\frac{1}{d}=\Big(1+\frac{d_0^2}{T^2}-\frac{2d_0\cos\theta}{T}\Big)^{-1/2}$$
+$$\frac{1}{d}\approx 1-\frac{1}{2}\Big(\frac{d_0^2}{T^2}-\frac{2d_0\cos\theta}{T}\Big)$$
+$$U_{tid}=-GM_mm\Big[1-\frac{1}{2}\Big(\frac{d_0^2}{T^2}-\frac{2d_0\cos\theta}{T}\Big)+\frac{x}{d_0^2}\Big]$$
+Assuming $T\approx R_e$
+$$U_{tid}=-GM_mm\Big[1-\frac{d_0^2}{2R_e^2}-\frac{d_0\cos\theta}{R_e}+\frac{R_e\cos\theta}{d_0^2}\Big]$$
+If $h_0=\frac{3M_mR_e^4}{2M_ed_0^3}$
+$$h(\theta)=h_0\cos^2\theta$$
+\end{multicols*}
+\end{document}

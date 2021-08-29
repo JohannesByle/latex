@@ -1,0 +1,52 @@
+\documentclass[12pt]{article}
+\usepackage[hscale=0.7,vscale=0.8]{geometry}
+\usepackage{amsmath}
+\usepackage{pgfplots}
+\usepackage{tikz}
+\title{Notes 8/23}
+\author{Johannes Byle}
+\begin{document}
+    \maketitle
+
+    \subsection*{Simple Harmonic Oscillator}
+    \begin{enumerate}
+        \item Mass on a spring (Hooke's law)
+        \item Pendulum's with small angle approximation
+        \item Quantum mechanics
+    \end{enumerate}
+    \[
+        SHO: \ddot{x}=\omega_{0}^{2}x
+    \]
+
+    \subsection*{Force has some associated potential}
+    \[
+        F=-\frac{\delta V}{\delta x}\rightarrow V(x)=\frac{1}{2}m\omega_{0}^{2}x^{2}
+    \]
+
+    \subsection*{Solution}
+    \[
+        A_0\cos(\omega_0t-\delta)
+    \]
+
+    \subsection*{Phase Space}
+    \[
+        (x,p)\rightarrow \text{position momentum space}
+    \]
+    \begin{center}
+        \begin{tikzpicture}
+            \begin{axis}[samples=100, xmin=-1.5, xmax=1.5, xlabel=x, ylabel=p]
+                \addplot[color=black, domain=-2:2]{sqrt(1-x^2)};
+                \addplot[color=black, domain=-2:2]{-sqrt(1-x^2)};
+            \end{axis}
+        \end{tikzpicture}
+    \end{center}
+
+    \subsection*{Phase Portrait}
+    A collection of trajectories & orbits in phase space, only really possible with orbits
+
+    \subsection*{Damping}
+    \[
+        m\ddot{x}+b\dot{x}+kx=0
+    \]
+    Linear damping is called viscous damping.
+\end{document}

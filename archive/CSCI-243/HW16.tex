@@ -1,0 +1,47 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usepackage{venndiagram}
+\usepackage{enumitem}
+\usepackage{amsfonts}
+\usetikzlibrary{patterns}
+
+
+\title{HW 16}
+\author{Johannes Byle}
+\newcommand{\pset}[1]{$$\mathbb{P}(#1)}
+
+\begin{document}
+
+    \maketitle
+    \noindent
+    \textbf{5.3.8}\\
+    $\mathcal{I}_{R^{-1}}(\mathcal{I}_R(A))\subseteq A$ is false\\
+    \textbf{Proof}. Counter example $X=\{x, a\}$, $Y=\{y\}$, $R=\{(x, y), (a, y)\}$ and $A=\{a\}$.\\
+    $\mathcal{I}_R(A)=\{y\}$\\
+    $\mathcal{I}_{R^{-1}}(\{y\})=\{x, a\}$\\
+    $\{x, a\}\nsubseteq\{a\}$\\
+
+    \smallskip
+    \noindent
+    \textbf{Proof.} Suppose $a\in A$.
+    By definition of subset $a\in X$, then by definition of relation and by definition of image
+    $Y\subseteq\mathcal{I}_{R}(A)$.
+    Then by definition of image and by definition of relation $X\subseteq\mathcal{I}_{R^{-1}}(\mathcal{I}_R(A))$.
+    By definition of subset $a\in\mathcal{I}_{R^{-1}}(\mathcal{I}_R(A))$, therefore $A\subseteq \mathcal{I}_{R^{-1}}
+    (\mathcal{I}_R(A))$.
+
+    \medskip
+    \noindent
+    \textbf{5.3.10}\\
+    \textbf{Proof.} Suppose $(a, b)\in R$.
+    By definition of inverse $(b, a)\in R^{-1}$, by definition again $(a, b)\in (R^{-1})^{-1}$.
+    Therefore $R \subseteq (R^{-1})^{-1}$.
+    Further suppose $(a, b)\in (R^{-1})^{-1}$.
+    By definition of inverse $(b, a)\in R^{-1}$, by definition again $(a, b)\in R$.
+    Therefore $(R^{-1})^{-1}\subseteq R$.
+    Therefore, by definition of subset $(R^{-1})^{-1}= R$
+
+\end{document}

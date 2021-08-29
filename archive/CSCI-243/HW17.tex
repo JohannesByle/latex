@@ -1,0 +1,126 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usepackage{venndiagram}
+\usepackage{enumitem}
+\usepackage{amsfonts}
+\usetikzlibrary{patterns}
+
+
+\title{HW 17}
+\author{Johannes Byle}
+\newcommand{\image}[2]{\mathcal{I}_{#1}(#2)}
+
+\begin{document}
+
+    \maketitle
+    \noindent
+    \textbf{5.3.5}\\
+    \textbf{Proof.} Suppose $R$ is a relation from $X$ to $Y$, $S$ is a relation from $Y$ to $Z$, and $A\subseteq X$.
+
+    Further suppose $x\in\image{S\circ R}{A}$, by definition of image there exists $c\in A$ such that $(c, x)\in
+    S\circ R$.
+    By definition of composition there exists some $y\in Y$ such that $(c, y)\in R$ and $(y, x)\in S$.
+    Then, by definition of image $y\in\image{R}{A}$, so by definition of image $x\in\image{S}{\image{R}{A}}$.
+    Therefore $\image{S\circ R}{A}\subseteq\image{S}{\image{R}{A}}$.
+
+    Further suppose $x\in\image{S}{\image{R}{A}}$, by definition of image there is some $y\in Y$ such
+    that $y\in\image{R}{A}$, and by definition of image $x\in\image{S}{Y}$.
+    By definition of composition there exists some $y\in Y$ such that $(c, y)\in R$ and $(y, x)\in S$.
+    Therefore $\image{S}{\image{R}{A}}\subseteq\image{S\circ R}{A}$.
+
+    Thus, by definition of equality $\image{S\circ R}{A}=\image{S}{\image{R}{A}}$.
+
+
+    \medskip
+    \noindent
+    \textbf{5.3.11}\\
+    False:\\
+    $A=\{a_1, a_2\}$, $B=\{b_1\}$, $R=\{(a_1, b_2)\}$
+
+    \medskip
+    \noindent
+    \textbf{5.4.3}\\
+    \textbf{Proof.} Suppose $x\in\mathbb{R}$, by definition of less than or equal to $x\leq x$.
+
+    Hence, by definition of reflexive, $\leq$ is reflexive.
+
+    \medskip
+    \noindent
+    \textbf{5.4.4}\\
+    $0\leq 1$ but $1\nleq 0$
+
+    \medskip
+    \noindent
+    \textbf{5.4.5}\\
+    \textbf{Proof.} Suppose $a, b, c\in\mathbb{R}$, and suppose that $a\leq b$ and $b\leq c$.
+    By definition of less than or equal to $b\leq b$, therefore by definition of less than or equal $a\leq c$.
+
+    Hence $\leq$ is transitive.
+
+    \medskip
+    \noindent
+    \textbf{5.4.22}\\
+    \textbf{Proof.} Suppose $(x, y)\in R\cup R^{-1}$.
+    By definition of union $(x, y)\in R$ or $(x, y)\in R^{-1}$.
+
+    Suppose $(x, y)\in R$, by definition of inverse $(y, x)\in R^{-1}$.
+
+    Suppose $(x, y)\in R^{-1}$, by definition of inverse $(y, x)\in(R^{-1})^{-1}$, by definition of inverse of
+    inverse $(y, x)\in R$.
+
+    Therefore, by division into cases and by definition of symmetric $R\cup R^{-1}$ is symmetric.
+
+    \medskip
+    \noindent
+    \textbf{5.4.24}\\
+    \textbf{Proof.} Suppose $(a, b),(b,c)\in R\cap S$.
+    By definition of intersect $(a, b),(b,c)\in R$ and $(a, b),(b, c)\in S$.
+    By definition of transitive $(a, c)\in R$ and by definition of transitive $(a, c)\in S$.
+    Therefore, by definition of intersect $(a, c)\in R\cap S$, thus $R\cap S$ is transitive.
+
+    \medskip
+    \noindent
+    \textbf{5.4.25}\\
+    Suppose $R$ is reflexive.
+    Further suppose $a\in A$.
+    By definition of reflex ive $(a, a)\in R$, so by definition of image $a\in\image{R}{A}$.
+
+    Therefore by definition of subset $A\subseteq\image{R}{A}$.
+
+    \medskip
+    \noindent
+    \textbf{5.5.7}\\
+    \textbf{Proof.} Suppose $R$ and $S$ are equivalence relations, also suppose $(x,y)\in R\cap S$.
+    By definition of intersect $(x,y)\in R$ and $(x, y)\in S$.
+
+    By definition of reflexivity and definition of equivalence $(x,x)\in R$ and $(x, x)\in S$.
+    Therefore by definition of reflexivity and definition of intersect $R\cap S$ is reflexive.
+
+    By definition of symmetry and definition of equivalence $(y,x)\in R$ and $(y,x)\in S$.
+    Therefore by definition of symmetry and definition of intersect $R\cap S$ is symmetric.
+
+    Further suppose $(y, z)\in R\cap S$.
+    By definition of transitivity and definition of equivalence $(x, z)\in R$ and $(x, z)\in S$.
+    Therefore by definition of transitivity and definition of intersect $R\cap S$ is transitive.
+
+    Hence, by definition of equivalence $R\cap S$ is an equivalence relation.
+
+    \medskip
+    \noindent
+    \textbf{5.5.9}\\
+    $A=\{1, 2, 3\}$
+    $R=\{(1, 1), (1, 2), (2, 1), (2, 2)\}$
+
+    \medskip
+    \noindent
+    \textbf{5.5.10}\\
+    \textbf{Proof.} Suppose $R$ is symmetric and transitive, and suppose the domain of $A$ is equal to the domain of
+    $\image{R}{A}$, further suppose $x, y\in A$ such that $(x, y)\in R$.
+
+    By definition of symmetric $(y,x)\in R$, so by definition of transitive $(x,x)\in R$.
+
+    Therefore, by definition of reflexive $R$ is reflexive.
+\end{document}

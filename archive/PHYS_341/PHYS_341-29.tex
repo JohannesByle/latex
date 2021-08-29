@@ -1,0 +1,40 @@
+\documentclass[english]{article}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\usepackage{babel}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{gensymb}
+\usepackage{pgfplots}
+\usepackage{multicol}
+\begin{document}
+\begin{multicols*}{2}
+\textbf{Johannes Byle}\\
+\newcommand{\Lagr}{\mathcal{L}}
+
+\noindent
+\textbf{15.1}\\
+Newtons first law can be expressed as:
+$$\sum F=0\Leftrightarrow\frac{dv}{dt}=0$$
+Assuming mass is a nonzero constant.
+Under Galilean transformation:
+$$v'=v+\beta$$
+Since the derivative of this is still zero the first law still holds.
+$$\frac{d}{dt}(v+\beta)=0$$
+Newtons third law can be written as:
+$$F_a=-F_b$$
+$$m_a\frac{dv_a}{dt}=m_b\frac{dv_b}{dt}$$
+Under Galilean transformation both derivatives would not change for the same reason as stated above:
+$$\frac{d}{dt}(v+\beta)=\frac{d}{dt}(v)+\frac{d}{dt}(\beta)=\frac{dv}{dt}$$
+\noindent
+\textbf{15.6}\\
+$$t'=\frac{t}{\sqrt{1-\frac{v^2}{c^2}}}$$
+$$\frac{t}{t'}=\sqrt{1-\frac{v^2}{c^2}}$$
+$$c\sqrt{1-\frac{t^2}{t'^2}}=v$$
+$$v=\sqrt{\frac{2}{3}}c$$
+\end{multicols*}
+\end{document}

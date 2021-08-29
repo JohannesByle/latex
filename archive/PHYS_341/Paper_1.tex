@@ -1,0 +1,268 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{tikz}
+\usepackage{verbatim}
+\usetikzlibrary{shapes}
+\usetikzlibrary{math}
+\usetikzlibrary{decorations.pathreplacing}
+\begin{document}
+\title{Modeling Judges 16}
+\author{Johannes Byle}
+\maketitle
+
+\section*{Project Proposal}
+\subsection*{Source Text: Judges 16:25-30}
+And when their hearts were merry, they said, “Call Samson, that he may entertain us.” So they called Samson out of the prison, and he entertained them. They made him stand between the pillars. And Samson said to the young man who held him by the hand, “Let me feel the pillars on which the house rests, that I may lean against them.” Now the house was full of men and women. All the lords of the Philistines were there, and on the roof there were about 3,000 men and women, who looked on while Samson entertained.
+
+Then Samson called to the Lord and said, “O Lord God, please remember me and please strengthen me only this once, O God, that I may be avenged on the Philistines for my two eyes.” And Samson grasped the two middle pillars on which the house rested, and he leaned his weight against them, his right hand on the one and his left hand on the other. And Samson said, “Let me die with the Philistines.” Then he bowed with all his strength, and the house fell upon the lords and upon all the people who were in it. So the dead whom he killed at his death were more than those whom he had killed during his life.\\
+\subsection*{Description of Motion}
+In this passage Samson moves two support pillars by pushing against them which causes the entire temple to collapse. This could mean several things, either that the pillars fall or collapse, causing the roof to collapse, or the movement of the pillars lifts and pushes the roof causing the entire roof to fall.
+\subsection*{Proposed Model factors}
+I is not stated if the pillars were one piece, or if they were made up of  stacked drums. I also do not know if the roof collapsed or was moved with the pillars. There are however historical examples of stacked pillars, and these are far more interesting to model.\footnote{en.wikipedia.org/wiki/Column}
+Some of these columns included pegs and notches so that they could fit together more easily, however in modeling them I will ignore this and assume the columns were flat on the top and bottom.
+
+\section*{Literature Review}
+\subsection*{Analysis of Mechanics in Jenga}
+Ziglar, James. “Analysis of Mechanics in Jenga” Robotics Institute, Carnegie Mellon University.\\
+
+Although Jenga pieces are square this article had useful information about the forces and the torques on stacked objects. The article did not describe the pitching of the blocks, as it would not be a smart Jenga move. However, I believe for tall cylinder sections there is a real possibility of pitching, and that is what I think will be most difficult to describe.
+
+\subsection*{Fun with stacking blocks}
+Hall, John. “Fun with stacking blocks” American Journal of Physics 73 (2005).\\
+
+This article was a lot more in depth than the previous one, and it included a lot more details on moment of inertia and torque. However, it was all about rectangular blocks and thus has the same limitations as the previous article.
+
+\subsection*{Simulating Object Stacking Using Stack Stability}
+Thomsen, Kasper. “Simulating Object Stacking Using Stack Stability” Aalborg University Department of Architecture (2014).\\
+
+Even after searching for stacked pillars, stacked cylinders and column buckling I couldn't find any articles on stacking cylinders specifically. Despite still being about blocks this article went further in depth about leaning blocks and other rotations problems, and was thus still helpful.
+
+
+\subsection*{Section of a Normal Column}
+
+\bigskip
+
+\begin{tikzpicture}[scale = 1]
+	    
+    \tikzmath{\x1 = -1.5;};
+    \tikzmath{\x2 = 0;};
+    \tikzmath{\x3 = .25;};
+    \draw (.75,\x2) arc (0:360:.75 and 0.3);
+	\draw (-.75,\x2) -- (-.75,\x1);
+	\draw (-.75,\x1) arc (180:360:.75 and 0.3);
+	\draw [dashed] (-.75,\x1) arc (180:360:.75 and -0.3);
+	\draw (.75,\x1) -- (.75,\x2);
+	  
+	\draw [->] (0,\x2 + -.75) -- (0,\x2 + -.75 + \x3);
+	\draw (0,\x2 + -.75) circle (.02);
+	\node[right] at (.75,\x2 + -.75) {$C_1,$ $F_{C_1 on C_2}=(m_{C_1}+m_{Roof})g$};
+	\draw [->] (0,\x2 + -.75) -- (0,\x2 + -.75 - \x3);
+
+	\tikzmath{\x1 = -3;};
+    \tikzmath{\x2 = -1.5;};
+    \tikzmath{\x3 = .35;};
+	\draw (-.75,\x2) -- (-.75,\x1);
+	\draw (-.75,\x1) arc (180:360:.75 and 0.3);
+	\draw [dashed] (-.75,\x1) arc (180:360:.75 and -0.3);
+	\draw (.75,\x1) -- (.75,\x2);
+	
+	\draw [->] (0,\x2 + -.75) -- (0,\x2 + -.75 + \x3);
+	\draw (0,\x2 + -.75) circle (.02);
+	\node[right] at (.75,\x2 + -.75) {$C_2,$ $F_{C_2 on C_3}=(m_{C_2}+m_{C_1}+m_{Roof})g$};
+	\draw [->] (0,\x2 + -.75) -- (0,\x2 + -.75 - \x3);	
+	
+	\tikzmath{\x1 = -4.5;};
+    \tikzmath{\x2 = -3;};
+    \tikzmath{\x3 = .45;};
+	\draw (-.75,\x2) -- (-.75,\x1);
+	\draw (-.75,\x1) arc (180:360:.75 and 0.3);
+	\draw [dashed] (-.75,\x1) arc (180:360:.75 and -0.3);
+	\draw (.75,\x1) -- (.75,\x2);
+	
+	\draw [->] (0,\x2 + -.75) -- (0,\x2 + -.75 + \x3);
+	\draw (0,\x2 + -.75) circle (.02);
+	\node[right] at (.75,\x2 + -.75) {$C_3,$ $F_{C_3 on Floor}=(m_{C_3}+m_{C_2}+m_{C_1}+m_{Roof})g$};
+	\draw [->] (0,\x2 + -.75) -- (0,\x2 + -.75 - \x3);  
+	
+
+    
+\end{tikzpicture}
+
+\subsection*{Section of a Pushed Column (Low Friction)}
+$F_g$ is not shown but acts on all 3 columns on top of the forces already depicted.
+\bigskip
+
+\noindent
+\begin{tikzpicture}[scale = 1.75]
+	    
+    \tikzmath{\x1 = -1.5;};
+    \tikzmath{\x2 = 0;};
+    \tikzmath{\x3 = .25;};
+    \draw (.75,\x2) arc (0:360:.75 and 0.3);
+	\draw (-.75,\x2) -- (-.75,\x1);
+	\draw (-.75,\x1) arc (180:360:.75 and 0.3);
+	\draw [dashed] (-.75,\x1) arc (180:360:.75 and -0.3);
+	\draw (.75,\x1) -- (.75,\x2);
+	  
+	%\draw [->] (0,\x2 + -.75) -- (0,\x2 + -.75 + \x3);
+	%\draw (0,\x2 + -.75) circle (.02);
+	% \node [right] at (1,\x2 + -.75) {$C_1,$ $F_{C_1 on C_2}=(m_{C_1}+m_{Roof})g$};
+	%\draw [->] (0,\x2 + -.75) -- (0,\x2 + -.75 - \x3);
+
+	\tikzmath{\x1 = -3;};
+    \tikzmath{\x2 = -1.5;};
+    \tikzmath{\x3 = .35;};
+	\draw (-.5,\x2-.24) -- (-.5,\x1);
+	\draw [dashed] (-.5,\x2-.24) -- (-.5,\x2);
+	\draw (-.5,\x1) arc (180:360:.75 and 0.3);
+	\draw [dashed] (-.5,\x1) arc (180:360:.75 and -0.3);
+	\draw [dashed] (-.5,\x2) arc (180:275:.75 and 0.3);
+	\draw [dashed] (-.5,\x2) arc (180:310:.75 and -0.3);
+	\draw (1,\x2) arc (360:310:.75 and -0.3);
+	\draw (1,\x2) arc (360:275:.75 and 0.3);
+	\draw (1,\x1) -- (1,\x2);
+	
+	\draw (-.75,\x1) arc (180:275:.75 and 0.3);
+	\draw (-.75,\x1) arc (180:225:.75 and -0.3);	
+	\draw [dashed] (-.75,\x1) arc (180:360:.75 and 0.3);
+	\draw [dashed] (-.75,\x1) arc (180:360:.75 and -0.3);	
+	
+	%\draw [->] (.25,\x2 + -.75) -- (.5,\x2 + -.75);
+	%\draw (.25,\x2 + -.75) circle (.02);
+	% \node [right] at (1,\x2 + -.75) {$C_2,$ $F_{C_2 on C_3}=(m_{C_2}+m_{C_1}+m_{Roof})g$};
+	%\draw [->] (.25,\x2 + -.75) -- (.25,\x2 + -.75 - \x3);	
+	
+	\tikzmath{\x1 = -4.5;};
+    \tikzmath{\x2 = -3;};
+    \tikzmath{\x3 = .45;};
+	\draw (-.75,\x2) -- (-.75,\x1);
+	\draw (-.75,\x1) arc (180:360:.75 and 0.3);
+	\draw [dashed] (-.75,\x1) arc (180:360:.75 and -0.3);
+	\draw (.75,\x1) -- (.75,\x2-.25);
+	\draw [dashed] (.75,\x2-.25) -- (.75,\x2);
+	
+	%\draw [->] (0,\x2 + -.75) -- (0,\x2 + -.75 + \x3);
+	%\draw (0,\x2 + -.75) circle (.02);
+	% \node [right] at (1,\x2 + -.75) {$C_3,$ $F_{C_3 on Floor}=(m_{C_3}+m_{C_2}+m_{C_1}+m_{Roof})g$};
+	%\draw [->] (0,\x2 + -.75) -- (0,\x2 + -.75 - \x3);  
+	\tikzmath{\x1 = .25;};	
+	\draw (2,0.3) rectangle (3.5,-1.7);
+	\draw (\x1+2.25,-1.7) rectangle (\x1+3.75,-3.7);
+	\draw (2,-3.7) rectangle (3.5,-5.7);
+	
+
+	
+	\draw [->] (\x1+2.3,-3.65) -- (\x1+2.3,-2.95);
+	\draw[decoration={brace,mirror,raise=5pt},decorate] (2.05,-1.65) -- node[below=5pt] {$r_1$} (2.45,-1.65);
+	\draw[decoration={brace,mirror,raise=5pt},decorate] (2.05,.35) -- node[below=5pt] {$l$} (3.45,.35);
+
+	\draw [->] (3.5,-3.65) -- (3.5,-2.95);
+	\draw [->] (\x1+2.3,-1.75) -- (\x1+2.3,-2.25);
+	\node [right] at (\x1+2.3,-2){$\tau_{1}$};
+	\node [right] at (\x1+3.25,-2){$\tau_{2}$};
+	\node [right] at (\x1+2.3,-3.25){$\tau_{3}$};
+	\node [right] at (\x1+3.25,-3.25){$\tau_{4}$};
+	\draw [->] (3.5,-1.75) -- (3.5,-2.25);
+	\draw [->] (\x1+3,-2.7) -- (\x1+2.5,-2.7);
+	\node [above] at (\x1+2.75,-2.7){$F_{friction}$};
+	\draw [->] (\x1+3,-2.7) -- (\x1+3.65,-2.7);
+	\node [below] at (\x1+3.35,-2.7){$F_{push}$};
+	\draw (\x1+3,-2.7) circle (0.02);
+	
+	\node[right] at (4.25,\x2 + 0.75) {$C_2,$ $F_{Friction}=\mu_{C_1C_2}(m_{C_1}+m_{Roof})g+\dots$};
+	\node[right] at (5,\x2 + 0.5) {$\mu_{C_2C_3}(m_{C_1}+m_{C_2}+m_{Roof})g$};
+	\node[right] at (4.25,\x2 + 0.25) {$C_2,$ $F_{push}=Constant$};
+	\node[right] at (4.25,\x2 + 0) {$C_2,$ $\tau_{1}(r_1-\frac{1}{2}l^2)=\tau_2(r_1+\frac{1}{2}l)$};
+	\node[right] at (4.25,\x2 + -.25) {$C_2,$ $F_{C_2 on C_3}=(m_{C_2}+m_{C_1}+m_{Roof})g$};	
+	
+	\draw [->] (\x1+2.25,-1.65) -- (\x1+2.25,-1.15);
+	\draw [->] (3.45,-1.65) -- (3.45,-1.15);
+	\draw [->] (2.75,-.5) -- (2.75,-1);
+	\node [right] at (2.8,-.75){$F_{Roof}$};	
+	\node [right] at (\x1+2.25,-1.4){$\tau_{1}$};
+	\node [right] at (3.475,-1.4){$\tau_{2}$};
+	\draw [->] (2.75,-.5) -- (3.25,-.5);
+	\node [above] at (3,-.5){$F_{friction}$};
+	
+	\node[right] at (3.75,\x2 + 2.75) {$C_1,$ $F_{Friction}=\mu_{C_1C_2}(m_{C_1}+m_{Roof})g$};
+	\node[right] at (3.75,\x2 + 2.5) {$C_1,$ $F_{Roof}=m_{Roof}g$};
+	\node[right] at (3.75,\x2 + 2.25) {$C_1,$ $\tau_{1}(r_1-\frac{1}{2}l^2)=\tau_2(r_1+\frac{1}{2}l)$};
+	\node[right] at (3.75,\x2 + 2) {$C_2,$ $\tau_{3}(r_1-\frac{1}{2}l^2)=\tau_4(r_1+\frac{1}{2}l)$};
+	\node[right] at (3.75,\x2 + 1.75) {$C_1,$ $F_{C_2onC_1}=(m_{C_1}+m_{Roof})g$};
+	
+	\draw [->] (\x1+2.25,-3.75) -- (\x1+2.25,-4.5);
+	\draw [->] (3.45,-3.75) -- (3.45,-4.5);
+	\node [right] at (\x1+2.25,-4){$\tau_{3}$};
+	\node [right] at (3.475,-4){$\tau_{4}$};
+	\draw [->] (2.75,-5) -- (2.75,-4.25);
+	\node [right] at (2.8,-4.65){$F_{Floor}$};
+	\draw [->] (2.75,-5) -- (3.25,-5);
+	\node [below] at (3,-5){$F_{friction}$};
+	
+	\node[right] at (3.75,\x2 + -1.25) {$C_3,$ $F_{Friction}=\mu_{C_2C_3}(m_{C_1}+m_{C_2}+m_{Roof})g$};
+	\node[right] at (3.75,\x2 + -1.75) {$C_3,$ $\tau_{3}(r_1-\frac{1}{2}l^2)=\tau_4(r_1+\frac{1}{2}l)$};
+	\node[right] at (3.75,\x2 + -2) {$C_3,$ $F_{C_3}=(m_{C_1}+m_{C_2}+m_{C_3}+m_{Roof})g$};
+	
+\end{tikzpicture}
+\subsection*{Section of a Pushed Column (High Friction) }
+$F_g$ is not shown but acts on all 3 columns on top of the forces already depicted. Equations not listed are the same as the low friction model.(4,-2.5)
+\bigskip
+
+\noindent
+\begin{tikzpicture}[scale = 1.75] 
+	
+	\draw [rotate=10] (1.91,-0.07) rectangle (3.41,-2.07);
+	\draw (2.25,-1.7) rectangle (3.75,-3.7);
+	\draw (2,-3.7) rectangle (3.5,-5.7);
+	
+	\node[right] at (4,-.5) {$C_1,$ $\tau_{Roof}=m_{Roof}g\cos\theta$};
+	\node[right] at (4,-.75) {$C_1,$ $\tau_{Friction}=\mu_{Roof}m_{Roof}\sin\theta$};
+	
+	\node[right] at (4,-2.5) {$C_2,$ $\tau_{C_1onC_2}=(m_{C_1}+m_{Roof})g\cos\theta$};
+	\node[right] at (4,-2.75) {$C_2,$ $F_{push}=Constant$};
+	
+	\draw [->] (2.3,-3.65) -- (2.3,-2.95);
+	\node [right] at (2.3,-3.25){$F_{C_3 on C_2}$};
+	\draw [->] (3.5,-3.65) -- (3.5,-2.95);
+	\draw [->] (2.3,-1.75) -- (2.3,-2.25);
+	\draw [->] (2.3,-1.75) -- (2.8,-1.75);
+	\node [right] at (2.3,-2){$\tau_{C_1 on C_2}$};
+	%\draw [->] (3.5,-1.75) -- (3.5,-2.25);
+	\draw [->] (3,-2.7) -- (2.5,-2.7);
+	\node [above] at (2.75,-2.7){$F_{friction}$};
+	\draw [->] (3,-2.7) -- (3.65,-2.7);
+	\node [below] at (3.35,-2.7){$F_{push}$};
+
+	\draw [->] (2.3,-1.65) -- (2.3,-1.2);
+	\draw [->] (2.3,-1.65) -- (1.8,-1.65);
+	\node [above] at (2.8,-1.65){$\tau_{C_2 on C_1}$};
+	\draw [->] (3.35,.45) -- (3.35,0);
+	\draw [->] (3.35,.45) -- (3.85,.45);
+	\node [below] at (3.65,.45){$\tau_{Roof}$};
+	
+\begin{comment}
+	\draw (3,-2.7) circle (0.02);
+	\draw [->] (2.25,-1.65) -- (2.25,-1.15);
+	\draw [->] (3.45,-1.65) -- (3.45,-1.15);
+	\draw [->] (2.75,-.5) -- (2.75,-1);
+	\node [right] at (2.8,-.75){$F_{Roof}$};	
+	\node [right] at (2.25,-1.4){$F_{C_2 on C_1}$};
+	\draw [->] (2.75,-.5) -- (3.25,-.5);
+	\node [above] at (3,-.5){$F_{friction}$};
+\end{comment}
+
+	\draw [->] (2.25,-3.75) -- (2.25,-4.5);
+	\draw [->] (3.45,-3.75) -- (3.45,-4.5);
+	\node [right] at (2.25,-4){$F_{C_2 on C_3}$};
+	\draw [->] (2.75,-5) -- (2.75,-4.25);
+	\node [right] at (2.8,-4.65){$F_{Floor}$};
+	\draw [->] (2.75,-5) -- (3.25,-5);
+	\node [below] at (3,-5){$F_{friction}$};
+
+\end{tikzpicture}
+\pagebreak
+\subsection*{Distinguishing Between the High and Low Friction States}
+Whether or not we need to model using the high friction or low friction models depends on whether the block will tip or slip. The equation for determining whether or not a block will tip or slip is $M_{push/f}=M_{g/N}$. \footnote{adaptivemap.ma.psu.edu/websites/friction} In the case of stacked columns we can see that we will have to compare the friction force with the force required to tip the block $\mu F_g$ vs $\frac{F_{g}r}{h}$. If we assume the columns were made of marble and had a diameter of $0.6$m we get the following results for tipping points. Since marble and granite have a coefficient of friction close to .5 this suggests that it would probably tip.\\
+\includegraphics[scale=.2]{Graph_1}
+\end{document}

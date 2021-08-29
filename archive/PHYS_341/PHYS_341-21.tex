@@ -1,0 +1,62 @@
+\documentclass[english]{article}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\usepackage{babel}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{gensymb}
+\usepackage{pgfplots}
+\usepackage{multicol}
+\begin{document}
+\begin{multicols*}{2}
+\textbf{Johannes Byle}\\
+\newcommand{\Lagr}{\mathcal{L}}
+
+\noindent
+\textbf{9.15}
+From equation $9.53$ we know that the radial acceleration is:
+$$\ddot{z}=-g+2\Omega\dot{x}\sin\theta$$
+At the north pole $\theta$ is 0
+$$\ddot{z}=-g=g_0$$
+At the equator $\theta$ is $\pi$
+$$\ddot{z}=-g+2\Omega\dot{x}=g_0(1+\frac{2\Omega\dot{x}}{g_0})=\lambda g_0$$
+
+\noindent
+\textbf{9.20 (a)}
+$$m\ddot{r}=F+2m\dot{r}\times\Omega+m(\Omega\times r)\times\Omega$$
+Since $r=x\hat{x}+y\hat{y}$
+$$m\ddot{x}=F_x+2m\dot{y}\Omega+m\Omega^2x$$
+$$m\ddot{y}=F_y+2m\dot{x}\Omega+m\Omega^2y$$
+\textbf{(b)}
+$$\eta=x+iy$$
+$$\ddot{\eta}=2i\Omega\dot{\eta}+\Omega^2\eta$$
+$$\eta=e^{-i\alpha t}$$
+$$\dot{\eta}=-i\alpha e^{-i\alpha t}$$
+$$\ddot{\eta}=-\alpha^2 e^{-i\alpha t}$$
+$$-\alpha^2=2\Omega\alpha+\Omega^2$$
+$$\alpha=\Omega$$
+Since this is only one solution we need to guess $te^{-i\alpha t}$
+$$\eta=e^{-i\Omega t}(A+Bt)$$
+\textbf{(c)}
+$$\eta(0)=e^{-i\Omega (0)}(A+B(0))=A=x_0$$
+$$\dot{\eta}(0)=-i\Omega e^{-i\Omega (0)}(x_0+B(0))+Be^{-i\Omega (0)}$$
+$$\dot{\eta}(0)=B-\Omega x_0i=v_{x0}+v_{y0}i$$
+$$B=v_{x0}+(v_{y0}+\Omega x_0)i$$
+$$e^{it}=\cos t+i\sin t$$
+$$x(t)=(x_0+v_{x0}t)\cos\Omega t+(v_{y0}+\Omega x_0)t\sin\Omega t$$
+$$y(t)=-(x_0+v_{x0}t)\sin\Omega t+(v_{y0}+\Omega x_0)t\cos\Omega t$$
+\textbf{(d)}
+It moves in a spiral
+
+\noindent
+\textbf{9.22}
+$$m\ddot{r}=q(Q+\dot{r}\times B)$$
+$$m\ddot{r}=q(Q+\dot{r}\times B)+2m\dot{r}\times\Omega+m(\Omega\times r)\times\Omega$$
+Which is an ellipse
+
+\end{multicols*}
+\end{document}

@@ -1,0 +1,28 @@
+\documentclass[english]{article}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\usepackage{babel}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{gensymb}
+\usepackage{pgfplots}
+\begin{document}
+\textbf{HW Feb 25, Johannes Byle}\\
+
+\noindent
+\textbf{6.2} $$\frac{\delta f}{\delta q}-\frac{d}{du}\frac{\delta f}{\delta q'}=0$$
+We also already know that length in cylindrical coordinates are $rd\phi$ and $dz$ thus:
+$$L=f=\sqrt{R^2\dot{\phi^2}+\dot{z^2}}$$
+$$\frac{\delta f}{\delta \phi}=0$$
+$$\frac{\delta f}{\delta z}=0$$
+$$\frac{\delta f}{\delta \dot{\phi}}=\frac{R^2\dot{\phi}}{\sqrt{R^2\dot{\phi^2}+\dot{z^2}}}$$
+If we assume the $\sqrt{R^2\dot{\phi^2}+\dot{z^2}}$ is constant:
+$$\frac{d}{dt}\frac{\delta f}{\delta \dot{\phi}}=\frac{R^2\ddot{\phi}}{\sqrt{R^2\dot{\phi^2}+\dot{z^2}}}$$
+$$\frac{\delta f}{\delta \dot{z}}=\frac{\dot{z}}{\sqrt{R^2\dot{\phi^2}+\dot{z^2}}}$$
+If we assume the $\sqrt{R^2\dot{\phi^2}+\dot{z^2}}$ is constant:
+$$\frac{d}{dt}\frac{\delta f}{\delta \dot{z}}=\frac{\ddot{z}}{\sqrt{R^2\dot{\phi^2}+\dot{z^2}}}$$
+\end{document}

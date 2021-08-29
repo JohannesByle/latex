@@ -1,0 +1,81 @@
+\documentclass[english]{article}
+\usepackage{physics}
+\begin{document}
+\author{Johannes Byle}
+\title{Quiz 1}
+\maketitle
+\section*{a)}
+I am expressing $\ket{P}$ as a matrix so that the elements can be more easily seen.
+\[
+\ket{P}=\frac{1}{\sqrt{18}}
+\begin{bmatrix}
+-2\ket{d_-u_+u_+} & \ket{d_+u_-u_+} & \ket{d_+u_+u_-}\\
+\ket{u_-d_+u_+} & -2\ket{u_+d_-u_+} & \ket{u_+d_+u_-}\\
+\ket{u_-u_+d_+} & \ket{u_+u_-d_+} & -2\ket{u_+u_+d_-}
+\end{bmatrix}
+\]
+\[
+\bra{P}\ket{P}=\left(\frac{1}{\sqrt{18}}\right)^2
+\begin{bmatrix}
+4 & 1 & 1\\
+1 & 4 & 1\\
+1 & 1 & 4
+\end{bmatrix}
+=\frac{1}{18}\left(4+1+1+1+4+1+1+1+4\right)=1
+\]
+\section*{b)}
+$$\hat{\vb{S}}=\hat{S}_x\vb{i}+\hat{S}_y\vb{j}+\hat{S}_z\vb{k}$$
+$$\hat{S}_x=\frac{\hat{S_+}+\hat{S}_-}{2}$$
+$$\hat{S}_y=\frac{\hat{S_+}-\hat{S}_-}{2i}$$
+$$\hat{S}_{1x}\hat{S}_{2x}=\frac{\left(\hat{S}_{1+}+\hat{S}_{1-}\right)\left(\hat{S}_{2+}+\hat{S}_{2-}\right)}{4}=\frac{\hat{S}_{1+}\hat{S}_{2+}+\hat{S}_{1-}\hat{S}_{2+}+\hat{S}_{2-}\hat{S}_{1+}+\hat{S}_{1-}\hat{S}_{2-}}{4}$$
+$$\hat{S}_{1y}\hat{S}_{2y}=\frac{\left(\hat{S}_{1+}-\hat{S}_{1-}\right)\left(\hat{S}_{2+}-\hat{S}_{2-}\right)}{-4}=\frac{-\hat{S}_{1+}\hat{S}_{2+}+\hat{S}_{1-}\hat{S}_{2+}+\hat{S}_{2-}\hat{S}_{1+}-\hat{S}_{1-}\hat{S}_{2-}}{4}$$
+$$\hat{S}_{1x}\hat{S}_{2x}+\hat{S}_{1y}\hat{S}_{2y}=\frac{2\hat{S}_{1-}\hat{S}_{2+}+2\hat{S}_{2-}\hat{S}_{1+}}{4}=\frac{1}{2}\hat{S}_{2-}\hat{S}_{1+}+\frac{1}{2}\hat{S}_{1-}\hat{S}_{2+}$$
+\section*{c)}
+The m values of the proton states are all $\frac{1}{2}$ because the m value is the sum of the spins of each $q$, and every proton state has two quarks with $m_s=\frac{1}{2}$ and one quark with $m_s=-\frac{1}{2}$. Thus:
+\[
+\hat{S}_+\ket{P}=\frac{1}{\sqrt{18}}
+\begin{bmatrix}
+0 & 0 & 0\\
+0 & 0 & 0\\
+0 & 0 & 0
+\end{bmatrix}
+\]
+Since I have already shown that $\hat{S}_{1x}\hat{S}_{2x}+\hat{S}_{1y}\hat{S}_{2y}=\frac{1}{2}\hat{S}_{2-}\hat{S}_{1+}+\frac{1}{2}\hat{S}_{1-}\hat{S}_{2+}$ and since all $\hat{S}_+$ values are zero the $\hat{S}_x$ and $\hat{S}_y$ components are zero.
+$$\lambda\vb{\hat{S}}_1\cdot\vb{\hat{S}}_2=\lambda\left(0+0+\hat{S}_{1z}\hat{S}_{2z}\right)$$
+\[
+\hat{S}_{1z}\hat{S}_{2z}\ket{P}=\frac{1}{\sqrt{18}}\frac{1}{2}\frac{1}{2}
+\begin{bmatrix}
+-2\ket{d_-u_+u_+} & \ket{d_+u_-u_+} & \ket{d_+u_+u_-}\\
+\ket{u_-d_+u_+} & -2\ket{u_+d_-u_+} & \ket{u_+d_+u_-}\\
+\ket{u_-u_+d_+} & \ket{u_+u_-d_+} & -2\ket{u_+u_+d_-}
+\end{bmatrix}
+\]
+\[
+\lambda\vb{\hat{S}}_1\cdot\vb{\hat{S}}_2\ket{P}=\lambda\frac{1}{4\sqrt{18}}
+\begin{bmatrix}
+-2\ket{d_-u_+u_+} & \ket{d_+u_-u_+} & \ket{d_+u_+u_-}\\
+\ket{u_-d_+u_+} & -2\ket{u_+d_-u_+} & \ket{u_+d_+u_-}\\
+\ket{u_-u_+d_+} & \ket{u_+u_-d_+} & -2\ket{u_+u_+d_-}
+\end{bmatrix}
+\]
+\section*{d)}
+\[
+\bra{P}\lambda\vb{\hat{S}}_1\cdot\vb{\hat{S}}_2\ket{P}=\lambda\frac{1}{4\sqrt{18}}
+\begin{bmatrix}
+4 & 1 & 1\\
+1 & 4 & 1\\
+1 & 1 & 4
+\end{bmatrix}
+=\lambda\frac{1}{4\sqrt{18}}\left(4+1+1+1+4+1+1+1+4\right)=\lambda\frac{1}{4}
+\]
+\section*{e)}
+\[
+\lambda\vb{\hat{S}}_1\cdot\vb{\hat{S}}_2\ket{P}=\lambda\frac{1}{4}
+\begin{bmatrix}
+1 & 1 & 1\\
+1 & 1 & 1\\
+1 & 1 & 1
+\end{bmatrix}
+=\lambda\frac{9}{4}
+\]
+\end{document}

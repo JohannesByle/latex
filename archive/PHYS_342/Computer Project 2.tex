@@ -1,0 +1,64 @@
+\documentclass[english]{article}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\usepackage{babel}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{float}
+\usepackage{enumitem}
+\usepackage{physymb}
+\begin{document}
+\title{Computer Project 2}
+\author{Johannes Byle}
+\date{November 16, 2018}
+\maketitle
+\begin{flushleft}
+\subsection*{}
+\textbf{1.} We know that the maximum value for $\phi$ is $2\pi N$ and the maximum value for $z$ is $L$. Thus we know $k=\frac{L}{2\pi N}$. Spherical coordinates can be converted to Cartesian coordinates in the following way:\\
+$x'=Rcos\phi'$\\
+$y'=Rsin\phi'$\\
+$z'=\frac{L}{2\pi N}\phi'$\\
+\subsection*{}
+\textbf{2.} The Biot Savart Law is: $B(r)=\frac{\mu_0}{4\pi}I\int\frac{dl'\times\hat{\pmb{\scriptr}}}{\pmb{\scriptr}^2}$\\
+In our case:\\
+$\vec{dl'}=(-Rsin\phi'\hat{x'}+Rcos\phi'\hat{y'}+\frac{L}{2\pi N}\hat{z'})d\phi'$\\
+
+$\pmb{\scriptr}=(x-Rcos\phi')\hat{x}+(-Rsin\phi')\hat{y}+(z-\frac{L}{2\pi N})\hat{z}$\\
+
+$\hat{\pmb{\scriptr}}=\frac{(x-Rcos\phi')\hat{x}+(-Rsin\phi')\hat{y}+(z-\frac{L}{2\pi N})\hat{z}}{\sqrt[]{(x-Rcos\phi')^2+(-Rsin\phi')^2+(z-\frac{L}{2\pi N})^2}}$\\
+
+$(\vec{dl'}\times\pmb{\scriptr})\hat{x}=((Rcos\phi'(z-\frac{L}{2\pi N})-(z-\frac{L}{2\pi N})(-Rsin\phi'))d\phi'$\\
+$(\vec{dl'}\times\pmb{\scriptr})\hat{y}=((z-\frac{L}{2\pi N})(x-Rcos\phi')+Rsin\phi'(z-\frac{L}{2\pi N}))d\phi'$
+$(\vec{dl'}\times\pmb{\scriptr})\hat{z}=(-Rsin\phi'(-Rsin\phi')-Rcos\phi'(x-Rcos\phi'))d\phi'$\\
+
+Thus:\\
+$B(r)\hat{x}=\frac{\mu_0}{4\pi}I\int\frac{Rcos\phi'(z-\frac{L}{2\pi N})-(\frac{L}{2\pi N})(-Rsin\phi')}{((x-Rcos\phi')^2+(-Rsin\phi')^2+(z-\frac{L}{2\pi N})^2)^{3/2}}d\phi'$\\
+
+$B(r)\hat{y}=\frac{\mu_0}{4\pi}I\int\frac{(\frac{L}{2\pi N})(x-Rcos\phi')+Rsin\phi'(z-\frac{L}{2\pi N})}{((x-Rcos\phi')^2+(-Rsin\phi')^2+(z-\frac{L}{2\pi N})^2)^{3/2}}d\phi'$\\
+
+$B(r)\hat{z}=\frac{\mu_0}{4\pi}I\int\frac{-Rsin\phi'(-Rsin\phi')-Rcos\phi'(x-Rcos\phi')}{((x-Rcos\phi')^2+(-Rsin\phi')^2+(z-\frac{L}{2\pi N})^2)^{3/2}}d\phi'$\\
+\subsection*{}
+\textbf{4.} The ideal solenoid has a magnetic field of 1.25663 T. The real solenoid has a magnetic field of 12.5662 T. This is not, as far as I can tell, an error with my code but is rather due to the fact that the solenoid is a real solenoid with finite length.
+\subsection*{}
+\textbf{5.} I'm not quite sure how to use the streamline function, as in I'm not quite sure what the best starting locations and zoom settings are. 
+\begin{figure}[H]
+\includegraphics[scale=.5]{CP2_1.png}
+\caption{Streamline graph. Axes not to scale, X is horizontal Z is vertical.}
+\end{figure}
+\subsection*{}
+\textbf{6.} The numeric answer is 0.3810, but the ideal answer would be 1.2566.
+\begin{figure}[H]
+\includegraphics[scale=.5]{CP2_2.png}
+\caption{Streamline graph. Axes not to scale, X is horizontal Z is vertical.}
+\end{figure}
+\textbf{7.} The numeric answer is 1.3541e-04, but the ideal answer would be     0.0126.
+\begin{figure}[H]
+\includegraphics[scale=.5]{CP2_3.png}
+\caption{Streamline graph. Axes not to scale, X is horizontal Z is vertical.}
+\end{figure}
+\end{flushleft}
+\end{document}
+
+
+

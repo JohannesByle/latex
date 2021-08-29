@@ -1,0 +1,56 @@
+\documentclass[english]{article}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\usepackage{babel}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{gensymb}
+\usepackage{pgfplots}
+\begin{document}
+\textbf{HW Feb 18, Johannes Byle}\\
+
+\noindent
+\textbf{5.20} $y=x-\sqrt{x^2-5^2}$
+
+\begin{tikzpicture}
+\begin{axis}
+\addplot[color=black,domain=5:25]{x-sqrt((x^2)-(5^2))};
+\end{axis}
+\end{tikzpicture}
+
+\noindent
+\textbf{5.26} From (5.36) we know $\omega_1=\sqrt{\omega_0^2-\beta^2}$
+$$\beta=\sqrt{\omega_0^2-\omega_1^2}=\sqrt{.002001}$$
+$$t=\frac{2\pi}{\omega}$$
+$$e^{-\beta t}\approx e^{-\frac{20\pi}{\omega_0}\beta}\approx0.06$$
+The amplitude will have diminished far more significantly.
+
+\noindent
+\textbf{5.30 (a)} $$x(t)=C_1e^{-(\beta-\sqrt{\beta^2-\omega_0^2})t}+C_2e^{-(\beta+\sqrt{\beta^2-\omega_0^2})t}$$
+$$y(t)=-(\beta-\sqrt{\beta^2-\omega_0^2})C_1e^{-(\beta-\sqrt{\beta^2-\omega_0^2})t}-(\beta+\sqrt{\beta^2-\omega_0^2})C_2e^{-(\beta+\sqrt{\beta^2-\omega_0^2})t}$$
+$$x_0=C_1+C_2$$
+$$y_0=-(\beta-\sqrt{\beta^2-\omega_0^2})C_1-(\beta+\sqrt{\beta^2-\omega_0^2})C_2$$
+
+\[
+\begin{bmatrix}
+C_1 \\
+C_2
+\end{bmatrix}
+=
+\begin{bmatrix}
+1&1 \\
+-(\beta-\sqrt{\beta^2-\omega_0^2})&-(\beta+\sqrt{\beta^2-\omega_0^2})
+\end{bmatrix}^{-1}
+\begin{bmatrix}
+x_0 \\
+v_0
+\end{bmatrix}
+\]
+
+$$C_1=\frac{-(\beta+\sqrt{\beta^2-\omega_0^2})x_0-v_0}{-(\beta+\sqrt{\beta^2-\omega_0^2})+(\beta-\sqrt{\beta^2-\omega_0^2})}=\frac{(\beta+\sqrt{\beta^2-\omega_0^2})x_0+v_0}{2\sqrt{\beta^2-\omega_0^2}}$$
+$$C_2=\frac{-(\beta-\sqrt{\beta^2-\omega_0^2})x_0-v_0}{-(\beta+\sqrt{\beta^2-\omega_0^2})+(\beta-\sqrt{\beta^2-\omega_0^2})}=\frac{-(\beta-\sqrt{\beta^2-\omega_0^2})x_0-v_0}{2\sqrt{\beta^2-\omega_0^2}}$$
+\end{document}

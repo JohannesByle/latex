@@ -1,0 +1,68 @@
+\documentclass[english]{article}
+\usepackage{multicol}
+\usepackage{physics}
+\usepackage[margin=.75in]{geometry}
+\usepackage{amsmath}
+\begin{document}
+\textbf{Johannes Byle}\\
+
+\noindent
+\textbf{4.5}\\
+$$\ket{+n}=\cos\frac{\theta}{2}\ket{+z}+e^{i\phi}\sin\frac{\theta}{2}\ket{-z}$$
+$$\ket{-n}=\sin\frac{\theta}{2}\ket{+z}-e^{i\phi}\cos\frac{\theta}{2}\ket{-z}$$
+$$\ket{+y}=\frac{1}{\sqrt{2}}\ket{+z}+\frac{i}{\sqrt{2}}\ket{-z}$$
+$$\bra{+n}\ket{+y}=\frac{1}{\sqrt{2}}\cos\frac{\theta}{2}+\frac{i}{\sqrt{2}}\sin\frac{\theta}{2}$$
+$$\bra{-n}\ket{+y}=\frac{1}{\sqrt{2}}\sin\frac{\theta}{2}-\frac{i}{\sqrt{2}}\cos\frac{\theta}{2}$$
+\[
+\bra{+y}\ket{\psi(t)}=e^{-i\omega_0t/\hbar}\left(\ket{+n}+\ket{-n}\right)\frac{1}{\sqrt{2}}
+\begin{bmatrix}
+\cos\frac{\theta}{2}+i\sin\frac{\theta}{2} \\
+\sin\frac{\theta}{2}-i\cos\frac{\theta}{2}
+\end{bmatrix}
+\]
+$$\bra{+y}\ket{\psi(t)}=\frac{e^{-i\omega_0t/\hbar}}{\sqrt{2}}\left[\left(\cos\frac{\theta}{2}+i\sin\frac{\theta}{2}\right)\ket{+n}+\left(\sin\frac{\theta}{2}-i\cos\frac{\theta}{2}\right)\ket{-n}\right]$$
+$$\phi=\frac{\theta}{2}$$
+$$\left|\bra{+y}\ket{\psi(t)}\right|^2=\frac{e^{-2i\omega_0t/\hbar}}{2}\left[\cos^2\phi-\sin^2\phi+2i\sin\phi\cos\phi+\sin^2\phi+\cos^2\phi-2i\sin\phi\cos\phi\right]$$
+$$\left|\bra{+y}\ket{\psi(t)}\right|^2=e^{-2i\omega_0t/\hbar}\cos^2\frac{\theta}{2}$$
+$$\left|\bra{+y}\ket{\psi(t)}\right|^2=e^{-2i\omega_0T/\hbar}\cos^2\frac{0}{2}=e^{-2i\omega_0T/\hbar}$$
+$$\left|\bra{+y}\ket{\psi(t)}\right|^2=e^{-2i\omega_0T/\hbar}\cos^2\frac{\pi/2}{2}=e^{-2i\omega_0T/\hbar}$$
+
+
+
+\noindent
+\textbf{4.6}\\
+$$\frac{d}{dt}\langle A\rangle=\frac{1}{\hbar}\bra{\psi(t)}[\hat{H},\hat{A}]\ket{\psi(t)}+\bra{\psi(t)}\frac{\delta\hat{A}}{\delta t}\ket{\psi(t)}$$
+$$\frac{d}{dt}\langle S_z\rangle=\frac{1}{\hbar}\bra{\psi(t)}\left(\omega_0\hat{S_z}S_z-S_z\omega_0\hat{S_z}\right)\ket{\psi(t)}+0=0$$
+$$\frac{d}{dt}\langle S_x\rangle=\frac{1}{\hbar}\bra{\psi(t)}\left(\omega_0\hat{S_z}S_x-S_x\omega_0\hat{S_z}\right)\ket{\psi(t)}+\bra{\psi(t)}\frac{\delta}{\delta t}\left(\frac{\hbar}{2}\cos\omega_0t\right)\ket{\psi(t)}=-\omega_0\frac{\hbar}{2}\sin\omega_0t$$
+$$\frac{d}{dt}\langle S_y\rangle=\frac{1}{\hbar}\bra{\psi(t)}\left(\omega_0\hat{S_z}S_y-S_y\omega_0\hat{S_z}\right)\ket{\psi(t)}+\bra{\psi(t)}\frac{\delta}{\delta t}\left(\frac{\hbar}{2}\sin\omega_0t\right)\ket{\psi(t)}=\omega_0\frac{\hbar}{2}\cos\omega_0t$$
+\noindent
+\textbf{4.11}\\
+$$\omega_0=\frac{gq}{2mc}$$
+$$\ket{\psi(t)}=\sqrt{\frac{1+\sin\omega_0t}{2}}\ket{+y}+\sqrt{\frac{1-\sin\omega_0t}{2}}\ket{+y}$$
+$$\frac{d}{dt}\langle S_z\rangle=0$$
+$$\frac{d}{dt}\langle S_x\rangle=-\omega_0\frac{\hbar}{2}\sin\omega_0t$$
+$$\frac{d}{dt}\langle S_y\rangle=\omega_0\frac{\hbar}{2}\cos\omega_0t$$
+\noindent
+\textbf{4.13}\\
+\textbf{a)}
+$$\ket{\psi(t)}=e^{-iE_1t/\hbar}\ket{2}$$
+\textbf{b)}
+$$\ket{\psi(t)}=e^{-iE_0t/\hbar}\ket{3}$$
+\noindent
+\textbf{4.15}\\
+\[
+\frac{\hbar}{2}
+\begin{bmatrix}
+0&\sqrt{3}&0&0\\
+\sqrt{3}&0&2&0\\
+0&2&0&\sqrt{3}\\
+0&0&\sqrt{3}&0
+\end{bmatrix}
+\]
+$$\ket{\psi(0)}=\ket{\tfrac{3}{2},\tfrac{3}{2}}\bra{\tfrac{3}{2}}\ket{\tfrac{3}{2}}+\ket{\tfrac{3}{2},\tfrac{1}{2}}\bra{\tfrac{3}{2}}\ket{\tfrac{1}{2}}+\ket{\tfrac{3}{2},-\tfrac{1}{2}}\bra{\tfrac{3}{2}}\ket{-\tfrac{1}{2}}+\ket{\tfrac{3}{2},-\tfrac{3}{2}}\bra{\tfrac{3}{2}}\ket{-\tfrac{3}{2}}$$
+Using the Clebsch–Gordan coefficients:
+$$\ket{\psi(0)}=\frac{1}{2\sqrt{2}}\left(\ket{\tfrac{3}{2},\tfrac{3}{2}}\bra{\tfrac{3}{2}}\ket{\tfrac{3}{2}}+\sqrt{3}\ket{\tfrac{3}{2},\tfrac{1}{2}}\bra{\tfrac{3}{2}}\ket{\tfrac{1}{2}}+\sqrt{3}\ket{\tfrac{3}{2},-\tfrac{1}{2}}\bra{\tfrac{3}{2}}\ket{-\tfrac{1}{2}}+\ket{\tfrac{3}{2},-\tfrac{3}{2}}\bra{\tfrac{3}{2}}\ket{-\tfrac{3}{2}}\right)$$
+$$\ket{\psi(t)}=\frac{e^{-i\omega_0t/\hbar}}{2\sqrt{2}}\left(\ket{\tfrac{3}{2},\tfrac{3}{2}}\bra{\tfrac{3}{2}}\ket{\tfrac{3}{2}}+\sqrt{3}\ket{\tfrac{3}{2},\tfrac{1}{2}}\bra{\tfrac{3}{2}}\ket{\tfrac{1}{2}}+\sqrt{3}\ket{\tfrac{3}{2},-\tfrac{1}{2}}\bra{\tfrac{3}{2}}\ket{-\tfrac{1}{2}}+\ket{\tfrac{3}{2},-\tfrac{3}{2}}\bra{\tfrac{3}{2}}\ket{-\tfrac{3}{2}}\right)$$
+$$\left|\bra{\tfrac{3}{2},-\tfrac{3}{2}}\ket{\psi(\pi/\omega_0)}\right|^2=\left(\frac{e^{-i\pi/\hbar}}{2\sqrt{2}}\right)^2$$
+
+\end{document}

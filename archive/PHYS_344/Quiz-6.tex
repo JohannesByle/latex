@@ -1,0 +1,99 @@
+\documentclass[english]{article}
+\usepackage{physics}
+\usepackage{multicol}
+\usepackage{verbatim}
+\begin{document}
+\author{Johannes Byle}
+\title{Quiz 6}
+\maketitle
+\begin{enumerate}
+\item A definite state (eigenstate) of an operator means that using that operator on a wavefunction gives back the same wavefunction times a constant, i.e. $p\psi=c\psi$ where $c$ is a constant, means that $\psi$ is in a state of definite momentum. If a wavefunction is not in a state of definite something, you can still find the
+average value (or expectation value) of that operator $\bra{\psi}O\ket{\psi}=\int\psi^{*}O\psi$.
+\begin{enumerate}
+\item $\bra{\psi}\ket{\varphi}=\bra{\varphi}\ket{\psi}$ Complex conjugate
+\item $\ket{\psi}=\sum_n c_n\ket{a_n}$, $\bra{\psi}=\sum_n c_n^{*}\bra{a_n}$
+\end{enumerate}
+\item The probability density function $|\psi|^2=\psi^*\psi$ gives the distribution of where the particle will be located in space.
+\begin{enumerate}
+\item $\hat{J}^{\dagger}_z=\hat{J}_z$ are Hermitian
+\item $\langle A\rangle =\bra{\psi}\hat{A}\ket{\psi}$ expectation value
+\end{enumerate}
+\item Transmission and reflection coefficients for a potential step are found by solving the time-independent Schrodinger equation on both sides of the step, knowing that both the wavefunction and its first derivative must be continuous. The reason for this is that energy is a physical quantity and is proportional to the second derivative (so the first must be continuous otherwise the 2nd doesn't exist) and momentum is proportional to the first derivative (requiring the wavefunction itself to be continuous).
+\begin{enumerate}
+\item To the left of the step $\psi(x)=Ae^{ikx}+Be^{-ikx}$, $k=\sqrt{\frac{2mE}{\hbar^2}}$.
+\item Probability current $j_x=\frac{\hbar}{2mi}\left(\psi^*\frac{\delta\psi}{\delta x}-\psi\frac{\delta \psi^*}{\delta x}\right)$
+\item Transmission coefficient for this step $E>V_0$: $R=\frac{(k-k_0)^2}{(k+k_0)^2}$, $T=\frac{4kk_0}{(k+k_0)^2}$
+\item Transmission coefficient for this step $E<V_0$: $R=\frac{k^2+q^2}{k^2+q^2}=1$. Tunneling coefficient: $T\xrightarrow[qa\gg 1]{}\left(\frac{4kq}{k^2+q^2}\right)^2e^{-2qa}$
+\end{enumerate}
+\item  Know what tunneling is and how to calculate it.
+\begin{enumerate}
+\item Transmission coefficient for this step $E<V_0$: $R=\frac{k^2+q^2}{k^2+q^2}=1$. Tunneling coefficient: $T\xrightarrow[qa\gg 1]{}\left(\frac{4kq}{k^2+q^2}\right)^2e^{-2qa}$
+\end{enumerate}
+\item Wavefunctions are normalized using $\int \psi^*\psi=1$, which basically states that the particle has to be somewhere, as this is the integral over all space of the probability density function. A probability density function is just like any other density, where mass density is $\frac{\text{mass}}{\text{volume}}$, probability density is $\frac{\text{probability}}{\text{volume}}$.
+\item Two operators $A$ and $B$ are able to be measured simultaneously if they commute, i.e. if $[A,B] = 0$.
+\begin{enumerate}
+\item $[A,B]=AB-BA$
+\item If there is more than one eigenstate for the operator $A$ with eigenvalue $a$, we say there is degeneracy.
+\end{enumerate}
+\item Measurement theory and the principle of superposition basically say that quantum particles are in all possible states simultaneously until they are measured and forced into one state. This is called "collapsing" the wavefunction.
+\item The hydrogen atoms energy levels are given entirely in terms of n (when you ignore fine structure). The ground state of any particle is the lowest possible energy state, which is not necessarily n = 0: The first excited state is the state above that and so on for other excited states.
+\begin{enumerate}
+\item Energy levels of Hydrogen $E_n=-\frac{\mu c^2 Z^2\alpha^2}{2n^2}$, page 351.
+\item $l=0$ are $s$ states, $l=1$ $p$ states, $l=2$ $d$ states, $l=3$ $f$ states.
+\end{enumerate}
+\item Hermitian operators are self adjoint, meaning that for an operator $A, A^{\dagger} = A$: The adjoint operator is the conjugate transpose, so take the complex conjugate of each matrix element and transpose the entire matrix. The eigenvalues and eigenvectors of a matrix A are found by solving the equation $(A-cI)\vb{x} = 0$ for the constant $c$
+\begin{enumerate}
+\item Example eigenvaues of $\begin{bmatrix}
+0&1\\
+-2&-3
+\end{bmatrix}=\lambda^2+3\lambda+2=0$ 
+\end{enumerate}
+\item  The eigenvalues of the angular momentum operators $J, L, S$ are always positive quantities, it is their $m$ projections that can be negative. The $m$ projections give the direction of the "vector" and the possible values when adding two angular momentum are given by $|j_1-j_2|\leq j\leq j_1\leq j_1+j_2$ This is often called the triangle condition.
+\begin{enumerate}
+\item $\hat{j}_+$ is the raising operator and it increases the $m$ value, lowering operator does the opposite.
+\end{enumerate}
+\item  If the first order perturbation is zero, then the lowest order becomes the second order perturbation. Perturbations are inherently small, so generally you don't need to calculate beyond the lowest order. First order perturbations are simple to solve as they are just $E_1=\bra{\psi}H_1\ket{\psi}$; where $E_1$ is the energy of the perturbation and $H_1$ is the perturbation itself.
+\begin{enumerate}
+\item Example:
+$$E^{(2)}_n=\sum_{k\neq n}\frac{\left|\bra{k}\hat{H}_1\ket{n}\right|^2}{\left(n+\frac{1}{2}\right)\hbar\omega-\left(k+\frac{1}{2}\right)\hbar\omega}$$
+$$\bra{k}\hat{H}_1\ket{n}=-q\vb{\mathcal{E}}\frac{\hbar}{2m\omega}\left(\sqrt{n+1}\bra{k}\ket{n+1}+\sqrt{n}\bra{k}\ket{n-1}\right)$$
+$$E^{(2)}_n=\frac{q^2\vb{\mathcal{E}}^2\hbar}{2m\omega}\left(\frac{n+1}{-\hbar\omega}+\frac{n}{\hbar\omega}\right)=\frac{q^2\vb{\mathcal{E}}^2}{2m\omega^2}$$
+\end{enumerate}
+\item  The variational principle is simple in concept but complicated in execution, most of the time. It follows an algorithmic approach: Choose a trial wavefunction, calculate the expectation value of that wavefunction with the Hamiltonian h $\bra{\psi_{\text{trial}}}H\ket{\psi_{\text{trial}}}$; then minimize this with respect to some variational parameter. The energy cannot be lower than the ground state so a lower energy is a better approximation
+\begin{enumerate}
+\item Example:
+$$\left\langle E\right\rangle=\bra{\psi}\hat{H}\ket{\psi}$$
+$$\left\langle E\right\rangle=\int d^3r\psi^*\left[-\frac{\hbar^2}{2\mu}\left(\frac{d^2}{dr^2}+\frac{2}{r}\frac{d}{dr}\right)-\frac{e^2}{r}\right]\psi$$
+From example 12.2:
+$$\left\langle E\right\rangle=\frac{\hbar^2}{2\mu a^2}-\frac{e^2}{a}$$
+$$\frac{d\left\langle E\right\rangle}{da}=-\frac{\hbar^2}{\mu a^3}+\frac{e^2}{a^2}=0$$
+$$a=\frac{\hbar^2}{e^2\mu}$$
+$$E_0\leq\left\langle E\right\rangle=-\frac{e^4\mu}{2\hbar^2}$$
+\end{enumerate}
+\item  Due to long and involved calculations with spherical harmonics (which will not be asked about on this final), the transitions involved in emitting dipole radiation are $\Delta l=\pm 1,m=0,\pm 1,\Delta j=0,\pm 1$. Remember though that for hydrogen, $l < n$, which further limits which transitions are allowed.\begin{enumerate}
+\item 
+A hydrogen atom in the $n = 3$ state emits dipole radiation and drops into the $n = 1$ state. Determine all possible transitions and write them in spectroscopic notatio
+
+$n = 1$ has only one possible $l$; which is $0$: It is also $j =\frac{1}{2}$ The $n = 3$ can  be: $l=0,\ j=\frac{1}{2}$,$l=1,\ j=\frac{1}{2},\frac{3}{2}$,$l=2,\ j=\frac{3}{2},\frac{5}{2}$\\
+$\Delta l$ must be $\pm 1$, so the only ones go from $l=1,\ j=(\frac{1}{2},\frac{3}{2})$ to $l=0,\ j=\frac{1}{2}$. $P_{1/2}\rightarrow S_{1/2}$, $P_{3/2}\rightarrow S_{1/2}$
+\end{enumerate}
+\item  Time dependent perturbation theory is a fancy way of saying we have a state and something pokes it and we want to know how long we have to poke it to turn it into another state. It almost always can be divided into a time-dependent and a time-independent component.
+\item  The Born approximation gives the differential scattering cross section for a weak potential and a high energy particle, while the partial wave decomposition gives the cross section for a low energy particle. Partial waves wont make good (simple) questions so they will not be on the final, but the Born approximation will.
+\begin{enumerate}
+\item An example of using Born approximation $V=\frac{C}{r^2}$
+$$f(\theta,\phi)=-\frac{\mu C}{2\pi\hbar^2}\int_0^{\infty}dr\int_0^{2\pi}d\phi\int_0^{\pi} d\theta\sin\theta e^{iqr\cos\theta}$$
+$$f(\theta,\phi)=-\frac{\mu C}{\hbar^2}\int_0^{\infty}dr\int_0^{\pi} d\theta\sin\theta e^{iqr\cos\theta}$$
+$$f(\theta,\phi)=-\frac{2\mu C}{\hbar^2}\int_0^{\infty}dr\frac{\sin(qr)}{qr}$$
+$$f(\theta,\phi)=-\frac{\mu C}{\hbar^2}\frac{\pi r}{q\abs{r}}$$
+$$\frac{d\sigma}{d\Omega}=\left|\frac{\mu C}{\hbar^2}\frac{\pi r}{q\abs{r}}\right|^2$$
+$$\frac{d\sigma}{d\Omega}=\frac{\mu^2 C^2\pi^2}{\hbar^4q^2}$$
+\end{enumerate}
+\item  The Pauli Exclusion Principle applies only to fermions, not bosons. Fermions must have a completely antisymmetric wavefunction while bosons must have a symmetric one, where by symmetric and antisymmetric we mean under exchange of particles. Symmetric: $\psi(1, 2) = \psi(2,1)$, Antisymmetric: $\psi(1,2) =
+ -\psi(2, 1)$
+\item The open shells in an electron configuration determine the possible values for that atom, if an atom has all Ölled shells it is chemically inert.
+\item Magnetic resonance reacts best to spin 1/2 particles and not at all to something of spin.
+\end{enumerate}
+
+
+
+\end{document}

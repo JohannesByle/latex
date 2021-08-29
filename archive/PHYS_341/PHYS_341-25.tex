@@ -1,0 +1,86 @@
+\documentclass[english]{article}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\usepackage{babel}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{gensymb}
+\usepackage{pgfplots}
+\usepackage{multicol}
+\begin{document}
+\begin{multicols*}{2}
+\textbf{Johannes Byle}\\
+\newcommand{\Lagr}{\mathcal{L}}
+
+\noindent
+\textbf{11.3}\\
+$(K-\omega^2M)=
+\begin{bmatrix}
+  k_1+k_2-m_1\omega^2 & -k_2\\
+  -k_2 & k_2+k_3-m_2\omega^2
+ \end{bmatrix}
+$\\
+$$\det(K-\omega^2M)= (k_1+k_2-m_1\omega^2)(k_2+k_3-m_2\omega^2)-k_2^2$$
+$$\omega_1=\sqrt{\frac{k_1}{m_1}},\omega_2=\sqrt{\frac{k_3}{m_2}}$$
+
+
+\noindent
+\textbf{11.5(a)}\\
+$(K-\omega^2M)=
+\begin{bmatrix}
+  2k-m\omega^2 & -k\\
+  -k & k-m\omega^2
+ \end{bmatrix}
+$\\
+$$\det(K-\omega^2M)= (2k-m\omega^2)(k-m\omega^2)-k^2$$
+$$\omega=\pm\sqrt{\frac{3\pm\sqrt{5}}{2}}\sqrt{\frac{k}{m}}$$
+\textbf{(b)}\\
+$v_1=
+\begin{bmatrix}
+  -\frac{1+\sqrt{5}}{2}\\ 
+  1
+\end{bmatrix}
+$\\
+$v_2=
+\begin{bmatrix}
+  -\frac{1-\sqrt{5}}{2}\\ 
+  1
+\end{bmatrix}
+$\\
+Both carts oscillate
+
+\noindent
+\textbf{11.6(a)}\\
+$(K-\omega^2M)=
+\begin{bmatrix}
+  5k-m\omega^2 & -k\\
+  -k & 2k-m\omega^2
+ \end{bmatrix}
+$\\
+$$\det(K-\omega^2M)= (5k-m\omega^2)(2k-m\omega^2)-k^2$$
+$$\omega=\pm\frac{1}{2}\big(7\pm\sqrt{13}\big)\sqrt{\frac{k}{m}}$$
+\textbf{(b)}\\
+$
+\begin{bmatrix}
+  5-(\pm\frac{1}{2}(7\pm\sqrt{13}))^2 & -1\\
+  -1 & 2-(\pm\frac{1}{2}(7\pm\sqrt{13}))^2
+ \end{bmatrix}
+$\\
+$v_1=
+\begin{bmatrix}
+-\frac{3-\sqrt{13}}{2}\\ 
+1
+\end{bmatrix}
+$\\
+$v_2=
+\begin{bmatrix}
++\frac{3+\sqrt{13}}{2}\\ 
+1
+\end{bmatrix}
+$\\
+\end{multicols*}
+\end{document}

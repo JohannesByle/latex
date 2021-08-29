@@ -1,0 +1,107 @@
+\documentclass[english]{article}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\usepackage{babel}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{float}
+\usepackage{amsmath}
+\begin{document}
+\title{Lab 5: Cold Pill}
+\author{Johannes Byle and Andrew Rucin}
+\date{November 8, 2018}
+\maketitle
+\begin{flushleft}
+$$\frac{dx}{dt}=-k_1x$$
+$$\frac{dy}{dt}=k_1x-k_2y$$
+\textbf{(a)} This system of differential equations can be expressed as the matrix:
+$$
+\begin{bmatrix}
+-k_1 & 0 \\
+k_1 & -k_2
+\end{bmatrix}
+$$
+Whose eigenvalues and eigenvectors are:
+$$\lambda = -k_1,-k_2$$
+$$
+\vec{v_1}=
+\begin{bmatrix}
+-\frac{k_1-k_2}{k_1}\\
+1
+\end{bmatrix}
+$$
+$$
+\vec{v_2}=
+\begin{bmatrix}
+0\\
+1
+\end{bmatrix}
+$$
+Thus the solution to this system of equations can be expressed as:
+$$y(t)=C_1e^{-k_1t}\vec{v_1}+C_2e^{-k_2t}\vec{v_2}$$
+\textbf{(b)} In this case our values are:
+$$\lambda = -0.9,-0.6$$
+$$
+\vec{v_1}=
+\begin{bmatrix}
+-\frac{1}{3}\\
+1
+\end{bmatrix}
+$$
+$$
+\vec{v_2}=
+\begin{bmatrix}
+0\\
+1
+\end{bmatrix}
+$$
+Thus our solutions are:
+$$x(t)=-C_1e^{-0.9t}\frac{1}{3}$$
+$$y(t)=C_1e^{-0.9t}+C_2e^{-0.6t}$$
+Solving for $C_1$ and $C_2$ we get:
+$$C_1=-900$$
+$$C_2=900$$
+The plot of both these functions is:
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=.3]{Lab5_1.png}
+\end{center}
+\caption{Graph of x(t) (black) and y(t) (red)}
+\end{figure}
+\textbf{(c)} The amount of drug in the bloodstream peaks when $\frac{dy}{dt}=0$ where $y(t)=C_1e^{-0.9t}+C_2e^{-0.6t}$.
+$$\frac{dy}{dt}=810e^{-0.9t}-540e^{-0.6t}=0$$
+Thus the amount of drug in the bloodstream peaks when $t=\frac{10}{3}ln(\frac{810}{540})$ or about 81 minutes. At this time the amount of drug in the bloodstream is $\frac{400}{3}$ or about 133.3
+mg and the amount of blood in the GI-tract is $\frac{80}{9}$ or about 8.9 mg.
+\linebreak
+\textbf{(d)} To find the sensitivity of the peak times with varying $k_1$ one needs to define all the variables in terms of $k_1$.
+$$C_1=-300\frac{k1}{k_1-0.6}$$
+$$C_2=300\frac{k1}{k_1-0.6}$$
+Thus we can express the time when there it the peak amount of drug in the bloodstream as: 
+$$t=\frac{ln(\frac{k_1}{k_2})}{k_1-k_2}$$
+The sensitivity can be shown by plotting t vs $k_1$:
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=.3]{Lab5_2.png}
+\end{center}
+\caption{Graph of t vs $k_1$ where t is the vertical axis and $k_1$ is the horizontal axis}
+\end{figure}
+Plugging this value of t into the general equation for y we get:
+$$y(t)=-300\frac{k1}{k_1-0.6}e^{-k_1\frac{ln(\frac{k_1}{0.6})}{k_1-0.6}}\vec{v_1}+300\frac{k1}{k_1-0.6}e^{-0.6\frac{ln(\frac{k_1}{0.6})}{k_1-0.6}}\vec{v_2}$$
+Which can be simplified as:
+$$y(t)=300\frac{k1}{k_1-0.6}\lbrack(\frac{k_1}{0.6})^{-\frac{0.6}{k_1-0.6}}-(\frac{k_1}{0.6})^{-\frac{k_1}{k_1-0.6}}\rbrack$$
+Graphing $y(t)$ vs $k_1$ in this equation we get:
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=.3]{Lab5_3.png}
+\end{center}
+\caption{Graph of $y(t)$ vs $k_1$ where $y(t)$ is the vertical axis and $k_1$ is the horizontal axis}
+\end{figure}
+\textbf{(e)} If we set $t=1.5$ we get:
+$$1.5=\frac{ln(\frac{k_1}{0.6})}{k_1-0.6}$$
+Using WolframAlpha we were able to find that in the above equation:
+$$k_1\approx0.738$$
+Plugging this into the equation for y we can find out how many mg of the drug is at the maximum point:
+$$y(t)=300\frac{0.738}{0.738-0.6}\lbrack(\frac{0.738}{0.6})^{-\frac{0.6}{0.738-0.6}}-(\frac{0.738}{0.6})^{-\frac{0.738}{0.738-0.6}}\rbrack\approx121.97mg$$
+\end{flushleft}
+\end{document}

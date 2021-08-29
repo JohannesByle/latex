@@ -1,0 +1,54 @@
+\documentclass[english]{article}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\usepackage{babel}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{gensymb}
+\usepackage{pgfplots}
+\usepackage{multicol}
+\begin{document}
+\begin{multicols*}{2}
+\textbf{Johannes Byle}\\
+\newcommand{\Lagr}{\mathcal{L}}
+
+\noindent
+\textbf{11.15}\\
+$$U=(m_1+m_2)gL_1(1-\cos\phi_1)+m_2gL_2(1-\cos\phi_2)$$
+
+$$T=\frac{1}{2}m_1L_1^2\dot{\phi_1}^2+\frac{1}{2}m_2[L_1^2\dot{\phi_1}^2+L_2^2\dot{\phi_2}^2+2L_1L_2\dot{\phi_1}\dot{\phi_2}\cos(\phi_1-\phi_2)]$$
+Assuming the small angle approximation:
+$$U=(m_1+m_2)gL_1\frac{\phi_1^2}{2}+m_2gL_2\frac{phi_2^2}{2}$$
+$$T=\frac{1}{2}L_1^2\phi_1^2(m_1+m_2)+\frac{1}{2}m_2L_2^2\dot{\phi_2}^2+m_2L_1L_2\dot{\phi_1}\dot{\phi_2}$$
+Which give us the equations of motion which match (11.41) and (11.42):
+$$
+\begin{bmatrix}
+	(m_1+m_2)L_1^2 & m_2L_1L_2\\
+	m_2L_1L_2 & m_2L_2^2
+\end{bmatrix}
+\ddot{\phi}=-
+\begin{bmatrix}
+	(m_1+m_2)gL_1 & 0\\
+	0 & m_2gL_2
+\end{bmatrix}
+\phi
+$$
+
+\noindent
+\textbf{11.16(a)}\\
+$$K-\omega^2M=
+\begin{bmatrix}
+	(m_1+m_2)(gL_1-\omega^2L_1^2) & -\omega^2m_2L_1L_2\\
+	-\omega^2m_2L_1L_2 & m_2(gL_2-\omega^2L_2^2)
+\end{bmatrix}
+$$
+$$\det(K-\omega^2M)=
+(m_1+m_2)(gL_1-\omega^2L_1^2)m_2(gL_2-\omega^2L_2^2)-(-\omega^2m_2L_1L_2)^2
+$$
+The roots of that equation are the normal frequencies.
+\end{multicols*}
+\end{document}

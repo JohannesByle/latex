@@ -1,0 +1,203 @@
+%\documentclass{beamer}
+
+\documentclass[handout]{beamer}  %%% produces a handout - ready to print, no frames
+
+\setbeamertemplate{navigation symbols}{ \insertslidenavigationsymbol}     %keeps or removes navigation symbols
+\setbeamercolor{navigation symbols dimmed}{fg=blue!75!black}  %changes how the bottom 
+\setbeamercolor{navigation symbols}{fg=white!80!white}                  %navigation symbols look 
+
+
+
+
+
+\mode<presentation>
+{\usetheme{boxes}} 
+\setbeamertemplate{items}[square] 
+\hypersetup{colorlinks=true,linkcolor=gray} 
+
+
+
+
+\usepackage{amsbsy,amsfonts}
+\usepackage{amstext}
+
+\usepackage{latexsym,eucal,amsmath,amsthm}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{subfigure}
+\usepackage{hyperref}
+\newcommand{\blob}{\rule[.2ex]{.9ex}{.9ex} \ }
+\newcommand{\dd}{\rule[.2ex]{.6ex}{.6ex}}
+
+\newcommand{\R}{\mathbb{R}}
+
+
+%\newcommand{\sabs}[1]{\left| #1 \right|}
+
+
+\title{
+General Vector Spaces}
+\author{Silvius Klein}
+\date{}
+\vspace{2in}
+
+\institute{MA1202 Linear Algebra with Applications}
+
+
+
+\AtBeginSection[]  % "Beamer, do the following at the start of every section"
+{
+\begin{frame}<beamer> 
+\frametitle{Outline} % make a frame titled "Outline"
+\tableofcontents[currentsection]  % show TOC and highlight current section
+\end{frame}
+}
+
+
+
+\begin{document}
+
+
+% this prints title, author etc. info from above
+%\begin{frame}
+%\titlepage
+%\end{frame}
+
+
+\begin{frame}
+\frametitle{Eigenvalues and eigenvectors of an $n \times n$ matrix $A$}
+
+
+
+\underline{Definition}: A vector $\vec{x}$ in $\R^n$ is called an {\em eigenvector} of the matrix $A$ if $\vec{x} \neq \vec{0}$ and $A \cdot \vec{x}$ is a scalar multiple of $\vec{x}$, that is, if there is a scalar $\lambda$ called an {\em eigenvalue} such that
+\begin{equation}\label{ev-eq}
+A \cdot \vec{x} = \lambda \cdot \vec{x}
+\end{equation}
+
+The equation above is called the {\em eigenvalue equation}. 
+
+Given the matrix $A$, a scalar solution $\lambda$ is an eigenvalue of $A$ while the corresponding vector solution $x$ is called the eigenvector of $A$ corresponding to the eigenvalue $\lambda$.
+
+\medskip
+
+The goal is to describe a general procedure for finding eigenvalues and eigenvectors of a matrix $A$.
+
+\medskip
+
+\underline{Theorem}: $\lambda$ is an eigenvalue of $A$ if and only if 
+$$\det (\lambda \, I - A ) = 0$$
+
+\underline{Definition}: If $A$ is an $n \times n$ matrix, the expression $\det (\lambda \, I - A )$ defines a polynomial of degree $n$ in $\lambda$, called the {\em characteristic polynomial} of $A$ and denoted by $p_A (\lambda)$.
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Eigenvalues and eigenvectors of an $n \times n$ matrix $A$}
+
+An immediate consequence of the previous theorem above is that if $A$ is an upper triangular (or a lower triangular, or a diagonal) matrix, then its eigenvalues are exactly the entries on the (main) diagonal.
+
+\medskip
+
+The following theorem is just a reformulation of the definition of an eigenvector. We use it to find the eigenvectors of a matrix.
+
+\medskip
+
+\underline{Theorem}: A nonzero vector $\vec{x}$ is an eigenvector of the matrix $A$ with corresponding eigenvalue $\lambda$ if and only if $\vec{x}$ is in the {\em null space} of $\lambda \, I - A$. 
+
+\medskip
+
+\underline{Definition}:  The null space of $\lambda \, I - A$ is called the {\em eigenspace} of $A$ corresponding to the eigenvalue $\lambda$. Its dimension is called the {\em geometric multiplicity} of the eigenvalue $\lambda$.
+
+\medskip
+
+Note that we always have
+$$ \text{ geometric multiplicity of } \lambda \ \le \text{ algebraic multiplicity of } \lambda$$
+where by algebraic multiplicity we mean the multiplicity of $\lambda$ as a solution of the algebraic equation $p_A (\lambda) = 0$.
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Diagonalization of an $n \times n$ matrix $A$}
+
+\underline{Definition}: A square matrix $A$ is {\em diagonalizable} if it is similar to a diagonal matrix, in other words, if there exists an invertible matrix $P$ such that $P^{-1} \, A \, P$ is diagonal.
+In this case we say that $P$ diagonalizes $A$.
+
+\medskip
+
+\underline{Theorem}: An \alert{$n \times n$}  matrix $A$ is diagonalizable if and only if it has \alert{$n$} linearly independent eigenvectors.
+
+\medskip
+
+The proof of this theorem gives us a procedure to diagonalize a matrix.
+
+\begin{itemize}
+
+\item[1.] Find all eigenvalues and corresponding bases for the eigenspaces.
+Merge all these bases into a set $S$.
+
+If $S$ has {\em fewer} than $n$ elements, then $A$ is {\em not} diagonalizable.
+
+If $S$ has $n$ elements, then $A$  is diagonalizable.
+
+\item[2.] Let $P = [ \vec{p_1} \ \vec{p_2} \ \ldots \ \vec{p_n} ]$ be the matrix whose columns are the vectors in $S$.
+Then $P$ diagonalizes $A$.
+
+\item[3.] $P^{-1} \, A \, P$ is a  diagonal matrix and its diagonal entries are exactly the eigenvalues $\lambda_1, \lambda_2, \ldots, \lambda_n$  corresponding to the eigenvectors  $\vec{p_1}, \vec{p_2}, \ldots, \vec{p_n}$ (in this order).
+
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Diagonalization of an $n \times n$ matrix $A$}
+
+We have some special cases in which it is relatively easy to determine if a matrix is diagonalizable. It is all due to the following.
+
+\medskip
+
+\underline{Theorem}:  If $\vec{v_1}, \vec{v_2}, \ldots, \vec{v_k}$ are eigenvectors of $A$ corresponding to \alert{distinct} eigenvalues, then $\vec{v_1}, \vec{v_2}, \ldots, \vec{v_k}$ are linearly {\em independent}. 
+
+\medskip
+
+The following statements then hold.
+
+\begin{itemize}
+\item If an \alert{$n \times n$}  matrix $A$ has \alert{$n$} eigenvalues that are all {\em distinct}, then $A$ is diagonalizable. 
+
+\item If $A$ is upper (or lower) triangular, and the entries on the diagonal are all distinct, then $A$ is diagonalizable.
+
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Application: computing powers of a {\em diagonalizable} matrix}
+
+Let $A$ be an $n \times n$ matrix that happens to be diagonalizable.
+
+\smallskip
+
+\begin{itemize}
+\item[1.] Diagonalize $A$. 
+
+That is, find $P$ invertible and $D$ diagonal such that $$P^{-1} \ A \ P = D$$
+
+\item[2.] Solve for $A$ and obtain $A = P \, D \, P^{-1}$. 
+
+From here conclude that
+$$A^k = P \, D^k \, P^{-1}$$
+
+\item[3.] Compute $D^k$ by simply raising the diagonal entries of $D$ to the $k$-th power. 
+
+Compute $P^{-1}$. 
+
+Substitute everything into the formula above and obtain $A^k$. 
+
+\end{itemize}
+\end{frame}
+
+
+\end{document}

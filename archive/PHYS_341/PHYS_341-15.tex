@@ -1,0 +1,47 @@
+\documentclass[english]{article}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\usepackage{babel}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{gensymb}
+\usepackage{pgfplots}
+\usepackage{multicol}
+\begin{document}
+\begin{multicols*}{2}
+\textbf{HW March 1, Johannes Byle}\\
+\newcommand{\Lagr}{\mathcal{L}}
+
+\noindent
+\textbf{7.8(a)} $$T=\frac{1}{2}m_1\dot{x_1}^2+\frac{1}{2}m_2\dot{x_2}^2$$
+$$U=\frac{1}{2}k(x_1-x_2-l)^2$$
+$$\Lagr=\frac{1}{2}m_1\dot{x_1}^2+\frac{1}{2}m_2\dot{x_2}^2-\frac{1}{2}k(x_1-x_2-l)^2$$
+
+\textbf{(b)} $$\Lagr=2m\dot{X}^2-\frac{1}{2}kx^2$$
+
+\textbf{(c)} $$\frac{\delta\Lagr}{\delta X}=0$$
+$$\frac{\delta\Lagr}{\delta \dot{X}}=4m\dot{X}=C$$
+$$\frac{\delta\Lagr}{\delta x}=-kx=\ddot{x}$$
+$$X(t)=\frac{C}{4m}t$$
+$$x(t)=Asin(kt)$$
+
+\noindent
+\textbf{7.12} $$\Lagr=T-U$$
+In order to add $F_{fric}$ to the above equation we would have to take the integral of the friction force and subtract it from the U term. When we convert the Lagrangian to the derivative form we then convert $F_{fric}$ back to a basic force form, leaving the equation in the book.
+
+\noindent
+\textbf{7.23} $$\Lagr=T-U$$
+$$T=\frac{1}{2}m(\dot{X}+\dot{x})^2+\frac{1}{2}M\dot{X}^2$$
+$$U=\frac{1}{2}kx^2$$
+$$\frac{\delta\Lagr}{\delta X}=0$$
+$$\frac{\delta\Lagr}{\delta \dot{X}}=m(\dot{X}+\dot{x})+M\dot{X}=C$$
+$$\frac{\delta\Lagr}{\delta x}=-kx=\frac{d}{dt}m(\dot{X}+\dot{x})$$
+$$\ddot{X}=-\omega^2A\cos(\omega t)$$
+$$-kx=m\ddot{X}+m\ddot{x}$$
+$$\ddot{x}+\omega_0^2x=B\cos\omega t$$
+\end{multicols*}
+\end{document}

@@ -1,0 +1,45 @@
+\documentclass[english]{article}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\usepackage{babel}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{gensymb}
+\usepackage{multicol}
+\begin{document}
+\textbf{HW Jan 31, Johannes Byle}\\
+\begin{multicols*}{2}
+\begin{flushleft}
+\noindent
+\textbf{3.14} $m\dot{v}=-\dot{m}v_{ex}+F^{ext}$\\
+$\dot{v}=\frac{kv_{ex}}{m}-\frac{b}{m}v$\\
+$v=e^{-\frac{b}{m}t}(\int e^{\frac{b}{m}t}\frac{kv_{ex}}{m}dt+C)$\\
+$v=\frac{kv_{ex}}{m}e^{-\frac{b}{m}t}(\int e^{\frac{b}{m}t}dt+C)$\\
+$v=\frac{kv_{ex}}{m}e^{-\frac{b}{m}t}(\frac{m}{b}e^{\frac{b}{m}t}+C)$\\
+$v(0)=\frac{kv_{ex}}{m}(\frac{m}{b}+C)=0$\\
+$C=-\frac{m}{b}$\\
+$v=\frac{kv_{ex}}{m}e^{-\frac{b}{m}t}(\frac{m}{b}e^{\frac{b}{m}t}-\frac{m}{b})$\\
+$v=\frac{kv_{ex}}{b}(1-e^{-\frac{b}{m}t})$\\
+$v=\frac{kv_{ex}}{b}(1-(\frac{m}{m_0})^{\frac{b}{m}})$\\
+
+\noindent
+\textbf{3.21} $\theta = \frac{\pi}{2}$\\
+$r=\frac{1}{M}\int_0^\theta\int_0^R rsin\theta rdrd\theta$\\
+$r=\frac{4}{3\pi}R$\\
+
+\noindent
+\textbf{3.25} $L=mr^2\omega$\\
+$L_1=L_2=mr_1^2\omega_1=mr_2^2\omega_2$\\
+$\omega_2=\frac{r_1^2\omega_1}{r_2^2}$\\
+
+\noindent
+\textbf{3.34} $t=\frac{2v_0}{g}=\frac{n2\pi}{\omega_0}$\\
+$v_0=\frac{n\pi g}{\omega_0}$\\
+
+\end{flushleft}
+\end{multicols*}
+\end{document}

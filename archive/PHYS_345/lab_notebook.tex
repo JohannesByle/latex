@@ -1,0 +1,444 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage[numbered,framed]{matlab-prettifier}
+\usepackage{graphicx}
+\usepackage{minted}
+\usepackage{hyperref}
+
+
+
+\let\ph\mlplaceholder % shorter macro
+\lstMakeShortInline"
+\lstset{
+style              = Matlab-editor,
+basicstyle         = \mlttfamily,
+escapechar         = ",
+mlshowsectionrules = true,
+}
+\title{Lab Notebook}
+\author{Johannes Byle}
+
+\begin{document}
+
+    \maketitle
+
+    \section*{09/08/2020}
+    I started the analysis with code for static data because it seemed easier to work with, not only because the data was already in Matlab format, but because the curve fit would already be linear and it would be easy to adapt code I had already written. The following is the code for the static analysis.
+    \begin{lstlisting}
+
+S = load('static_spring_data.mat');
+
+m = S.static.m; % mass of the weight on the spring
+x = S.static.y; % amount the spring has moved
+
+f = @(b,x)((-b(1).*x)./(-9.8) + b(2)); % Hooke's Law: m=(-kx)/g + c
+
+[beta,~,~,CovB] = nlinfit(x,m,f, [30, 0.1]);
+k = beta(1);
+dk = sqrt(CovB(1, 1));
+    \end{lstlisting}
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.75\textwidth]{example_plot_static.png}
+        \caption{Static data plot model vs fit comparison}
+    \end{figure}
+    I then worked on the code for the dynamic data. After finding the formula for the spring period I was able to figure out how the data worked. Instead of messing with any statistics on the data I decided to simply use every data point for the fit. I realize that I should probably test to see how this affects the data, but I decided to include both trial a and trial d measurements in the same fit. I have currently hard coded the data into the function, but ideally I would like to import the data directly from the spreadsheet.
+    \begin{lstlisting}
+m = [0.299545 0.299545 0.299545 0.299545 0.299545 0.299545 0.299545 0.299545 0.299545 0.299545 0.3997 0.3997 0.3997 0.3997 0.3997 0.3997 0.3997 0.3997 0.3997 0.3997 0.4996 0.4996 0.4996 0.4996 0.4996 0.4996 0.4996 0.4996 0.4996 0.4996 0.599245 0.599245 0.599245 0.599245 0.599245 0.599245 0.599245 0.599245 0.599245 0.599245];
+a = [0.61 0.69 0.67 0.61 0.62 0.68 0.68 0.6 0.63 0.65 0.69 0.73 0.73 0.8 0.73 0.82 0.7 0.83 0.74 0.82 0.73 0.82 0.87 0.88 0.8 0.85 0.96 0.8 0.77 0.89 0.85 0.89 1.02 0.88 0.88 0.9 0.88 0.88 1.08 0.86];
+d = [0.66 0.61 0.71 0.63 0.68 0.59 0.69 0.61 0.65 0.68 0.7 0.71 0.76 0.8 0.76 0.8 0.68 0.71 0.8 0.74 0.77 0.86 0.86 0.84 0.86 0.88 0.76 0.81 0.81 0.79 0.88 0.93 0.93 0.95 0.92 0.91 0.92 0.94 0.93 0.91];
+m = cat(2, m, m);
+T = cat(2, a, d);
+
+f = @(b,x)(2 * pi * sqrt(x./b(1))); % Period of a spring: T_s=2*pi*sqrt(m/k)
+
+[beta,~,~,CovB] = nlinfit(m,T,f, 26);
+k = beta(1);
+dk = sqrt(CovB(1, 1));
+    \end{lstlisting}
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.75\textwidth]{example_plot_dynamic.png}
+        \caption{Dynamic data plot model vs fit comparison}
+    \end{figure}
+    I realized that doing the analysis in the command line would get kinda messy so I converted both scripts to functions, and made a third script to do the final analysis/comparison.
+    \begin{lstlisting}
+[k_s, dk_s] = static_analysis();
+[k_d, dk_d] = dynamic_analysis();
+
+t = abs(k_s - k_d) / sqrt(dk_s^2 + dk_d^2);
+f = @(x) ((1/(2 * pi)) * exp(-0.5 .* x .^ 2));
+integral(f, -t, t)
+    \end{lstlisting}
+    These are the results I am getting currently. They indicate that there is probably some systemic error.\\
+    \begin{tabular}{|cc|}
+        $k_s$        & 29.55 \\
+        $k_d$        & 28.21 \\
+        $\delta k_s$ & 0.54  \\
+        $\delta k_d$ & 0.38  \\
+        $t$          & 2.02  \\
+        Prob         & 0.38
+    \end{tabular}
+    \section*{09/10/2020}
+    Standardized both analysis functions by making m the x axis variable. Added a weighting function to both fits.
+    \begin{lstlisting}
+function [k, dk] = static_analysis()
+    S = load('static_spring_data.mat');
+
+    m = S.static.m; % mass of the weight on the spring
+    m_unc = S.static.delM;
+
+    y = S.static.y; % amount the spring has moved
+    y_unc = S.static.delY;
+
+    f = @(b,x)((9.8/b(1)) * x + b(2)); % Hooke's Law: m=(-kx)/g + c
+
+    [beta,~,~,CovB] = nlinfit(m,y,f, [30, 0.1], "Weights", 1./y_unc);
+    k = beta(1);
+    dk = sqrt(CovB(1, 1));
+end
+    \end{lstlisting}
+    \begin{lstlisting}
+function [k, dk] = dynamic_analysis()
+
+    m = [0.299545 0.299545 0.299545 0.299545 0.299545 0.299545 0.299545 0.299545 0.299545 0.299545 0.3997 0.3997 0.3997 0.3997 0.3997 0.3997 0.3997 0.3997 0.3997 0.3997 0.4996 0.4996 0.4996 0.4996 0.4996 0.4996 0.4996 0.4996 0.4996 0.4996 0.599245 0.599245 0.599245 0.599245 0.599245 0.599245 0.599245 0.599245 0.599245 0.599245];
+    m_unc = [0.07071421356 0.07071421356 0.07071421356 0.07071421356 0.07071421356 0.07071421356 0.07071421356 0.07071421356 0.07071421356 0.07071421356 0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.07071421356 0.07071421356 0.07071421356 0.07071421356 0.07071421356 0.07071421356 0.07071421356 0.07071421356 0.07071421356 0.07071421356];
+
+    a = [0.61 0.69 0.67 0.61 0.62 0.68 0.68 0.6 0.63 0.65 0.69 0.73 0.73 0.8 0.73 0.82 0.7 0.83 0.74 0.82 0.73 0.82 0.87 0.88 0.8 0.85 0.96 0.8 0.77 0.89 0.85 0.89 1.02 0.88 0.88 0.9 0.88 0.88 1.08 0.86];
+    a_unc = [0.009 0.009 0.009 0.009 0.009 0.009 0.009 0.009 0.009 0.009 0.014 0.014 0.014 0.014 0.014 0.014 0.014 0.014 0.014 0.014 0.023 0.023 0.023 0.023 0.023 0.023 0.023 0.023 0.023 0.023 0.023 0.023 0.023 0.023 0.023 0.023 0.023 0.023 0.023 0.023];
+
+    d = [0.66 0.61 0.71 0.63 0.68 0.59 0.69 0.61 0.65 0.68 0.7 0.71 0.76 0.8 0.76 0.8 0.68 0.71 0.8 0.74 0.77 0.86 0.86 0.84 0.86 0.88 0.76 0.81 0.81 0.79 0.88 0.93 0.93 0.95 0.92 0.91 0.92 0.94 0.93 0.91];
+    d_unc = [0.012 0.012 0.012 0.012 0.012 0.012 0.012 0.012 0.012 0.012 0.012 0.012 0.012 0.012 0.012 0.012 0.012 0.012 0.012 0.012 0.012 0.012 0.012 0.012 0.012 0.012 0.012 0.012 0.012 0.012 0.007 0.007 0.007 0.007 0.007 0.007 0.007 0.007 0.007 0.007];
+
+    m = cat(2, m, m);
+    m_unc = cat(2, m_unc, m_unc);
+
+    T = cat(2, a, d);
+    T_unc = cat(2, a_unc, d_unc);
+
+    f = @(b,x)(2 * pi * sqrt(x./b(1))); % Period of a spring: T_s=2*pi*sqrt(m/k)
+    [beta,~,~,CovB] = nlinfit(m,T,f, 26, "Weights", 1./T_unc);
+    k = beta(1);
+    dk = sqrt(CovB(1, 1));
+end
+    \end{lstlisting}
+    I also thought of trying to display the variation in the fit somehow. I wrote the following python script to create a plot of a sample of all of the best fit lines for a range of three sigmas for each fit variable, and color coded them based on the the percentages given in the normal distribution function.
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=1.25\textwidth]{static_plot.png}
+    \end{figure}
+    \begin{minted}{python}
+        from scipy.optimize import curve_fit
+        from math import pi
+        import numpy as np
+        import matplotlib.pyplot as plt
+        from matplotlib.cm import get_cmap
+
+        m = [0.0500200000000000, 0.0999700000000000, 0.200230000000000, 0.299530000000000, 0.399700000000000, 0.499500000000000,
+        0.599500000000000, 0.699100000000000, 0.799700000000000, 0.899200000000000, 0.999600000000000]
+
+        y = [0.006, 0.012, 0.036, 0.069, 0.103, 0.137, 0.172, 0.207, 0.241, 0.277, 0.311]
+        dy = [0.001, 0.001, 0.001, 0.001, 0.001, 0.001, 0.001, 0.001, 0.001, 0.001, 0.001]
+
+
+        def f(m, k, c):
+        return (9.8 / k) * m + c
+
+
+        def normal_distribution(x, sigma, b):
+        return (1 / (sigma * np.sqrt(2 * pi) ** 2)) * np.exp(-0.5 * ((x - b) / sigma) ** 2)
+
+
+        (k, c), cov = curve_fit(f, m, y, sigma=[np.sqrt(n) for n in dy])
+
+        m = np.array(m)
+        cm = get_cmap("Blues")
+        sigma_range = 3
+        count = 25
+        c_var = np.sqrt(cov[1, 1])
+        c_list = np.linspace(-sigma_range * c_var, sigma_range * c_var, count)
+        k_var = np.sqrt(cov[0, 0])
+        k_list = np.linspace(-sigma_range * k_var, sigma_range * k_var, count)
+        vars_list = []
+        vals_list = []
+        for k_n in k_list:
+        for c_n in c_list:
+        vars_list.append(normal_distribution(c_n, c_var, 0) * normal_distribution(k_n, k_var, 0))
+        vals_list.append((k_n, c_n))
+        vars_list, vals_list = zip(*sorted(zip(vars_list, vals_list)))
+        vars_list = [n / max(vars_list) for n in vars_list]
+        for n in range(len(vars_list)):
+        plt.plot(m, f(m, vals_list[n][0] + k, vals_list[n][1] + c), color=cm(n / len(vars_list)))
+        plt.errorbar(m, y, yerr=[np.sqrt(n) for n in dy], fmt="o", label="Data", color="red", zorder=10 ** 10)
+        plt.plot(m, f(m, k, c), label="Fit", color="orange")
+        plt.legend()
+        plt.xlabel("Mass (Kg)", fontsize=28)
+        plt.ylabel("Distance (m)", fontsize=28)
+        plt.title("Static Experiment", fontsize=30)
+        plt.show()
+
+    \end{minted}
+    \section*{09/13/2020}
+    I was able to significantly improve the function for visualizing the variation in the fit parameters, and while trying to display the variation in $k$ as a normal distribution I realized that the low mass data points on the displacement experiment are clear outliers. This makes me think that hooke's law is not a good approximation for a real spring at low masses. I did some research on the material science of a real spring, but I wasn't able to find any information on linking the material science to the $k$ value, so I gave up on trying to improve the fit by changing the model.
+    \begin{minted}{python}
+        from scipy.optimize import curve_fit
+        import numpy as np
+        import matplotlib.pyplot as plt
+        from matplotlib.cm import get_cmap
+        from matplotlib import colorbar
+        from matplotlib.colors import Normalize
+        from data import static_data, dynamic_data
+        from scipy.integrate import trapz
+
+
+        def normal_distribution(x, sigma, b):
+        return (1 / (sigma * np.sqrt(2 * np.pi) ** 2)) * np.exp(-0.5 * ((x - b) / sigma) ** 2)
+
+
+        def spring_displacement(m, k, c):
+        return (9.8 / k) * m + c
+
+
+        def spring_displacement_k(m, y, c):
+        return ((y - c) / (9.8 * m)) ** (-1)
+
+
+        def spring_period(m, k):
+        return 2 * np.pi * np.sqrt(m / k)
+
+
+        def spring_period_k(m, T):
+        return (((T / (2 * np.pi)) ** 2) / m) ** (-1)
+
+
+        def fancy_plot(x, y, dy, f):
+        x = np.array(x)
+        y = np.array(y)
+        dy = np.array(dy)
+        b, cov = curve_fit(f, x, y, sigma=np.sqrt(dy))
+        fig, ax = plt.subplots(1, 2, gridspec_kw={'width_ratios': [20, 0]})
+
+        ax[0].errorbar(x, y, yerr=np.sqrt(dy), fmt="o", label="data", color="Black", zorder=10 ** 10)
+
+        x = np.linspace(min(x), max(x), 1000)
+        var = np.sqrt(np.diag(cov))
+        num_plots = 1000
+        num_plots = int(num_plots ** (1 / len(var)))
+        num_points = 10000
+        probability = np.array([1] * num_points)
+        for v in var:
+        probability = np.multiply(probability, normal_distribution(np.linspace(-100 * v, 100 * v, num_points), v, 0))
+
+        cm = get_cmap()
+        cb1 = colorbar.ColorbarBase(ax[1], cmap=cm,
+        norm=Normalize(0, 1 / trapz(probability, x=np.linspace(-100, 100, num_points))),
+        orientation='vertical')
+        cb1.set_label("Probability", fontsize=24)
+
+        num_sigma = 2
+        sigmas = np.linspace(-num_sigma, num_sigma, num_plots)
+        grid = np.array(np.meshgrid(*[sigmas] * len(var)))
+        probabilities = np.array([1.0] * num_plots ** len(var))
+        sigmas_array = []
+        for n in range(len(var)):
+        sigmas = np.ndarray.flatten(grid[n])
+        sigmas_array.append(sigmas)
+        probabilities = np.multiply(probabilities, normal_distribution(sigmas, 1, 0))
+        sigmas_array = np.array(sigmas_array)
+        order = [n for n in range(num_plots ** len(var))]
+        probabilities, order = zip(*sorted(zip(probabilities, order)))
+
+        sigmas_array = np.array([sigmas_array[:, n] for n in order])
+        b_array = []
+        for n in range(len(var)):
+        b_array.append(sigmas_array[:, n] * var[n] + b[n])
+        b_array = np.array(b_array)
+        for n in range(len(probabilities)):
+        ax[0].plot(x, f(x, *b_array[:, n]), color=cm(probabilities[n] / max(probabilities)), linewidth=2, alpha=0.5)
+
+        ax[0].plot(x, f(x, *b), label="fit", color="Red", linewidth=4)
+        ax[0].legend(loc="upper left")
+        plt.suptitle("Period Experiment", fontsize=24)
+        ax[0].set_xlabel("Mass (kg)", fontsize=24)
+        ax[0].tick_params(axis='both', which='major', labelsize=24)
+        # ax[1].tick_params(axis='both', which='major', labelsize=24)
+        ax[0].set_ylabel("Period (s)", fontsize=24)
+
+        plt.show()
+
+
+        def create_hist_plot():
+        # k_s = 29.6403
+        # dk_s = 0.5435
+        # k_d = 28.1226
+        # dk_d = 0.2943
+        # k_s = 28.9323
+        # dk_s = 0.3291
+        # k_d = 28.1226
+        # dk_d = 0.2943
+        k_s = 28.3872
+        dk_s = 0.0886
+        k_d = 28.1226
+        dk_d = 0.2943
+        x = np.linspace(k_d - 20 * dk_d, k_s + 20 * dk_d, 1000)
+
+        plt.plot(x, normal_distribution(x, dk_s, k_s), label="Displacement Experiment Fit")
+        plt.plot(x, normal_distribution(x, dk_d, k_d), label="Period Experiment Fit")
+        m, y, dy = static_data()
+        m = m[2:]
+        y = y[2:]
+        dy = dy[2:]
+        b, cov = curve_fit(spring_displacement, m, y, sigma=np.sqrt(dy))
+        hist, bin_edges = np.histogram(spring_displacement_k(np.array(m), np.array(y), b[1]))
+        plt.bar(np.mean(np.vstack([bin_edges[0:-1], bin_edges[1:]]), axis=0), hist / sum(hist), color="lightblue",
+        label="Displacement Experiment Data", width=dk_s)
+        m, T, dT = dynamic_data()
+        hist, bin_edges = np.histogram(spring_period_k(np.array(m), np.array(T)))
+        plt.bar(np.mean(np.vstack([bin_edges[0:-1], bin_edges[1:]]), axis=0), hist / sum(hist), color="peachpuff",
+        label="Period Experiment Data", width=dk_d)
+
+        plt.legend(fontsize=24)
+        plt.xlabel("Spring Constant (N/m)", fontsize=24)
+        plt.ylabel("Probability", fontsize=24)
+        plt.xticks(fontsize=24)
+        plt.yticks(fontsize=24)
+        plt.title("Comparison of Experiment Results (Excluding Outliers)", fontsize=24)
+        plt.show()
+
+
+        def create_normal_distribution_plot():
+        fig, ax = plt.subplots(1, 2, gridspec_kw={'width_ratios': [20, 1]})
+        cm = get_cmap()
+        for x in np.linspace(-3, 3, 1000):
+        ax[0].scatter(x, normal_distribution(x, 1, 0),
+        color=cm(normal_distribution(x, 1, 0) / normal_distribution(0, 1, 0)))
+
+        cb1 = colorbar.ColorbarBase(ax[1], cmap=cm, norm=Normalize(0, normal_distribution(0, 1, 0)), orientation='vertical')
+        plt.suptitle(
+        r"Normal Distribution \$\frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^2}\$",
+        fontsize=24)
+        ax[0].set_xlabel("Standard Deviation", fontsize=24)
+        ax[0].tick_params(axis='both', which='major', labelsize=24)
+        ax[1].tick_params(axis='both', which='major', labelsize=24)
+        ax[0].set_ylabel("Probability", fontsize=24)
+        cb1.set_label("Probability", fontsize=24)
+        plt.show()
+
+
+        create_hist_plot()
+
+    \end{minted}
+    \section*{09/20/2020}
+    Recreating the plot was very simple and I didn't have any problems.
+    \begin{lstlisting}
+%% Importing variables
+
+T = table2array(readtable("data.csv"));
+[max_x, max_y] = size(T);
+wavelength = T(:, 1);
+data = cat(2, T(:, 2:4:end), T(:, 3:4:end), T(:, 4:4:end));
+average = T(:, 5:4:end);
+
+SS = table2array(readtable("AM0AM1\_5.csv"))
+%% Plotting
+
+sigma = std(data, 0, 2);
+xx = [transpose(wavelength), fliplr(transpose(wavelength))];
+yy = [transpose(mean(average, 2) + sigma), fliplr(transpose(mean(average, 2) - sigma))];
+fill(xx, yy, [0.68,0.85,0.9])
+hold on
+plot(wavelength, mean(average, 2), "--k")
+plot(wavelength, min(data, [], 2), "Color", [1, .65, 0])
+plot(wavelength, max(data, [], 2), "Color", [1, .65, 0])
+legend("Standard Deviation", "Mean", "Range")
+xlabel("Wavelength (nm)")
+ylabel("Reflectance factor")
+    \end{lstlisting}
+    \includegraphics[width=\textwidth]{recreated_plot.png}
+    I didn't want to recreate the project for my poster, so I was looking for some other way to analyze the data. My first thought was the evolutionary reason for skin coloration. I found a good paper in the \textit{Journal of Human Evolution} titled \textit{The evolution of human skin coloration}, which claimed that skin coloration was a purely a function of UV radiation. I wanted to compare this with our data. My first assumption was that the variation in skin color would coincide with the variation in UV around the globe, but when I plotted it it seemed that the variation matched the solar spectrum perfectly. I'm pretty sure this would make a good poster.
+    \begin{figure}
+        \centering
+        \includegraphics[width=\textwidth]{solar_spectrum_std.png}
+        \caption{Wavelength vs normalized solar spectrum and std deviation in data. The red is the solar spectrum, the blue the range in NIST skin reflectance data}
+    \end{figure}
+    \section*{09/22/2020}
+    Sources I am currently using:\\
+    The main source:\\
+    \url{https://reader.elsevier.com/reader/sd/pii/S0047248400904032?token=B435DE466B20CFAF1018E08981D0B6987704DC32A7680EF182D1DC972D2D9BE3E83474781768435E6A36A51E89127B10}\\
+    To show that there is a UV gradient in US:\\
+    \url{https://www.pnas.org/content/107/Supplement_2/8962}\\
+    For actual granular spectrum data:\\
+    \url{https://www.nist.gov/el/materials-and-structural-systems-division-73100/solar-data}\\
+    Ended up ditching the NIST solar data. It was more focused on the difference over time, and only focused on a very narrow band of 280nm-310nm, which does not allow me to make proper comparisons. After much searching, and skimming through really complicated and old NSF datasets of Solar spectra from different places on the globe I gave up on searching for real data. I instead used the NREL SMARTS model of the solar spectrum. It uses its own software so I had to write a python wrapper to run it. It has a lot of really complicated starting variable settings, and I tried only changing the latitude, and then changing both the latitude and the atmosphere model (tropical vs arctic etc). Results seem normal with only latitude, but once I added atmosphere I started getting weird peaks.
+    \includegraphics[width=\textwidth]{Figure_1.png}
+    \begin{minted}{python}
+        import os
+        import time
+        import pandas as pd
+        import matplotlib.pyplot as plt
+        import numpy as np
+
+        atmospheres = ["MLS", "MLW", "SAS", "SAW", "TRL", "STS", "STW", "AS", "AW"]
+        latitudes = [[23, 66], [23, 66], [66, 90], [66, 90], [0, 23], [23, 35], [23, 35], [66, 90], [66, 90]]
+
+
+        def get_spectrum(lat, atmos):
+        os.remove("SMARTS_295_PC/smarts295.inp.txt")
+        os.remove("SMARTS_295_PC/smarts295.out.txt")
+        os.remove("SMARTS_295_PC/smarts295.ext.txt")
+        with open("smarts_config.txt") as f:
+        with open("SMARTS_295_PC/smarts295.inp.txt", "w") as g:
+        g.write(f.read().format(lat=lat, atmos=atmos))
+
+        os.system(r"run_smarts.bat")
+
+        df = pd.read_csv("SMARTS_295_PC/smarts295.ext.txt", delimiter=" ")
+        return df
+
+
+        spectra = []
+        wavelength = []
+        for atmos in atmospheres:
+        lat_range = latitudes[atmospheres.index(atmos)]
+        for lat in np.linspace(lat_range[0], lat_range[1], 10):
+        df = get_spectrum(lat, atmos)
+        spectra.append(list(df["Direct_normal_irradiance"]))
+        wavelength.append(list(df["Wvlgth"]))
+
+        spectra = np.array(spectra)
+        wavelength = np.array(wavelength)
+        plt.plot(wavelength[0], (np.amax(spectra, 0) - np.amin(spectra, 0)) / max(np.std(spectra, 0)))
+        plt.plot(wavelength[0], spectra[0] / max(spectra[0]))
+        plt.show()
+
+    \end{minted}
+    \section*{09/24/2020}
+    I ended up ditching iterating over the various atmosphere options when getting the SMARTS data. There data was really weird, and I think I wasn't configuring the input file properly. I don't think I will have time to fix this. I also am not sure if the latitude values are correct, since there is little change from 0 to 90, but the acceptable data range is 0 to 1019. I ended up going with the larger value, but it's clearly not the correct physical value, and if I had more time I would play around with it more to see if I can get better data.\\
+    At the last moment I decided to add in a number to compare and decided to go with the correlation coefficient of the data. I used the intersect of the wavelengths and then just compared the vectors using \texttt{corrcoef} in MATLAB. Unfortunalty I did not have space for the following table in my poster so I included the data under the figures instead.
+    \begin{tabular}{c|c|c}
+        &                        & Correlation Coefficient \\
+        Solar Spectrum      & Skin Reflectivity      & 0.6330                  \\
+        STD. Solar Spectrum & STD. Skin Reflectivity & 0.6620                  \\
+        Solar Spectrum      & STD. Skin Reflectivity & 0.9084
+    \end{tabular}
+    \section*{09/29/2020}
+    I switched to using PyCharm as my latex editor because it does not offer auto-formatting for my of latex document, and I really need that for long documents that can get really messy. It also helps that it compiles faster. I also messed around with the data in matlab, but I don't think I am using the right variables.
+    \begin{lstlisting}
+led_data = load('PlancksConstantData.mat');
+V = led_data.knee_voltageSet1;
+w = led_data.wavelengthSet1;
+[V, order_V] = sort(V);
+w = w(order_V);
+
+c = 299792458;
+e = 1.602176634*10^(-19);
+h = 6.62607004*10^(-34);
+
+f = @(b, V) (b(1)*c)./(e.*V);
+[beta,~,~,CovB] = nlinfit(V,w,f,h);
+scatter(V, w);
+hold on
+plot(V, f(beta, V))
+    \end{lstlisting}
+\end{document}

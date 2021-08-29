@@ -1,0 +1,48 @@
+\documentclass[english]{article}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\usepackage{babel}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{gensymb}
+\usepackage{pgfplots}
+\usepackage{multicol}
+\begin{document}
+\begin{multicols*}{2}
+\textbf{Johannes Byle}\\
+\newcommand{\Lagr}{\mathcal{L}}
+
+\noindent
+\textbf{10.5(a)}
+By inspection we can know that the center in the xy direction is on the origin. We can find the center in the z direction by integrating from $0$ to $r$ in the z direction.
+$$\frac{1}{2}=\int \pi(r^2-z^2)dz$$
+$$\frac{1}{2}=\pi r^2-\pi\frac{1}{3}z^3$$
+$$\sqrt[3]{3r^2-\frac{3}{2\pi}}=z$$
+$$CM=(0,0,\sqrt[3]{3r^2-\frac{3}{2\pi}})$$
+
+\noindent
+\textbf{10.14}
+The moment of inertia of a shell is:
+$$I=\frac{2}{5}m\Big(\frac{r_2^5-r_1^5}{r_2^3-r_2^3}\Big)$$
+Change in Angular momentum due to the flywheel is:
+$$L=I\omega=\frac{1}{2}mr^2\omega$$
+$$\frac{1}{2}m_1r^2\omega_1=\frac{2}{5}m_2\Big(\frac{r_2^5-r_1^5}{r_2^3-r_1^3}\Big)\omega_2$$
+$$5\frac{m_1}{m_2}\frac{r^2(r_2^3-r_1^3)}{r_2^5-r_1^5}\omega_1=\omega_2$$
+$$5\frac{10}{6000}\frac{0.1^2(6^3-5^3)}{6^5-5^5}1000\approx0.00163$$
+$$\frac{10}{360}\frac{1}{0.00163}\approx17.04\min$$
+\textbf{10.5(b)}
+$$W=\frac{1}{2}I\omega^2=\frac{1}{2}\frac{1}{2}m_1r^2\omega_1^2$$
+$$W=\frac{10}{4}\times0.1^2\times1000^2=2500$$
+
+\noindent
+\textbf{10.23}
+Since it lies within the $xy$ plane, $z=0$ thus:
+$$I_{xz}=I_{yz}=I_{zx}=I_{zy}=0$$
+$$I_{xx}=I_{yy}=\sum m_\alpha(y_\alpha^2+z_\alpha^2)+\sum m_\alpha(x_\alpha^2+z_\alpha^2)$$
+Since $z$ is zero this is equal to $I_{zz}$
+\end{multicols*}
+\end{document}
