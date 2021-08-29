@@ -1,7 +1,6 @@
 *
 !*/
 /venv/
-!.idea/*
 !.gitignore
 !*.pdf
 !*.tex
