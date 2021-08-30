@@ -1,0 +1,40 @@
+\documentclass[12pt]{article}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{subfiles}
+\usepackage{circuitikz}
+\author{Johannes Byle}
+\title{HW Set 3}
+\maketitle
+
+\noindent
+\textbf{1.a}
+\begin{tabular}{c|c|c}
+    Element & Current & Power \\
+    $R_1$   & 0.1 A   & 1 W   \\
+    $R_2$   & 0 A     & 0 W   \\
+    $R_3$   & 0 A     & 0 W   \\
+    $D_1$   & 0.1 A   & 0 W   \\
+\end{tabular}\\
+\textbf{1.b} According to Wikipedia the maximum output current is 150 mA, which is less than 0.1 A, making the
+circuit safe.
+\textbf{1.c} The forward current is probably less than 0.6 V, it is probably closer to 0.55 V, but 0.6 V is still a
+good assumption.
+If this is the case then:\\
+\begin{tabular}{c|c|c}
+    Element & Current & Power    \\
+    $R_1$   & 0.025 A & 0.25 W   \\
+    $R_2$   & 0.002 A & 0 W      \\
+    $R_3$   & 0.002 A & 0 W      \\
+    $D_1$   & 0.023 A & 0.0009 W \\
+\end{tabular}\\
+\textbf{2.a}\\
+\begin{circuitikz}[american,]
+    \draw (0,0) node[npn](npn1) {}
+    (npn1.base) node[anchor=east] {}
+    (npn1.collector) node[anchor=south] {C}
+    (npn1.emitter) node[anchor=north] {E};
+    \draw (-5, 0) to (npn1.base);
+\end{circuitikz}
+\begin{document}
+\end{document}

@@ -1,0 +1,132 @@
+\documentclass[12pt]{article}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{amsmath}
+\usepackage{subfiles}
+\usepackage{circuitikz}
+\author{Johannes Byle}
+\begin{document}
+    \title{HW Set 3}
+    \maketitle
+
+    \noindent
+    \title{HW Set 3}
+    \maketitle
+
+    \noindent
+    \textbf{1}\\
+    \begin{circuitikz}[american,scale=0.75]
+        \draw (0,0) to[sV=$V_{\omega=0}$] (0,3) to[R=$R$] (0, 6);
+        \draw (0,6) to[short,-*] (6,6);
+        \draw (6,6) to[short,-*] (9,6);
+        \draw (6,6) to[R=$R$,-*] (6,0);
+        \draw (0,0) to[short,-*] (9,0);
+    \end{circuitikz}
+    \[\frac{V_{out}}{V_{in}}=\frac{1}{2}\approx-3.01\text{ dB}\]
+    \begin{circuitikz}[american,scale=0.75]
+        \draw (0,0) to[sV=$V_{\omega=\infty}$] (0,3) to[R=$R$] (0, 6);
+        \draw (0,6) to[short,-*] (6,6);
+        \draw (6,6) to[short,-*] (9,6);
+        \draw (6,6) to[R=$100R$] (6,3);
+        \draw (6,3) to[R=$R$,-*] (6,0);
+        \draw (0,0) to[short,-*] (9,0);
+    \end{circuitikz}
+    \[\frac{V_{out}}{V_{in}}=\frac{101}{102}\approx-0.04\text{ dB}\]
+    \textbf{2} Its a low pass filter.
+    \begin{gather*}
+        H=\frac{\frac{1}{j\omega C}}{j\omega L+\frac{1}{j\omega C}}\\
+        |H|=\frac{1}{\left(CL\omega^2-1\right)^2}\\
+        \omega=\sqrt{1+\sqrt{2}}\sqrt{\frac{1}{CL}}=\sqrt{\frac{1-\sqrt{2}}{1\cdot1\cdot10^{-6}}}\approx1554\\
+        f=247\text{ Hz}
+    \end{gather*}
+%    This is a high pass filter because it decreases the signal more significantly at low frequencies.
+%    \[H=\frac{\left(\frac{1}{100R}+\frac{1}{2j\omega L}\right)^{-1}+R}{\left(j\omega C+\frac{1}{j\omega
+%    L}\right)^{-1}+\left(\frac{1}{100R}+\frac{1}{2j\omega L}\right)^{-1}+2R}\]
+    \textbf{3}\\
+    \includegraphics[width=0.65\linewidth]{hw3_current.eps}\\
+    \includegraphics[width=0.65\linewidth]{hw3_voltage.eps}
+    \begin{lstlisting}[language=Python,label={lst:lstlisting}]
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.integrate import quad
+
+t = np.linspace(-2, 10, 10000)
+v = np.zeros(np.shape(t))
+v[(t < 1) & (0 < t)] = 40
+r = np.zeros(np.shape(t))
+r[(t <= 1) & (0 < t)] = 100
+r[t > 1] = 200
+L = 200
+
+
+def integral(time):
+    def f(x):
+        if x < 0:
+            V = 0
+            R = 0
+        elif 0 <= x < 1:
+            V = 40
+            R = 100
+        else:
+            V = 0
+            R = 200
+        return (np.exp((R * x) / L) * V) / L
+
+    y, err = quad(f, 1, time)
+    return y
+
+
+f = np.array([integral(n) for n in t])
+i = np.exp(-(r * t) / L) * (f - f[0])
+plt.plot(t, i)
+plt.plot(t, i * 50)
+plt.show()
+
+    \end{lstlisting}
+
+    This code simply plots the following equation for the given parameters.
+    \[e^{-\frac{Rt}{L}}\left(\int_{1}^{t}\frac{e^{\frac{R\xi}{L}}V\left(\xi\right)}{L}d\xi+C\right)\]
+    The code could have been a lot shorter and simpler, but I had to write my own function for the integral portion of
+    the equation.
+
+    \textbf{4.a}
+    \begin{gather*}
+        \omega_r=\frac{1}{\sqrt{LC}}\\
+        C=\frac{1}{L\omega_r^2}=\frac{1}{0.1\cdot100^2}=0.001\text{ F}\\
+    \end{gather*}
+    At this condition the imaginary component is zero, and its called the resonance frequency.\\
+    \textbf{4.b}
+    \begin{gather*}
+        Q=\frac{\omega_{0}L}{R}\\
+        R=\frac{\omega_0 L}{Q}
+    \end{gather*}
+    \includegraphics[width=0.65\linewidth]{hw3_e.eps}
+    \begin{lstlisting}[language=Python,label={lst:lstlisting2}]
+import numpy as np
+import matplotlib.pyplot as plt
+
+C = 0.001
+L = 0.1
+R_1 = (100 * L) / 0.1
+R_2 = (100 * L) / 1
+R_3 = (100 * L) / 10
+
+
+def z(w, R):
+    val = R + 1 / (1j * w * C) + 1j * w * L
+    return (10 / np.sqrt(np.real(val * np.conj(val)))) / (np.sqrt(2))
+
+
+w = np.linspace(10 ** (-2), 10 ** 6, 1000000)
+plt.plot(w, z(w, R_1), label="Q=0.1")
+plt.plot(w, z(w, R_2), label="Q=1")
+plt.plot(w, z(w, R_3), label="Q=10")
+plt.xlabel("Frequency (Hz)")
+plt.ylabel("Current (A)")
+plt.xscale("log")
+# plt.yscale("log")
+plt.legend()
+plt.show()
+    \end{lstlisting}
+\end{document}
