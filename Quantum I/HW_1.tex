@@ -3,7 +3,7 @@
 
 % Preamble
 \documentclass[12pt]{article}
-\title{}
+\title{Quantum I Assignment \#1}
 \author{Johannes Byle}
 \newcommand{\op}[1]{\tilde{\mathbf{#1}}}
 
@@ -66,9 +66,38 @@
         \end{gather*}
         \item[1.3]
         \begin{gather*}
-            \left<(\Delta A)^2\right>\left<(\Delta B)^2\right>\geq\frac{1}{4}|\
+            \braket{(\Delta A)^2}\braket{(\Delta B)^2}\geq\frac{1}{4}\left|\braket{\left[A,B\right]}\right|^2
+        \end{gather*}
+        For $A=S_x$ and $B=S_y$:
+        \begin{gather*}
+            \braket{(\Delta S_x)^2}\braket{(\Delta S_y)^2}\geq\frac{1}{4}\left|\braket{\left[S_x,S_y\right]}\right|^2\\
+            \left(\braket{S_x^2}-\braket{S_x}^2\right)\left(\braket{S_y^2}-\braket{S_y}^2\right)\geq\frac{1}{4}\left|i\hbar S_z\right|^2\\
+            \left(0\right)
+            \left(\frac{\hbar}{2}\right)
+            \geq\frac{1}{4}\left|i\hbar S_z\right|^2\\
+            0\geq\frac{1}{4}\left|i\hbar \braket{S_y ;\pm|S_x ;+}\right|^2\\
+            0\geq\frac{1}{4}\left|i\hbar \frac{1}{\sqrt{2}}\right|^2\\
+            0\geq-\frac{\hbar^2}{16}
+        \end{gather*}
+        For $A=S_z$ and $B=S_y$:
+        \begin{gather*}
+            \braket{(\Delta S_z)^2}\braket{(\Delta S_y)^2}\geq\frac{1}{4}\left|\braket{\left[S_z,S_y\right]}\right|^2\\
+            \left(\braket{S_z^2}-\braket{S_z}^2\right)\left(\braket{S_y^2}-\braket{S_y}^2\right)\geq\frac{1}{4}\left|i\hbar S_x\right|^2\\
+            \left(\frac{\hbar}{2}\right)
+            \left(\frac{\hbar}{2}\right)
+            \geq\frac{1}{4}\left|i\hbar S_z\right|^2\\
+            \frac{\hbar^2}{4}\geq\frac{1}{4}\left|i\hbar \braket{S_x ;\pm|S_x ;+}\right|^2\\
+            \frac{\hbar^2}{4}\geq\frac{1}{4}\left|i\hbar1\right|^2\\
+            \frac{\hbar^2}{4}\geq-\frac{\hbar^2}{4}
         \end{gather*}
         \item[1.7]
+        \begin{gather*}
+            \begin{bmatrix}
+                \braket{a^{(1)}|\alpha}\braket{\beta|a^{(1)}} & \braket{a^{(1)}|\alpha}\braket{\beta|a^{(2)}} & \ldots\\
+                \braket{a^{(2)}|\alpha}\braket{\beta|a^{(1)}} & \braket{a^{(2)}|\alpha}\braket{\beta|a^{(2)}} & \ldots\\
+                \vdots                                        & \vdots                                        & \ddots
+            \end{bmatrix}
+        \end{gather*}
         \item[1.8]
     \end{enumerate}
 
