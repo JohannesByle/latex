@@ -1,0 +1,41 @@
+%! Author = Johannes Byle
+%! Date = 8/30/2021
+
+% Preamble
+\documentclass[12pt]{article}
+\title{Classical Mechanics Assignment \#1}
+\author{Johannes Byle}
+
+% Packages
+\usepackage{amsmath}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{lipsum}
+\usepackage{braket}
+
+% Document
+\begin{document}
+    \maketitle
+    \begin{enumerate}
+        \item
+        \begin{enumerate}
+            \item
+            Starting with the forces, simplifying, and substituting variables:
+            \begin{gather*}
+                F_{\text{total}}=F_{\text{spring}}+F_{\text{damping}}+F_{\text{piston}}\\
+                m\ddot{x}=-kx-m\nu\dot{x}+kX(t)\\
+                \ddot{x}+\frac{k}{m}x+\nu\dot{x}=\frac{k}{m}(t)\\
+                \ddot{x}+\nu\dot{x}+\omega_0^2 x=F_0(t)
+            \end{gather*}
+            \item
+            Complementary solution:
+            \begin{gather*}
+                x(t)=e^{-\beta t}\left[A_1 e^{-i\sqrt{\omega_0^2-\beta^2}t}+A_2 e^{i\sqrt{\omega_0^2-\beta^2}t}\right]
+            \end{gather*}
+            Particular solution:
+            \begin{gather*}
+
+            \end{gather*}
+        \end{enumerate}
+    \end{enumerate}
+
+\end{document}
