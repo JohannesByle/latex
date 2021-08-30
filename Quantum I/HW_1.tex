@@ -91,13 +91,31 @@
             \frac{\hbar^2}{4}\geq-\frac{\hbar^2}{4}
         \end{gather*}
         \item[1.7]
-        \begin{gather*}
-            \begin{bmatrix}
-                \braket{a^{(1)}|\alpha}\braket{\beta|a^{(1)}} & \braket{a^{(1)}|\alpha}\braket{\beta|a^{(2)}} & \ldots\\
-                \braket{a^{(2)}|\alpha}\braket{\beta|a^{(1)}} & \braket{a^{(2)}|\alpha}\braket{\beta|a^{(2)}} & \ldots\\
-                \vdots                                        & \vdots                                        & \ddots
-            \end{bmatrix}
-        \end{gather*}
+        \begin{enumerate}
+            \item
+            \begin{gather*}
+                \begin{bmatrix}
+                    \braket{a^{(1)}|\alpha}\braket{\beta|a^{(1)}} & \braket{a^{(1)}|\alpha}\braket{\beta|a^{(2)}} & \ldots\\
+                    \braket{a^{(2)}|\alpha}\braket{\beta|a^{(1)}} & \braket{a^{(2)}|\alpha}\braket{\beta|a^{(2)}} & \ldots\\
+                    \vdots                                        & \vdots                                        & \ddots
+                \end{bmatrix}
+            \end{gather*}
+            \item
+            \begin{gather*}
+                \begin{bmatrix}
+                    \braket{a^{(1)}|S_z ;+}\braket{S_x ;+|a^{(1)}} & \braket{a^{(1)}|S_z ;+}\braket{S_x ;+|a^{(2)}} \\
+                    \braket{a^{(2)}|S_z ;+}\braket{S_x ;+|a^{(1)}} & \braket{a^{(2)}|S_z ;+}\braket{S_x ;+|a^{(2)}}
+                \end{bmatrix}\\
+                \begin{bmatrix}
+                    \frac{\hbar}{2}\cdot0 & 0\cdot\frac{\hbar}{2}  \\
+                    0\cdot\frac{\hbar}{2} & -\frac{\hbar}{2}\cdot0
+                \end{bmatrix}=
+                \begin{bmatrix}
+                    0 & 0 \\
+                    0 & 0 \\
+                \end{bmatrix}
+            \end{gather*}
+        \end{enumerate}
         \item[1.8]
     \end{enumerate}
 
