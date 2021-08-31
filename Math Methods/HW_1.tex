@@ -61,7 +61,11 @@
                 v=\sqrt{2P_0}\int_0^{t_f}2 c^2 m \sqrt{\frac{1}{c^2 m^2}}dt\\
                 v=2c^2 m\sqrt{\frac{2P_0}{c^2 m^2}}t_f
             \end{gather*}
-            This differs from the answer in part (b) because it does not depend on $m'$?
+            If $c$ is positive:
+            \begin{gather*}
+                v=2ct_f\sqrt{2P_0}
+            \end{gather*}
+            This differs from the answer in part (b) because it does not depend on $m'$ or $m$?
         \end{enumerate}
         \item
         \begin{enumerate}
@@ -84,7 +88,8 @@
                 y_f=A\cdot x_f
                 A=\frac{y_f}{x_f}
             \end{gather*}
-            \item It doesn't?
+            \item It doesn't because $\alpha y\frac{\delta y}{\delta x}$ is a total derivative and thus is path independent.
+
         \end{enumerate}
         \item
         Differentiating $I(\epsilon)$ with respect to $\epsilon$:
@@ -97,17 +102,32 @@
         \]
         This requires that $y(x,\epsilon)$ and all its derivatives through third order are continuous functions of $x$ and $\epsilon$
         \item
-        From the definition of $ds$:
-        \[
-            ds=\sqrt{1+y'^2}dx
-        \]
-        Using the Euler-Lagrange equation:
-        \begin{gather*}
-            f=\frac{\sqrt{1+y'^2}}{u}\\
-            y'\frac{\delta}{\delta y'}\left[\frac{\sqrt{1+y'^2}}{u}\right]-\frac{\sqrt{1+y'^2}}{u}=\text{const}\\
-            \frac{y'^2}{u\sqrt{y'^2+1}}-\frac{\sqrt{1+y'^2}}{u}=\text{const}\\
-            \frac{y'^2-\left(1+y'^2\right)}{u\sqrt{y'^2+1}}=\text{const}\\
-            \frac{\left(\sqrt{y'^2+1}\right)^{-1}}{u}=\text{const}\\
-        \end{gather*}
+        \begin{enumerate}
+            \item
+            From the definition of $ds$:
+            \[
+                ds=\sqrt{1+y'^2}dx
+            \]
+            Using the Euler-Lagrange equation:
+            \begin{gather*}
+                f=\frac{\sqrt{1+y'^2}}{u}\\
+                y'\frac{\delta}{\delta y'}\left[\frac{\sqrt{1+y'^2}}{u}\right]-\frac{\sqrt{1+y'^2}}{u}=\text{const}\\
+                \frac{y'^2}{u\sqrt{y'^2+1}}-\frac{\sqrt{1+y'^2}}{u}=\frac{y'^2-\left(1+y'^2\right)}{u\sqrt{y'^2+1}}=\text{const}\\
+                \frac{1}{u\sqrt{y'^2+1}}=\frac{1}{u\sqrt{\left(\frac{dy}{dx}\right)^2+1}}=\frac{1}{u\sqrt{\cot^2{\phi}+1}}=\text{const}\\
+                \frac{1}{u\sqrt{\csc^2\phi}}=\frac{\sin\phi}{u}=\text{const}
+            \end{gather*}
+            \item
+            Since we assumed $u$ above was a function of $y$ we can simply take our result from part (a):
+            \begin{gather*}
+                \frac{\sin\phi}{\alpha y}=\text{const}\\
+                \sin\phi=\alpha y\\
+                \sin\left(\arctan y'\right)=\alpha y
+            \end{gather*}
+            Using WolframAlpha to solve this differential equation gives:
+            \begin{gather*}
+                \alpha x+x_0=\sqrt{1-\alpha^2y^2}-\tanh^{-1}\left(\sqrt{1-\alpha^2 y^2}\right)
+            \end{gather*}
+            Assuming the $\tanh^{-1}$ can be ignored as a phase or something similar, it's clear that $\alpha x+x_0=\sqrt{1-\alpha^2y^2}$ is the equation of a circle centered on the $x$ axis.
+        \end{enumerate}
     \end{enumerate}
 \end{document}
