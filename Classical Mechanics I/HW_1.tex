@@ -33,7 +33,53 @@
             \end{gather*}
             Particular solution:
             \begin{gather*}
-                \left\{\left\{x(t)\to \frac{c w^3 \cos  e^{a t} \left(t-\frac{2}{a}\right)}{a^2}+c_2 t+c_1\right\}\right\}
+                X(t)=X_0 e^{\alpha t}\cos(\omega t)\\
+                \dot{X}(t)=e^{\alpha t}X_0\left(\alpha\cos(\omega t)-\omega\sin(\omega t)\right)\\
+                \ddot{X}(t)=X_0 e^{\alpha t} \left(\left(\alpha^2-\omega_0^2\right) \cos (t \omega)-2 \alpha \omega \sin (t \omega)\right)\\
+            \end{gather*}
+            Particular solution continued: substituting back into equation:
+            \begin{gather*}
+                X_0 e^{\alpha t} \left(\left(\alpha^2-\omega_0^2\right) \cos (t \omega)-2 \alpha \omega \sin (t \omega)\right)+\\
+                \nu e^{\alpha t}X_0\left(\alpha\cos(\omega t)-\omega\sin(\omega t)\right)+\\
+                \omega_0^2 X_0 e^{\alpha t}\cos(\omega t)=\omega^2 e^{\alpha t}\cos(\omega t)\\
+            \end{gather*}
+            Particular solution continued: finding $X_0$:
+            \begin{gather*}
+                \omega_0^2 X_0 e^{\alpha t}\cos(\omega t)=\omega^2 e^{\alpha t}\cos(\omega t)\\
+            \end{gather*}
+        \end{enumerate}
+        \item
+        \begin{enumerate}
+            \item
+            Assuming the "ripples" can be modeled by a sinusoidal function, the motion of the car can be described by the driven damped oscillator discussed in class.
+            In this case the equation for the resonance frequency:
+            \begin{gather*}
+                \omega_r=\sqrt{\omega_0^2+2\beta^2}\\
+                \frac{v}{x_\text{spacing}}=\sqrt{\omega_0^2+2\beta^2}\\
+                v=x_\text{spacing}\sqrt{\omega_0^2+2\beta^2}\\
+            \end{gather*}
+            Since $\omega_0=\sqrt{\frac{k}{m}}$ and $\beta=\frac{b}{2m}$:
+            \begin{gather*}
+                \omega_r=\sqrt{\omega_0^2+2\beta^2}\\
+                \frac{v}{x_\text{spacing}}=\sqrt{\omega_0^2+2\beta^2}\\
+                v=x_\text{spacing}\sqrt{\frac{k}{m}+\frac{b^2}{4m^2}}\\
+            \end{gather*}
+            Plugging in some reasonable values we can check whether or not our equations make physical sense.
+            I used the mass of my car $m=1565$ kg, and damping $b=2000$ N s/m and stiffness $k=22,000$ N/m parameters from a research paper.\footnote{https://journals.sagepub.com/doi/full/10.1177/1687814016648638 Analysis of suspension with variable stiffness and variable damping force for automotive applications}
+            \begin{gather*}
+                v=2\sqrt{\frac{22000}{1565}+\frac{2000^2}{4\cdot1565^2}}\approx7.6\text{ m/s}\approx17\text{ mph}\\
+            \end{gather*}
+            This is a reasonable number and the units make sense:
+            \begin{gather*}
+                v=m\sqrt{\frac{N}{m\cdot kg}+\frac{N^2\cdot s^2}{m^2\cdot kg^2}}\\
+                v=m\sqrt{\frac{kg\cdot m}{m\cdot kg\cdot s^2}+\frac{kg^2\cdot m^2\cdot s^2}{m^2\cdot kg^2\cdot s^4}}\\
+                v=m\sqrt{\frac{1}{s^2}+\frac{1}{s^2}}=\frac{m}{s}\\
+            \end{gather*}
+            \item
+            So that the suspension doesn't fall apart I probably want a damping constant that only allows resonances at very high speeds, say above $100$ mph:
+            \begin{gather*}
+                \sqrt{4m^2\left(\frac{v^2}{x^2_\text{spacing}}-\frac{k}{m}\right)}=b\\
+                \sqrt{4\cdot1565^2\left(\frac{45}{2}-\frac{22000}{1565}\right)}\approx 9100\text{ N s/m}\\
             \end{gather*}
         \end{enumerate}
     \end{enumerate}
