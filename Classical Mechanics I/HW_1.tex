@@ -90,15 +90,52 @@
                 m\ddot{x}=F=\dot{E}=-\left(x^2+\dot{x}^2-1\right)\dot{x}-x
             \end{gather*}
             \item
-            Simply plugging in the variables $x=r\cos\theta$ and $\dot{x}=r\sin\theta$:
+            By the definitions that $x=r\cos\theta$ and $\dot{x}=r\sin\theta$:
             \begin{gather*}
-                \dot{E}=-\left(\left(r\cos\theta\right)^2+\left(r\sin\theta\right)^2-1\right)r\sin\theta-r\cos\theta
+                r^2=r^2\cos^2\theta+r^2\sin^2\theta\\
+                r^2=x^2+\dot{x}^2
             \end{gather*}
-            Solving for $\dot{r}$:
+            Taking a time derivative and solving for $\ddot{x}$:
             \begin{gather*}
-                \begin{gather*}
-                    \frac{d\dot{E}}{dr}=-\left(\left(r\cos\theta\right)^2+\left(r\sin\theta\right)^2-1\right)r\sin\theta-r\cos\theta
-                \end{gather*}
+                \frac{d}{dt}(r^2)=\frac{d}{dt}\left(x^2+\dot{x}^2\right)\\
+                2r\dot{r}=2x\dot{x}+2\dot{x}\ddot{x}\\
+                \ddot{x}=\frac{r\dot{r}}{\dot{x}}-x
+            \end{gather*}
+            Substituting back in for $x$ and $\dot{x}$
+            \begin{gather*}
+                \ddot{x}=\frac{r\dot{r}}{r\sin\theta}-r\cos\theta\\
+                \ddot{x}=\frac{\dot{r}}{\sin\theta}-r\cos\theta
+            \end{gather*}
+            Plugging it back into the original equation of motion:
+            \begin{gather*}
+                \frac{\dot{r}}{\sin\theta}-r\cos\theta=-\left(x^2+\dot{x}^2-1\right)\dot{x}-x\\
+                \frac{\dot{r}}{\sin\theta}-r\cos\theta=-\left((r\cos\theta)^2+(r\sin\theta)^2-1\right)r\sin\theta-r\cos\theta\\
+                \frac{\dot{r}}{\sin\theta}-r\cos\theta=-\left(r^2-1\right)r\sin\theta-r\cos\theta\\
+                \dot{r}=-\left(r^2-1\right)r\sin^2\theta\\
+                \dot{r}=r\left(1-r^2\right)\sin^2\theta
+            \end{gather*}
+            Repeating the same process to find $\dot{\theta}$:\\
+            By the definitions that $x=r\cos\theta$ and $\dot{x}=r\sin\theta$:
+            \begin{gather*}
+                \frac{\dot{x}}{x}=\frac{r\sin\theta}{r\cos\theta}=\tan{\theta}
+            \end{gather*}
+            Taking a time derivative and solving for $\dot{\theta}$:
+            \begin{gather*}
+                \frac{d}{dt}\tan{\theta}=\frac{d}{dt}\frac{\dot{x}}{x}\\
+                \frac{\dot{\theta}}{\cos^2{\theta}}=\frac{\ddot{x}}{x}-\frac{\dot{x}^2}{x^2}\\
+                \dot{\theta}=\cos^2{\theta}\left(\frac{\ddot{x}}{x}-\frac{\dot{x}^2}{x^2}\right)
+            \end{gather*}
+            Substituting back in the equation of motion from part (a) for $\ddot{x}$:
+            \begin{gather*}
+                \dot{\theta}=\cos^2{\theta}\left(\frac{-\left(x^2+\dot{x}^2-1\right)\dot{x}-x}{x}-\frac{\dot{x}^2}{x^2}\right)
+            \end{gather*}
+            Substituting back in for $x$ and $\dot{x}$ and simplifying:
+            \begin{gather*}
+                \dot{\theta}=\cos^2{\theta}\left(\frac{-\left((r\cos\theta)^2+(r\sin\theta)^2-1\right)r\sin\theta-r\cos\theta}{r\cos\theta}-\frac{(r\sin\theta)^2}{(r\cos\theta)^2}\right)\\
+                \dot{\theta}=\cos^2{\theta}\left(\frac{-\left(r^2-1\right)\sin\theta-\cos\theta}{\cos\theta}-\frac{\sin^2\theta}{\cos^2\theta}\right)\\
+                \dot{\theta}=\cos^2{\theta}\left(\frac{-\left(r^2-1\right)\sin\theta}{\cos\theta}-\left[1+\frac{\sin^2\theta}{\cos^2\theta}\right]\right)\\
+                \dot{\theta}=\cos^2{\theta}\left(\frac{-\left(r^2-1\right)\sin\theta}{\cos\theta}-\sec^2\theta\right)\\
+                \dot{\theta}=-\left(r^2-1\right)\sin\theta\cos\theta-1\\
             \end{gather*}
         \end{enumerate}
     \end{enumerate}
