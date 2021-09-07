@@ -70,12 +70,104 @@
             \end{gather*}
             When this operator operates on some eigenket of A since it's eigenvalue will be in the series, one of the terms will go to zero, making the whole expression zero.
             \item
+            \begin{gather*}
+                \prod_{a''\neq a'}(A-a')=\frac{(a'-a'')}{(a'-a'')}\frac{(a'''-a'')}{(a'-a'')}\cdots\frac{(a_n-a'')}{(a'-a'')}
+            \end{gather*}
+            \item
+            \begin{gather*}
+                S_z=\frac{\hbar}{2}\left[ (\ket{+}\bra{+})-(\ket{-}\bra{-}) \right]\\
+                \prod_{a_i}S_z\ket{+}=\left(\frac{\hbar}{2}-\frac{\hbar}{2}\right)\left(\frac{\hbar}{2}-0\right)=0
+            \end{gather*}
         \end{enumerate}
         \item[1.11]
         \begin{gather*}
-            \op{S}=S_x+S_y+S_z\\
-            \op{n}=\cos\alpha\sin\beta+\sin\alpha\cos\beta+\cos\beta\\
-            \op{S}\cdot\op{n}=S_x\cos\alpha\sin\beta+S_y\sin\alpha\cos\beta+S_z\cos\beta
+            \op{S}=\left(S_x,\ S_y,\ S_z\right)\\
+            \op{n}=\left(\cos\alpha\sin\beta,\ \sin\alpha\sin\beta,\ \cos\beta\right)\\
+            \op{S}\cdot\op{n}=\left(S_x\cos\alpha\sin\beta,\ S_y\sin\alpha\sin\beta,\ S_z\cos\beta\right)\\
+            \op{S}\cdot\op{n}=
+            \frac{\hbar}{2}
+            \begin{bmatrix}
+                0 & 1 \\
+                1 & 0
+            \end{bmatrix}
+            \cos\alpha\sin\beta+
+            \frac{\hbar}{2i}
+            \begin{bmatrix}
+                0  & 1 \\
+                -1 & 0
+            \end{bmatrix}
+            \sin\alpha\sin\beta+
+            \frac{\hbar}{2}
+            \begin{bmatrix}
+                1 & 0  \\
+                0 & -1
+            \end{bmatrix}
+            \cos\beta\\
+            \op{S}\cdot\op{n}=
+            \frac{\hbar}{2}\left(
+            \begin{bmatrix}
+                0                   & \cos\alpha\sin\beta \\
+                \cos\alpha\sin\beta & 0
+            \end{bmatrix}+
+            \begin{bmatrix}
+                0                     & i\sin\alpha\sin\beta \\
+                -i\sin\alpha\cos\beta & 0
+            \end{bmatrix}+
+            \begin{bmatrix}
+                \cos\beta & 0          \\
+                0         & -\cos\beta
+            \end{bmatrix}
+            \right)\\
+            \op{S}\cdot\op{n}=
+            \begin{bmatrix}
+                \cos\beta                                & \cos\alpha\sin\beta      +i\sin\alpha\sin\beta \\
+                \cos\alpha\sin\beta-i\sin\alpha\sin\beta & -\cos\beta
+            \end{bmatrix}
+        \end{gather*}
+        Solving for $\ket{+}$ as $\begin{bmatrix}
+                                      a \\
+                                      b
+        \end{bmatrix}$:
+        \begin{gather*}
+            \ket{\op{S}\cdot\op{n};+}=
+            \begin{bmatrix}
+                \cos\beta                                & \cos\alpha\sin\beta      +i\sin\alpha\sin\beta \\
+                \cos\alpha\sin\beta-i\sin\alpha\sin\beta & -\cos\beta
+            \end{bmatrix}
+            \begin{bmatrix}
+                a \\
+                b
+            \end{bmatrix}
+            =
+            \frac{\hbar}{2}
+            \begin{bmatrix}
+                a \\
+                b
+            \end{bmatrix}\\
+            \begin{bmatrix}
+                \cos\beta             & e^{i\alpha}\sin\beta \\
+                e^{-i\alpha}\sin\beta & -\cos\beta
+            \end{bmatrix}
+            \begin{bmatrix}
+                a \\
+                b
+            \end{bmatrix}
+            =
+            \frac{\hbar}{2}
+            \begin{bmatrix}
+                a \\
+                b
+            \end{bmatrix}\\
+        \end{gather*}
+        As a system of equations:
+        \begin{gather*}
+            a\cos\beta+be^{i\alpha}\sin\beta=\frac{\hbar}{2}a\\
+            ae^{-i\alpha}\sin\beta  -b\cos\beta=\frac{\hbar}{2}b
+        \end{gather*}
+        Solving for $a$:
+        \begin{gather*}
+            b=\frac{a\sin\beta e^{-i\alpha}}{\left(\cos\beta+\frac{\hbar}{2}\right)}\\
+            a\left(\cos\beta-\frac{\hbar}{2}\right)+\frac{a\sin\beta e^{-i\alpha}}{\left(\cos\beta+\frac{\hbar}{2}\right)}\left(\sin\beta e^{i\alpha}\right)
         \end{gather*}
         \item[1.17]
         We can show that for any base ket $\ket{\psi_n}$, $AB\ket{\psi_n}=BA\ket{\psi_n}$:
