@@ -1,0 +1,96 @@
+%! Author = Johannes Byle
+%! Date = 9/7/2021
+
+% Preamble
+\documentclass[12pt]{article}
+\title{Quantum I Assignment \#2}
+\author{Johannes Byle}
+\newcommand{\op}[1]{\tilde{\mathbf{#1}}}
+
+% Packages
+\usepackage{amsmath}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{lipsum}
+\usepackage{braket}
+
+% Document
+\begin{document}
+    \maketitle
+    \begin{enumerate}
+        \item[Q.1]
+        \begin{enumerate}
+            \item
+            \begin{gather*}
+                \left(\frac{1}{\sqrt{2}}\right)^2+\frac{i}{2}\frac{-i}{2}+\left(\frac{1}{2}\right)^2=1\\
+                \ket{\psi_0}\text{ is normalized}\\
+                \left(\frac{1}{\sqrt{3}}\right)^2+\frac{i}{\sqrt{3}}\frac{-i}{\sqrt{3}}=\frac{2}{3}\\
+                \ket{\psi_1}\text{ is not normalized}\\
+            \end{gather*}
+            \item
+            \begin{gather*}
+                \op{P}_0=\ket{\psi_0}\bra{\psi_0}
+            \end{gather*}
+            Representing this as a matrix:
+            \begin{gather*}
+                \begin{bmatrix}
+                    \frac{1}{2}\ket{u_1}\bra{u_1}         & \frac{-i}{2\sqrt{2}}\ket{u_1}\bra{u_2} & \frac{1}{2\sqrt{2}}\ket{u_1}\bra{u_3} \\
+                    \frac{i}{2\sqrt{2}}\ket{u_2}\bra{u_1} & \frac{1}{4}\ket{u_2}\bra{u_2}          & \frac{i}{4}\ket{u_2}\bra{u_3}         \\
+                    \frac{1}{2\sqrt{2}}\ket{u_3}\bra{u_1} & \frac{-i}{4}\ket{u_3}\bra{u_2}         & \frac{1}{4}\ket{u_3}\bra{u_3}         \\
+                \end{bmatrix}
+                \rightarrow
+                \begin{bmatrix}
+                    \frac{1}{2}         & \frac{-i}{2\sqrt{2}} & \frac{1}{2\sqrt{2}} \\
+                    \frac{i}{2\sqrt{2}} & \frac{1}{4}          & \frac{i}{4}         \\
+                    \frac{1}{2\sqrt{2}} & \frac{-i}{4}         & \frac{1}{4}         \\
+                \end{bmatrix}
+            \end{gather*}
+            This is hermitian because it is equal to it's complex conjugate transpose.
+            \begin{gather*}
+                \op{P}_1=\ket{\psi_1}\bra{\psi_1}
+            \end{gather*}
+            Representing this as a matrix:
+            \begin{gather*}
+                \begin{bmatrix}
+                    \frac{1}{3}\ket{u_1}\bra{u_1} & \frac{-i}{3}\ket{u_1}\bra{u_2} \\
+                    \frac{i}{3}\ket{u_2}\bra{u_1} & \frac{1}{3}\ket{u_2}\bra{u_2}
+                \end{bmatrix}
+                \rightarrow
+                \begin{bmatrix}
+                    \frac{1}{3} & \frac{-i}{3} \\
+                    \frac{i}{3} & \frac{1}{3}
+                \end{bmatrix}
+            \end{gather*}
+            This is hermitian because it is equal to it's complex conjugate transpose.
+        \end{enumerate}
+        \item[1.9]
+        \begin{enumerate}
+            \item
+            \begin{gather*}
+                \prod_{a_i}(A-a')=(A-a_1)(A-a_2)\cdots(A-a_i)
+            \end{gather*}
+            When this operator operates on some eigenket of A since it's eigenvalue will be in the series, one of the terms will go to zero, making the whole expression zero.
+            \item
+        \end{enumerate}
+        \item[1.11]
+        \begin{gather*}
+            \op{S}=S_x+S_y+S_z\\
+            \op{n}=\cos\alpha\sin\beta+\sin\alpha\cos\beta+\cos\beta\\
+            \op{S}\cdot\op{n}=S_x\cos\alpha\sin\beta+S_y\sin\alpha\cos\beta+S_z\cos\beta
+        \end{gather*}
+        \item[1.17]
+        We can show that for any base ket $\ket{\psi_n}$, $AB\ket{\psi_n}=BA\ket{\psi_n}$:
+        \begin{gather*}
+            AB\ket{\psi_n}=Ab_n\ket{\psi_n}=a_n b_n\ket{\psi_n}=BA\ket{\psi_n}
+        \end{gather*}
+        Since this is true for any $\ket{\psi_n}$ and we know that the simultaneous eigenkets form a complete orthonormal set of base kets $[A, B]=0$.\footnote{https://en.wikipedia.org/wiki/Complete\_set\_of\_commuting\_observables}
+        \item[1.18]
+        If $\ket{\psi}$ is a eigenket of both $A$ and $B$ then:
+        \begin{gather*}
+            A\ket{\psi}=a\ket{\psi}\\
+            B\ket{\psi}=b\ket{\psi}\\
+            (AB+BA)\ket{\psi}=2ab\ket{\psi}
+        \end{gather*}
+        The only way this is true is if either $a$ or $b$ is 0.\footnote{http://peeterjoot.com/2015/09/28/can-anticommuting-operators-have-a-simulaneous-eigenket/}
+    \end{enumerate}
+
+\end{document}
