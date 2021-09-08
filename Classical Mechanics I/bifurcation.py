@@ -23,8 +23,8 @@ for mu in tqdm(np.linspace(0, 1, num_points * 10)):
     final_slice = int(num_points / 100)
     mu_array += [mu] * final_slice
     x_array += x[-final_slice:]
-plt.scatter(mu_array, x_array, c="blue", s=0.1)
+plt.scatter(mu_array, x_array, c="black", s=0.1)
 plt.ylabel("x")
 plt.xlabel(r"$\mu$")
-plt.savefig("bifurcation.svg")
+plt.savefig("bifurcation.png", dpi=500)
 plt.show()
