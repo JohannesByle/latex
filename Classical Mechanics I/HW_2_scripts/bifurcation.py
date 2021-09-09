@@ -11,6 +11,13 @@ def f(x_, mu_=0.5):
     return mu_ * sin(pi * x_)
 
 
+def f2(x_, a=0.5):
+    if x_ < 0.5:
+        return 2 * a * x_
+    else:
+        return 2 * a * (1 - x_)
+
+
 num_points = 1000
 mu_array = []
 x_array = []
