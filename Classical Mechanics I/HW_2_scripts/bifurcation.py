@@ -1,8 +1,5 @@
 import numpy as np
 import matplotlib.pyplot as plt
-import matplotlib
-
-matplotlib.rcParams['text.usetex'] = True
 from math import pi, sin
 from tqdm import tqdm
 
