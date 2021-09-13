@@ -1,0 +1,172 @@
+%! Author = Johannes Byle
+%! Date = 9/11/2021
+
+% Preamble
+\documentclass[12pt]{article}
+\title{Math Methods Assignment \#2}
+\author{Johannes Byle}
+\newcommand{\p}[2]{\frac{\partial #1}{\partial #2}}
+
+% Packages
+\usepackage{amsmath}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{lipsum}
+\usepackage{physics}
+
+% Document
+\begin{document}
+    \maketitle
+    \begin{enumerate}
+        \item
+        \begin{gather*}
+            f(x,y)=2x^2+\frac{1}{2}y^2-xy\\
+            g(x,y)=4x^2+y^2-4=0\\
+        \end{gather*}
+        Using a Lagrange multiplier:
+        \begin{gather*}
+            h=f+\lambda g=2x^2+\frac{1}{2}y^2-xy+\lambda\left(4x^2+y^2-4\right)\\
+            \frac{\partial h}{\partial y}-\frac{d}{dx}\left(\frac{\partial h}{\partial y'}\right)=0\\
+            \frac{\partial }{\partial y}\left(2x^2+\frac{1}{2}y^2-xy+\lambda\left(4x^2+y^2-4\right)\right)-\frac{d}{dx}\left(\frac{\partial h}{\partial y'}\right)=0\\
+            -x+y+2y\lambda-\frac{d}{dx}\left(\frac{\partial}{\partial y'}\left(2x^2+\frac{1}{2}y^2-xy+\lambda\left(4x^2+y^2-4\right)\right)\right)=0\\
+            -x+y+2y\lambda=0\\
+        \end{gather*}
+        Plugging back into original equations:
+        \begin{gather*}
+            y=\frac{x}{1+2\lambda}\\
+            4x^2+y^2-4=4x^2+\left(\frac{x}{1+2\lambda}\right)^2-4=0\\
+            x=\pm\frac{2}{\sqrt{\frac{1}{(2 \lambda +1)^2}+4}}\\
+            \left(\pm\frac{2}{(2 \lambda +1) \sqrt{\frac{1}{(2 \lambda +1)^2}+4}},\pm\frac{2}{\sqrt{\frac{1}{(2 \lambda +1)^2}+4}}\right)
+        \end{gather*}
+        \item
+        The quantity that needs to be minimized is the length $ds=\sqrt{dx^2+dy^2+dz^2}$.
+        Re-writing this in terms cylindrical coordinates:
+        \begin{gather*}
+            dx=\dot{\rho}\cos\theta-\rho\dot{\theta}\sin\theta\\
+            dy=\dot{\rho}\sin\theta+\rho\dot{\theta}\cos\theta\\
+            dx^2+dy^2=\dot{p}^2+p^2 \dot{\theta}^2\\
+            dz=\frac{\dot{\rho}}{\rho}\\
+            ds=\sqrt{\dot{p}^2+p^2 \dot{\theta}^2+\frac{\dot{\rho}^2}{\rho^2}}
+        \end{gather*}
+        Plugging this into the Lagrangian:
+        \begin{gather*}
+            f=\sqrt{\dot{\rho}^2+\rho^2 \dot{\theta}^2+\frac{\dot{\rho}^2}{\rho^2}}\\
+            \dot{\rho}\frac{\partial f}{\partial\dot{\rho}}-f=0\\
+            \dot{\rho}\frac{\partial }{\partial\dot{\rho}}\left(\sqrt{\dot{\rho}^2+\rho^2 \dot{\theta}^2+\frac{\dot{\rho}^2}{\rho^2}}\right)-\sqrt{\dot{\rho}^2+\rho^2 \dot{\theta}^2+\frac{\dot{\rho}^2}{\rho^2}}=0\\
+            \dot{\rho}\left(2\dot{\rho}+\frac{2\dot{\rho}}{\rho^2}\right)-\sqrt{\dot{\rho}^2+\rho^2 \dot{\theta}^2+\frac{\dot{\rho}^2}{\rho^2}}=0\\
+            2\dot{\rho}^2+\frac{2\dot{\rho}^2}{\rho^2}-\sqrt{\dot{\rho}^2+\rho^2 \dot{\theta}^2+\frac{\dot{\rho}^2}{\rho^2}}=0\\
+        \end{gather*}
+        \item
+        The constraints of the problem can be written described using the following two equations:
+        \begin{gather*}
+            I=\int_{x_a}^{x_b}ydx\\
+            L=\int_{x_a}^{x_b}\sqrt{1+y'^2}dx
+        \end{gather*}
+        Using the Lagrange multiplier:
+        \begin{gather*}
+            h=y-\lambda\sqrt{1+y'^2}\\
+            \frac{\partial h}{\partial y}-\frac{d}{dx}\left(\frac{\partial h}{\partial y'}\right)=0\\
+            \frac{\partial}{\partial y}\left(y-\lambda\sqrt{1+y'^2}\right)-\frac{d}{dx}\left(\frac{\partial h}{\partial y'}\right)=0\\
+            1-\frac{d}{dx}\left(\frac{\partial}{\partial y'}\left(y-\lambda\sqrt{1+y'^2}\right)\right)=0\\
+            1-\frac{d}{dx}\left(-\frac{\lambda  y'}{\sqrt{\left(y'\right)^2+1}}\right)=0\\
+            \frac{d}{dx}\left(-\frac{\lambda  y'}{\sqrt{\left(y'\right)^2+1}}\right)=1\\
+            \frac{\lambda  y'}{\sqrt{\left(y'\right)^2+1}}=x+x_0\\
+            \frac{\lambda  y'^2}{y^2+1}=\left(x+x_0\right)^2\\
+            y'=\frac{x+x_0}{\sqrt{\lambda^2-(x+x_0)^2}}\\
+            \int y' dx=\int \frac{x+x_0}{\sqrt{\lambda^2-(x+x_0)^2}}dx=\sqrt{-(x+x_a)^2+\lambda^2}+x_2\\
+            y+y_0=\sqrt{-(x+x_0)^2+\lambda^2}\\
+        \end{gather*}
+        This is the equation for a semicircle, and it intuitively makes sense that if $L$ is too big then to make a shape that most closely resembles a circle would require the function that has two values of $y$ for a given value of $x$.
+        \item
+        \begin{enumerate}
+            \item
+            Starting from the functions from Byron and Fuller:
+            \begin{gather*}
+                I=\int_{x_a}^{x_b}\sqrt{\frac{1+y'^2}{y}}dx\\
+                L=\int_{x_a}^{x_b}\sqrt{1+y'^2}dx\\
+            \end{gather*}
+            Substituting these functions into the Euler-Lagrange equation with Lagrange multipliers:
+            \begin{gather*}
+                h=\sqrt{\frac{1+y'^2}{y}}-\lambda\sqrt{1+y'^2}\\
+                \frac{\partial h}{\partial y}-\frac{d}{dx}\left(\frac{\partial h}{\partial y'}\right)=0\\
+                \frac{\partial h}{\partial y}=\frac{\sqrt{\frac{1+y'^2}{y}}}{2 y}\\
+                \frac{\partial h}{\partial y'}=\frac{\lambda  y'}{\sqrt{\left(y'\right)^2+1}}+\frac{y'}{y \sqrt{\frac{\left(y'\right)^2+1}{y}}}\\
+                \frac{d}{dx}\left(\frac{\partial h}{\partial y'}\right)=\frac{\left(\frac{y'^2+1}{y}\right)^{3/2} \left(2 y( y''-y'^2 \left(y'^2+1\right)\right)}{2 \left(y'^2+1\right)^3}-\frac{\lambda  y''}{\left(y'^2+1\right)^{3/2}}\\
+                \frac{\sqrt{\frac{1+y'^2}{y}}}{2 y}-\frac{\left(\frac{y'^2+1}{y}\right)^{3/2} \left(2 y( y''-y'^2 \left(y'^2+1\right)\right)}{2 \left(y'^2+1\right)^3}-\frac{\lambda  y''}{\left(y'^2+1\right)^{3/2}}=0
+            \end{gather*}
+            \item
+            Starting from the functions from Byron and Fuller:
+            \begin{gather*}
+                I=\int_{x_a}^{x_b}\sqrt{1+y'^2}dx\\
+                L=\int_{x_a}^{x_b}\sqrt{\frac{1+y'^2}{y}}dx\\
+            \end{gather*}
+            Substituting these functions into the Euler-Lagrange equation with Lagrange multipliers:
+            \begin{gather*}
+                h=\sqrt{1+y'^2}-\lambda\sqrt{\frac{1+y'^2}{y}}\\
+                \frac{\partial h}{\partial y}-\frac{d}{dx}\left(\frac{\partial h}{\partial y'}\right)=0\\
+                \frac{\partial h}{\partial y}=\frac{\lambda  \sqrt{\frac{y'(x)^2+1}{y(x)}}}{2 y(x)}\\
+                \frac{\partial h}{\partial y'}=y'(x) \left(-\frac{\lambda }{y(x) \sqrt{\frac{y'(x)^2+1}{y(x)}}}-\frac{1}{\sqrt{1-y'(x)^2}}\right)\\
+                \frac{d}{dx}\left(\frac{\partial h}{\partial y'}\right)=\frac{\lambda  \left(\frac{y'(x)^2+1}{y(x)}\right)^{3/2} \left(-2 y(x) y''(x)+y'(x)^4+y'(x)^2\right)}{2 \left(y'(x)^2+1\right)^3}+\frac{y''(x)}{\left(1-y'(x)^2\right)^{3/2}}\\
+                \frac{1}{2} 1(x) \left(\frac{\lambda  \left(\frac{y'(x)^2+1}{y(x)}\right)^{3/2} \left(2 y(x) y''(x)-y'(x)^2 \left(y'(x)^2+1\right)\right)}{\left(y'(x)^2+1\right)^3}+\frac{2 y''(x)}{\left(1-y'(x)^2\right)^{3/2}}\right)=0
+            \end{gather*}
+            \item
+            Starting from the functions from Byron and Fuller, and using adding constraint equations:
+            \begin{gather*}
+                I=2\pi\int_{\rho_a}^{\rho_b}\rho\sqrt{1+\rho'^2}dz\\
+                V=\pi\int_{\rho_a}^{\rho_b}\rho^2\left(1+\rho'^2\right)dz\\
+                M=\pi\alpha\int_{\rho_a}^{\rho_b}\rho^2\left(1+\rho'^2\right)dz\\
+            \end{gather*}
+        \end{enumerate}
+        \item
+        \begin{enumerate}
+            \item
+            \begin{gather*}
+                h=f^2-\lambda_1 g_1-\lambda_2 g_2\\
+                \frac{\partial h}{\partial y_1}-\frac{d}{dx}\left(\frac{\partial h}{\partial y_1'}\right)=0\\
+                2ff'-\lambda_1 g_1'-\lambda_2 g_2'-\frac{d}{dx}\left(2ff'\right)=0
+            \end{gather*}
+            This is not the same curve as if it were simply a function of $f$
+            \item
+            \begin{gather*}
+                h=f^2-\lambda_1 g_1^2-\lambda_2 g_2^2\\
+                \frac{\partial h}{\partial y_1}-\frac{d}{dx}\left(\frac{\partial h}{\partial y_1'}\right)=0\\
+                f'-\lambda_1 2g_1 g_1'-\lambda_2 2g_2 g_2'-\frac{d}{dx}\left(f'\right)=0
+            \end{gather*}
+            This also does not give you the same curve.
+        \end{enumerate}
+        \item
+        \begin{enumerate}
+            \item
+            \begin{gather*}
+                f=\alpha(x,y)\sqrt{1+z_x^2+z_y^2}-\lambda z\\
+                \frac{\partial f}{\partial z}-\frac{\partial}{\partial x}\frac{\partial f}{\partial z_x}-\frac{\partial}{\partial y}\frac{\partial f}{\partial z_y}=0
+            \end{gather*}
+            \item
+            In the case where $\alpha(x,y)=\alpha_0$
+            \begin{gather*}
+                \frac{\partial f}{\partial z}=-\lambda\\
+                \frac{\partial}{\partial x}\frac{\partial f}{\partial z_x}=\p{}{x}\frac{z_x}{\sqrt{1+z_x^2+z_y^2}}=\frac{(z_y^2+1)z_x'}{\left( 1+z_x^2+z_y^2 \right)^{3/2}}\\
+                \frac{\partial}{\partial y}\frac{\partial f}{\partial z_y}=\p{}{y}\frac{z_y}{\sqrt{1+z_x^2+z_y^2}}=\frac{(z_x^2+1)z_y'}{\left( 1+z_x^2+z_y^2 \right)^{3/2}}\\
+                -\lambda-\frac{(z_y^2+1)z_x'}{\left( 1+z_x^2+z_y^2 \right)^{3/2}}-\frac{(z_x^2+1)z_y'}{\left( 1+z_x^2+z_y^2 \right)^{3/2}}=0
+            \end{gather*}
+            If $z(x,y)=\sqrt{R^2-x^2-y^2}$:
+            \begin{gather*}
+                z_x=-\frac{x}{\sqrt{1-x^2-y^2}}\\
+                z_x'=\frac{y^2-1}{\left(1-x^2-y^2\right)^{3/2}}\\
+                z_y=-\frac{y}{\sqrt{1-x^2-y^2}}\\
+                z_y'=\frac{x^2-1}{\left(1-x^2-y^2\right)^{3/2}}\\
+                -\lambda-\frac{(z_y^2+1)z_x'-(z_x^2+1)z_y'}{\left( 1+z_x^2+z_y^2 \right)^{3/2}}=0
+            \end{gather*}
+            Plugging in variables and simplifying using Mathematica we get a circle:
+            \begin{gather*}
+                \lambda+\frac{2 (x-y) (x+y) \sqrt{R^2-x^2-y^2}}{R^2}
+            \end{gather*}
+            The relationship between $\lambda$ and $R$ is:
+            \begin{gather*}
+                \lambda= \frac{2 (x-y) (x+y) \sqrt{R^2-x^2-y^2}}{R^2}
+            \end{gather*}
+        \end{enumerate}
+        \item
+        \item \texttt{FactorInteger[113517805*113517805+1]}$\rightarrow$\texttt{\{\{2,1\},\{373,1\},\{1312889,1\},\{13157129,1\}\}}
+    \end{enumerate}
+
+\end{document}
