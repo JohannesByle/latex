@@ -1,0 +1,161 @@
+%! Author = johannes
+%! Date = 9/13/21
+
+% Preamble
+\documentclass[12pt]{article}
+\title{Quantum I Assignment \#3}
+\author{Johannes Byle}
+\newcommand{\op}[1]{\tilde{\mathbf{#1}}}
+
+% Packages
+\usepackage{amsmath}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{lipsum}
+\usepackage{braket}
+\usepackage{hyperref}
+
+% Document
+\begin{document}
+  \maketitle
+  \begin{enumerate}
+    \item[1.6]
+    \begin{enumerate}
+      \item
+      \begin{gather*}
+        \text{tr}(XY)=\sum_i\bra{\psi_i}XY\ket{\psi_i}\\
+        \text{tr}(XY)=\sum_{ij}\bra{\psi_i}X\ket{\psi_j}\bra{\psi_j}Y\ket{\psi_i}\\
+        \text{tr}(XY)=\sum_{ij}\bra{\psi_j}Y\ket{\psi_i}\bra{\psi_i}X\ket{\psi_j}=\text{tr}(YX)\\
+      \end{gather*}
+      \item
+      From Sakurai page 15:
+      \begin{gather*}
+        XY\ket{\alpha}=X(Y\ket{\alpha}){\mathop{\leftrightarrow}^_{\text{DC}}} (\bra{\alpha}Y^{\dagger})X^{\dagger}=\bra{\alpha}Y^{\dagger}X^{\dagger}
+      \end{gather*}
+      \item
+      Using the Taylor series expansion:
+      \begin{gather*}
+        \exp[if(A)]=\exp[if(a_0\ket{\alpha_0})]+i\exp[if(a_0\ket{\alpha_0})]a_1\ket{\alpha_1}f'(a_0\ket{\alpha_0})\cdots
+      \end{gather*}
+    \end{enumerate}
+    \item[1.15]
+    From Sakurai page 30:
+    \begin{gather*}
+      |\braket{c'|b'}|^2|\braket{b'|a'}|^2
+    \end{gather*}
+    Replacing with our variables:
+    \begin{gather*}
+      a'=s_z;+,\ b'=s_n;+,\ c'=s_z;-\\
+      P=|\braket{s_z;-|s_n;+}|^2|\braket{s_n;+|s_z;+}|^2
+    \end{gather*}
+    Replacing with matrices:
+    \begin{gather*}
+      S_z=\frac{\hbar}{2}
+      \begin{bmatrix}
+        1 & 0  \\
+        0 & -1
+      \end{bmatrix},\quad S_n=\frac{\hbar}{2}
+      \begin{bmatrix}
+        \cos\beta & \sin\beta  \\
+        \sin\beta & -\cos\beta
+      \end{bmatrix}\\
+      \ket{+}=
+      \begin{bmatrix}
+        1 \\
+        0
+      \end{bmatrix},\quad \ket{-}=
+      \begin{bmatrix}
+        0 \\
+        1
+      \end{bmatrix}\\
+      P=|
+      \begin{bmatrix}
+        0 \\
+        1
+      \end{bmatrix}^T
+      \begin{bmatrix}
+        1 & 0  \\
+        0 & -1
+      \end{bmatrix}^T
+      \begin{bmatrix}
+        \cos\beta & \sin\beta  \\
+        \sin\beta & -\cos\beta
+      \end{bmatrix}
+      \begin{bmatrix}
+        1 \\
+        0
+      \end{bmatrix}|^2|
+      \begin{bmatrix}
+        1 \\
+        0
+      \end{bmatrix}^T
+      \begin{bmatrix}
+        \cos\beta & \sin\beta  \\
+        \sin\beta & -\cos\beta
+      \end{bmatrix}^T
+      \begin{bmatrix}
+        1 & 0  \\
+        0 & -1
+      \end{bmatrix}
+      \begin{bmatrix}
+        1 \\
+        0
+      \end{bmatrix}|^2\\
+      P=|
+      \begin{bmatrix}
+        0 & -1\\
+      \end{bmatrix}
+      \begin{bmatrix}
+        \cos\beta \\
+        \sin\beta
+      \end{bmatrix}|^2|
+      \begin{bmatrix}
+        \cos\beta & \sin\beta
+      \end{bmatrix}
+      \begin{bmatrix}
+        1 \\
+        0
+      \end{bmatrix}|^2\\
+      P=|-\sin\beta|^2|\cos\beta|^2\\
+      P=\sin^2(\beta)\cos^2(\beta)
+    \end{gather*}
+    This maximum value is then $\beta=\frac{\pi}{4}$.
+    \item[1.17]
+    We can show that for any base ket $\ket{\psi_n}$, $AB\ket{\psi_n}=BA\ket{\psi_n}$:
+    \begin{gather*}
+      AB\ket{\psi_n}=Ab_n\ket{\psi_n}=a_n b_n\ket{\psi_n}=BA\ket{\psi_n}
+    \end{gather*}
+    Since this is true for any $\ket{\psi_n}$ and we know that the simultaneous eigenkets form a complete orthonormal set of base kets $[A, B]=0$
+    \item[1.19]
+    Assuming $\ket{n}$ is a nondegenerate energy state.
+    Since $[A_1,H]=0$, and $HA_1\ket{n}=A_1 H\ket{n}=E_n A_1\ket{n}$ and since $A_1$ and $H$ commute therefore $A_1\ket{n}=a_1\ket{n}$.
+    In the same way $A_2\ket{n}=a_2\ket{n}$ but that means that $A_1 A_2\ket{n}=a_1 a_2\ket{n}$ which cannot be true if $A_1 A_2\neq A_2 A_1$.
+    The only way this could be true is if either $a_1$ or $a_2$ is 0.
+    \item[1.24]
+    Modeling the ice pick as an inverse pendulum we get the following equation of motion:\footnote{https://en.wikipedia.org/wiki/Inverted\_pendulum}
+    \begin{gather*}
+      \ddot{\theta}=\frac{g}{l}\sin\theta
+    \end{gather*}
+    Since we only care about minuscule movements around the equilibrium point we can make the small angle approximation:
+    \begin{gather*}
+      \ddot{\theta}=\frac{g}{l}\theta\\
+      \theta(t)=c_1 e^{t\sqrt{g/l}}+c_2 e^{-t\sqrt{g/l}}
+    \end{gather*}
+    Solving for the starting conditions.
+    \begin{gather*}
+      x_0=\theta(0)l=(c_1+c_2)l\\
+      p_0=m\theta(0)l=ml\sqrt{\frac{g}{l}}(c_1-c_2)
+    \end{gather*}
+    Apparently we can just ignore $c_2$ because it decays exponentially.
+    We can now use $x_0$ and $p_0$ to get the uncertainty relation:
+    \begin{gather*}
+      x_0 p_0=\frac{\hbar^2}{4}=ml^2\sqrt{\frac{g}{l}}c_1^2\\
+      c_1=\sqrt{\frac{\hbar^2}{4ml^2}\sqrt{\frac{l}{g}}}
+    \end{gather*}
+    If we say that the pick becomes unstable at about half a degree of rotation, or around 0.01 radians, a length of 1 m and a mass of 1 kg, we get the following results.
+    \begin{gather*}
+      t=\log\left(\frac{\theta}{c_1}\right)\sqrt{\frac{l}{g}}\\
+      t=\log\left(\frac{0.01}{\sqrt{\frac{(1.05\cdot10^{-34})^2}{4\cdot 1\cdot 1^2}\sqrt{\frac{1}{1}}}}\right)\sqrt{\frac{1}{1}}\approx74\text{ s}
+    \end{gather*}
+  \end{enumerate}
+
+\end{document}
