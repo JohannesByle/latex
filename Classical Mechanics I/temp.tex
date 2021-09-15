@@ -1,0 +1,46 @@
+%! Author = Johannes Byle
+%! Date = 9/14/2021
+
+% Preamble
+\documentclass[12pt]{article}
+\title{}
+\author{Johannes Byle}
+
+% Packages
+\usepackage{amsmath}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{lipsum}
+
+% Document
+\begin{document}
+    \maketitle
+    \begin{enumerate}
+        \item
+        \begin{enumerate}
+            \item[i] These constraints can be found by defining the equations for the position of each of the elements and then solving for their velocities.
+            Defining the center of the first wheel as $(x_1,y_1)$ and the second as $(x_2,y_2)$ we get:\footnote{https://physics.stackexchange.com/questions/105864/is-there-a-systematic-way-to-derive-constraint-equations}
+            \begin{gather*}
+                x_1=x-\frac{l}{2}\cos\theta\quad y_1=y-\frac{l}{2}\sin\theta\\
+                x_2=x+\frac{l}{2}\cos\theta\quad y_2=y+\frac{l}{2}\sin\theta\\
+            \end{gather*}
+            Taking the derivatives:
+            \begin{gather*}
+                \dot{x}_1=\dot{x}+\frac{l}{2}\dot{\theta}\sin\theta\quad \dot{y}_1=\dot{y}-\frac{l}{2}\dot{\theta}\cos\theta\\
+                \dot{x}_2=\dot{x}-\frac{l}{2}\dot{\theta}\sin\theta\quad \dot{y}_2=\dot{y}+\frac{l}{2}\dot{\theta}\cos\theta
+            \end{gather*}
+            We also know the velocities of the center of each wheel is constrained by the velocity of the wheel:
+            \begin{gather*}
+                \dot{x}_1=R\dot{\phi}\sin\theta\quad \dot{y}_1=-R\dot{\phi}\cos\theta\\
+                \dot{x}_2=R\dot{\phi}'\sin\theta\quad \dot{y}_2=-R\dot{\phi}'\cos\theta
+            \end{gather*}
+            Pretending $dt$ is just part of a fraction to piss off mathematicians:
+            \begin{gather*}
+                dx_1=dx+\frac{l}{2}d\theta\sin\theta\quad dy_1=dy-\frac{l}{2}d\theta\cos\theta\\
+                dx_2=dx-\frac{l}{2}d\theta\sin\theta\quad dy_2=dy+\frac{l}{2}d\theta\cos\theta\\
+                dx_1=Rd\phi\sin\theta\quad dy_1=-Rd\phi\cos\theta\\
+                dx_2=Rd\phi'\sin\theta\quad dy_2=-Rd\phi'\cos\theta
+            \end{gather*}
+        \end{enumerate}
+    \end{enumerate}
+
+\end{document}
