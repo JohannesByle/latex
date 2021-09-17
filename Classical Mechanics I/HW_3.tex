@@ -21,241 +21,256 @@
 
 % Document
 \begin{document}
-  \maketitle
-  \begin{enumerate}
-    \item
+    \maketitle
     \begin{enumerate}
-      \item[i] These constraints can be found by defining the equations for the position of each of the elements and then solving for their velocities.
-      Defining the center of the first wheel as $(x_1,y_1)$ and the second as $(x_2,y_2)$ we get:\footnote{https://physics.stackexchange.com/questions/105864/is-there-a-systematic-way-to-derive-constraint-equations}
-      \begin{gather*}
-        x_1=x-\frac{l}{2}\cos\theta\quad y_1=y-\frac{l}{2}\sin\theta\\
-        x_2=x+\frac{l}{2}\cos\theta\quad y_2=y+\frac{l}{2}\sin\theta\\
-      \end{gather*}
-      Taking the derivatives:
-      \begin{gather*}
-        \dot{x}_1=\dot{x}+\frac{l}{2}\dot{\theta}\sin\theta\quad \dot{y}_1=\dot{y}-\frac{l}{2}\dot{\theta}\cos\theta\\
-        \dot{x}_2=\dot{x}-\frac{l}{2}\dot{\theta}\sin\theta\quad \dot{y}_2=\dot{y}+\frac{l}{2}\dot{\theta}\cos\theta
-      \end{gather*}
-      We also know the velocities of the center of each wheel is constrained by the velocity of the wheel:
-      \begin{gather*}
-        \dot{x}_1=R\dot{\phi}\sin\theta\quad \dot{y}_1=-R\dot{\phi}\cos\theta\\
-        \dot{x}_2=R\dot{\phi}'\sin\theta\quad \dot{y}_2=-R\dot{\phi}'\cos\theta
-      \end{gather*}
-      Pretending $dt$ is just part of a fraction to piss off mathematicians:
-      \begin{gather*}
-        dx_1=dx+\frac{l}{2}d\theta\sin\theta\quad dy_1=dy-\frac{l}{2}d\theta\cos\theta\\
-        dx_2=dx-\frac{l}{2}d\theta\sin\theta\quad dy_2=dy+\frac{l}{2}d\theta\cos\theta\\
-        dx_1=Rd\phi\sin\theta\quad dy_1=-Rd\phi\cos\theta\\
-        dx_2=Rd\phi'\sin\theta\quad dy_2=-Rd\phi'\cos\theta
-      \end{gather*}
-      Substituting the different equations to solve for $dx$ and $dy$:
-      \begin{gather*}
-        dx+\frac{l}{2}d\theta\sin\theta=Rd\phi\sin\theta\\
-        dx=\sin\theta\left(Rd\phi-\frac{l}{2}d\theta\right)\\
-        dy-\frac{l}{2}d\theta\cos\theta=-Rd\phi\cos\theta\\
-        dy=\cos\theta\left(\frac{l}{2}d\theta-Rd\phi\right)
-      \end{gather*}
-      The first equation is easy to see from this by substituting for $dx$ and $dy$:
-      \begin{gather*}
-        \sin\theta dy=-\cos\theta dx\\
-        \sin\theta\left[\cos\theta\left(\frac{l}{2}d\theta-Rd\phi\right)\right]=\cos\theta\left[-\sin\theta\left(Rd\phi-\frac{l}{2}d\theta\right)\right]\\
-        \sin\theta\left[\cos\theta\left(\frac{l}{2}d\theta-Rd\phi\right)\right]=\cos\theta\left[\sin\theta\left(\frac{l}{2}d\theta-Rd\phi\right)\right]
-      \end{gather*}
-      We can derive the second equation using the equations for $dx$ and $dy$ using the midpoint:
-      \begin{gather*}
-        dx=\frac{dx_2+dx_1}{2}\quad dy=\frac{dy_2+dy_2}{2}\\
-        dx=\frac{R\sin\theta(d\phi+d\phi')}{2}\quad dy=-\frac{R\cos\theta(d\phi+d\phi')}{2}\\
-        \sin\theta dx-\cos\theta dy=R(d\phi+d\phi')\\
-        \sin\theta \frac{R\sin\theta(d\phi+d\phi')}{2}+\cos\theta\frac{R\cos\theta(d\phi+d\phi')}{2}=R(d\phi+d\phi')\\
-        \frac{R(d\phi+d\phi')}{2}+\frac{R(d\phi+d\phi')}{2}=R(d\phi+d\phi')\\
-        R(d\phi+d\phi')=R(d\phi+d\phi')\\
-      \end{gather*}
-      \item[ii]
-      This constraint states that the derivatives must be equal to 0:
-      \begin{gather*}
-        \frac{d}{dt}\left(\theta+\frac{R}{l}(\phi-\phi')\right)=d\theta+\frac{R}{l}(d\phi-d\phi')=0\\
-        d\theta=-\frac{R}{l}(d\phi-d\phi')\\
-      \end{gather*}
-      We also know that the general formula for $d\theta$ of a vector is:
-      \begin{gather*}
-        d\theta=\frac{xdy-ydx}{x^2+y^2}\\
-      \end{gather*}
-      But since this is the relative vector, and the distance is constant:
-      \begin{gather*}
-        d\theta=\frac{l\cos\theta dy-l\sin\theta dx}{l}\\
-        d\theta=\cos\theta dy-\sin\theta dx
-      \end{gather*}
-      Plugging in the various variables:
-      \begin{gather*}
-        d\theta=-\cos\theta \cos\theta\left(\frac{l}{2}d\theta+Rd\phi\right)-\sin\theta \sin\theta\left(Rd\phi+\frac{l}{2}d\theta\right)\\
-        d\theta=-\cos^2\theta\left(\frac{l}{2}d\theta'+Rd\phi\right)- \sin^2\theta\left(Rd\phi+\frac{l}{2}d\theta\right)\\
-        d\theta=-\frac{R}{l}(d\phi-d\phi')
-      \end{gather*}
+        \item
+        \begin{enumerate}
+            \item[i] These constraints can be found by defining the equations for the position of each of the elements and then solving for their velocities.
+            Defining the center of the first wheel as $(x_1,y_1)$ and the second as $(x_2,y_2)$ we get:\footnote{https://physics.stackexchange.com/questions/105864/is-there-a-systematic-way-to-derive-constraint-equations}
+            \begin{gather*}
+                x_1=x-\frac{l}{2}\cos\theta\quad y_1=y-\frac{l}{2}\sin\theta\\
+                x_2=x+\frac{l}{2}\cos\theta\quad y_2=y+\frac{l}{2}\sin\theta\\
+            \end{gather*}
+            Taking the derivatives:
+            \begin{gather*}
+                \dot{x}_1=\dot{x}+\frac{l}{2}\dot{\theta}\sin\theta\quad \dot{y}_1=\dot{y}-\frac{l}{2}\dot{\theta}\cos\theta\\
+                \dot{x}_2=\dot{x}-\frac{l}{2}\dot{\theta}\sin\theta\quad \dot{y}_2=\dot{y}+\frac{l}{2}\dot{\theta}\cos\theta
+            \end{gather*}
+            We also know the velocities of the center of each wheel is constrained by the velocity of the wheel:
+            \begin{gather*}
+                \dot{x}_1=R\dot{\phi}\sin\theta\quad \dot{y}_1=-R\dot{\phi}\cos\theta\\
+                \dot{x}_2=R\dot{\phi}'\sin\theta\quad \dot{y}_2=-R\dot{\phi}'\cos\theta
+            \end{gather*}
+            Pretending $dt$ is just part of a fraction to piss off mathematicians:
+            \begin{gather*}
+                dx_1=dx+\frac{l}{2}d\theta\sin\theta\quad dy_1=dy-\frac{l}{2}d\theta\cos\theta\\
+                dx_2=dx-\frac{l}{2}d\theta\sin\theta\quad dy_2=dy+\frac{l}{2}d\theta\cos\theta\\
+                dx_1=Rd\phi\sin\theta\quad dy_1=-Rd\phi\cos\theta\\
+                dx_2=Rd\phi'\sin\theta\quad dy_2=-Rd\phi'\cos\theta
+            \end{gather*}
+            Substituting the different equations to solve for $dx$ and $dy$:
+            \begin{gather*}
+                dx+\frac{l}{2}d\theta\sin\theta=Rd\phi\sin\theta\\
+                dx=\sin\theta\left(Rd\phi-\frac{l}{2}d\theta\right)\\
+                dy-\frac{l}{2}d\theta\cos\theta=-Rd\phi\cos\theta\\
+                dy=\cos\theta\left(\frac{l}{2}d\theta-Rd\phi\right)
+            \end{gather*}
+            The first equation is easy to see from this by substituting for $dx$ and $dy$:
+            \begin{gather*}
+                \sin\theta dy=-\cos\theta dx\\
+                \sin\theta\left[\cos\theta\left(\frac{l}{2}d\theta-Rd\phi\right)\right]=\cos\theta\left[-\sin\theta\left(Rd\phi-\frac{l}{2}d\theta\right)\right]\\
+                \sin\theta\left[\cos\theta\left(\frac{l}{2}d\theta-Rd\phi\right)\right]=\cos\theta\left[\sin\theta\left(\frac{l}{2}d\theta-Rd\phi\right)\right]
+            \end{gather*}
+            We can derive the second equation using the equations for $dx$ and $dy$ using the midpoint:
+            \begin{gather*}
+                dx=\frac{dx_2+dx_1}{2}\quad dy=\frac{dy_2+dy_2}{2}\\
+                dx=\frac{R\sin\theta(d\phi+d\phi')}{2}\quad dy=-\frac{R\cos\theta(d\phi+d\phi')}{2}\\
+                \sin\theta dx-\cos\theta dy=R(d\phi+d\phi')\\
+                \sin\theta \frac{R\sin\theta(d\phi+d\phi')}{2}+\cos\theta\frac{R\cos\theta(d\phi+d\phi')}{2}=R(d\phi+d\phi')\\
+                \frac{R(d\phi+d\phi')}{2}+\frac{R(d\phi+d\phi')}{2}=R(d\phi+d\phi')\\
+                R(d\phi+d\phi')=R(d\phi+d\phi')\\
+            \end{gather*}
+            \item[ii]
+            This constraint states that the derivatives must be equal to 0:
+            \begin{gather*}
+                \frac{d}{dt}\left(\theta+\frac{R}{l}(\phi-\phi')\right)=d\theta+\frac{R}{l}(d\phi-d\phi')=0\\
+                d\theta=-\frac{R}{l}(d\phi-d\phi')\\
+            \end{gather*}
+            We also know that the general formula for $d\theta$ of a vector is:
+            \begin{gather*}
+                d\theta=\frac{xdy-ydx}{x^2+y^2}\\
+            \end{gather*}
+            But since this is the relative vector, and the distance is constant:
+            \begin{gather*}
+                d\theta=\frac{l\cos\theta dy-l\sin\theta dx}{l}\\
+                d\theta=\cos\theta dy-\sin\theta dx
+            \end{gather*}
+            Plugging in the various variables:
+            \begin{gather*}
+                d\theta=-\cos\theta \cos\theta\left(\frac{l}{2}d\theta+Rd\phi\right)-\sin\theta \sin\theta\left(Rd\phi+\frac{l}{2}d\theta\right)\\
+                d\theta=-\cos^2\theta\left(\frac{l}{2}d\theta'+Rd\phi\right)- \sin^2\theta\left(Rd\phi+\frac{l}{2}d\theta\right)\\
+                d\theta=-\frac{R}{l}(d\phi-d\phi')
+            \end{gather*}
+        \end{enumerate}
+        \item
+        \begin{enumerate}
+            \item
+            Using d'Alembert's principle
+            \begin{gather*}
+                ((T-mg)-m\ddot{y}_m)\delta y_m=0\\
+                ((T-Mg)-(-M\ddot{y}_m))\delta y_M=0
+            \end{gather*}
+            \item
+            Since we know:
+            \begin{gather*}
+                \delta y_m=-\delta y_M
+            \end{gather*}
+            Solving that equation
+            \begin{gather*}
+                -m\ddot{y}_m+(T-mg)=(T-Mg)-(-M\ddot{y}_m)\\
+                -m\ddot{y}_m-mg=-Mg-(-M\ddot{y}_m)\\
+                -m\ddot{y}_m-M\ddot{y}_m=-Mg+mg\\
+                \ddot{y}_m=\frac{M-m}{M+m}g\\
+            \end{gather*}
+            \item
+            Using the same steps above:
+            \begin{gather*}
+                ((T-mg\sin\beta)-(-m\ddot{L}_m))\delta y_m=0\\
+                ((T-Mg\sin\alpha)-M\ddot{L}_m)\delta y_M=0
+            \end{gather*}
+            Solving that equation:
+            \begin{gather*}
+                -m\ddot{L}_m+(T-(-mg\sin\beta))=(T-Mg\sin\alpha)-M\ddot{L}_m\\
+                -m\ddot{L}_m+mg\sin\beta=-Mg\sin\alpha-M\ddot{L}_m\\
+                -m\ddot{L}_m-M\ddot{L}_m=Mg\sin\alpha=mg\sin\beta\\
+                \ddot{L}_m=\frac{m\sin\alpha-M\sin\beta}{M+m}g\\
+            \end{gather*}
+            \item
+            Using d'Alembert's principle, and specifying the distance between the first pulley and $m_1$ as $y_1$, the distance between the first pulley and the second pulley as $y_p$, the distance between the second pulley and $m_2$ as $y_2$, and the distance between the second pulley and $m_3$ as $y_3$:
+            \begin{gather*}
+                ((T_1-m_1 g)+m_1\ddot{y}_1)\delta y_1=0\\
+                ((T_2-m_2 g)+m_2\ddot{y}_2)\delta y_2=0\\
+                ((T_2-m_3 g)-m_3\ddot{y}_3)\delta y_3=0
+            \end{gather*}
+            We also know the following constraints:
+            \begin{gather*}
+                y_1+y_p=l\\
+                y_2+y_3=L\\
+                \delta y_1=-\delta y_p\\
+                \delta y_p=\frac{\delta y_2+\delta y_3}{2}
+            \end{gather*}
+            \item
+            Re-arranging the equations form part (d):
+            \begin{gather*}
+                \ddot{y}_1=-\frac{T_1-m_1}{m_1}\\
+                \ddot{y}_2=-\frac{T_2-m_2}{m_2}\\
+                \ddot{y}_3=\frac{T_2-m_3}{m_3}
+            \end{gather*}
+            \item
+            Starting with d'Alembert's principle and doing algebra:
+            \begin{gather*}
+                (m_1 (g-\ddot{y}_1))\delta y_1+(m_2 (g-\ddot{y}_2))\delta y_2+(m_3 (g-\ddot{y}_3))\delta y_3=0\\
+                -(m_1 (g-\ddot{y}_1))\frac{\delta y_2+\delta y_3}{2}+(m_2 (g-\ddot{y}_2))\delta y_2+(m_3 (g-\ddot{y}_3))\delta y_3=0\\
+            \end{gather*}
+            We can split up the $\delta y_3$ and $\delta y_2$ terms because they both independently have to be 0:
+            \begin{gather*}
+                \frac{-(m_1 (g-\ddot{y}_1))}{2}+(m_2 (g-\ddot{y}_2))=0\\
+                \frac{-(m_1 (g-\ddot{y}_1))}{2}+(m_3 (g-\ddot{y}_3))=0\\
+            \end{gather*}
+            Since $\delta y_p=\frac{\delta y_2+\delta y_3}{2}$ :
+            \begin{gather*}
+                \frac{-(m_1 (g+\frac{\ddot{y_2}+\ddot{y_3}}{2}))}{2}+(m_2 (g-\ddot{y}_2))=0\\
+                \frac{-(m_1 (g+\frac{\ddot{y_2}+\ddot{y_3}}{2}))}{2}+(m_3 (g-\ddot{y}_3))=0\\
+            \end{gather*}
+            Using Mathematica:\\
+            \includegraphics[width=\linewidth]{HW_3_scripts/mathematica_screenshot}\\
+            \begin{gather*}
+                m_3\left(g-y_3\right)= m_2\left(g-y_2\right)
+            \end{gather*}
+            This equation would be stationary if the masses equal each other:
+            \begin{gather*}
+                m_2=\frac{m_3\left(g-y_3\right)}{\left(g-y_2\right)}\\
+                m_3= \frac{m_2\left(g-y_2\right)}{\left(g-y_3\right)}
+            \end{gather*}
+        \end{enumerate}
+        \item
+        \begin{enumerate}
+            \item
+            Using cylindrical coordinates the Lagrangian is:
+            \begin{gather*}
+                L=\frac{1}{2}m\left(\dot{\rho}^2+\rho^2\dot{\phi}^2\right)+\frac{1}{2}M\dot{z}^2-Mgz
+            \end{gather*}
+            We can impose the constraints:
+            \begin{gather*}
+                \dot{\rho}=-\dot{z}\\
+                z=l-\rho
+            \end{gather*}
+            This gives us the following equation:
+            \begin{gather*}
+                L=\frac{1}{2}m\left(\dot{\rho}^2+\rho^2\dot{\phi}^2\right)+\frac{1}{2}M\dot{\rho}^2-Mg(l-\rho)
+            \end{gather*}
+            Solving for the equations of motion in terms of $\rho$:
+            \begin{gather*}
+                \frac{d}{dt}\left(\p{L}{\dot{\rho}}\right)-\der{L}{\rho}=0\\
+                \frac{d}{dt}\left(\p{L}{\dot{\rho}}\right)=(m+M)\ddot{\rho}\\
+                \der{L}{\rho}=m\rho\dot{\phi}^2+Mg\\
+                (m+M)\ddot{\rho}-m\rho\dot{\phi}^2-Mg=0\\
+                \rho(t)=\rho_0 e^{\sqrt{\frac{m}{m+m}}\dot{\phi} t}+\rho_1 e^{-\sqrt{\frac{m}{m+m}}\dot{\phi} t}-\frac{gM}{m\dot{\phi}^2}
+            \end{gather*}
+            Solving for the equations of motion in terms of $\phi$:
+            \begin{gather*}
+                \frac{d}{dt}\left(\p{L}{\dot{\phi}}\right)-\der{L}{\phi}=0\\
+                \frac{d}{dt}\left(\p{L}{\dot{\phi}}\right)=m\rho^2\ddot{\phi}\\
+                \der{L}{\phi}=0\\
+                m\rho^2\ddot{\phi}=0\\
+                \phi(t)=\phi_1 t+\phi_0
+            \end{gather*}
+            \item
+            The significance of these equations is that the rotation of the block on the table does not change.
+            The distance of the block from the hole does change however, and is even influenced by the rotation of the block.
+            The energy, as well as the angular acceleration, are conserved quantities.
+        \end{enumerate}
+        \item
+        \begin{enumerate}
+            \item
+            The situation in the problem can be described by:
+            \begin{gather*}
+                \ddot{x}=-x
+            \end{gather*}
+            Solving this equation gives:
+            \begin{gather*}
+                x(t)=c_1\sin(t)+c_2\cos(t)\\
+                \dot{x}(t)=c_1\cos(t)-c_2\sin(t)
+            \end{gather*}
+            This results in the following phase portrait:\\
+            \linebreak
+            \begin{center}
+                \includegraphics[width=0.75\linewidth]{HW_3_scripts/phase_portrait}\\
+                \includegraphics[width=0.75\linewidth]{HW_3_scripts/phase_portrait_code}
+            \end{center}
+            \item Each phase portrait is a circle, so it's radius will never change, so if it begins in the are it will stay in the area.
+            \item
+            Starting with the energy equation:
+            \begin{gather*}
+                E=\frac{p^2}{2m}+mgq\\
+            \end{gather*}
+            Solving for $q$:
+            \begin{gather*}
+                q=\frac{1}{mg}\left[E-\frac{p^2}{2m}\right]\\
+                q_1=\frac{1}{mg}\left[E'-\frac{p^2}{2m}\right]\\
+                q_2=\frac{1}{mg}\left[E''-\frac{p^2}{2m}\right]\\
+            \end{gather*}
+            Integrating to find the area:
+            \begin{gather*}
+                \int_{p_1}^{p_2}\int_{q(p_1)}^{q(p_2)}dqdp\\
+                \int_{p_1}^{p_2}\int_{\frac{1}{mg}\left[E'-\frac{p^2}{2m}\right]}^{\frac{1}{mg}\left[E''-\frac{p^2}{2m}\right]}dqdp\\
+                \left.\int_{p_1}^{p_2}\right|_{\frac{1}{mg}\left[E'-\frac{p^2}{2m}\right]}^{\frac{1}{mg}\left[E''-\frac{p^2}{2m}\right]}dp\\
+                \left.\int_{p_1}^{p_2}\frac{1}{mg}\left[E'-\frac{p^2}{2m}\right]-\frac{1}{mg}\left[E''-\frac{p^2}{2m}\right]dp\\
+                \frac{1}{mg}(E'-E'')\left.\int_{p_1}^{p_2}dp\\
+                A=\frac{1}{mg}(E'-E'')(p_2-p_1)\\
+            \end{gather*}
+            \item
+            Starting with the Lagrangian to solve the equations of motion:
+            \begin{gather*}
+                L=\frac{1}{2}m\dot{q}^2-mgq\\
+                \frac{d}{dt}\left(\p{L}{\dot{q}}\right)-\der{L}{q}=0\\
+                \frac{d}{dt}\left(\p{L}{\dot{q}}\right)=m\ddot{q}\\
+                \der{L}{q}=-mg\\
+                m\ddot{q}+mg=0\\
+                q(t)=c_2 t+c_1-\frac{gt^2}{2}
+            \end{gather*}
+            Integrating $q(t)$ to get the momentum:
+            \begin{gather*}
+                \dot{q}(t)=\int\left( c_2 t+c_1-\frac{gt^2}{4} \right) dt=c_2-gt
+            \end{gather*}
+            Plugging this back into the equation for $A$:
+            \begin{gather*}
+                A=\frac{1}{mg}(E'-E'')(p_2-p_1)\\
+                A=\frac{1}{mg}(E'-E'')(c_1-gt-c_2+gt)\\
+                A=\frac{1}{mg}(E'-E'')(c_1-c_2)\\
+            \end{gather*}
+            Since we already know $E'$ and $E''$ are constant, and the rest of the equation is constant $A$ is constant.
+        \end{enumerate}
     \end{enumerate}
-    \item
-    \begin{enumerate}
-      \item
-      Using d'Alembert's principle
-      \begin{gather*}
-        ((T-mg)-m\ddot{y}_m)\delta y_m=0\\
-        ((T-Mg)-(-M\ddot{y}_m))\delta y_M=0
-      \end{gather*}
-      \item
-      Since we know:
-      \begin{gather*}
-        \delta y_m=-\delta y_M
-      \end{gather*}
-      Solving that equation
-      \begin{gather*}
-        -m\ddot{y}_m+(T-mg)=(T-Mg)-(-M\ddot{y}_m)\\
-        -m\ddot{y}_m-mg=-Mg-(-M\ddot{y}_m)\\
-        -m\ddot{y}_m-M\ddot{y}_m=-Mg+mg\\
-        \ddot{y}_m=\frac{M-m}{M+m}g\\
-      \end{gather*}
-      \item
-      Using the same steps above:
-      \begin{gather*}
-        ((T-mg\sin\beta)-(-m\ddot{L}_m))\delta y_m=0\\
-        ((T-Mg\sin\alpha)-M\ddot{L}_m)\delta y_M=0
-      \end{gather*}
-      Solving that equation:
-      \begin{gather*}
-        -m\ddot{L}_m+(T-(-mg\sin\beta))=(T-Mg\sin\alpha)-M\ddot{L}_m\\
-        -m\ddot{L}_m+mg\sin\beta=-Mg\sin\alpha-M\ddot{L}_m\\
-        -m\ddot{L}_m-M\ddot{L}_m=Mg\sin\alpha=mg\sin\beta\\
-        \ddot{L}_m=\frac{m\sin\alpha-M\sin\beta}{M+m}g\\
-      \end{gather*}
-      \item
-      Using d'Alembert's principle, and specifying the distance between the first pulley and $m_1$ as $y_1$, the distance between the first pulley and the second pulley as $y_p$, the distance between the second pulley and $m_2$ as $y_2$, and the distance between the second pulley and $m_3$ as $y_3$:
-      \begin{gather*}
-        ((T_1-m_1 g)+m_1\ddot{y}_1)\delta y_1=0\\
-        ((T_2-m_2 g)+m_2\ddot{y}_2)\delta y_2=0\\
-        ((T_2-m_3 g)-m_3\ddot{y}_3)\delta y_3=0
-      \end{gather*}
-      We also know the following constraints:
-      \begin{gather*}
-        y_1+y_p=l\\
-        y_2+y_3=L\\
-        \delta y_1=-\delta y_p\\
-        \delta y_p=\frac{\delta y_2+\delta y_3}{2}
-      \end{gather*}
-      \item
-      Re-arranging the equations form part (d):
-      \begin{gather*}
-        \ddot{y}_1=-\frac{T_1-m_1}{m_1}\\
-        \ddot{y}_2=-\frac{T_2-m_2}{m_2}\\
-        \ddot{y}_3=\frac{T_2-m_3}{m_3}
-      \end{gather*}
-      \item
-      Starting with d'Alembert's principle and doing algebra:
-      \begin{gather*}
-        (m_1 (g-\ddot{y}_1))\delta y_1+(m_2 (g-\ddot{y}_2))\delta y_2+(m_3 (g-\ddot{y}_3))\delta y_3=0\\
-        -(m_1 (g-\ddot{y}_1))\frac{\delta y_2+\delta y_3}{2}+(m_2 (g-\ddot{y}_2))\delta y_2+(m_3 (g-\ddot{y}_3))\delta y_3=0\\
-      \end{gather*}
-      We can split up the $\delta y_3$ and $\delta y_2$ terms because they both independently have to be 0:
-      \begin{gather*}
-        \frac{-(m_1 (g-\ddot{y}_1))}{2}+(m_2 (g-\ddot{y}_2))=0\\
-        \frac{-(m_1 (g-\ddot{y}_1))}{2}+(m_3 (g-\ddot{y}_3))=0\\
-      \end{gather*}
-    \end{enumerate}
-    \item
-    \begin{enumerate}
-      \item
-      Using cylindrical coordinates the Lagrangian is:
-      \begin{gather*}
-        L=\frac{1}{2}m\left(\dot{\rho}^2+\rho^2\dot{\phi}^2\right)+\frac{1}{2}M\dot{z}^2-Mgz
-      \end{gather*}
-      We can impose the constraints:
-      \begin{gather*}
-        \dot{\rho}=-\dot{z}\\
-        z=l-\rho
-      \end{gather*}
-      This gives us the following equation:
-      \begin{gather*}
-        L=\frac{1}{2}m\left(\dot{\rho}^2+\rho^2\dot{\phi}^2\right)+\frac{1}{2}M\dot{\rho}^2-Mg(l-\rho)
-      \end{gather*}
-      Solving for the equations of motion in terms of $\rho$:
-      \begin{gather*}
-        \frac{d}{dt}\left(\p{L}{\dot{\rho}}\right)-\der{L}{\rho}=0\\
-        \frac{d}{dt}\left(\p{L}{\dot{\rho}}\right)=(m+M)\ddot{\rho}\\
-        \der{L}{\rho}=m\rho\dot{\phi}^2+Mg\\
-        (m+M)\ddot{\rho}-m\rho\dot{\phi}^2-Mg=0\\
-        \rho(t)=\rho_0 e^{\sqrt{\frac{m}{m+m}}\dot{\phi} t}+\rho_1 e^{-\sqrt{\frac{m}{m+m}}\dot{\phi} t}-\frac{gM}{m\dot{\phi}^2}
-      \end{gather*}
-      Solving for the equations of motion in terms of $\phi$:
-      \begin{gather*}
-        \frac{d}{dt}\left(\p{L}{\dot{\phi}}\right)-\der{L}{\phi}=0\\
-        \frac{d}{dt}\left(\p{L}{\dot{\phi}}\right)=m\rho^2\ddot{\phi}\\
-        \der{L}{\phi}=0\\
-        m\rho^2\ddot{\phi}=0\\
-        \phi(t)=\phi_1 t+\phi_0
-      \end{gather*}
-      \item
-      The significance of these equations is that the rotation of the block on the table does not change.
-      The distance of the block from the hole does change however, and is even influenced by the rotation of the block.
-      The energy, as well as the angular acceleration, are conserved quantities.
-    \end{enumerate}
-    \item
-    \begin{enumerate}
-      \item
-      The situation in the problem can be described by:
-      \begin{gather*}
-        \ddot{x}=-x
-      \end{gather*}
-      Solving this equation gives:
-      \begin{gather*}
-        x(t)=c_1\sin(t)+c_2\cos(t)\\
-        \dot{x}(t)=c_1\cos(t)-c_2\sin(t)
-      \end{gather*}
-      This results in the following phase portrait:\\
-      \linebreak
-      \begin{center}
-        \includegraphics[width=0.75\linewidth]{HW_3_scripts/phase_portrait}\\
-        \includegraphics[width=0.75\linewidth]{HW_3_scripts/phase_portrait_code}
-      \end{center}
-      \item Each phase portrait is a circle, so it's radius will never change, so if it begins in the are it will stay in the area.
-      \item
-      Starting with the energy equation:
-      \begin{gather*}
-        E=\frac{p^2}{2m}+mgq\\
-      \end{gather*}
-      Solving for $q$:
-      \begin{gather*}
-        q=\frac{1}{mg}\left[E-\frac{p^2}{2m}\right]\\
-        q_1=\frac{1}{mg}\left[E'-\frac{p^2}{2m}\right]\\
-        q_2=\frac{1}{mg}\left[E''-\frac{p^2}{2m}\right]\\
-      \end{gather*}
-      Integrating to find the area:
-      \begin{gather*}
-        \int_{p_1}^{p_2}\int_{q(p_1)}^{q(p_2)}dqdp\\
-        \int_{p_1}^{p_2}\int_{\frac{1}{mg}\left[E'-\frac{p^2}{2m}\right]}^{\frac{1}{mg}\left[E''-\frac{p^2}{2m}\right]}dqdp\\
-        \left.\int_{p_1}^{p_2}\right|_{\frac{1}{mg}\left[E'-\frac{p^2}{2m}\right]}^{\frac{1}{mg}\left[E''-\frac{p^2}{2m}\right]}dp\\
-        \left.\int_{p_1}^{p_2}\frac{1}{mg}\left[E'-\frac{p^2}{2m}\right]-\frac{1}{mg}\left[E''-\frac{p^2}{2m}\right]dp\\
-        \frac{1}{mg}(E'-E'')\left.\int_{p_1}^{p_2}dp\\
-        A=\frac{1}{mg}(E'-E'')(p_2-p_1)\\
-      \end{gather*}
-      \item
-      Starting with the Lagrangian to solve the equations of motion:
-      \begin{gather*}
-        L=\frac{1}{2}m\dot{q}^2-mgq\\
-        \frac{d}{dt}\left(\p{L}{\dot{q}}\right)-\der{L}{q}=0\\
-        \frac{d}{dt}\left(\p{L}{\dot{q}}\right)=m\ddot{q}\\
-        \der{L}{q}=-mg\\
-        m\ddot{q}+mg=0\\
-        q(t)=c_2 t+c_1-\frac{gt^2}{2}
-      \end{gather*}
-      Integrating $q(t)$ to get the momentum:
-      \begin{gather*}
-        \dot{q}(t)=\int\left( c_2 t+c_1-\frac{gt^2}{4} \right) dt=c_2-gt
-      \end{gather*}
-      Plugging this back into the equation for $A$:
-      \begin{gather*}
-        A=\frac{1}{mg}(E'-E'')(p_2-p_1)\\
-        A=\frac{1}{mg}(E'-E'')(c_1-gt-c_2+gt)\\
-        A=\frac{1}{mg}(E'-E'')(c_1-c_2)\\
-      \end{gather*}
-      Since we already know $E'$ and $E''$ are constant, and the rest of the equation is constant $A$ is constant.
-    \end{enumerate}
-  \end{enumerate}
 
 \end{document}
