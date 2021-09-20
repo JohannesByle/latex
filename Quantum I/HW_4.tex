@@ -34,6 +34,83 @@
       \frac{\lambda(a-H_{11})}{H_{12}}=b\\
       \frac{\lambda(a-H_{11})}{H_{12}}(\lambda-H_{22})=H_{12}a
     \end{gather}
+    \item[1.18]
+    If $\ket{\psi}$ is a eigenket of both $A$ and $B$ then:
+    \begin{gather*}
+      A\ket{\psi}=a\ket{\psi}\\
+      B\ket{\psi}=b\ket{\psi}\\
+      (AB+BA)\ket{\psi}=2ab\ket{\psi}
+    \end{gather*}
+    The only way this is true is if either $a$ or $b$ is 0.\footnote{http://peeterjoot.com/2015/09/28/can-anticommuting-operators-have-a-simulaneous-eigenket/}
+    \item[1.25]
+    \begin{enumerate}
+      \item No:
+      \begin{gather}
+        \begin{bmatrix}
+          b & 0  & 0   \\
+          0 & 0  & -ib \\
+          0 & ib & 0
+        \end{bmatrix}
+        \begin{bmatrix}
+          1 \\
+          0 \\
+          0
+        \end{bmatrix}=b\\
+        \begin{bmatrix}
+          b & 0  & 0   \\
+          0 & 0  & -ib \\
+          0 & ib & 0
+        \end{bmatrix}
+        \begin{bmatrix}
+          0 \\
+          1 \\
+          0
+        \end{bmatrix}=-ib\\
+        \begin{bmatrix}
+          b & 0  & 0   \\
+          0 & 0  & -ib \\
+          0 & ib & 0
+        \end{bmatrix}
+        \begin{bmatrix}
+          0 \\
+          0 \\
+          1
+        \end{bmatrix}=ib
+      \end{gather}
+      \item
+      \begin{gather}
+        \begin{bmatrix}
+          a & 0  & 0  \\
+          0 & -a & 0  \\
+          0 & 0  & -a
+        \end{bmatrix}
+        \begin{bmatrix}
+          b & 0  & 0   \\
+          0 & 0  & -ib \\
+          0 & ib & 0
+        \end{bmatrix}=
+        \begin{bmatrix}
+          ab & 0    & 0   \\
+          0  & 0    & iab \\
+          0  & -iab & 0
+        \end{bmatrix}\\
+        \begin{bmatrix}
+          b & 0  & 0   \\
+          0 & 0  & -ib \\
+          0 & ib & 0
+        \end{bmatrix}
+        \begin{bmatrix}
+          a & 0  & 0  \\
+          0 & -a & 0  \\
+          0 & 0  & -a
+        \end{bmatrix}=
+        \begin{bmatrix}
+          ab & 0    & 0   \\
+          0  & 0    & iab \\
+          0  & -iab & 0
+        \end{bmatrix}
+      \end{gather}
+    \end{enumerate}
   \end{enumerate}
 
 \end{document}
