@@ -1,0 +1,39 @@
+%! Author = johannes
+%! Date = 9/20/21
+
+% Preamble
+\documentclass[12pt]{article}
+\title{Quantum I Assignment \#4}
+\author{Johannes Byle}
+\newcommand{\op}[1]{\tilde{\mathbf{#1}}}
+
+% Packages
+\usepackage{amsmath}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{lipsum}
+\usepackage{braket}
+\usepackage{hyperref}
+
+% Document
+\begin{document}
+  \maketitle
+  \begin{enumerate}
+    \item[1.13]
+    Assuming that the observable is $\ket{E}$ with eigenkets $a\ket{1}+b\ket{2}$:
+    \begin{gather}
+      H\ket{E}=\left(H_{11}\ket{1}\bra{1}+H_{22}\ket{2}\bra{2}+H_{12}[\ket{1}\bra{2}+\ket{2}\bra{1}]\right)(a\ket{1}+b\ket{2})\\
+      H\ket{E}=H_{11}a\ket{1}+H_{22}b\ket{2}+H_{12}b\ket{1}+H_{12}a\ket{2}
+    \end{gather}
+    Since $H\ket{E}=\lambda\ket{E}=\lambda a\ket{1}+\lambda b\ket{2}$:
+    \begin{gather}
+      \lambda a=H_{11}a+H_{12}b\\
+      \lambda b=H_{22}b+H_{12}a
+    \end{gather}
+    Using substition to solve for $\lambda$:
+    \begin{gather}
+      \frac{\lambda(a-H_{11})}{H_{12}}=b\\
+      \frac{\lambda(a-H_{11})}{H_{12}}(\lambda-H_{22})=H_{12}a
+    \end{gather}
+  \end{enumerate}
+
+\end{document}
