@@ -1,0 +1,167 @@
+%! Author = johannes
+%! Date = 9/17/21
+
+% Preamble
+\documentclass[12pt]{article}
+\title{Math Methods Assignment \#2}
+\author{Johannes Byle}
+\newcommand{\p}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\der}[2]{\frac{d #1}{d #2}}
+
+% Packages
+\usepackage{amsmath}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{lipsum}
+\usepackage{physics}
+
+% Document
+\begin{document}
+  \maketitle
+  \begin{enumerate}
+    \item
+    \begin{enumerate}
+      \item
+      \begin{gather}
+        T=\frac{1}{2}M\dot{x}^2+\frac{1}{2}m((\dot{x}+\dot{l}\cos\theta)^2+\dot{l}^2\sin^2\theta)
+      \end{gather}
+      \item
+      Since $M$ is confined to the $x$ axis only $m$ is dependent on gravity:
+      \begin{gather}
+        L=T-V\\
+        L=\frac{1}{2}M\dot{x}^2+\frac{1}{2}m((\dot{x}+\dot{l}\cos\theta)^2+\dot{l}^2\sin^2\theta)+mgl\sin\theta
+      \end{gather}
+      Expanding the terms:
+      \begin{gather}
+        L=\frac{1}{2}M\dot{x}^2+\frac{1}{2}m(\dot{x}^2+2\dot{x}\dot{l}\cos\theta+\dot{l}^2\cos^2\theta+\dot{l}^2\sin^2\theta)+mgl\sin\theta
+      \end{gather}
+      Simplifying with trig identities:
+      \begin{gather}
+        L=\frac{1}{2}M\dot{x}^2+\frac{1}{2}m(\dot{x}^2+2\dot{x}\dot{l}\cos\theta+\dot{l}^2)+mgl\sin\theta
+      \end{gather}
+      \item
+      Solving for $\ddot{x}$:
+      \begin{gather}
+        \der{}{t}\left(\p{L}{\dot{x}}\right)-\p{L}{x}=0\\
+        \der{}{t}\left(\p{L}{\dot{x}}\right)=\der{}{t}\left[(M+m)\dot{x}+m\dot{l}\cos\theta\right]=(M+m)\ddot{x}+m\ddot{l}\cos\theta\\
+        \p{L}{x}=0\\
+        (M+m)\ddot{x}+m\ddot{l}\cos\theta=0\\
+        \ddot{x}=-\mu\ddot{l}\cos\theta
+      \end{gather}
+      Solving for $\ddot{l}$:
+      \begin{gather}
+        \der{}{t}\left(\p{L}{\dot{l}}\right)-\p{L}{l}=0\\
+        \der{}{t}\left(\p{L}{\dot{l}}\right)=\der{}{t}\left[m(\dot{x}\cos\theta+\dot{l})\right]=m(\ddot{x}\cos\theta+\ddot{l})\\
+        \p{L}{l}=mg\sin\theta\\
+        m(\ddot{x}\cos\theta+\ddot{l})-mg\sin\theta=0\\
+        \ddot{l}=g\sin\theta-\ddot{x}\cos\theta
+      \end{gather}
+      De-coupling the equations, starting with $\ddot{x}$:
+      \begin{gather}
+        \ddot{x}=-\mu\left(g\sin\theta-\ddot{x}\cos\theta\right)\cos\theta\\
+        \ddot{x}=-\mu g\cos\theta\sin\theta+\mu\ddot{x}\cos^2\theta\\
+        \ddot{x}\left( 1-\mu\cos^2\theta \right)=-\mu g\cos\theta\sin\theta\\
+        \ddot{x}=-\frac{\mu g\cos\theta\sin\theta}{ 1-\mu\cos^2\theta}
+      \end{gather}
+      De-coupling $\ddot{l}$:
+      \begin{gather}
+        \ddot{l}=g\sin\theta+\mu\ddot{l}\cos^2\theta\\
+        \ddot{l}\left(1-\mu\cos^2\theta\right)=g\sin\theta+\\
+        \ddot{l}=\frac{g\sin\theta}{1-\mu\cos^2\theta}
+      \end{gather}
+      \item No, $\ddot{l}$ will never be negative because $\mu$ will always be less than 1 and that means that equation (22) will always be positive.
+      \item
+      Integrating $\ddot{x}$:
+      \begin{gather}
+        \int-\frac{\mu g\cos\theta\sin\theta}{ 1-\mu\cos^2\theta}dt=-\frac{\mu g\cos\theta\sin\theta}{ 1-\mu\cos^2\theta}t+\dot{x}_0\\
+        \int\left[-\frac{\mu g\cos\theta\sin\theta}{ 1-\mu\cos^2\theta}t_1+c_1\right]dt=-\frac{\mu g\cos\theta\sin\theta}{ 1-\mu\cos^2\theta}t^2+\dot{x}_0 t+x_0
+      \end{gather}
+      Since both the wedge and the block start at rest:
+      \begin{gather}
+        x(t)=-\frac{\mu g\cos\theta\sin\theta}{ 1-\mu\cos^2\theta}t^2
+      \end{gather}
+      Solving for when $\Delta x=\frac{h}{\tan\theta}$:
+      \begin{gather}
+        x(t)=-\frac{\mu g\cos\theta\sin\theta}{ 1-\mu\cos^2\theta}t^2=\frac{h}{\tan\theta}\\
+        t=-\sqrt{\frac{h}{\tan\theta}\frac{ 1-\mu\cos^2\theta}{\mu g\cos\theta\sin\theta}}
+      \end{gather}
+      Repeating the same process for $\Delta l$ results in:
+      \begin{gather}
+        l(t)=\frac{g\sin\theta}{1-\mu\cos^2\theta}t^2=\frac{h}{\sin\theta}\\
+        t=-\sqrt{\frac{h}{\sin\theta}\frac{1-\mu\cos^2\theta}{g\sin\theta}}
+      \end{gather}
+      \item
+      If $M\rightarrow\infty$ then $\mu\rightarrow0$.
+      This means that  $\Delta x=0$ because $t=-\sqrt{\frac{h}{\tan\theta}\frac{ 1-\mu\cos^2\theta}{\mu g\cos\theta\sin\theta}}\rightarrow\infty$, which makes sense since the wedge is infinitely heavy and wont move.
+      $\Delta l$ on the other hand goes to $t=-\sqrt{\frac{h}{\sin\theta}\frac{1-\mu\cos^2\theta}{g\sin\theta}}\rightarrow-\sqrt{\frac{h}{g\sin^2\theta}}$
+      \item It doesn't.
+    \end{enumerate}
+    \item
+    \begin{enumerate}
+      \item
+      Starting with the equation for the center of mass $y_{cm}=\frac{1}{M}\sum_i m_i y_i$ and using $L_r$ for the length of the right side and $L_l$ for the left side:
+      \begin{gather}
+        L_r=\frac{L+y}{2}\quad L_l=\frac{L-y}{2}\\
+        y_{cm}=\frac{1}{\rho L}\left[ (\rho L_r)\left(\frac{L_r}{2}\right) +(\rho L_l)\left(\frac{L_l}{2}+y\right) \right]\\
+        y_{cm}=\frac{1}{L}\left[ \left(\frac{L_r^2}{2}\right) +\left(\frac{L_l^2}{2}+yL_L\right) \right]\\
+        y_{cm}=\frac{1}{L}\left[ \left(\frac{\left(\frac{L+y}{2}\right)^2}{2}\right) +\left(\frac{\left( \frac{L-y}{2} \right)^2}{2}+y\frac{L-y}{2}\right) \right]\\
+        y_{cm}=\frac{1}{2L}\left[ \frac{L^2+2yL+y^2}{4} +\frac{L^2-2yL+y^2}{4}+yL-y^2\right]\\
+        y_{cm}=\frac{1}{2L}\left[ \frac{L^2-y^2}{2}+yL\right]\\
+        y_{cm}=\frac{L^2+2yL-y^2}{4L}
+      \end{gather}
+      \item
+      \begin{gather}
+        L=\frac{1}{2}m\dot{y}_{cm}^2-mgy_{cm}\\
+        L=\frac{1}{2}m\left[\der{}{t}\left( \frac{L^2+2yL-y^2}{4L} \right)\right]^2-mg\left[ \frac{L^2+2yL-y^2}{4L}\right]\\
+        L=\frac{1}{2}m\left[\frac{2\dot{y}L-2y\dot{y}}{4L}\right]^2-mg\left[ \frac{L^2+2yL-y^2}{4L}\right]\\
+        L=m\frac{\dot{y}^2 L^2-Ly\dot{y}^2+y^2\dot{y}^2}{8L^2}-mg\left[ \frac{L^2+2yL-y^2}{4L}\right]
+      \end{gather}
+      \item
+      Since we know the initial conditions we can solve this using conservation of energy:
+      \begin{gather}
+        \frac{1}{2}m\dot{y}_{cm}^2+mgy_{cm}=mg\frac{L}{4}\\
+        m\frac{\dot{y}^2 L^2-Ly\dot{y}^2+y^2\dot{y}^2}{8L^2}+mg\left[ \frac{L^2+2yL-y^2}{4L}\right]=mg\frac{L}{4}\\
+        \dot{y}^2=\frac{8gL^2\left(\frac{L}{4}-\left[ \frac{L^2+2yL-y^2}{4L}\right]\right)}{ L^2-Ly+y^2}\\
+        \dot{y}=\sqrt{\frac{8gL^2\left(\frac{L}{4}-\left[ \frac{L^2+2yL-y^2}{4L}\right]\right)}{ L^2-Ly+y^2}}
+      \end{gather}
+      \item
+      We can differentiate the answer to the previous section to find the acceleration:
+      \begin{gather}
+        \ddot{y}=\der{}{t}\left(\sqrt{\frac{8gL^2\left(\frac{L}{4}-\left[ \frac{L^2+2yL-y^2}{4L}\right]\right)}{ L^2-Ly+y^2}}\right)
+      \end{gather}
+      \item This answer is greater than $g$ because the entire system is gaining potential energy, yet only a smaller and smaller section of rope is accelerating, thus for energy to be conserved that section of the rope must gain velocity faster than the acceleration due to gravity.
+    \end{enumerate}
+    \item
+    \begin{enumerate}
+      \item
+      \begin{gather}
+        V=\frac{1}{2}k(s-a)^2-mgs
+      \end{gather}
+      \item
+      \begin{gather}
+        T=\frac{1}{2}M\dot{s}^2+\frac{1}{2}M\dot{s}^2=m\dot{s}^2\\
+        L=T-V=m\dot{s}^2-\frac{1}{2}k(s-a)^2+mgs\\
+        L=m\dot{s}^2-\frac{1}{2}k(s^2-2sa+a^2)+mgs
+      \end{gather}
+      \item
+      \begin{gather}
+        \der{}{t}\left(\p{L}{\dot{s}}\right)-\p{L}{s}=0\\
+        \der{}{t}\left(\p{L}{\dot{s}}\right)=\der{}{t}\left(2m\dot{s}\right)=2m\ddot{s}\\
+        \p{L}{s}=-\frac{1}{2}k\left( 2s-2a \right)+mg\\
+        2m\ddot{s}+k(s-a) \right)-mg=0\\
+        s(t)=a+c_1\sin\left( \sqrt{\frac{k}{2}}t \right)+c_2\cos\left( \sqrt{\frac{k}{2}}t \right)+\frac{gm}{k}
+      \end{gather}
+      \item
+      The equilibrium position where $\ddot{s}=0$:
+      \begin{gather}
+        \ddot{s}=\frac{mg-k(s-a)}{2m}
+      \end{gather}
+      \item
+      The frequency is clear from the equations of motion:
+      \begin{gather}
+        \omega=\frac{k}{2}
+      \end{gather}
+    \end{enumerate}
+    \item
+  \end{enumerate}
+
+\end{document}
