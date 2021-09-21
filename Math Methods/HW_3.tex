@@ -3,7 +3,7 @@
 
 % Preamble
 \documentclass[12pt]{article}
-\title{Math Methods Assignment \#2}
+\title{Math Methods Assignment \#3}
 \author{Johannes Byle}
 \newcommand{\p}[2]{\frac{\partial #1}{\partial #2}}
 \newcommand{\der}[2]{\frac{d #1}{d #2}}
@@ -162,6 +162,90 @@
       \end{gather}
     \end{enumerate}
     \item
+    \begin{enumerate}
+      \item Starting with the Lagrangian:
+      \begin{gather}
+        L=\frac{1}{2}m\left(\dot{x}^2+\dot{y}^2+\dot{z}^2\right)-mgz
+      \end{gather}
+      And the constraint $g$:
+      \begin{gather}
+        g=z-\alpha\left( x^2+y^2 \right)=0
+      \end{gather}
+      We get the following equations:
+      \begin{gather}
+        \p{L}{x}-\der{}{t}\left(\p{L}{\dot{x}}\right)+\lambda\p{g}{x}=0\\
+        \p{L}{y}-\der{}{t}\left(\p{L}{\dot{y}}\right)+\lambda\p{g}{y}=0\\
+        \p{L}{z}-\der{}{t}\left(\p{L}{\dot{z}}\right)+\lambda\p{g}{z}=0
+      \end{gather}
+      Solving for $x$:
+      \begin{gather}
+        \p{L}{x}=0\quad\der{}{t}\left(\p{L}{\dot{x}}\right)=m\ddot{x}\quad\lambda\p{g}{x}=2\lambda\alpha x\\
+        m\ddot{x}=-2\lambda\alpha x\\
+        x(t)=c_1\cos\left(\sqrt{\frac{2\alpha\lambda}{m}}t\right)+c_2\sin\left(\sqrt{\frac{2\alpha\lambda}{m}}t\right)
+      \end{gather}
+      Solving for $y$:
+      \begin{gather}
+        \p{L}{y}=0\quad\der{}{t}\left(\p{L}{\dot{y}}\right)=m\ddot{y}\quad\lambda\p{g}{y}=2\lambda\alpha y\\
+        m\ddot{y}=-2\lambda\alpha y\\
+        y(t)=c_1\cos\left(\sqrt{\frac{2\alpha\lambda}{m}}t\right)+c_2\sin\left(\sqrt{\frac{2\alpha\lambda}{m}}t\right)
+      \end{gather}
+      Solving for $z$:
+      \begin{gather}
+        \p{L}{z}=-mg\quad\der{}{t}\left(\p{L}{\dot{z}}\right)=m\ddot{z}\quad\lambda\p{g}{y}=1\\
+        m\ddot{z}=1-mg\\
+        z(t)=c_2 t+c_1-\left(g+\frac{1}{m}\right)t^2
+      \end{gather}
+      \item In this case $\alpha=\frac{z_0}{x^2+y^2}$ so we can solve for $\lambda$ using the system of equations:
+      \begin{gather}
+        m\ddot{y}=-2\lambda y\frac{z_0}{x^2+y^2}\\
+        m\ddot{x}=-2\lambda x\frac{z_0}{x^2+y^2}\\
+        \lambda \to -\frac{\left(x^2+y^2\right) \left(m \ddot{x}-m \ddot{y}\right)}{2 z_0 (x-y)}
+      \end{gather}
+      \item
+      \begin{enumerate}
+        \item Removing the need for the $x$ coordinate using the constraint:
+        \begin{gather}
+          x=\sqrt{\frac{z}{\alpha}}\quad\dot{x}=\frac{\dot{z}}{2\sqrt{\alpha z}}\\
+          \frac{1}{2}m(\dot{z}^2+\dot{x}^2)+mgz=mgz_1\\
+          \frac{1}{2}m(\dot{z}^2+\frac{\dot{z}^2}{4\alpha z})+mgz=mgz_1\\
+          \dot{z}=\pm\frac{2 \sqrt{g \left(z_1-z\right)}}{\sqrt{\frac{1}{2 \alpha  z}+2}}
+        \end{gather}
+        \item
+      \end{enumerate}
+    \end{enumerate}
+    \item There isn't since there isn't any conserved quantity under infinitesimally small changes.
+    \item Solving this problem in dimension, starting with the following equations:
+    \begin{gather}
+      r_i=r_i+\epsilon v_0 t\quad\dot{r_i}=\dot{r_i}+\epsilon v_0\\
+      L=\frac{1}{2}\left(m_1 \dot{r}_1^2+m_2 \dot{r}_2^2\right)-V(r_1-r_2)\\
+    \end{gather}
+    Combining both equations:
+    \begin{gather}
+      L=\frac{1}{2}\left(m_1 \left(\dot{r}_1^2+2\dot{r}_1\epsilon v_0 +\epsilon^2 v_0^2\right)+m_2 \left(\dot{r}_2^2+2\dot{r}_2\epsilon v_0+ \epsilon^2 v_0^2\right)\right)-V(r_1+\epsilon v_0 t-r_2-\epsilon v_0 t)\\
+      L=\frac{1}{2}\left(m_1 \left(\dot{r}_1^2+2\dot{r}_1\epsilon v_0 +\epsilon^2 v_0^2\right)+m_2 \left(\dot{r}_2^2+2\dot{r}_2\epsilon v_0+ \epsilon^2 v_0^2\right)\right)-V(r_1-r_2)\\
+    \end{gather}
+    To show that the Lagrangian is unchanged we have to consider its path:
+    \begin{gather}
+      S[\bar{r}]=\int \frac{1}{2}\left(m_1 \left(\dot{r}_1^2+2\dot{r}_1\epsilon v_0 +\epsilon^2 v_0^2\right)+m_2 \left(\dot{r}_2^2+2\dot{r}_2\epsilon v_0+ \epsilon^2 v_0^2\right)\right)-V(r_1-r_2)dt
+    \end{gather}
+    We know we can ignore the $\epsilon^2$ terms because we only care about changes up to order $\epsilon$.
+    \begin{gather}
+      S[\bar{r}]=\int \frac{1}{2}\left(m_1 \left(\dot{r}_1^2+2\dot{r}_1\epsilon v_0\right)+m_2 \left(\dot{r}_2^2+2\dot{r}_2\epsilon v_0\right)\right)-V(r_1-r_2)dt
+    \end{gather}
+    Separating the $\dot{r}$ terms:
+    \begin{gather}
+      S[\bar{r}]=\int \frac{1}{2}\left(m_1 \dot{r}_1^2+m_2 \dot{r}_2^2\right)-V(r_1-r_2)dt+\int \frac{1}{2}\left(m_1 \dot{r}_1\epsilon v_0+m_2 \dot{r}_2\epsilon v_0\right)dt
+    \end{gather}
+    If the second term is zero then the expression is equal to the original Lagrangian.
+    It can shown that this second term is zero by integrating it by parts, which works because the expression is true up to a total derivative.
+    \begin{gather}
+      \int \frac{1}{2}\left(m_1 \dot{r}_1\epsilon v_0+m_2 \dot{r}_2\epsilon v_0\right)dt=\left.\left(m_1 \dot{r}_1\epsilon v_0+m_2 \dot{r}_2\epsilon v_0\right)\right|_{t_1}^{t_2}-\int_{t_1}^{t_2}\epsilon\left(m_1 \ddot{r}_1 v_0+m_2 \ddot{r}_2 v_0\right)
+    \end{gather}
+    The first term is zero because $\epsilon$ has to be zero at the boundaries, and the second term has to be zero because $\epsilon$ is an arbitrary function, thus for the integral to be zero the term inside the parentheses must be zero.
+    \item Since $\left(m_1 \ddot{r}_1 v_0+m_2 \ddot{r}_2 v_0\right)$ must be zero, the quantity that is quantity that is conserved is:
+    \begin{gather}
+      \left(m_1 \ddot{r}_1 v_0+m_2 \ddot{r}_2 v_0\right)=\der{}{t}\left(m_1 \dot{r}_1 v_0+m_2 \dot{r}_2 v_0\right)
+    \end{gather}
+    \item This quantity is the momentum, which my intro physics classes have claimed is useful.
   \end{enumerate}
-
 \end{document}
