@@ -12,105 +12,132 @@
 \usepackage[margin=0.75in]{geometry}
 \usepackage{lipsum}
 \usepackage{braket}
-\usepackage{hyperref}
 
 % Document
 \begin{document}
-  \maketitle
-  \begin{enumerate}
-    \item[1.13]
-    Assuming that the observable is $\ket{E}$ with eigenkets $a\ket{1}+b\ket{2}$:
-    \begin{gather}
-      H\ket{E}=\left(H_{11}\ket{1}\bra{1}+H_{22}\ket{2}\bra{2}+H_{12}[\ket{1}\bra{2}+\ket{2}\bra{1}]\right)(a\ket{1}+b\ket{2})\\
-      H\ket{E}=H_{11}a\ket{1}+H_{22}b\ket{2}+H_{12}b\ket{1}+H_{12}a\ket{2}
-    \end{gather}
-    Since $H\ket{E}=\lambda\ket{E}=\lambda a\ket{1}+\lambda b\ket{2}$:
-    \begin{gather}
-      \lambda a=H_{11}a+H_{12}b\\
-      \lambda b=H_{22}b+H_{12}a
-    \end{gather}
-    Using substition to solve for $\lambda$:
-    \begin{gather}
-      \frac{\lambda(a-H_{11})}{H_{12}}=b\\
-      \frac{\lambda(a-H_{11})}{H_{12}}(\lambda-H_{22})=H_{12}a
-    \end{gather}
-    \item[1.18]
-    If $\ket{\psi}$ is a eigenket of both $A$ and $B$ then:
-    \begin{gather*}
-      A\ket{\psi}=a\ket{\psi}\\
-      B\ket{\psi}=b\ket{\psi}\\
-      (AB+BA)\ket{\psi}=2ab\ket{\psi}
-    \end{gather*}
-    The only way this is true is if either $a$ or $b$ is 0.\footnote{http://peeterjoot.com/2015/09/28/can-anticommuting-operators-have-a-simulaneous-eigenket/}
-    \item[1.25]
+    \maketitle
     \begin{enumerate}
-      \item No:
-      \begin{gather}
-        \begin{bmatrix}
-          b & 0  & 0   \\
-          0 & 0  & -ib \\
-          0 & ib & 0
-        \end{bmatrix}
-        \begin{bmatrix}
-          1 \\
-          0 \\
-          0
-        \end{bmatrix}=b\\
-        \begin{bmatrix}
-          b & 0  & 0   \\
-          0 & 0  & -ib \\
-          0 & ib & 0
-        \end{bmatrix}
-        \begin{bmatrix}
-          0 \\
-          1 \\
-          0
-        \end{bmatrix}=-ib\\
-        \begin{bmatrix}
-          b & 0  & 0   \\
-          0 & 0  & -ib \\
-          0 & ib & 0
-        \end{bmatrix}
-        \begin{bmatrix}
-          0 \\
-          0 \\
-          1
-        \end{bmatrix}=ib
-      \end{gather}
-      \item
-      \begin{gather}
-        \begin{bmatrix}
-          a & 0  & 0  \\
-          0 & -a & 0  \\
-          0 & 0  & -a
-        \end{bmatrix}
-        \begin{bmatrix}
-          b & 0  & 0   \\
-          0 & 0  & -ib \\
-          0 & ib & 0
-        \end{bmatrix}=
-        \begin{bmatrix}
-          ab & 0    & 0   \\
-          0  & 0    & iab \\
-          0  & -iab & 0
-        \end{bmatrix}\\
-        \begin{bmatrix}
-          b & 0  & 0   \\
-          0 & 0  & -ib \\
-          0 & ib & 0
-        \end{bmatrix}
-        \begin{bmatrix}
-          a & 0  & 0  \\
-          0 & -a & 0  \\
-          0 & 0  & -a
-        \end{bmatrix}=
-        \begin{bmatrix}
-          ab & 0    & 0   \\
-          0  & 0    & iab \\
-          0  & -iab & 0
-        \end{bmatrix}
-      \end{gather}
+        \item[1.13]
+        Assuming that the observable is $\ket{E}$ with eigenkets $a\ket{1}+b\ket{2}$:
+        \begin{gather}
+            H\ket{E}=\left(H_{11}\ket{1}\bra{1}+H_{22}\ket{2}\bra{2}+H_{12}[\ket{1}\bra{2}+\ket{2}\bra{1}]\right)(a\ket{1}+b\ket{2})\\
+            H\ket{E}=H_{11}a\ket{1}+H_{22}b\ket{2}+H_{12}b\ket{1}+H_{12}a\ket{2}
+        \end{gather}
+        Since $H\ket{E}=\lambda\ket{E}=\lambda a\ket{1}+\lambda b\ket{2}$:
+        \begin{gather}
+            \lambda a=H_{11}a+H_{12}b\\
+            \lambda b=H_{22}b+H_{12}a
+        \end{gather}
+        Using substition to solve for $\lambda$:
+        \begin{gather}
+            \frac{\lambda(a-H_{11})}{H_{12}}=b\\
+            \frac{\lambda(a-H_{11})}{H_{12}}(\lambda-H_{22})=H_{12}a\\
+            \lambda \to \frac{a H_{11}-a H_{12}+b H_{12}-b H_{22}}{a-b}
+        \end{gather}
+        \item[1.18]
+        If $\ket{\psi}$ is a eigenket of both $A$ and $B$ then:
+        \begin{gather*}
+            A\ket{\psi}=a\ket{\psi}\\
+            B\ket{\psi}=b\ket{\psi}\\
+            (AB+BA)\ket{\psi}=2ab\ket{\psi}
+        \end{gather*}
+        The only way this is true is if either $a$ or $b$ is 0.\footnote{http://peeterjoot.com/2015/09/28/can-anticommuting-operators-have-a-simulaneous-eigenket/}
+        \item[1.25]
+        \begin{enumerate}
+            \item No:
+            \begin{gather}
+                \begin{bmatrix}
+                    b & 0  & 0   \\
+                    0 & 0  & -ib \\
+                    0 & ib & 0
+                \end{bmatrix}
+                \begin{bmatrix}
+                    1 \\
+                    0 \\
+                    0
+                \end{bmatrix}=b\\
+                \begin{bmatrix}
+                    b & 0  & 0   \\
+                    0 & 0  & -ib \\
+                    0 & ib & 0
+                \end{bmatrix}
+                \begin{bmatrix}
+                    0 \\
+                    1 \\
+                    0
+                \end{bmatrix}=-ib\\
+                \begin{bmatrix}
+                    b & 0  & 0   \\
+                    0 & 0  & -ib \\
+                    0 & ib & 0
+                \end{bmatrix}
+                \begin{bmatrix}
+                    0 \\
+                    0 \\
+                    1
+                \end{bmatrix}=ib
+            \end{gather}
+            \item
+            \begin{gather}
+                \begin{bmatrix}
+                    a & 0  & 0  \\
+                    0 & -a & 0  \\
+                    0 & 0  & -a
+                \end{bmatrix}
+                \begin{bmatrix}
+                    b & 0  & 0   \\
+                    0 & 0  & -ib \\
+                    0 & ib & 0
+                \end{bmatrix}=
+                \begin{bmatrix}
+                    ab & 0    & 0   \\
+                    0  & 0    & iab \\
+                    0  & -iab & 0
+                \end{bmatrix}\\
+                \begin{bmatrix}
+                    b & 0  & 0   \\
+                    0 & 0  & -ib \\
+                    0 & ib & 0
+                \end{bmatrix}
+                \begin{bmatrix}
+                    a & 0  & 0  \\
+                    0 & -a & 0  \\
+                    0 & 0  & -a
+                \end{bmatrix}=
+                \begin{bmatrix}
+                    ab & 0    & 0   \\
+                    0  & 0    & iab \\
+                    0  & -iab & 0
+                \end{bmatrix}
+            \end{gather}
+            \item
+            Choosing the eigenkets: $\ket{1}$, $\ket{2}$, $\ket{3}$ we get the following eigenvalues:
+            \begin{gather}
+                ab\ket{1}-iab\ket{2}+iab\ket{3}
+            \end{gather}
+        \end{enumerate}
+        \item[1.28]
+        \begin{gather}
+            S_z=\frac{\hbar}{2}
+            \begin{bmatrix}
+                1 & 0  \\
+                0 & -1
+            \end{bmatrix}\quad
+            S_x=\frac{\hbar}{2}
+            \begin{bmatrix}
+                0 & 1 \\
+                1 & 0
+            \end{bmatrix}\\
+            U=S_x\cdot S_z^{-1}=
+            \begin{bmatrix}
+                0 & -1 \\
+                1 & 0
+            \end{bmatrix}
+        \end{gather}
+        This is consistent with:
+        \begin{gather}
+            U=+\frac{1}{\sqrt{2}}\ket{+}-\frac{1}{2}\ket{-}
+        \end{gather}
     \end{enumerate}
-  \end{enumerate}
 
 \end{document}
