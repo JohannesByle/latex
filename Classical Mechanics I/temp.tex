@@ -1,0 +1,33 @@
+%! Author = Johannes Byle
+%! Date = 9/23/2021
+
+% Preamble
+\documentclass[12pt]{article}
+\title{}
+\author{Johannes Byle}
+
+% Packages
+\usepackage{amsmath}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{lipsum}
+\usepackage{physics}
+
+% Document
+\begin{document}
+    \maketitle
+    \begin{enumerate}
+        \item Using conservation of energy we can find the velocity:
+        \begin{gather*}
+            \frac{1}{2}mv^2=mgy\\
+            v=\sqrt{2gy}
+        \end{gather*}
+        This gives the following time of descent:
+        \begin{gather*}
+            t=\int \frac{ds}{v}=\frac{1}{2g}\int \frac{\sqrt{dx^2+dy^2}}{\sqrt{y}}
+        \end{gather*}
+        Converting to an integral of $dy$:
+        \begin{gather*}
+            t=\frac{1}{2g}\int dy\frac{\sqrt{\left(\dv{x}{y}\right)^2+1}}{\sqrt{y}}=\int_{y_1}^{y_2}dy\sqrt{\frac{x'^2+1}{y}}
+        \end{gather*}
+    \end{enumerate}
+\end{document}
