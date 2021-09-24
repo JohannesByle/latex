@@ -9,6 +9,7 @@
 \newcommand{\der}[2]{\frac{d #1}{d #2}}
 \newcommand{\vp}{\varphi}
 \newcommand{\dvp}{\dot{\varphi}}
+\newcommand{\ddvp}{\ddot{\varphi}}
 
 % Packages
 \usepackage{amsmath}
@@ -20,29 +21,133 @@
 \begin{document}
   \maketitle
   \begin{enumerate}
-    \item Using the following conversions between cartesian coordinates and the coordinates of our system:
-    \begin{gather*}
-      x_1=l_1\sin\varphi_1\quad y_1=-l_1\cos\varphi_1\\
-      x_2=l_1\sin\varphi_1+l_2\sin\varphi_2\quad y_2=-l_1\cos\varphi_1-l_2\cos\varphi_2
-    \end{gather*}
-    Taking the derivatives:
-    \begin{gather*}
-      \dot{x}_1=l_1\dot{\varphi}_1\cos\varphi_1\quad \dot{y}_1=l_1\dot{\varphi}_1\sin\varphi_1\\
-      \dot{x}_2=l_1\dot{\varphi}_1\cos\varphi_1+l_2\dot{\varphi}_2\cos\varphi_2\quad \dot{y}_2=l_1\dot{\varphi}_1\sin\varphi_1+l_2\dot{\varphi}_2\sin\varphi_2
-    \end{gather*}
-    This gives us the following values for the kinetic and potential energy:
-    \begin{gather*}
-      V=m_1 gy_1+m_2 gy_2=-m_1 gl_1\cos\varphi_1+m_2 g\left( -l_1\cos\varphi_1-l_2\cos\varphi_2 \right)\\
-      T=\frac{1}{2}\left[ m_1\left(\dot{x}_1^2+\dot{y}_1^2\right)+m_2\left(\dot{x}_2^2+\dot{y}_2^2\right) \right]\\
-      T=\frac{1}{2}\left[ m_1\left[(l_1\dot{\varphi}_1\cos\varphi_1)^2+(l_1\dot{\varphi}_1\sin\varphi_1)^2\right]+\\m_2\left[(l_1\dot{\varphi}_1\cos\varphi_1+l_2\dot{\varphi}_2\cos\varphi_2)^2+(l_1\dot{\varphi}_1\sin\varphi_1+l_2\dot{\varphi}_2\sin\varphi_2)^2\right] \right]\\
-      T=\frac{1}{2}\left[m_1 l_1^2\dot{\varphi}_1^2 +m_2\left(l_1^2\dot{\varphi}_1^2+l_2^2\dot{\varphi}_2^2 +2l_1 l_2\dot{\varphi}_1\dot{\varphi}_2\cos(\vp_1-\vp_2)\right)\right]
-    \end{gather*}
-    \item In the case where $l_1=l_2=l$ and $m_1=m_2=m$:
-    \begin{gather*}
-      V=mgl(2\cos\vp_1-\cos\vp_2)\\
-      T=\frac{1}{2}l^2 m\left[2\dvp_1^2+\dvp_2^2+2\dvp_1\dvp_2\cos(\vp_1-\vp_2)\right]\\
-      L=\frac{1}{2}l^2 m\left[2\dvp_1^2+\dvp_2^2+2\dvp_1\dvp_2\cos(\vp_1-\vp_2)\right]-mgl(2\cos\vp_1-\cos\vp_2)
-    \end{gather*}
+    \item
+    \begin{enumerate}
+      \item Using the following conversions between cartesian coordinates and the coordinates of our system:
+      \begin{gather*}
+        x_1=l_1\sin\varphi_1\quad y_1=-l_1\cos\varphi_1\\
+        x_2=l_1\sin\varphi_1+l_2\sin\varphi_2\quad y_2=-l_1\cos\varphi_1-l_2\cos\varphi_2
+      \end{gather*}
+      Taking the derivatives:
+      \begin{gather*}
+        \dot{x}_1=l_1\dot{\varphi}_1\cos\varphi_1\quad \dot{y}_1=l_1\dot{\varphi}_1\sin\varphi_1\\
+        \dot{x}_2=l_1\dot{\varphi}_1\cos\varphi_1+l_2\dot{\varphi}_2\cos\varphi_2\quad \dot{y}_2=l_1\dot{\varphi}_1\sin\varphi_1+l_2\dot{\varphi}_2\sin\varphi_2
+      \end{gather*}
+      This gives us the following values for the kinetic and potential energy:
+      \begin{gather*}
+        V=m_1 gy_1+m_2 gy_2=-m_1 gl_1\cos\varphi_1+m_2 g\left( -l_1\cos\varphi_1-l_2\cos\varphi_2 \right)\\
+        T=\frac{1}{2}\left[ m_1\left(\dot{x}_1^2+\dot{y}_1^2\right)+m_2\left(\dot{x}_2^2+\dot{y}_2^2\right) \right]\\
+        T=\frac{1}{2}\left[ m_1\left[(l_1\dot{\varphi}_1\cos\varphi_1)^2+(l_1\dot{\varphi}_1\sin\varphi_1)^2\right]+\\m_2\left[(l_1\dot{\varphi}_1\cos\varphi_1+l_2\dot{\varphi}_2\cos\varphi_2)^2+(l_1\dot{\varphi}_1\sin\varphi_1+l_2\dot{\varphi}_2\sin\varphi_2)^2\right] \right]\\
+        T=\frac{1}{2}\left[m_1 l_1^2\dot{\varphi}_1^2 +m_2\left(l_1^2\dot{\varphi}_1^2+l_2^2\dot{\varphi}_2^2 +2l_1 l_2\dot{\varphi}_1\dot{\varphi}_2\cos(\vp_1-\vp_2)\right)\right]
+      \end{gather*}
+      \item In the case where $l_1=l_2=l$ and $m_1=m_2=m$:
+      \begin{gather*}
+        V=mgl(2\cos\vp_1-\cos\vp_2)\\
+        T=\frac{1}{2}l^2 m\left[2\dvp_1^2+\dvp_2^2+2\dvp_1\dvp_2\cos(\vp_1-\vp_2)\right]\\
+        L=\frac{1}{2}l^2 m\left[2\dvp_1^2+\dvp_2^2+2\dvp_1\dvp_2\cos(\vp_1-\vp_2)\right]-mgl(2\cos\vp_1-\cos\vp_2)
+      \end{gather*}
+      Solving the Lagrangian for $\vp_1$:
+      \begin{gather*}
+        \der{}{t}\left(\p{L}{\dvp_1}\right)-\p{L}{\vp_1}=0\\
+        \der{}{t}\left(\p{L}{\dvp_1}\right)=\frac{1}{2} l^2 m \left(2 \phi _2' \left(\phi _2'-\phi _1'\right) \sin \left(\phi _1-\phi _2\right)+4 \phi _1''+2 \phi _2'' \cos \left(\phi _1-\phi _2\right)\right)\\
+        \p{L}{\vp_1}=l m \left(2 g \sin \left(\phi _1\right)-l \phi _1' \phi _2' \sin \left(\phi _1-\phi _2\right)\right)\\
+        l m \left(-2 g \sin \left(\phi _1\right)+l \phi _2'{}^2 \sin \left(\phi _1-\phi _2\right)+2 l \phi _1''+l \phi _2'' \cos \left(\phi _1-\phi _2\right)\right)=0
+      \end{gather*}
+      Repeating the same process for $\vp_2$:
+      \begin{gather*}
+        \der{}{t}\left(\p{L}{\dvp_2}\right)-\p{L}{\vp_2}=0\\
+        \der{}{t}\left(\p{L}{\dvp_2}\right)=l^2 m \left(\phi _1' \left(\phi _2'-\phi _1'\right) \sin \left(\phi _1-\phi _2\right)+\phi _2''+\phi _1'' \cos \left(\phi _1-\phi _2\right)\right)\\
+        \p{L}{\vp_1}=l m \left(l \phi _1' \phi _2' \sin \left(\phi _1-\phi _2\right)-g \sin \left(\phi _2\right)\right)\\
+        l m \left(g \sin \left(\phi _2\right)+l \left(\phi _1'{}^2 \left(-\sin \left(\phi _1-\phi _2\right)\right)+\phi _2''+\phi _1'' \cos \left(\phi _1-\phi _2\right)\right)\right)=0
+      \end{gather*}
+      \item Both expressions seems similar, they are coupled, non-linear differential equations.
+      \item In the case where $\dvp_1=0$ (and by definition $\ddvp_1=0$) the first equation is trivially zero, the second equation is:
+      \begin{gather*}
+        l m \left(g \sin \left(\phi _2\right)+l \phi _2''\right)=0
+      \end{gather*}
+      \item Applying the small angle approximation, and starting with the following Lagrangian:
+      \begin{gather*}
+        L=\frac{1}{2} l^2 m \left(2 \phi _1'{}^2+2 \left(\phi _1-\phi _2\right) \phi _2' \phi _1'+\phi _2'{}^2\right)-g l m \left(2 \phi _1-\phi _2\right)\\
+      \end{gather*}
+      Results in the following equation of motion for $\vp_2$:
+      \begin{gather*}
+        l m \left(-2 \left(g+l \phi _1''\right)+l \phi _2'{}^2+l \left(\phi _2-\phi _1\right) \phi _2''\right)=0
+      \end{gather*}
+      And the following equation of motion for $\vp_2$:
+      \begin{gather*}
+        l m \left(l \left(\phi _1'{}^2+\left(\phi _1-\phi _2\right) \phi _1''+\phi _2''\right)-g\right)=0
+      \end{gather*}
+    \end{enumerate}
+    \item
+    \begin{enumerate}
+      \item Using conservation of energy we can find the velocity:
+      \begin{gather*}
+        \frac{1}{2}mv^2=mgy\\
+        v=\sqrt{2gy}
+      \end{gather*}
+      This gives the following time of descent:
+      \begin{gather*}
+        t=\int \frac{ds}{v}=\frac{1}{2g}\int \frac{\sqrt{dx^2+dy^2}}{\sqrt{y}}
+      \end{gather*}
+      Converting to an integral of $dy$:
+      \begin{gather*}
+        t=\frac{1}{2g}\int dy\frac{\sqrt{\left(\dv{x}{y}\right)^2+1}}{\sqrt{y}}=\int_{y_1}^{y_2}dy\sqrt{\frac{x'^2+1}{y}}
+      \end{gather*}
+      \item Taking the lagrangian:
+      \begin{gather*}
+        \p{F}{x}-\der{}{y}\left( \p{F}{\dot{x}} \right)\\
+        \p{F}{x}=0\\
+        \der{}{y}\left( \p{F}{\dot{x}} \right)=\der{}{y}\left(\frac{1}{\sqrt{2g}}\frac{x'}{y}\sqrt{\frac{y}{x'^2+1}}\right)
+      \end{gather*}
+      Since $\p{F}{x}=0$ is zero we can simply integrate:
+      \begin{gather*}
+        \frac{1}{\sqrt{2g}}\frac{x'}{y}\sqrt{\frac{y}{x'^2+1}}=c
+      \end{gather*}
+      Solving for $x'$:
+      \begin{gather*}
+        \der{x}{y}=\frac{c\sqrt{2gy}}{\sqrt{1-2c^2 gy}}
+      \end{gather*}
+      Integrating:
+      \begin{gather*}
+        y_1-y_2=\int \frac{\sqrt{1-2c^2 gy}}{c\sqrt{2gy}}dx
+      \end{gather*}
+      Im pretty sure this integral can be solved with the change of variables $x=\frac{c^2}{4g}(\theta-\sin\theta)$ and $y=\frac{c^2}{4g}\left( 1-\cos\theta \right)$.
+    \end{enumerate}
+    \item Since this is the Lagrangian, writing it in the form of the action $I$ and differentiating $I(\epsilon)$ with respect to $\epsilon$:
+    \[
+      \frac{dI}{d\epsilon}=\int_{t_A}^{t_B}\left[\frac{\delta f}{\delta q}\frac{dq}{d\epsilon}+\frac{\delta f}{\delta q'}\frac{dq'}{d\epsilon}+\frac{\delta f}{\delta q''}\frac{dq''}{d\epsilon}\right]
+    \]
+    Since $q'$ endpoints are prescribed, the integration by parts trick used when deriving the Lagrangian will work on both the $\frac{\delta f}{\delta y'}\frac{dy'}{d\epsilon}$ and $\frac{\delta f}{\delta y''}\frac{dy''}{d\epsilon}$ terms.
+    \[
+      \frac{dI}{d\epsilon}=\int_{t_A}^{t_B}\left[\frac{\delta f}{\delta q}-\frac{d}{dt}\left(\frac{\delta f}{\delta q'}\right)-\frac{d^2}{dt^2}\left(\frac{\delta f}{\delta q'}\right)\right]\frac{dq}{d\epsilon}dx
+    \]
+    This requires that $y(x,\epsilon)$ and all its derivatives through third order are continuous functions of $x$ and $\epsilon$
+    \item
+    \begin{enumerate}
+      \item The particle is confined to the hoop and thus can only move around the hoop and thus is:
+      \begin{gather*}
+        T=\frac{1}{2}m\left( R^2\sin^2\theta\omega^2+R\dot{\theta}^2 \right)\\
+        V=-mgy=-mgR\cos\theta\\
+        L=T-V=\frac{1}{2}m\left( R^2\sin^2\theta\omega^2+R\dot{\theta}^2 \right)-mgR\cos\theta
+      \end{gather*}
+      Solving the Lagrangian:
+      \begin{gather*}
+        \p{L}{\theta}-\der{}{t}\left( \p{L}{\dot{\theta}} \right)=0\\
+        \p{L}{\theta}=mR^2 \omega^2\sin\theta\cos\theta+mgR\sin\theta\\
+        \der{}{t}\left( \p{L}{\dot{\theta}} \right)=mR\ddot{\theta}\\
+        mR^2 \omega^2\sin\theta\cos\theta+mgR\sin\theta-mR\ddot{\theta}=0\\
+        R\omega^2\sin\theta\cos\theta+g\sin\theta-\ddot{\theta}=0
+      \end{gather*}
+      \item The bead is stationary when $\ddot{\theta}=0$ which means:
+      \begin{gather*}
+        R\omega^2\sin\theta\cos\theta=g\sin\theta
+      \end{gather*}
+      This means that either $\sin\theta=0$ or $\cos\theta=\frac{g}{R\omega^2}$.\\
+      Solving for $\omega$:
+      \begin{gather*}
+        \omega=\sqrt{\frac{\ddot{\theta}-g\sin\theta}{R\sin\theta\cos\theta}}
+      \end{gather*}
+    \end{enumerate}
   \end{enumerate}
 
 \end{document}
