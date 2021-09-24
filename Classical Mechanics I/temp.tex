@@ -11,23 +11,84 @@
 \usepackage[margin=0.75in]{geometry}
 \usepackage{lipsum}
 \usepackage{physics}
+\newcommand{\p}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\der}[2]{\frac{d #1}{d #2}}
 
 % Document
 \begin{document}
     \maketitle
     \begin{enumerate}
-        \item Using conservation of energy we can find the velocity:
-        \begin{gather*}
-            \frac{1}{2}mv^2=mgy\\
-            v=\sqrt{2gy}
-        \end{gather*}
-        This gives the following time of descent:
-        \begin{gather*}
-            t=\int \frac{ds}{v}=\frac{1}{2g}\int \frac{\sqrt{dx^2+dy^2}}{\sqrt{y}}
-        \end{gather*}
-        Converting to an integral of $dy$:
-        \begin{gather*}
-            t=\frac{1}{2g}\int dy\frac{\sqrt{\left(\dv{x}{y}\right)^2+1}}{\sqrt{y}}=\int_{y_1}^{y_2}dy\sqrt{\frac{x'^2+1}{y}}
-        \end{gather*}
+        \item
+        \begin{enumerate}
+            \item Using conservation of energy we can find the velocity:
+            \begin{gather*}
+                \frac{1}{2}mv^2=mgy\\
+                v=\sqrt{2gy}
+            \end{gather*}
+            This gives the following time of descent:
+            \begin{gather*}
+                t=\int \frac{ds}{v}=\frac{1}{2g}\int \frac{\sqrt{dx^2+dy^2}}{\sqrt{y}}
+            \end{gather*}
+            Converting to an integral of $dy$:
+            \begin{gather*}
+                t=\frac{1}{2g}\int dy\frac{\sqrt{\left(\dv{x}{y}\right)^2+1}}{\sqrt{y}}=\int_{y_1}^{y_2}dy\sqrt{\frac{x'^2+1}{y}}
+            \end{gather*}
+            \item Taking the lagrangian:
+            \begin{gather*}
+                \p{F}{x}-\der{}{y}\left( \p{F}{\dot{x}} \right)\\
+                \p{F}{x}=0\\
+                \der{}{y}\left( \p{F}{\dot{x}} \right)=\der{}{y}\left(\frac{1}{\sqrt{2g}}\frac{x'}{y}\sqrt{\frac{y}{x'^2+1}}\right)
+            \end{gather*}
+            Since $\p{F}{x}=0$ is zero we can simply integrate:
+            \begin{gather*}
+                \frac{1}{\sqrt{2g}}\frac{x'}{y}\sqrt{\frac{y}{x'^2+1}}=c
+            \end{gather*}
+            Solving for $x'$:
+            \begin{gather*}
+                \der{x}{y}=\frac{c\sqrt{2gy}}{\sqrt{1-2c^2 gy}}
+            \end{gather*}
+            Integrating:
+            \begin{gather*}
+                y_1-y_2=\int \frac{\sqrt{1-2c^2 gy}}{c\sqrt{2gy}}dx
+            \end{gather*}
+            Im pretty sure this integral can be solved with the change of variables $x=\frac{c^2}{4g}(\theta-\sin\theta)$ and $y=\frac{c^2}{4g}\left( 1-\cos\theta \right)$.
+        \end{enumerate}
+        \item Since this is the Lagrangian, writing it in the form of the action $I$ and differentiating $I(\epsilon)$ with respect to $\epsilon$:
+        \[
+            \frac{dI}{d\epsilon}=\int_{t_A}^{t_B}\left[\frac{\delta f}{\delta q}\frac{dq}{d\epsilon}+\frac{\delta f}{\delta q'}\frac{dq'}{d\epsilon}+\frac{\delta f}{\delta q''}\frac{dq''}{d\epsilon}\right]
+        \]
+        Since $q'$ endpoints are prescribed, the integration by parts trick used when deriving the Lagrangian will work on both the $\frac{\delta f}{\delta y'}\frac{dy'}{d\epsilon}$ and $\frac{\delta f}{\delta y''}\frac{dy''}{d\epsilon}$ terms.
+        \[
+            \frac{dI}{d\epsilon}=\int_{t_A}^{t_B}\left[\frac{\delta f}{\delta q}-\frac{d}{dt}\left(\frac{\delta f}{\delta q'}\right)-\frac{d^2}{dt^2}\left(\frac{\delta f}{\delta q'}\right)\right]\frac{dq}{d\epsilon}dx
+        \]
+        This requires that $y(x,\epsilon)$ and all its derivatives through third order are continuous functions of $x$ and $\epsilon$
+        \item
+        \begin{enumerate}
+            \item The particle is confined to the hoop and thus can only move around the hoop and thus is:
+            \begin{gather*}
+                T=\frac{1}{2}m\left( R^2\sin^2\theta\omega^2+R\dot{\theta}^2 \right)\\
+                V=-mgy=-mgR\cos\theta\\
+                L=T-V=\frac{1}{2}m\left( R^2\sin^2\theta\omega^2+R\dot{\theta}^2 \right)-mgR\cos\theta
+            \end{gather*}
+            Solving the Lagrangian:
+            \begin{gather*}
+                \p{L}{\theta}-\der{}{t}\left( \p{L}{\dot{\theta}} \right)=0\\
+                \p{L}{\theta}=mR^2 \omega^2\sin\theta\cos\theta+mgR\sin\theta\\
+                \der{}{t}\left( \p{L}{\dot{\theta}} \right)=mR\ddot{\theta}\\
+                mR^2 \omega^2\sin\theta\cos\theta+mgR\sin\theta-mR\ddot{\theta}=0\\
+                R\omega^2\sin\theta\cos\theta+g\sin\theta-\ddot{\theta}=0
+            \end{gather*}
+            \item The bead is stationary when $\ddot{\theta}=0$ which means:
+            \begin{gather*}
+                R\omega^2\sin\theta\cos\theta=g\sin\theta
+            \end{gather*}
+            This means that either $\sin\theta=0$ or $\cos\theta=\frac{g}{R\omega^2}$.\\
+            Solving for $\omega$:
+            \begin{gather*}
+                \omega=\sqrt{\frac{\ddot{\theta}-g\sin\theta}{R\sin\theta\cos\theta}}
+            \end{gather*}
+        \end{enumerate}
+
     \end{enumerate}
+
 \end{document}
