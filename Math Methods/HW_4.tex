@@ -15,9 +15,7 @@
 \begin{document}
   \maketitle
   \begin{enumerate}
-    \item It would depend on whether the rocket rotated.
-    Assuming that it's acceleration was constant in both the horizontal and vertical directions it would move in a parabola, unless $v_0$ is 0 in which case it would move in a straight line.
-    If the rocket were allowed to rotate it would move in a parabolic path, as it would start asymptotically in horizontal direction, and then as it tilted down it would move asymptotically close to the vertical axis.
+    \item It would move in a parabola, which can be seen from the fact that if we rotate our coordinate system such that the rockets total acceleration is pointing down this becomes a simple projectile motion problem, which we know is parabolic.
     \item If we take a rhombus with corners $A,\ B,\ C,\ D$ we can represent the sides as $\vec{AB},\ \vec{BC},\ \vec{CD},\ \vec{DA}$.
     We know that $|\vec{AB}|=|\vec{BC}|=|\vec{CD}|=|\vec{DA}|$, and that $\vec{AC}=\vec{AB}+\vec{BC}$ and $\vec{BD}=\vec{BC}+\vec{CD}$.
     Since the sides of a rhombus are parallel we can for the sake of this problem consider $\vec{AC}=\vec{AB}+\vec{AD}$ and $\vec{BD}=\vec{AD}-\vec{AB}$.
@@ -27,10 +25,36 @@
     Since whether the permutation is even or odd the term $\epsilon_{ijk}\epsilon_{ijk}=1$ and otherwise 0 the sum is equal to 6.
     \item Using the definition of the cross product $\pmb{a}\times\pmb{b}=\epsilon_{ijk}\pmb{\hat{e}}_i a_j b_k$:
     \begin{gather*}
-      \pmb{a}\times(\pmb{b}\times\pmb{c})=\pmb{a}\times(\epsilon_{ijk}\pmb{\hat{e}}_i b_j c_k)=\epsilon_{ijk}\pmb{\hat{e}}_i a_j b_j c_k\\
-      (\pmb{a}\times\pmb{b})\times\pmb{c}=(\epsilon_{ijk}\pmb{\hat{e}}_i a_j b_k)\times\pmb{c}=\epsilon_{ijk}\pmb{\hat{e}}_i a_j b_j c_k\\
+      \pmb{a}\times(\pmb{b}\times\pmb{c})=\pmb{a}\times(\epsilon_{ijk}\pmb{\hat{e}}_i b_j c_k)=\epsilon_{ijk}\epsilon_{ijk}\pmb{\hat{e}}_i a_j b_j c_k\\
+      (\pmb{a}\times\pmb{b})\times\pmb{c}=(\epsilon_{ijk}\pmb{\hat{e}}_i a_j b_k)\times\pmb{c}=\epsilon_{ijk}\epsilon_{ijk}\pmb{\hat{e}}_i a_j b_j c_k\\
     \end{gather*}
-    \item
+    \item The following matrix converts between $x$ and $x'$:
+    \begin{gather}
+      \begin{bmatrix}
+        x_1' \\
+        x_2'
+      \end{bmatrix}=
+      \begin{bmatrix}
+        \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \\
+        0                  & 1
+      \end{bmatrix}
+      \begin{bmatrix}
+        x_1 \\
+        x_2
+      \end{bmatrix}
+    \end{gather}
+    Multiplying the gradient of the scalar function we can see that they are both equal and thus covariant:
+    \begin{gather}
+      \begin{bmatrix}
+        \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \\
+        0                  & 1
+      \end{bmatrix}
+      \begin{bmatrix}
+        \hat{e}_1 \\
+        \hat{e}_2
+      \end{bmatrix}=\frac{1}{\sqrt{2}}\hat{e}_1+\left(\frac{1}{\sqrt{2}}+1\right)\hat{e}_2=\frac{1}{\sqrt{2}}\left( \hat{e}_1+\hat{e}_2\right)+\hat{e}_2
+    \end{gather}
+    \item An orthoganol transformation follows the following rule: $e_i'=$
   \end{enumerate}
 
 \end{document}
