@@ -10,6 +10,7 @@
 \usepackage[margin=0.75in]{geometry}
 \usepackage{lipsum}
 \usepackage{physics}
+\usepackage{bbold}
 
 % Document
 \begin{document}
@@ -23,11 +24,20 @@
     \item This is equivalent to $\sum_i\sum_j\sum_k \epsilon_{ijk}\epsilon_{ijk}$.
     The number of permutations of $n$ numbers is $n!$, which means there are $3!=6$ permutations in our case.
     Since whether the permutation is even or odd the term $\epsilon_{ijk}\epsilon_{ijk}=1$ and otherwise 0 the sum is equal to 6.
-    \item Using the definition of the cross product $\pmb{a}\times\pmb{b}=\epsilon_{ijk}\pmb{\hat{e}}_i a_j b_k$:
-    \begin{gather*}
-      \pmb{a}\times(\pmb{b}\times\pmb{c})=\pmb{a}\times(\epsilon_{ijk}\pmb{\hat{e}}_i b_j c_k)=\epsilon_{ijk}\epsilon_{ijk}\pmb{\hat{e}}_i a_j b_j c_k\\
-      (\pmb{a}\times\pmb{b})\times\pmb{c}=(\epsilon_{ijk}\pmb{\hat{e}}_i a_j b_k)\times\pmb{c}=\epsilon_{ijk}\epsilon_{ijk}\pmb{\hat{e}}_i a_j b_j c_k\\
-    \end{gather*}
+    \item Using the definition of the cross product $\pmb{a}\times\pmb{b}=\epsilon_{ijk}\pmb{\hat{e}}_i a_j b_k$, and the relation $\epsilon_{ijk}\epsilon_{klm}=(\delta_{il}\delta_{jm}-\delta_{im}\delta_{jl})$:
+    \begin{align}
+      \pmb{a}\times(\pmb{b}\times\pmb{c})& =\epsilon_{ijk}a_j\epsilon_{klm}b_l c_m\\
+      & =(\delta_{il}\delta_{jm}-\delta_{im}\delta_{jl})a_j b_l c_m\\
+      & =a_j b_i c_j-a_j b_j c_i\\
+      & =b(a\cdot c)-c(a\cdot b)
+    \end{align}
+    \begin{align}
+    (\pmb{a}\times\pmb{b})
+      \times\pmb{c}& =\epsilon_{ijk}a_i b_j\epsilon_{klm}c_l\\
+      & =(\delta_{il}\delta_{jm}-\delta_{im}\delta_{jl})a_i b_j c_l\\
+      & =a_i b_j c_i-a_i b_j c_j\\
+      & =b(a\cdot c)-a(b\cdot c)
+    \end{align}
     \item The following matrix converts between $x$ and $x'$:
     \begin{gather}
       \begin{bmatrix}
@@ -54,7 +64,7 @@
         \hat{e}_2
       \end{bmatrix}=\frac{1}{\sqrt{2}}\hat{e}_1+\left(\frac{1}{\sqrt{2}}+1\right)\hat{e}_2=\frac{1}{\sqrt{2}}\left( \hat{e}_1+\hat{e}_2\right)+\hat{e}_2
     \end{gather}
-    \item An orthogonal transformation follows the following rule: $e_i'=$
+    \item For an orthogonal transformation $A$ the following is true: $AA^T=A^T A=\mathbb{1}$
   \end{enumerate}
 
 \end{document}
