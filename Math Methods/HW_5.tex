@@ -1,0 +1,69 @@
+%! Author = Johannes Byle
+%! Date = 10/2/2021
+
+% Preamble
+\documentclass[12pt]{article}
+\title{Math Methods Assignment \#5}
+\author{Johannes Byle}
+\newcommand{\p}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\der}[2]{\frac{d #1}{d #2}}
+
+% Packages
+\usepackage{amsmath}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{lipsum}
+\usepackage{physics}
+\usepackage{bbold}
+
+% Document
+\begin{document}
+    \maketitle
+    \begin{enumerate}
+        \item
+        \begin{enumerate}
+            \item From the definition of orthogonality given by Arfken (page 105), to show that they are orthogonal we must show that $g_{ij}=\p{\pmb{r}}{q_i}\cdot\p{\pmb{r}}{q_j}=0$ for all $i\neq j$:
+            \begin{gather*}
+                \p{\pmb{r}}{q_{\eta}}\cdot\p{\pmb{r}}{q_{\phi}}=
+                \left(\sinh\eta\cos\phi\hat{i}+\cosh\eta\sin\phi\hat{j}\right)\cdot
+                \left(-\cosh\eta\sin\phi\hat{i}+\sinh\eta\cos\phi\hat{j}\right)=0\\
+                \p{\pmb{r}}{q_{\eta}}\cdot\p{\pmb{r}}{q_z}=
+                \left(\sinh\eta\cos\phi\hat{i}+\cosh\eta\sin\phi\hat{j}\right)\cdot
+                \left(\hat{k}\right)=0\\
+                \p{\pmb{r}}{q_{\phi}}\cdot\p{\pmb{r}}{q_z}=
+                \left(-\cosh\eta\sin\phi\hat{i}+\sinh\eta\cos\phi\hat{j}\right)\cdot
+                \left(\hat{k}\right)=0
+            \end{gather*}
+            \item The metric tensor is defined as $ds^2=g_{ij}dq_i dq_j$.
+            Since we know the coordinate system is orthogonal we only need to calculate the diagonal terms:
+            \begin{gather*}
+                ds^2=
+                \begin{bmatrix}
+                    d\eta & d\phi & dz
+                \end{bmatrix}
+                \begin{bmatrix}
+                    \sinh^2\eta\cos^2\phi+\cosh^2\eta\sin^2\phi & 0                                           & 0 \\
+                    0                                           & \cosh^2\eta\sin^2\phi+\sinh^2\eta\cos^2\phi & 0 \\
+                    0                                           & 0                                           & 1
+                \end{bmatrix}
+                \begin{bmatrix}
+                    d\eta \\
+                    d\phi \\
+                    dz
+                \end{bmatrix}
+            \end{gather*}
+            \item Defining $g_{ii}=h_i^2$ we can use the relation from Arfken: $\nabla f=\hat{q}_i\frac{1}{h_i}\p{f}{q_i}$:
+            \begin{gather*}
+                \nabla f=\frac{\hat{\eta}}{\sinh\eta\cos\phi+\cosh\eta\sin\phi}\p{f}{\eta}+
+                \frac{\hat{\phi}}{\cosh\eta\sin\phi+\sinh\eta\cos\phi}\p{f}{\phi}+\hat{z}\p{f}{z}
+            \end{gather*}
+            \item Using equation (2.21) from Arfken:
+            \begin{gather*}
+                \nabla\cdot\mathcal{E}=\frac{\p{}{\eta}\mathcal{E}_{\eta}+\p{}{\phi}\mathcal{E}_{\phi}+\p{}{z}\mathcal{E}_{z}(\cosh\eta\sin\phi+\sinh\eta\cos\phi)}{(\cosh\eta\sin\phi+\sinh\eta\cos\phi)}
+            \end{gather*}
+            \item Using equation (2.22) from Arfken:
+            \begin{gather*}
+                \nabla^2\cdot\mathcal{E}=\frac{\p{^2f}{\eta^2}+\p{^2f}{\phi^2}+\p{}{z}\left[(\cosh\eta\sin\phi+\sinh\eta\cos\phi)^2\p{f}{z}\right]}{(\cosh\eta\sin\phi+\sinh\eta\cos\phi)^2}
+            \end{gather*}
+        \end{enumerate}
+    \end{enumerate}
+\end{document}
