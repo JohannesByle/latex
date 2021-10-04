@@ -1,0 +1,79 @@
+%! Author = johannes
+%! Date = 9/20/21
+
+% Preamble
+\documentclass[12pt]{article}
+\title{Quantum I Assignment \#5}
+\author{Johannes Byle}
+\newcommand{\op}[1]{\tilde{\mathbf{#1}}}
+
+% Packages
+\usepackage{amsmath}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{lipsum}
+\usepackage{braket}
+\usepackage{mathrsfs}
+\newcommand{\opx}{\pmb{\text{x}}}
+\newcommand{\jac}{\mathscr{J}(d\opx')}
+\newcommand{\jacdag}{\mathscr{J}^{\dag}(d\opx')}
+\newcommand{\opp}{\pmb{\text{p}}}
+\newcommand{\boost}{\mathscr{B}(d\opp')}
+\newcommand{\boostdag}{\mathscr{B}^{\dag}(d\opp')}
+\newcommand{\opw}{\pmb{\text{W}}}
+% Document
+\begin{document}
+  \maketitle
+  \begin{enumerate}
+    \item[1.33] Starting with the translation operator applied to the expectation value for $\opx$:
+    \begin{gather*}
+      \bra{\alpha}\jacdag\opx\jac\ket{\alpha}\\
+    \end{gather*}
+    By equation 1.207 we know:
+    \begin{gather*}
+      \opx\jac-\jac\opx=d\opx'
+    \end{gather*}
+    Since the translation operator is unitary we can apply $\jacdag$ to both sides:
+    \begin{gather*}
+      \jacdag\left[\opx\jac-\jac\opx\right]=\jacdag d\opx'\\
+      \jacdag \opx\jac-\jacdag\jac\opx=\jacdag d\opx'\\
+      \jacdag \opx\jac-\opx=\jacdag d\opx'\\
+      \opx+d\opx'-\opx=\jacdag d\opx'
+    \end{gather*}
+    This means that $\bra{\alpha}\jacdag\opx\jac\ket{\alpha}\rightarrow\bra{\alpha}\opx\ket{\alpha}+d\opx'$.\\
+    Using the same process for $\opp$:
+    By equation 1.227 we know:
+    \begin{gather*}
+      \opp\jac-\jac\opp=0
+    \end{gather*}
+    Since the translation operator is unitary we can apply $\jacdag$ to both sides:
+    \begin{gather*}
+      \jacdag\left[\opp\jac-\jac\opp\right]=0\\
+      \jacdag \opp\jac-\jacdag\jac\opp=0\\
+      \jacdag \opp\jac-\opp=0\\
+      \opp+d\opp'-\opp=0
+    \end{gather*}
+    This means that $\bra{\alpha}\jacdag\opp\jac\ket{\alpha}\rightarrow\bra{\alpha}\opp\ket{\alpha}$.\\
+    \item[1.34] Satisfies unitary property because $\opw$ is hermitian:
+    \begin{align*}
+      \boostdag\boost&=(1-i\opw\cdot d\opp)(1+i\opw\cdot d\opp)\\
+      &=(1-i\opw\cdot d\opp^{\dagger})(1+i\opw\cdot d\opp)\\
+      &=1-i(\opw-\opw^{\dagger})\\
+      &\simeq 1
+    \end{align*}
+    Satisfies the associative property:
+    \begin{align*}
+      \boostdag\mathscr{B}(d\opp'')&=(1+i\opw\cdot d\opp')\cdot(1+i\opw\cdot d\opp'')\\
+      &\simeq 1-i\opw\cdot(d\opp' d\opp'')\\
+      &= \mathscr{B}(d\opp'+d\opp'')
+    \end{align*}
+    Satisfies the inverse property trivially:
+    \begin{align*}
+      \mathscr{B}(-d\opp')&=\mathscr{B}^{-1}(d\opp')\\
+      1+i\opw\cdot d\opp&=-(-1-i\opw\cdot d\opp)
+    \end{align*}
+    Since $d\opp$ has units of $\frac{\text{kg m}}{\text{s}^2}$
+    \item[1.35]
+  \end{enumerate}
+
+
+\end{document}
