@@ -102,6 +102,28 @@
             \end{align*}
         \end{enumerate}
         \item[1.36]
+        \begin{enumerate}
+            \item
+            \begin{enumerate}
+                \item
+                Using equation (1.265a) $\braket{p'|\alpha}=\int dx'\braket{p'|x'}\braket{x'|\alpha}$:
+                \begin{align*}
+                    \braket{p'|x|\alpha}&=\int dx'\braket{p'|x|x'}\braket{x'|\alpha}\\
+                    &=\int dx'x'\braket{p'|x'}\braket{x'|\alpha}\\
+                    &=\frac{1}{\sqrt{2\pi\hbar}}\int dx'x'\exp\left[\frac{-ip'x'}{\hbar}\right]\braket{x'|\alpha}\quad\text{using (1.264)}\\
+                    &=\frac{1}{\sqrt{2\pi\hbar}}\int dx'\p{}{p'}i\hbar\exp\left[\frac{-ip'x'}{\hbar}\right]\braket{x'|\alpha}\\
+                    &=i\hbar\p{}{p'}\int dx'\frac{1}{\sqrt{2\pi\hbar}}\exp\left[\frac{-ip'x'}{\hbar}\right]\braket{x'|\alpha}=i\hbar\p{}{p'}\braket{p'|\alpha}\\
+                    \braket{p'|x|\alpha}&=i\hbar\p{}{p'}\braket{p'|\alpha}\
+                \end{align*}
+                \item This holds true from the previous result:
+                \begin{align*}
+                    \braket{\beta|x|\alpha}&=\int dp'\braket{\beta|p'}\braket{p'|x|\alpha}=\int dp'x\braket{\beta|p'}\braket{p'\alpha}\\
+                    &=\int dp'\braket{\beta|p'}i\hbar\p{}{p'}\braket{p'\alpha}\quad\text{from the previous part}\\
+                    \braket{\beta|x|\alpha}&=\int dp'\phi_{\beta}(p')i\hbar\p{}{p'}\phi_{\alpha}(p')\\
+                \end{align*}
+            \end{enumerate}
+            \item
+        \end{enumerate}
     \end{enumerate}
 
 
