@@ -7,81 +7,202 @@
 \author{Johannes Byle}
 \newcommand{\p}[2]{\frac{\partial #1}{\partial #2}}
 \newcommand{\der}[2]{\frac{d #1}{d #2}}
-\newcommand{\Lag}[3]{\p{L}{#1}-\der{}{t}\p{L}{\dot{#1}}=0\\ \p{L}{#1}=#2,\quad \der{}{t}\p{L}{\dot{#1}}=#3\\ #2-#3=0}
-\newcommand{\Lagq}[4]{{\p{L}{#1}-\der{}{t}\p{L}{\dot{#1}}+\lambda\p{f}{r}=0\\ \p{L}{#1}=#2,\quad \der{}{t}\p{L}{\dot{#1}}=#3,\quad \lambda\p{f}{r}=#4\\ #2-#3+\lambda#4=0}}
+\newcommand{\Lag}[3]{
+  \p{L}{#1}-\der{}{t}\p{L}{\dot{#1}}=0\\
+  \p{L}{#1}=#2,\quad \der{}{t}\p{L}{\dot{#1}}=#3\\
+  #2-#3=0
+}
+\newcommand{\Lagq}[4]{
+  \p{L}{#1}-\der{}{t}\p{L}{\dot{#1}}+\lambda\p{f}{r}=0\\
+  \p{L}{#1}=#2,\quad \der{}{t}\p{L}{\dot{#1}}=#3,\quad \p{f}{#1}=#4\\
+  #2-#3\ifthenelse{#4=1}{+\lambda}{\ifthenelse{#4=0}{+0}{+\lambda#4}}=0
+}
 % Packages
 \usepackage{amsmath}
 \usepackage[margin=0.75in]{geometry}
 \usepackage{lipsum}
 \usepackage{physics}
+\usepackage{ifthen}
 
 % Document
 \begin{document}
-    \maketitle
+  \maketitle
+  \begin{enumerate}
+    \item
     \begin{enumerate}
-        \item
-        \begin{enumerate}
-            \item Using spherical coordinates, and setting our coordinates such that the mass can be described by only $\theta$ and $r$ we get the following equations for the kinetic and potential energies and the constraint $f$:
-            \begin{gather*}
-                T=\frac{m}{2}\left(\dot{r}^2+r^2\dot{\theta}^2\right)\quad U=mgr\cos\theta\\
-                L=\frac{m}{2}\left(\dot{r}^2+r^2\dot{\theta}^2\right)-mgr\cos\theta\\
-                f=r-R=0
-            \end{gather*}
-            Solving the Lagrangian for $r$:
-            \begin{gather*}
-                \Lagq{r}{m r\dot{\theta}^2-g m \cos\theta}{m\ddot{r}}{1}
-            \end{gather*}
-            Solving the Lagrangian for $\theta$:
-            \begin{gather*}
-                \Lag{\theta}{gmr\sin\theta}{2mr\dot{r}\dot{\theta}+mr^2\ddot{\theta}}
-            \end{gather*}
-            Since we know that $r=R$ and does not change, i.e. $\dot{r}=\ddot{r}=0$, the equations simplify to:
-            \begin{gather*}
-                mR\dot{\theta}^2-mg\cos\theta+\lambda=0\\
-                mgR\sin\theta-mR^2\ddot{\theta}=0
-            \end{gather*}
-            Solving for $\ddot{\theta}$ and integrating we can use substitution to solve for $\lambda$:
-            \begin{gather*}
-                \ddot{\theta}=\frac{g\sin\theta}{R}\\
-                \int \ddot{\theta}d\dot{\theta}=\frac{g}{R}\int\sin\theta d\theta\quad \text{from Marion page 253}\\
-                \frac{\dot{\theta}^2}{2}=\frac{-g\cos\theta}{R}+\frac{g}{R}
-            \end{gather*}
-            \begin{align*}
-                \lambda&=mg\cos\theta-2mR\left( \frac{-g\cos\theta}{R}+\frac{g}{R} \right)\\
-                &=mg\cos\theta+2mg\cos\theta-2mg\\
-                \lambda &=mg(3\cos\theta-2)
-            \end{align*}
-            \item We can find the height at which the ball will fall off the sphere using the fact that once the force of constraint goes to zero the ball will fall off the sphere, so solving for where $\lambda=0$:
-            \begin{align*}
-                0&=mg(3\cos\theta-2)\\
-                0&=3\cos\theta-2\\
-                \theta_f&=\cos^{-1}\left(\frac{2}{3}\right)
-            \end{align*}
-            The height is now trivial to find from the angle: $h=R+R\sin\theta_f$
-            \item Repeating the same process as above, but adding an extra constraint for the rolling without slipping condition, updating the radius, and adding rotational kinetic energy term $\frac{1}{2}\frac{2}{5}a^2\frac{\dot{r}^2+r^2\dot{\theta}^2}{a^2}$:
-            \begin{gather*}
-                T=\frac{m}{2}\frac{7}{5}\left(\dot{r}^2+r^2\dot{\theta}^2\right)\quad U=mgr\cos\theta\\
-                L=\frac{m}{2}\frac{7}{5}\left(\dot{r}^2+r^2\dot{\theta}^2\right)-mgr\cos\theta\\
-                f=r-(R+a)=0
-            \end{gather*}
-            Since this is only a change of a constant, which we can simply pull out of all the derivatives, we can simply add it to the final solution from the previous problem, along with the updated value of $R$:
-            \begin{gather*}
-                \frac{7}{5}m(R+a)\dot{\theta}^2-mg\cos\theta+\lambda=0\\
-                mg(R+a)\sin\theta-\frac{7}{5}m(R+a)^2\ddot{\theta}=0
-            \end{gather*}
-            This will also change our value of $\dot{\theta}^2$:
-            \begin{gather*}
-                \frac{\dot{\theta}^2}{2}=\frac{5}{7}\frac{-g\cos\theta}{R+a}+\frac{5}{7}\frac{g}{R+a}
-            \end{gather*}
-            Which changes our value for $\lambda$ in the same simple way:
-            \begin{align*}
-                \lambda&=mg\cos\theta-2m(R+a)\left( \frac{5}{7}\frac{-g\cos\theta}{R+a}+\frac{5}{7}\frac{g}{R+a} \right)\\
-                &=mg\cos\theta+\frac{5}{7}2mg\cos\theta-\frac{5}{7}2mg\\
-                \lambda &=\frac{mg}{7}(17\cos\theta-10)
-            \end{align*}
-            This means that our angle changes simply to $\theta_f&=\cos^{-1}\left(\frac{10}{17}\right)$ and the equation for height also changes slightly: $h=R+(R+a)\sin\theta_f$.
-
-        \end{enumerate}
+      \item Using spherical coordinates, and setting our coordinates such that the mass can be described by only $\theta$ and $r$ we get the following equations for the kinetic and potential energies and the constraint $f$:
+      \begin{gather*}
+        T=\frac{m}{2}\left(\dot{r}^2+r^2\dot{\theta}^2\right)\quad U=mgr\cos\theta\\
+        L=\frac{m}{2}\left(\dot{r}^2+r^2\dot{\theta}^2\right)-mgr\cos\theta\\
+        f=r-R=0
+      \end{gather*}
+      Solving the Lagrangian for $r$:
+      \begin{gather*}
+        \Lagq{r}{m r\dot{\theta}^2-g m \cos\theta}{m\ddot{r}}{1}
+      \end{gather*}
+      Solving the Lagrangian for $\theta$:
+      \begin{gather*}
+        \Lag{\theta}{gmr\sin\theta}{2mr\dot{r}\dot{\theta}+mr^2\ddot{\theta}}
+      \end{gather*}
+      Since we know that $r=R$ and does not change, i.e. $\dot{r}=\ddot{r}=0$, the equations simplify to:
+      \begin{gather*}
+        mR\dot{\theta}^2-mg\cos\theta+\lambda=0\\
+        mgR\sin\theta-mR^2\ddot{\theta}=0
+      \end{gather*}
+      Solving for $\ddot{\theta}$ and integrating we can use substitution to solve for $\lambda$:
+      \begin{gather*}
+        \ddot{\theta}=\frac{g\sin\theta}{R}\\
+        \int \ddot{\theta}d\dot{\theta}=\frac{g}{R}\int\sin\theta d\theta\quad \text{from Marion page 253}\\
+        \frac{\dot{\theta}^2}{2}=\frac{-g\cos\theta}{R}+\frac{g}{R}
+      \end{gather*}
+      \begin{align*}
+        \lambda&=mg\cos\theta-2mR\left( \frac{-g\cos\theta}{R}+\frac{g}{R} \right)\\
+        &=mg\cos\theta+2mg\cos\theta-2mg\\
+        \lambda &=mg(3\cos\theta-2)
+      \end{align*}
+      \item We can find the height at which the ball will fall off the sphere using the fact that once the force of constraint goes to zero the ball will fall off the sphere, so solving for where $\lambda=0$:
+      \begin{align*}
+        0&=mg(3\cos\theta-2)\\
+        0&=3\cos\theta-2\\
+        \theta_f&=\cos^{-1}\left(\frac{2}{3}\right)
+      \end{align*}
+      The height is now trivial to find from the angle: $h=R+R\sin\theta_f$
+      \item Repeating the same process as above, but adding an extra constraint for the rolling without slipping condition, updating the radius, and adding rotational kinetic energy term $\frac{1}{2}\frac{2}{5}a^2\frac{\dot{r}^2+r^2\dot{\theta}^2}{a^2}$:
+      \begin{gather*}
+        T=\frac{m}{2}\frac{7}{5}\left(\dot{r}^2+r^2\dot{\theta}^2\right)\quad U=mgr\cos\theta\\
+        L=\frac{m}{2}\frac{7}{5}\left(\dot{r}^2+r^2\dot{\theta}^2\right)-mgr\cos\theta\\
+        f=r-(R+a)=0
+      \end{gather*}
+      Since this is only a change of a constant, which we can simply pull out of all the derivatives, we can simply add it to the final solution from the previous problem, along with the updated value of $R$:
+      \begin{gather*}
+        \frac{7}{5}m(R+a)\dot{\theta}^2-mg\cos\theta+\lambda=0\\
+        mg(R+a)\sin\theta-\frac{7}{5}m(R+a)^2\ddot{\theta}=0
+      \end{gather*}
+      This will also change our value of $\dot{\theta}^2$:
+      \begin{gather*}
+        \frac{\dot{\theta}^2}{2}=\frac{5}{7}\frac{-g\cos\theta}{R+a}+\frac{5}{7}\frac{g}{R+a}
+      \end{gather*}
+      Which changes our value for $\lambda$ in the same simple way:
+      \begin{align*}
+        \lambda&=mg\cos\theta-2m(R+a)\left( \frac{5}{7}\frac{-g\cos\theta}{R+a}+\frac{5}{7}\frac{g}{R+a} \right)\\
+        &=mg\cos\theta+\frac{5}{7}2mg\cos\theta-\frac{5}{7}2mg\\
+        \lambda &=\frac{mg}{7}(17\cos\theta-10)
+      \end{align*}
+      This means that our angle changes simply to $\theta_f&=\cos^{-1}\left(\frac{10}{17}\right)$ and the equation for height also changes slightly: $h=R+(R+a)\sin\theta_f$.
     \end{enumerate}
+    \item
+    \begin{enumerate}
+      \item
+      Using cylindrical coordinates the Lagrangian is:
+      \begin{gather*}
+        L=\frac{1}{2}m\left(\dot{r}^2+r^2\dot{\varphi}^2\right)+\frac{1}{2}M\dot{z}^2-Mgz
+      \end{gather*}
+      We can impose the following constraint:
+      \begin{gather*}
+        l-r-z=0
+      \end{gather*}
+      Solving for the equations of motion in terms of $r$:
+      \begin{gather*}
+        \Lagq{r}{mr\dot{\varphi}^2}{m\ddot{r}}{1}
+      \end{gather*}
+      Solving for the equations of motion in terms of $\varphi$:
+      \begin{gather*}
+        \Lagq{\varphi}{0}{mr^2\ddot{\varphi}}{0}
+      \end{gather*}
+      Solving for the equations of motion in terms of $z$:
+      \begin{gather*}
+        \Lagq{z}{Mg}{M\ddot{z}}{1}
+      \end{gather*}
+      Using substitution to solve for $\ddot{z}$:
+      \begin{gather*}
+        Mg-M\ddot{z}-mr\dot{\varphi}^2+m\ddot{r}=0\\
+        \ddot{z}=\frac{Mg-mr\dot{\varphi}^2+m\ddot{r}}{M}
+      \end{gather*}
+      Using $\ddot{z}$ to solve for $\lambda$ (the generalized force):
+      \begin{align*}
+        \lambda&=M\ddot{z}-Mg\\
+        &=M\frac{Mg-mr\dot{\varphi}^2+m\ddot{r}}{M}-Mg\\
+        &=Mg-mr\dot{\varphi}^2+m\ddot{r}-Mg\\
+        \lambda&=m\ddot{r}-mr\dot{\varphi}^2
+      \end{align*}
+      \item Since we know that for it to be stationary $\ddot{z}=\ddot{r}=0$
+      \begin{gather*}
+        Mg-M\ddot{z}-mr\dot{\varphi}^2+m\ddot{r}=0\\
+        Mg-mr\dot{\varphi}^2+=0\\
+        Mg-mr\dot{\varphi}^2=0\\
+        \sqrt{\frac{mg}{mr}}=\sqrt{\frac{mg}{mr_0}}=\dot{\varphi}
+      \end{gather*}
+      \item
+      \begin{gather*}
+        t(r)=\int_{r_0}^{r_f}\frac{mr\dot{\varphi}^2+\lambda}{m}dr
+      \end{gather*}
+    \end{enumerate}
+    \item
+    \begin{enumerate}
+      \item Solving the Lagrangian:
+      \begin{gather*}
+        \Lag{q}{-e^{t\gamma}}{e^{t\gamma}m\gamma\dot{q}+e^{t\gamma}m\ddot{q}}\\
+        -e^{t\gamma}\left(1+m\gamma\dot{q}-m\ddot{q} \right)=0
+      \end{gather*}
+      This looks like a damped oscillator, with an extra exponential term.
+      \item The energy function is:
+      \begin{align*}
+        h&=\dot{q}\p{L}{\dot{q}}-L\\
+        &=-e^{t\gamma}m\dot{q}-e^{t\gamma}\left( \frac{m}{2}\dot{q}^2-\frac{k}{2}q^2 \right)\\
+        &=e^{t\gamma}\left(m\dot{q}-\frac{m}{2}\dot{q}^2-\frac{k}{2}q^2\right)
+      \end{align*}
+      Taking the derivative in Mathematica:
+      \begin{gather*}
+        \p{h}{t}=\frac{1}{2}e^{t\gamma}\left( k\gamma q+\dot{q}\left[ k+m\gamma\dot{q}+2m\ddot{q} \right] \right)
+      \end{gather*}
+      This means that the energy function is not conserved.
+      \item Solving for $q$ and $\dot{q}$:
+      \begin{gather*}
+        q=Qe^{-\gamma t/2}\\
+        \dot{q}=-\frac{1}{2}e^{-\gamma t/2}\gamma Q+e^{-\gamma t/2}\dot{Q}
+      \end{gather*}
+      Solving for $q^2$ and $\dot{q}^2$:
+      \begin{gather*}
+        q^2=Q^2 e^{-\gamma t}\\
+        \dot{q}^2=\frac{1}{4}e^{-\gamma t}\left( \gamma Q-2\dot{Q} \right)^2
+      \end{gather*}
+      This results in the following Lagrangian:
+      \begin{align*}
+        L&=e^{t\gamma}\left( \frac{m}{2}\dot{q}^2-\frac{k}{2}q^2 \right)\\
+        &=e^{t\gamma}\left( \frac{m}{2}\frac{1}{4}e^{-\gamma t}\left( \gamma Q-2\dot{Q} \right)^2-\frac{k}{2}Q^2 e^{-\gamma t} \right)\\
+        L&=\frac{m}{8}\left( \gamma Q-2\dot{Q} \right)^2-\frac{k}{2}Q^2
+      \end{align*}
+      \item There's no explicit time dependence, so energy is conserved.
+    \end{enumerate}
+    \item
+    \begin{enumerate}
+      \item The particle is constrained to the surface of the cylinder, and for some strange reason I think this means that cylindrical coordinates would make the most sense, just a hunch.
+      \begin{align*}
+        x&=\rho\cos\varphi\\
+        y&=\rho\sin\varphi\\
+        z&=z
+      \end{align*}
+      This constraint can then be written as:
+      \begin{gather*}
+        \rho=R
+      \end{gather*}
+      Which implies $\dot{\rho}=\ddot{\rho}=0$.
+      \item This results in the following Lagrangian:
+      \begin{align*}
+        L&=T-U\\
+        L&=\frac{1}{2}m\left(R\dot{\varphi}^2+\dot{z}^2\right)-\frac{1}{2}k\sqrt{R^2+z^2}\\
+      \end{align*}
+      Solving in terms of $\phi$:
+      \begin{gather*}
+        \Lag{\varphi}{0}{2mR\ddot{\varphi}}
+      \end{gather*}
+      Solving in terms of $z$:
+      \begin{gather*}
+        \Lag{z}{\frac{kz}{2\sqrt{R^2+z^2}}}{m\ddot{z}}
+      \end{gather*}
+      The fact that $L$ does not have any explicit $\varphi$ dependence shows that the angular velocity is a conserved.
+      \item Based on the EOM for $z$ it is clear that the particle will exhibit SHO in the vertical direction, and since it's angular velocity is not changing if $\dot{\varphi}_0\neq0$ it will spiral around the cylinder, and so depending on the initial conditions will form a helical shape.
+    \end{enumerate}
+  \end{enumerate}
 
 \end{document}
