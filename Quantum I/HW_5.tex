@@ -26,9 +26,31 @@
   \maketitle
   \begin{enumerate}
     \item[Q-1]
-    \begin{align*}
-    [\op{X},\op{H}]
-    \end{align*}
+    \begin{enumerate}
+      \item
+      \begin{align*}
+        \.[\op{X},\op{H}]\ket{\phi_n}&=\op{X}\left(\frac{1}{2m}\op{P}^2+V(\op{X})\right)\ket{\phi_n}-\left(\frac{1}{2m}\op{P}^2+V(\op{X})\right)\op{X}\ket{\phi_n}\\
+        &=\op{X}\frac{1}{2m}\op{P}^2\ket{\phi_n}-\frac{1}{2m}\op{P}^2\op{X}\ket{\phi_n}\\
+        &=[\op{X},\frac{1}{2m}\op{P}^2]\ket{\phi_n}\\
+        &=\frac{1}{2m}\{[\op{X},\op{P}]\op{P},\op{P}[\op{P},\op{X}]\}\ket{\phi_n}\\
+        &=\frac{1}{2m}\{i\hbar\op{P},\op{P}i\hbar\}\ket{\phi_n}\\
+        \bra{\phi_n}\op{P}\ket{\phi_n'}&=\alpha\bra{\phi_n}\op{X}\ket{\phi_n}
+      \end{align*}
+      \item Since $\alpha=E_n-E_{n'}$
+      \begin{align*}
+        \alpha^2\bra{\phi_n}\op{X}^2\sum_n' \ket{\phi_n'}\bra{\phi_n'}\ket{\phi_n}&=\sum_n'\alpha^2\bra{\phi_n}\op{X}^2 \ket{\phi_n'}\braket{\phi_n'|\phi_n}\\
+        &=\sum_n'\alpha^2|\braket{\phi_n'|\op{X}|\phi_n}|^2\\
+        &=\sum_n'(E_n-E_{n'})^2|\braket{\phi_n'|\op{X}|\phi_n}|^2\\
+      \end{align*}
+      \begin{align*}
+        \bra{\phi_n}\op{P}^2\sum_n' \ket{\phi_n'}\bra{\phi_n'}\ket{\phi_n}&=\bra{\phi_n}\op{P}^2\sum_n' \ket{\phi_n'}\braket{\phi_n'|\phi_n}\\
+        &=\braket{\phi_n'|\phi_n}\bra{\phi_n}\op{P}^2\sum_n' \ket{\phi_n'}\\
+        &=\frac{\hbar^2}{m^2}\bra{\phi_n}\op{P}^2\sum_n' \ket{\phi_n'}\\
+        &=\frac{\hbar^2}{m^2}\bra{\phi_n}\op{P}^2\ket{\phi_n'}\\
+        \sum_n'(E_n-E_{n'})^2|\braket{\phi_n'|\op{X}|\phi_n}|^2&=\frac{\hbar^2}{m^2}\bra{\phi_n}\op{P}^2\ket{\phi_n'}
+      \end{align*}
+    \end{enumerate}
+
     \item[1.33] Starting with the translation operator applied to the expectation value for $\opx$:
     \begin{gather*}
       \bra{\alpha}\jacdag\opx\jac\ket{\alpha}\\
@@ -126,7 +148,10 @@
           \braket{\beta|x|\alpha}&=\int dp'\phi_{\beta}(p')i\hbar\p{}{p'}\phi_{\alpha}(p')\\
         \end{align*}
       \end{enumerate}
-      \item
+      \item It translates momentum:
+      \begin{gather*}
+        \exp\left( \frac{ix\Xi}{\hbar} \right)\ket{p}=c\ket{p+dp}
+      \end{gather*}
     \end{enumerate}
   \end{enumerate}
 
