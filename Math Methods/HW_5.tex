@@ -67,19 +67,46 @@
     \end{enumerate}
     \item
     \begin{gather*}
-      \nabla^2\phi=\frac{\epsilon^4-6\epsilon^2 r^2+r^4}{r(\epsilon^2+r^2)^3}
+      \nabla^2\phi=\frac{2 \epsilon ^4-6 r^2 \epsilon ^2}{r \left(r^2+\epsilon ^2\right)^3}
     \end{gather*}
     \begin{enumerate}
       \item Looking at the limits in steps:
       \begin{align*}
-        \lim_{\epsilon\rightarrow0}\nabla^2\phi(r_0)=\frac{r_0^4}{r_0^6}=\frac{1}{r_0^2}
+        \lim_{\epsilon\rightarrow0}\nabla^2\phi(r_0)=\frac{0}{r_0 \left(r_0^2\right)^3}
       \end{align*}
-      This diverges as $r_0$ approaches 0:
       \begin{align*}
-        \lim_{r_0\rightarrow0}\frac{1}{r_0^2}\rightarrow\infty
+        \lim_{r_0\rightarrow0}0\rightarrow0
+      \end{align*}
+      \item Again, looking at the limits in steps:
+      \begin{align*}
+        \lim_{\epsilon\rightarrow0}\nabla^2\phi(r_0)=\frac{2\epsilon^4}{0}\rightarrow\infty
+      \end{align*}
+      \begin{align*}
+        \lim_{r_0\rightarrow0}\infty\rightarrow\infty
+      \end{align*}
+      \item At all points other than zero we know from part (a) that when $\epsilon\rightarrow0$ $\phi(r)\rightarrow\frac{1}{r}$ the limit of the laplacian approaches 0.
+      But for the point at zero, we can treat $\epsilon$ as a number infinitely close to the origin, since we have already evaluated $\phi(r)$ at $r=r_0\rightarrow\infty$ which as we approach the origin ($\epsilon\rightarrow0$).
+      Since $\nabla^2\frac{1}{r}$ is zero except for the origin, it is a function that has the same behaviour as the delta function, and thus $\int f(r)\nabla^2\frac{1}{r}d^3r=f(0)$.
+    \end{enumerate}
+    \item
+    \begin{enumerate}
+      \item Starting from the definition of polar coordinates:
+      \begin{align*}
+        x&=\rho\cos\varphi\\
+        y&=\rho\sin\varphi
+      \end{align*}
+      \begin{align*}
+        \nabla f&=\frac{\hat{\varphi}}{\p{\pmb{r}}{\varphi}\cdot\p{\pmb{r}}{\varphi}}\p{f}{\varphi}+\frac{\hat{\rho}}{\p{\pmb{r}}{\rho}\cdot\p{\pmb{r}}{\rho}}\p{f}{\rho}\\
+        \nabla f&=\frac{\hat{\varphi}}{\rho\left(\cos^2\varphi+\sin^2\varphi \right)}\p{f}{\varphi}+\frac{\hat{\rho}}{\cos^2\varphi+\sin^2\varphi}\p{f}{\rho}\\
+        \nabla f&=\frac{\hat{\varphi}}{\rho}\p{f}{\varphi}+\hat{\rho}\p{f}{\rho}
       \end{align*}
       \item
-
+      \begin{align*}
+        \nabla\times\vec{g}&=\p{}{\rho}\frac{\hat{\varphi}}{\rho}\p{f}{\varphi}+\p{}{\varphi}\hat{\rho}\p{f}{\rho}\\
+        \nabla\times\vec{g}&=\left(-\frac{1}{\rho^2}\p{f}{\varphi}+\frac{1}{\rho}\p{}{\rho}\p{f}{\varphi}\right)\hat{\varphi}+\hat{\rho}\p{}{\varphi}\p{f}{\rho}
+      \end{align*}
+      \item Since the gradient of scalar field is conservative, the line integral will be zero, since it's a loop and will start and end in the same points.\footnote{https://math.stackexchange.com/questions/1435044/line-integral-of-conservative-field-in-polar-coordinates}
+      \item This agrees with the question statement.
     \end{enumerate}
   \end{enumerate}
 \end{document}
