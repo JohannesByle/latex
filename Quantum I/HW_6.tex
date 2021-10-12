@@ -1,0 +1,94 @@
+%! Author = johannes
+%! Date = 10/11/21
+
+% Preamble
+\documentclass[12pt]{article}
+\title{Quantum I Assignment \#6}
+\author{Johannes Byle}
+
+
+% Packages
+\usepackage{amsmath}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{lipsum}
+\usepackage{physics}
+\usepackage{bbold}
+\usepackage{braket}
+\newcommand{\p}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\der}[2]{\frac{d #1}{d #2}}
+\newcommand{\OP}[1]{\pmb{\text{#1}}}
+\newcommand{\Fop}[1]{\mathcal{#1}}
+
+% Document
+\begin{document}
+  \maketitle
+  \begin{enumerate}
+    \item[Q-1] To satisfy the property that $\Fop{U}\Fop{U}^{\dagger}=\mathbb{1}$:
+    \begin{align*}
+      \mathbb{1}&=\left(\lambda\ket{\alpha}+\lambda'\ket{\beta}\right)\left(\lambda^*\bra{\alpha}+\lambda'^*\bra{\beta}\right)\\
+      &= \lambda\lambda^* +\lambda\lambda'^*\braket{\beta|\alpha}+\lambda^*\lambda'\braket{\alpha|\beta}+\lambda'\lambda'^*
+    \end{align*}
+    This means they must satisfy the property $\lambda\lambda'^*=-\lambda^*\lambda'$.
+    \item[2.2] $H$ is not hermitian:
+    \begin{gather*}
+      H^{\dagger}\neq H\\
+      H_{11}^*\ket{1}\bra{1}+H_{22}^*\ket{2}\bra{2}+H_{12}^*\ket{1}\bra{2}\neq H_{11}\ket{1}\bra{1}+H_{22}\ket{2}\bra{2}+H_{12}\ket{1}\bra{2}
+    \end{gather*}
+    This would violate the unitary property of the time evolution operator:
+    \begin{gather*}
+      \mathcal{U}^{\dagger}(t)\mathcal{U}(t)=\exp\left( \frac{iH^{\dagger}t}{\hbar} \right)\exp\left( \frac{-iH t}{\hbar} \right)=\exp\left( \frac{i(H^{\dagger}-H) t}{\hbar} \right)\neq 1
+    \end{gather*}
+    \item[2.3]
+    \begin{enumerate}
+      \item Starting with the definition of $\OP{S}\cdot\vec{\OP{n}}$:
+      \begin{gather*}
+        \OP{S}\cdot\vec{\OP{n}}=\cos\left( \frac{\beta}{2} \right)\ket{+}+\sin\left( \frac{\beta}{2} \right)\ket{-}\\
+        \OP{S}_x=\frac{\hbar}{2}\left( \ket{+}+\ket{-} \right)\\
+      \end{gather*}
+      Applying the time evolution operator:
+      \begin{gather*}
+        \Fop{U}(t)\ket{\OP{S}_n;+}=\exp\left( \frac{-i\OP{H}t}{\hbar} \right)\cos\left( \frac{\beta}{2} \right)\ket{+}+\exp\left( \frac{-i\OP{H}t}{\hbar} \right)\sin\left( \frac{\beta}{2} \right)\ket{-}\\
+        \Fop{U}(t)\ket{\OP{S}_n;+}=\exp\left( \frac{-i\omega t}{\hbar} \right)\cos\left( \frac{\beta}{2} \right)\ket{+}+\exp\left( \frac{-i\omega t}{\hbar} \right)\sin\left( \frac{\beta}{2} \right)\ket{-}\\
+        P(t)=|\braket{\OP{S}_x;+|\OP{S}_n}|^2=\frac{1}{2}\left[ \exp\left( \frac{-i\omega t}{\hbar} \right)\cos\left( \frac{\beta}{2} \right)+\exp\left( \frac{-i\omega t}{\hbar} \right)\sin\left( \frac{\beta}{2} \right) \right]^2\\
+        P(t)=\frac{1}{2}\left( 1+2\sin\beta\cos\omega t \right)
+      \end{gather*}
+      \item The probability of being in $\ket{\OP{S}_n;-}=1-\frac{1}{2}\left( 1+2\sin\beta\cos\omega t \right)$
+      \begin{gather*}
+        \braket{\OP{S}_x}=\frac{\hbar}{2}\left(\frac{1}{2}\left( 1+2\sin\beta\cos\omega t \right) \right)-\frac{\hbar}{2}\left( 1-\frac{1}{2}\left( 1+2\sin\beta\cos\omega t \right) \right)\\
+        \braket{\OP{S}_x}=\frac{\hbar}{4}\sin\beta\cos\omega t
+      \end{gather*}
+      \item
+      \begin{gather*}
+        \beta\rightarrow0\quad P(t)\rightarrow \frac{1}{2}\quad \braket{\OP{S}_x}\rightarrow 0\\
+        \beta\rightarrow\pi/2\quad P(t)\rightarrow \frac{1}{2}\left( 1+2\cos\omega t \right)\quad \braket{\OP{S}_x}\rightarrow \frac{\hbar}{4}\cos\omega t
+      \end{gather*}
+    \end{enumerate}
+    \item[2.4] Starting with the definitions (equations 2.63a-b):
+    \begin{gather*}
+      \ket{v_e}=\cos\theta\ket{v_1}-\sin\theta\ket{v_2}\\
+      \ket{v_{\mu}}=\sin\theta\ket{v_1}+\cos\theta\ket{v_2}
+    \end{gather*}
+    Applying the time evolution operator:
+    \begin{gather*}
+      \Fop{U}(t)\ket{v_e}=\exp\left( \frac{-i\OP{H} t}{\hbar} \right)\cos\theta+\exp\left( \frac{i\OP{H} t}{\hbar} \right)\sin\theta\\
+      \Fop{U}(t)\ket{v_e}=\exp\left( \frac{-ipc\left( 1+\frac{m^2 c^2}{2p^2} \right) t}{\hbar} \right)\cos\theta+\exp\left( \frac{-ipc\left( 1+\frac{m^2 c^2}{2p^2} \right) t}{\hbar} \right)\sin\theta\\
+      P(t)=|\braket{v_e|v_e}|^2=\left( \exp\left( \frac{-ipc\left( 1+\frac{m^2 c^2}{2p^2} \right) t}{\hbar} \right)\cos\theta+\exp\left( \frac{-ipc\left( 1+\frac{m^2 c^2}{2p^2} \right) t}{\hbar} \right)\sin\theta\right)^2\\
+      P(v_e\rightarrow v_e)=1-\sin^2 2\theta\sin^2\left( \Delta m^2 c^4\frac{L}{4E\hbar c} \right)
+    \end{gather*}
+    \item[2.6] Starting with the commutation relation:
+    \begin{gather*}
+      [[H,x],x]=[H,x]x-x[H,x]=(Hx-xH)x-x(Hx-xH)\\
+      [[H,x],x]=Hx^2-xHx-xHx-x^2 H=Hx^2-x^2 H\\
+      [[H,x],x]=\left(\frac{p^2}{2m}+V(x)\right)x^2-x^2 \left(\frac{p^2}{2m}+V(x)\right)
+    \end{gather*}
+    Applying the kets:
+    \begin{gather*}
+      \bra{a''}[[H,x],x]\ket{a'}=\bra{a''}\left[\left(\frac{p^2}{2m}+V(x)\right)x^2-x^2 \left(\frac{p^2}{2m}+V(x)\right)\right]\ket{a'}\\
+      \bra{a''}[[H,x],x]\ket{a'}=\bra{a''}\left[\frac{p^2 x^2}{2m}+V(x)x^2-\frac{p^2 x^2}{2m}+V(x)x^2\right]\ket{a'}
+    \end{gather*}
+    Taking the probability:
+    \begin{gather*}
+      \sum_{a'}|\braket{a''|x|a'}|^2(E_{a'}-E_{a''})=\frac{\hbar^2}{2m}
+    \end{gather*}
+  \end{enumerate}
+\end{document}
