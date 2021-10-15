@@ -14,8 +14,10 @@ mu = 0.5
 c = 10
 a = 10
 r = np.linspace(10 ** -3, 1, 10 ** 4)
-plt.plot(r, v(r, l_=L, mu_=mu, c_=c, a_=a), label=fr"$L={L},\ \mu={mu},\ c={c},\ a={a}$")
-plt.ylim([-1, 3])
+for L in np.linspace(0.6, .8, 3):
+    L = round(L, 2)
+    plt.plot(r, v(r, l_=L, mu_=mu, c_=c, a_=a), label=fr"$L={L},\ \mu={mu},\ c={c},\ a={a}$")
+plt.ylim([-2, 10])
 plt.xlabel(r"$r$")
 plt.ylabel(r"$V_{eff}(r)$")
 plt.legend()

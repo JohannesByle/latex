@@ -44,14 +44,29 @@
       Below this the particle will either, depending on the initial value of $r$, scatter of the hump, or \enquote{orbit} around the central force while oscillating between two different values of $r$.
       The third range is simply the bottom of the well, the lowest allowed energy, where the particle will cleanly orbit the central force.
     \end{enumerate}
+    \item
     \begin{enumerate}
-      \item Since the particle is scattering off of a sphere, $r_{\text{min}}=a_0$, and since the origin is at the center of the sphere $\Psi=\arcsin\left( \frac{s}{a_0} \right)$.
+      \item Since the particle is scattering off of a sphere, $r_{\min}=a_0$, and since the origin is at the center of the sphere $\Psi=\arcsin\left( \frac{s}{a_0} \right)$.
       Using the relation $\Theta=\pi-2\Psi$ we get $\Theta=\pi-2\arcsin\left( \frac{s}{a_0} \right)$.
       Rearranging this equation in terms of $s$:
       \begin{gather*}
         s=\sin\left(\frac{\pi-\Theta}{2}\right)=\cos\left( \frac{\Theta}{2} \right)\\
         \der{s}{\Theta}=-\frac{1}{2}\sin\left( \frac{\Theta}{2} \right)
       \end{gather*}
+      Plugging this into the equation (3.93) from Goldstein:
+      \begin{gather*}
+        \sigma(\Theta)=\frac{s}{\sin\Theta}\left| \frac{ds}{d\Theta} \right|=\frac{\cos\left( \frac{\Theta}{2} \right)}{\sin\Theta}\left| \frac{1}{2}\sin\left( \frac{\Theta}{2} \right) \right|=\frac{1}{4}\text{sgn}\left[\sin\left( \frac{\Theta}{2} \right)\right]\\
+        \sigma(\Theta)=\frac{1}{4}\quad\text{between 0 and 2}\pi
+      \end{gather*}
+      Calculating the total cross-section $\sigma_T$:
+      \begin{gather*}
+        \sigma_T=2\pi\int_0^{\pi} \sigma(\Theta)\sin\Theta d\Theta=\frac{\pi}{2}\int_0^{\pi}\sin\Theta d\Theta=\pi
+      \end{gather*}
+      This means that the scattering cross-section at every angle would is the same, in the case of an experiment it would mean that the final screen would be completely evenly covered (assuming it's curved around the scattering center).
+      \item
+    \end{enumerate}
+    \item
+    \begin{enumerate}
 
     \end{enumerate}
   \end{enumerate}
