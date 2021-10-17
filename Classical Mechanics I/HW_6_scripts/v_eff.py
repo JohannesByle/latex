@@ -1,7 +1,4 @@
 import numpy as np
-import matplotlib
-
-matplotlib.rcParams['text.usetex'] = True
 import matplotlib.pyplot as plt
 
 
@@ -21,5 +18,5 @@ plt.ylim([-2, 10])
 plt.xlabel(r"$r$")
 plt.ylabel(r"$V_{eff}(r)$")
 plt.legend()
-plt.savefig("v_eff.png", dpi=500)
+plt.savefig("v_eff.png", dpi=300)
 plt.show()
