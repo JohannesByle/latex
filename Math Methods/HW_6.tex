@@ -23,39 +23,56 @@
 \newcommand{\divr}{\nabla\cdot}
 % Document
 \begin{document}
-    \maketitle
+  \maketitle
+  \begin{enumerate}
+    \item
     \begin{enumerate}
-        \item
-        \begin{enumerate}
-            \item Starting with Ampere's Law:
-            \begin{align*}
-                \nabla\times\mathcal{B}&=\frac{4\pi}{c}\pmb{J}+\frac{1}{c}\p{\mathcal{E}}{t}\\
-                \nabla\left(\nabla\times\mathcal{B}\right)&=\frac{4\pi}{c}\nabla\cdot\pmb{J}+\frac{1}{c}\p{(\nabla\cdot\mathcal{E})}{t}=0\quad\text{Using the identity: }\nabla\left( \nabla\cdot\times A \right)=0\\
-                \nabla\left(\nabla\times\mathcal{B}\right)&=\frac{4\pi}{c}\nabla\pmb{J}+\frac{4\pi}{c}\p{\rho}{t}=0\quad\text{Using: }\nabla\cdot\mathcal{E}=4\pi\rho\\
-                \nabla\pmb{J}+\p{\rho}{t}&=0
-            \end{align*}
-            \item Starting with the curl of the electric field:
-            \begin{align*}
-                \curl\mathcal{E}&=-\frac{1}{c}\p{\mathcal{B}}{t}\\
-                \curl\mathcal{E}&=-\frac{1}{c}\p{(\curl\mathcal{A})}{t}\\
-                \curl\left(\mathcal{E}+\frac{1}{c}\p{\mathcal{A}}{t}\right)&=0\\
-                \mathcal{E}&=-\nabla\phi-\frac{1}{c}\p{\mathcal{A}}{t}\quad\text{Rewriting in terms of a scalar potential}\\
-            \end{align*}
-            \item
-            \begin{gather*}
-                F=
-                \begin{bmatrix}
-                    0    & -B_3 & B_2  \\
-                    B_3  & 0    & -B_1 \\
-                    -B_2 & B_1  & 0
-                \end{bmatrix}\\
-                B=
-                \begin{bmatrix}
-                    \frac{1}{2}(B_1+B_1) & \frac{1}{2}(B_2+B_2)& \frac{1}{2}(B_3+B_3)
-                \end{bmatrix}
-            \end{gather*}
-            \item
-        \end{enumerate}
+      \item Starting with Ampere's Law:
+      \begin{align*}
+        \curl\mathcal{B}&=\frac{4\pi}{c}\pmb{J}+\frac{1}{c}\p{\mathcal{E}}{t}\\
+        \divr\left(\nabla\times\mathcal{B}\right)&=\frac{4\pi}{c}\divr\pmb{J}+\frac{1}{c}\p{(\nabla\cdot\mathcal{E})}{t}=0\quad\text{Using the identity: }\nabla\left( \nabla\cdot\times A \right)=0\\
+        \divr\left(\nabla\times\mathcal{B}\right)&=\frac{4\pi}{c}\divr\pmb{J}+\frac{4\pi}{c}\p{\rho}{t}=0\quad\text{Using: }\nabla\cdot\mathcal{E}=4\pi\rho\\
+        \divr\pmb{J}+\p{\rho}{t}&=0
+      \end{align*}
+      \item Starting with the curl of the electric field:
+      \begin{align*}
+        \curl\mathcal{E}&=-\frac{1}{c}\p{\mathcal{B}}{t}\\
+        \curl\mathcal{E}&=-\frac{1}{c}\p{(\curl\mathcal{A})}{t}\\
+        \curl\left(\mathcal{E}+\frac{1}{c}\p{\mathcal{A}}{t}\right)&=0\\
+        \mathcal{E}&=-\nabla\phi-\frac{1}{c}\p{\mathcal{A}}{t}\quad\text{Rewriting in terms of a scalar potential}
+      \end{align*}
+      \item
+      \begin{gather*}
+        F=
+        \begin{bmatrix}
+          0    & -B_3 & B_2  \\
+          B_3  & 0    & -B_1 \\
+          -B_2 & B_1  & 0
+        \end{bmatrix}\\
+        B=
+        \begin{bmatrix}
+          \frac{1}{2}(B_1+B_1) & \frac{1}{2}(B_2+B_2)& \frac{1}{2}(B_3+B_3)
+        \end{bmatrix}
+      \end{gather*}
+      \item Starting with $\mathcal{B}=\curl A$:
+      \begin{align*}
+        F_{ij}&=\epsilon_{ijk}(\curl A)_k\\
+        F_{ij}&=\epsilon_{ijk}\epsilon_{jlm}\partial_l A_m\quad\text{Rewriting the curl using Levi-Civita}\\
+        F_{ij}&=(\delta_{il}\delta_{jm}-\delta_{jl}\delta_{im})\partial_l A_m\\
+        F_{ij}&=\partial_i A_j-\partial_j A_i
+      \end{align*}
+      \item Proving the first part:
+      \begin{align*}
+        F_{4j}&=\p{A_j}{x_4}-\p{A_4}{x_j}\\
+        -(\p{A_4}{x_j}-\p{A_j}{x_4})&=\p{A_j}{x_4}-\p{A_4}{x_j}
+      \end{align*}
+      Assuming this 4th term is time, $\mathcal{E}=-\nabla\phi-\frac{1}{c}\p{\mathcal{A}}{t}$ and $\partial_t A_j=0$ show that $F_{4j}=iE_j$.
+      \item Starting with the definition given:
+      \begin{align*}
+        \partial_i F_{jk}+\partial_j F_{ki}+\partial_k F_{ij}&=0\\
+        \partial_i (\partial_j A_j-\partial_k A_j)+\partial_j (\partial_k A_i-\partial_i A_k)+\partial_k (\partial_i A_j-\partial_j A_i)&=0\\
+      \end{align*}
     \end{enumerate}
+  \end{enumerate}
 
 \end{document}
