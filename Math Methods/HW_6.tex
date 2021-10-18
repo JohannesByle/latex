@@ -1,0 +1,61 @@
+%! Author = Johannes Byle
+%! Date = 10/17/2021
+
+% Preamble
+\documentclass[12pt]{article}
+\title{}
+\author{Johannes Byle}
+
+% Preamble
+\documentclass[12pt]{article}
+\title{Math Methods Assignment \#6}
+\author{Johannes Byle}
+
+
+% Packages
+\usepackage{amsmath}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{lipsum}
+\usepackage{bbold}
+\newcommand{\p}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\der}[2]{\frac{d #1}{d #2}}
+\newcommand{\curl}{\nabla\times}
+\newcommand{\divr}{\nabla\cdot}
+% Document
+\begin{document}
+    \maketitle
+    \begin{enumerate}
+        \item
+        \begin{enumerate}
+            \item Starting with Ampere's Law:
+            \begin{align*}
+                \nabla\times\mathcal{B}&=\frac{4\pi}{c}\pmb{J}+\frac{1}{c}\p{\mathcal{E}}{t}\\
+                \nabla\left(\nabla\times\mathcal{B}\right)&=\frac{4\pi}{c}\nabla\cdot\pmb{J}+\frac{1}{c}\p{(\nabla\cdot\mathcal{E})}{t}=0\quad\text{Using the identity: }\nabla\left( \nabla\cdot\times A \right)=0\\
+                \nabla\left(\nabla\times\mathcal{B}\right)&=\frac{4\pi}{c}\nabla\pmb{J}+\frac{4\pi}{c}\p{\rho}{t}=0\quad\text{Using: }\nabla\cdot\mathcal{E}=4\pi\rho\\
+                \nabla\pmb{J}+\p{\rho}{t}&=0
+            \end{align*}
+            \item Starting with the curl of the electric field:
+            \begin{align*}
+                \curl\mathcal{E}&=-\frac{1}{c}\p{\mathcal{B}}{t}\\
+                \curl\mathcal{E}&=-\frac{1}{c}\p{(\curl\mathcal{A})}{t}\\
+                \curl\left(\mathcal{E}+\frac{1}{c}\p{\mathcal{A}}{t}\right)&=0\\
+                \mathcal{E}&=-\nabla\phi-\frac{1}{c}\p{\mathcal{A}}{t}\quad\text{Rewriting in terms of a scalar potential}\\
+            \end{align*}
+            \item
+            \begin{gather*}
+                F=
+                \begin{bmatrix}
+                    0    & -B_3 & B_2  \\
+                    B_3  & 0    & -B_1 \\
+                    -B_2 & B_1  & 0
+                \end{bmatrix}\\
+                B=
+                \begin{bmatrix}
+                    \frac{1}{2}(B_1+B_1) & \frac{1}{2}(B_2+B_2)& \frac{1}{2}(B_3+B_3)
+                \end{bmatrix}
+            \end{gather*}
+            \item
+        \end{enumerate}
+    \end{enumerate}
+
+\end{document}
