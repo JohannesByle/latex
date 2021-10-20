@@ -198,6 +198,48 @@
         \end{doublespace}
         \item
         \begin{enumerate}
+            \item
+            \item[(b-d)]
+            \text{Clear}[x,v,\text{energy},\text{dotenergy},\text{ndiv},\text{dt}];\\
+            \text{ndiv}=2000;\\
+            \text{dt}=N[(8 \text{Pi})/\text{ndiv}];\\
+            v[\text{n$\_$}]\text{:=}v[n]=v[n-1]-x[n-1] \text{dt};\\
+            v[0]=0;\\
+            x[\text{n$\_$}]\text{:=}x[n]=x[n-1]+v[n-1] \text{dt};\\
+            x[0]=1;\\
+            \text{ListPlot}[\text{Table}[\{x[t],v[t]\},\{t,0,\text{ndiv}\}]]\\
+            \text{energy}[\text{n$\_$}]\text{:=}\text{energy}[n]=(x[n]{}^{\wedge}2+v[n]{}^{\wedge}2)/2\\
+            \text{ListPlot}[\text{Table}[\text{energy}[t],\{t,0,\text{ndiv}\}]]\\
+            \text{dotenergy}[\text{n$\_$}]\text{:=}\text{dotenergy}[n]=(\text{energy}[n+1]-\text{energy}[n])/\text{dt}\\
+            \text{ListPlot}[\text{Table}[\text{dotenergy}[t],\{t,0,\text{ndiv}\}]]
+
+            \includegraphics{HW_6_screenshots/q_5_gr1}
+
+            \includegraphics{HW_6_screenshots/q_5_gr2}
+
+            \includegraphics{HW_6_screenshots/q_5_gr3}
+
+
+
+            \text{Clear}[x,v,\text{energy},\text{dotenergy},\text{ndiv},\text{dt}];\\
+            \text{ndiv}=2000;\\
+            \text{dt}=N[(8 \text{Pi})/\text{ndiv}];\\
+            v[\text{n$\_$}]\text{:=}v[n]=v[n-1]-x[n-1] \text{dt};\\
+            v[0]=0;\\
+            x[\text{n$\_$}]\text{:=}x[n]=x[n-1]+v[n] \text{dt};\\
+            x[0]=1;\\
+            \text{ListPlot}[\text{Table}[\{x[t],v[t]\},\{t,0,\text{ndiv}\}]]\\
+            \text{energy}[\text{n$\_$}]\text{:=}\text{energy}[n]=(x[n]{}^{\wedge}2+v[n]{}^{\wedge}2)/2\\
+            \text{ListPlot}[\text{Table}[\text{energy}[t],\{t,0,\text{ndiv}\}]]\\
+            \text{dotenergy}[\text{n$\_$}]\text{:=}\text{dotenergy}[n]=(\text{energy}[n+1]-\text{energy}[n])/\text{dt}\\
+            \text{ListPlot}[\text{Table}[\text{dotenergy}[t],\{t,0,\text{ndiv}\}]]
+
+
+            \includegraphics{HW_6_screenshots/q_5_gr4}
+
+            \includegraphics{HW_6_screenshots/q_5_gr5}
+
+            \includegraphics{HW_6_screenshots/q_5_gr6}
 
         \end{enumerate}
     \end{enumerate}
