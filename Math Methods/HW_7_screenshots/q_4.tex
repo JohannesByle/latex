@@ -1,0 +1,57 @@
+%% AMS-LaTeX Created with the Wolfram Language for Students - Personal Use Only : www.wolfram.com
+
+\documentclass{article}
+\usepackage{amsmath, amssymb, graphics, setspace}
+
+\newcommand{\mathsym}[1]{{}}
+\newcommand{\unicode}[1]{{}}
+
+\begin{document}
+
+\text{Clear}[\text{Global$\grave{ }$*}]\\
+a = \{\{\text{Cos}[\theta ],\text{Sin}[\theta ]\},\{-\text{Sin}[\theta ],\text{Cos}[\theta ]\}\};\\
+\text{values} = \text{Eigenvalues}[a];\\
+\text{vectors} = \text{Eigenvectors}[a];\\
+p = \text{Normalize} \text{/@} \text{Transpose}[\text{vectors}];\\
+\text{MatrixForm}[\text{values}]\\
+\text{MatrixForm}[\text{vectors}]\\
+\text{MatrixForm}[p]\\
+\text{MatrixForm}[\text{FullSimplify}[\text{Inverse}[p].a.p]]
+
+\begin{doublespace}
+\noindent\(\left(
+\begin{array}{c}
+ \text{Cos}[\theta ]-i \text{Sin}[\theta ] \\
+ \text{Cos}[\theta ]+i \text{Sin}[\theta ] \\
+\end{array}
+\right)\)
+\end{doublespace}
+
+\begin{doublespace}
+\noindent\(\left(
+\begin{array}{cc}
+ i & 1 \\
+ -i & 1 \\
+\end{array}
+\right)\)
+\end{doublespace}
+
+\begin{doublespace}
+\noindent\(\left(
+\begin{array}{cc}
+ \frac{i}{\sqrt{2}} & -\frac{i}{\sqrt{2}} \\
+ \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \\
+\end{array}
+\right)\)
+\end{doublespace}
+
+\begin{doublespace}
+\noindent\(\left(
+\begin{array}{cc}
+ e^{-i \theta } & 0 \\
+ 0 & e^{i \theta } \\
+\end{array}
+\right)\)
+\end{doublespace}
+
+\end{document}
