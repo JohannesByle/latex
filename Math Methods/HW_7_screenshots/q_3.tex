@@ -9,11 +9,13 @@
 \begin{document}
 
 \text{Clear}[\text{Global$\grave{ }$*}]\\
-a_1 = \{\{0,1\},\{1,0\}\};\\
-a_2 = \{\{0,-I\},\{I,0\}\};\\
-a_3 = \{\{1,0\},\{0,-1\}\};\\
-\text{MatrixForm}\left[\text{Table}\left[\text{MatrixForm}\left[a_j.a_i+a_i.a_j\right],\{j,1,3\},\{i,1,3\}\right]\right]\\
-\text{MatrixForm}\left[\text{Table}\left[\text{MatrixForm}\left[a_j.a_i-a_i.a_j\right],\{j,1,3\},\{i,1,3\}\right]\right]
+a_1=\{\{0,1\},\{1,0\}\};\\
+a_2=\{\{0,-I\},\{I,0\}\};\\
+a_3=\{\{1,0\},\{0,-1\}\};\\
+\text{MatrixForm}\left[\text{Table}\left[\text{MatrixForm}\left[a_i.a_j+a_j.a_i\right],\{j,1,3\},\{i,1,3\}\right]\right]\\
+\text{MatrixForm}\left[\text{Table}\left[a_i.a_j+a_j.a_i==2 \text{KroneckerDelta}[j,i] \text{IdentityMatrix}[2],\{j,1,3\},\{i,1,3\}\right]\right]\\
+\text{MatrixForm}\left[\text{Table}\left[\text{MatrixForm}\left[a_i.a_j-a_j.a_i\right],\{j,1,3\},\{i,1,3\}\right]\right]\\
+\text{MatrixForm}\left[\text{Table}\left[a_i.a_j-a_j.a_i\text{==}2 I \text{Total}\left[\text{Table}\left[\text{LeviCivitaTensor}[3][[i,j,k]] a_k,\{k,1,3\}\right]\right],\{j,1,3\},\{i,1,3\}\right]\right]
 
 \begin{doublespace}
 \noindent\(\left(
@@ -73,47 +75,57 @@ a_3 = \{\{1,0\},\{0,-1\}\};\\
 \begin{doublespace}
 \noindent\(\left(
 \begin{array}{ccc}
+ \text{True} & \text{True} & \text{True} \\
+ \text{True} & \text{True} & \text{True} \\
+ \text{True} & \text{True} & \text{True} \\
+\end{array}
+\right)\)
+\end{doublespace}
+
+\begin{doublespace}
+\noindent\(\left(
+\begin{array}{ccc}
  \left(
 \begin{array}{cc}
  0 & 0 \\
  0 & 0 \\
 \end{array}
 \right) & \left(
-\begin{array}{cc}
- 2 i & 0 \\
- 0 & -2 i \\
-\end{array}
-\right) & \left(
-\begin{array}{cc}
- 0 & -2 \\
- 2 & 0 \\
-\end{array}
-\right) \\
- \left(
 \begin{array}{cc}
  -2 i & 0 \\
  0 & 2 i \\
 \end{array}
 \right) & \left(
-\begin{array}{cc}
- 0 & 0 \\
- 0 & 0 \\
-\end{array}
-\right) & \left(
-\begin{array}{cc}
- 0 & 2 i \\
- 2 i & 0 \\
-\end{array}
-\right) \\
- \left(
 \begin{array}{cc}
  0 & 2 \\
  -2 & 0 \\
 \end{array}
+\right) \\
+ \left(
+\begin{array}{cc}
+ 2 i & 0 \\
+ 0 & -2 i \\
+\end{array}
+\right) & \left(
+\begin{array}{cc}
+ 0 & 0 \\
+ 0 & 0 \\
+\end{array}
 \right) & \left(
 \begin{array}{cc}
  0 & -2 i \\
  -2 i & 0 \\
+\end{array}
+\right) \\
+ \left(
+\begin{array}{cc}
+ 0 & -2 \\
+ 2 & 0 \\
+\end{array}
+\right) & \left(
+\begin{array}{cc}
+ 0 & 2 i \\
+ 2 i & 0 \\
 \end{array}
 \right) & \left(
 \begin{array}{cc}
@@ -121,6 +133,16 @@ a_3 = \{\{1,0\},\{0,-1\}\};\\
  0 & 0 \\
 \end{array}
 \right) \\
+\end{array}
+\right)\)
+\end{doublespace}
+
+\begin{doublespace}
+\noindent\(\left(
+\begin{array}{ccc}
+ \text{True} & \text{True} & \text{True} \\
+ \text{True} & \text{True} & \text{True} \\
+ \text{True} & \text{True} & \text{True} \\
 \end{array}
 \right)\)
 \end{doublespace}
