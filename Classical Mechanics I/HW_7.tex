@@ -23,125 +23,178 @@
 \newcommand{\p}[2]{\frac{\partial #1}{\partial #2}}
 \newcommand{\der}[2]{\frac{d #1}{d #2}}
 \newcommand{\Lag}[3]{
-  \p{L}{#1}-\der{}{t}\p{L}{\dot{#1}}=0\\
-  \p{L}{#1}=#2,\quad \der{}{t}\p{L}{\dot{#1}}=#3\\
-  #2-#3=0
+    \p{L}{#1}-\der{}{t}\p{L}{\dot{#1}}=0\\
+    \p{L}{#1}=#2,\quad \der{}{t}\p{L}{\dot{#1}}=#3\\
+    #2-#3=0
 }
 \newcommand{\Lagq}[4]{
-  \p{L}{#1}-\der{}{t}\p{L}{\dot{#1}}+\lambda\p{f}{r}=0\\
-  \p{L}{#1}=#2,\quad \der{}{t}\p{L}{\dot{#1}}=#3,\quad \p{f}{#1}=#4\\
-  #2-#3\ifthenelse{#4=1}{+\lambda}{\ifthenelse{#4=0}{+0}{+\lambda#4}}=0
+    \p{L}{#1}-\der{}{t}\p{L}{\dot{#1}}+\lambda\p{f}{r}=0\\
+    \p{L}{#1}=#2,\quad \der{}{t}\p{L}{\dot{#1}}=#3,\quad \p{f}{#1}=#4\\
+    #2-#3\ifthenelse{#4=1}{+\lambda}{\ifthenelse{#4=0}{+0}{+\lambda#4}}=0
 }
 \newcommand{\op}[1]{\pmb{\text{#1}}}
 
 % Document
 \begin{document}
-  \maketitle
-  \begin{enumerate}
-    \item From Goldstein page 153 we know that we can go from body coordinates to space axes using the following relation $\op{x}=\op{A}^{-1}\op{x}'$.
-    Since $\op{A}=\op{BCD}$:
-    \begin{gather*}
-      \op{BCD}=
-      \left(
-      \begin{array}{ccc}
-        \cos (\phi )  & \sin (\phi ) & 0 \\
-        -\sin (\phi ) & \cos (\phi ) & 0 \\
-        0             & 0            & 1 \\
-      \end{array}
-      \right)
-      \left(
-      \begin{array}{ccc}
-        1 & 0               & 0              \\
-        0 & \cos (\theta )  & \sin (\theta ) \\
-        0 & -\sin (\theta ) & \cos (\theta ) \\
-      \end{array}
-      \right)
-      \left(
-      \begin{array}{ccc}
-        \cos (\psi )  & \sin (\psi ) & 0 \\
-        -\sin (\psi ) & \cos (\psi ) & 0 \\
-        0             & 0            & 1 \\
-      \end{array}
-      \right)\\
-      \op{A}=
-      \left(
-      \begin{array}{ccc}
-        \cos (\psi ) \cos (\phi )-\cos (\theta ) \sin (\psi ) \sin (\phi )  & \cos (\theta ) \sin (\psi ) \cos (\phi )+\cos (\psi ) \sin (\phi ) & \sin (\theta ) \sin (\psi ) \\
-        -\cos (\theta ) \cos (\psi ) \sin (\phi )-\sin (\psi ) \cos (\phi ) & \cos (\theta ) \cos (\psi ) \cos (\phi )-\sin (\psi ) \sin (\phi ) & \sin (\theta ) \cos (\psi ) \\
-        \sin (\theta ) \sin (\phi )                                         & \sin (\theta ) (-\cos (\phi ))                                     & \cos (\theta )              \\
-      \end{array}
-      \right)\\
-      \op{A}^{-1}=
-      \left(
-      \begin{array}{ccc}
-        \cos (\psi ) \cos (\phi )-\cos (\theta ) \sin (\psi ) \sin (\phi ) & -\cos (\theta ) \cos (\psi ) \sin (\phi )-\sin (\psi ) \cos (\phi ) & \sin (\theta ) \sin (\phi ) \\
-        \cos (\theta ) \sin (\psi ) \cos (\phi )+\cos (\psi ) \sin (\phi ) & \cos (\theta ) \cos (\psi ) \cos (\phi )-\sin (\psi ) \sin (\phi ) & \sin (\theta ) (-\cos (\phi )) \\
-        \sin (\theta ) \sin (\psi )                                        & \sin (\theta ) \cos (\psi )                                         & \cos (\theta )                 \\
-      \end{array}
-      \right)\\
-      \omega_{bf}=
-      \begin{pmatrix}
-        \theta ' \cos (\psi )+\sin (\theta ) \sin (\psi ) \phi ' \\
-        \sin (\theta ) \cos (\psi ) \phi '-\theta ' \sin (\psi ) \\
-        \cos (\theta ) \phi '+\psi '
-      \end{pmatrix}\\
-      \op{A}^{-1}\omega_{bf}=
-      \begin{pmatrix}
-        \theta ' \cos (\phi )+\sin (\theta ) \psi ' \sin (\phi ) \\
-        \theta ' \sin (\phi )-\sin (\theta ) \psi ' \cos (\phi ) \\
-        \cos (\theta ) \psi '+\phi '
-      \end{pmatrix}
-    \end{gather*}
-    \item
+    \maketitle
     \begin{enumerate}
-      \item
-      \linebreak
-      \parbox{\textwidth}{
-        \text{Clear}[\text{Global$\grave{ }$*}]\\
-        x = \{r \text{Cos}[\theta ],r \text{Sin}[\theta ], z\};\\
-        f[\text{j$\_$},\text{k$\_$}]\text{:=}(x[[1]]{}^{\wedge}2+x[[2]]{}^{\wedge}2+z{}^{\wedge}2) \text{KroneckerDelta}[j,k]-x[[j]] x[[k]];\\
-        i[\text{j$\_$},\text{k$\_$},\text{hi$\_$},\text{hf$\_$}]\text{:=}M \text{Integrate}[\text{Integrate}[\text{Integrate}[f[j,k] r,\{z,((\text{hf}-\text{hi})/R)
-        r+\text{hi},\text{hf}\}],\{r,0,R\}],\{\theta ,0,2 \text{Pi}\}]\\
-        \text{ITensor}[\text{hi$\_$},\text{hf$\_$}]\text{:=}\text{Table}[\text{FullSimplify}[i[j,k,\text{hi},\text{hf}]],\{j,1,3\}, \{k,1,3\}];\\
-        \text{com} = \text{ITensor}[-(3/4)h,(1/4)h];\\
-        \text{origin} = \text{ITensor}[0,h];\\
-        \text{MatrixForm}[\text{com}]\\
-        \text{MatrixForm}[\text{origin}]\\
-        \text{RVec} = \{0,0,-3/4\};\\
-        \text{steiner}[\text{j$\_$},\text{k$\_$}]\text{:=}(\text{origin}[[j,k]] -M (\text{Norm}[\text{RVec}]{}^{\wedge}2 \text{KroneckerDelta}[j,k] - \text{RVec}[[j]]
-        \text{RVec}[[k]]))\\
-        \text{MatrixForm}[\text{Table}[\text{TrueQ}[\text{com}[[j,k]] \text{==} \text{steiner}[j,k]],\{j,1,3\},\{k,1,3\}]]
-      }
-      \begin{enumerate}
-        \item\begin{doublespace}
-               \noindent\(\left(
-               \begin{array}{ccc}
-                 \frac{1}{80} h M \pi  R^2 \left(h^2+4 R^2\right) & 0                                              & 0                       \\
-                 0                                              & \frac{1}{80} h M \pi  R^2 \left(h^2+4 R^2\right) & 0                       \\
-                 0                                              & 0                                              & \frac{1}{10} h M \pi  R^4 \\
-               \end{array}
-               \right)\)
-        \end{doublespace}
-        \item\begin{doublespace}
-               \noindent\(\left(
-               \begin{array}{ccc}
-                 \frac{1}{20} h M \pi  R^2 \left(4 h^2+R^2\right) & 0                                              & 0                       \\
-                 0                                              & \frac{1}{20} h M \pi  R^2 \left(4 h^2+R^2\right) & 0                       \\
-                 0                                              & 0                                              & \frac{1}{10} h M \pi  R^4 \\
-               \end{array}
-               \right)\)
-        \end{doublespace}
-      \end{enumerate}
-      \item\begin{doublespace}
-             \noindent\(\left(
-             \begin{array}{ccc}
-               \text{False} & \text{True}  & \text{True} \\
-               \text{True}  & \text{False} & \text{True} \\
-               \text{True}  & \text{True}  & \text{True} \\
-             \end{array}
-             \right)\)
-      \end{doublespace}
+        \item From Goldstein page 153 we know that we can go from body coordinates to space axes using the following relation $\op{x}=\op{A}^{-1}\op{x}'$.
+        Since $\op{A}=\op{BCD}$:
+        \begin{gather*}
+            \op{BCD}=
+            \left(
+            \begin{array}{ccc}
+                \cos (\phi )  & \sin (\phi ) & 0 \\
+                -\sin (\phi ) & \cos (\phi ) & 0 \\
+                0             & 0            & 1 \\
+            \end{array}
+            \right)
+            \left(
+            \begin{array}{ccc}
+                1 & 0               & 0              \\
+                0 & \cos (\theta )  & \sin (\theta ) \\
+                0 & -\sin (\theta ) & \cos (\theta ) \\
+            \end{array}
+            \right)
+            \left(
+            \begin{array}{ccc}
+                \cos (\psi )  & \sin (\psi ) & 0 \\
+                -\sin (\psi ) & \cos (\psi ) & 0 \\
+                0             & 0            & 1 \\
+            \end{array}
+            \right)\\
+            \op{A}=
+            \left(
+            \begin{array}{ccc}
+                \cos (\psi ) \cos (\phi )-\cos (\theta ) \sin (\psi ) \sin (\phi )  & \cos (\theta ) \sin (\psi ) \cos (\phi )+\cos (\psi ) \sin (\phi ) & \sin (\theta ) \sin (\psi ) \\
+                -\cos (\theta ) \cos (\psi ) \sin (\phi )-\sin (\psi ) \cos (\phi ) & \cos (\theta ) \cos (\psi ) \cos (\phi )-\sin (\psi ) \sin (\phi ) & \sin (\theta ) \cos (\psi ) \\
+                \sin (\theta ) \sin (\phi )                                         & \sin (\theta ) (-\cos (\phi ))                                     & \cos (\theta )              \\
+            \end{array}
+            \right)\\
+            \op{A}^{-1}=
+            \left(
+            \begin{array}{ccc}
+                \cos (\psi ) \cos (\phi )-\cos (\theta ) \sin (\psi ) \sin (\phi ) & -\cos (\theta ) \cos (\psi ) \sin (\phi )-\sin (\psi ) \cos (\phi ) & \sin (\theta ) \sin (\phi ) \\
+                \cos (\theta ) \sin (\psi ) \cos (\phi )+\cos (\psi ) \sin (\phi ) & \cos (\theta ) \cos (\psi ) \cos (\phi )-\sin (\psi ) \sin (\phi ) & \sin (\theta ) (-\cos (\phi )) \\
+                \sin (\theta ) \sin (\psi )                                        & \sin (\theta ) \cos (\psi )                                         & \cos (\theta )                 \\
+            \end{array}
+            \right)\\
+            \omega_{bf}=
+            \begin{pmatrix}
+                \theta ' \cos (\psi )+\sin (\theta ) \sin (\psi ) \phi ' \\
+                \sin (\theta ) \cos (\psi ) \phi '-\theta ' \sin (\psi ) \\
+                \cos (\theta ) \phi '+\psi '
+            \end{pmatrix}\\
+            \op{A}^{-1}\omega_{bf}=
+            \begin{pmatrix}
+                \theta ' \cos (\phi )+\sin (\theta ) \psi ' \sin (\phi ) \\
+                \theta ' \sin (\phi )-\sin (\theta ) \psi ' \cos (\phi ) \\
+                \cos (\theta ) \psi '+\phi '
+            \end{pmatrix}
+        \end{gather*}
+        \item
+        \begin{enumerate}
+            \item Simply plugging in equation (5.22) from Goldstein into Mathematica:\\
+            \linebreak
+            \parbox{\textwidth}{
+                \text{Clear}[\text{Global$\grave{ }$*}]\\
+                x = \{r \text{Cos}[\theta ],r \text{Sin}[\theta ], z\};\\
+                f[\text{j$\_$},\text{k$\_$}]\text{:=}(x[[1]]{}^{\wedge}2+x[[2]]{}^{\wedge}2+z{}^{\wedge}2) \text{KroneckerDelta}[j,k]-x[[j]] x[[k]];\\
+                i[\text{j$\_$},\text{k$\_$},\text{hi$\_$},\text{hf$\_$}]\text{:=}M \text{Integrate}[\text{Integrate}[\text{Integrate}[f[j,k] r,\{z,((\text{hf}-\text{hi})/R)
+                r+\text{hi},\text{hf}\}],\{r,0,R\}],\{\theta ,0,2 \text{Pi}\}]\\
+                \text{ITensor}[\text{hi$\_$},\text{hf$\_$}]\text{:=}\text{Table}[\text{FullSimplify}[i[j,k,\text{hi},\text{hf}]],\{j,1,3\}, \{k,1,3\}];\\
+                \text{com} = \text{ITensor}[-(3/4)h,(1/4)h];\\
+                \text{origin} = \text{ITensor}[0,h];\\
+                \text{MatrixForm}[\text{com}]\\
+                \text{MatrixForm}[\text{origin}]\\
+                \text{RVec} = \{0,0,-3/4\};\\
+                \text{steiner}[\text{j$\_$},\text{k$\_$}]\text{:=}(\text{origin}[[j,k]] -M (\text{Norm}[\text{RVec}]{}^{\wedge}2 \text{KroneckerDelta}[j,k] - \text{RVec}[[j]]
+                \text{RVec}[[k]]))\\
+                \text{MatrixForm}[\text{Table}[\text{TrueQ}[\text{com}[[j,k]] \text{==} \text{steiner}[j,k]],\{j,1,3\},\{k,1,3\}]]
+            }
+            \begin{enumerate}
+                \item\begin{doublespace}
+                         \noindent\(\left(
+                         \begin{array}{ccc}
+                             \frac{1}{80} h M \pi  R^2 \left(h^2+4 R^2\right) & 0                                              & 0                       \\
+                             0                                              & \frac{1}{80} h M \pi  R^2 \left(h^2+4 R^2\right) & 0                       \\
+                             0                                              & 0                                              & \frac{1}{10} h M \pi  R^4 \\
+                         \end{array}
+                         \right)\)
+                \end{doublespace}
+                \item\begin{doublespace}
+                         \noindent\(\left(
+                         \begin{array}{ccc}
+                             \frac{1}{20} h M \pi  R^2 \left(4 h^2+R^2\right) & 0                                              & 0                       \\
+                             0                                              & \frac{1}{20} h M \pi  R^2 \left(4 h^2+R^2\right) & 0                       \\
+                             0                                              & 0                                              & \frac{1}{10} h M \pi  R^4 \\
+                         \end{array}
+                         \right)\)
+                \end{doublespace}
+            \end{enumerate}
+            \item This array should be all True, but I think I've made a mistake in my definition of the Steiner equation.
+            \begin{doublespace}
+                \noindent\(\left(
+                \begin{array}{ccc}
+                    \text{False} & \text{True}  & \text{True} \\
+                    \text{True}  & \text{False} & \text{True} \\
+                    \text{True}  & \text{True}  & \text{True} \\
+                \end{array}
+                \right)\)
+            \end{doublespace}
+        \end{enumerate}
+        \item
+        \item The kinetic energy will have a term from the translation, which will be a rotation around the apex of the cone.
+        Defining $\theta$ as the angle between the cone and the x-axis (the cone is resting on the x-y plane) we get the following translational kinetic energy:
+        \begin{gather*}
+            V=\dot{\theta}\frac{3}{4}h\cos\alpha\\
+            T=\frac{9}{32}M\dot{\theta}^2 h^2\cos^2\alpha
+        \end{gather*}
+        For the rotational kinetic energy we need to find the angular velocity which we can define from $\dot{\theta}$:
+        \begin{gather*}
+            \omega=\frac{4V}{3h\sin\alpha}=\frac{\dot{\theta}\cos\alpha}{\sin\alpha}=\dot{\theta}\cot\alpha
+        \end{gather*}
+        Using the moment of inertia tensor derived in the previous problem:
+        \begin{gather*}
+            I=
+            \begin{bmatrix}
+                \frac{1}{20} h M \pi  R^2 \left(4 h^2+R^2\right) & 0                                              & 0                       \\
+                0                                              & \frac{1}{20} h M \pi  R^2 \left(4 h^2+R^2\right) & 0                       \\
+                0                                              & 0                                              & \frac{1}{10} h M \pi  R^4 \\
+            \end{bmatrix}
+        \end{gather*}
+        Substituting $h\sin\alpha=R$:
+        \begin{gather*}
+            I=
+            \begin{bmatrix}
+                \frac{1}{20} h M \pi  R^2 \left(4 h^2+h\sin^2\alpha\right) & 0                                                                  & 0                                 \\
+                0                                                        & \frac{1}{20} h M \pi  h\sin^2\alpha \left(4 h^2+h\sin^2\alpha\right) & 0                                 \\
+                0                                                        & 0                                                                  & \frac{1}{10} h M \pi  h\sin^4\alpha \\
+            \end{bmatrix}
+        \end{gather*}
+        Finding the rotational kinetic energy with $T=\omega\cdot I\cdot\omega$:
+        \begin{gather*}
+            \omega\cdot I\cdot\omega=
+            \begin{bmatrix}
+                \dot{\theta} \\
+                0            \\
+                \dot{\theta}\cot\alpha
+            \end{bmatrix}
+            \begin{bmatrix}
+                \frac{1}{20} h M \pi  R^2 \left(4 h^2+h\sin^2\alpha\right) & 0                                                                  & 0                                 \\
+                0                                                        & \frac{1}{20} h M \pi  h\sin^2\alpha \left(4 h^2+h\sin^2\alpha\right) & 0                                 \\
+                0                                                        & 0                                                                  & \frac{1}{10} h M \pi  h\sin^4\alpha \\
+            \end{bmatrix}
+            \begin{bmatrix}
+                \dot{\theta} \\
+                0            \\
+                \dot{\theta}\cot\alpha
+            \end{bmatrix}\\
+            \omega\cdot I\cdot\omega=\dot{\theta}^2 \frac{1}{20} h M \pi  R^2 \left(4 h^2+h\sin^2\alpha\right)+\dot{\theta}^2\cot^2\alpha\frac{1}{10} h M \pi  h\sin^4\alpha
+        \end{gather*}
+        The final kinetic energy is then:
+        \begin{gather*}
+            T=\frac{9}{32}M\dot{\theta}^2 h^2\cos^2\alpha+\frac{1}{2}\left[\dot{\theta}^2 \frac{1}{20} h M \pi  R^2 \left(4 h^2+h\sin^2\alpha\right)+\dot{\theta}^2\cot^2\alpha\frac{1}{10} h M \pi  h\sin^4\alpha\right]
+        \end{gather*}
     \end{enumerate}
-    \item
-  \end{enumerate}
 \end{document}
