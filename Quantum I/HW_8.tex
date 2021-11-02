@@ -1,0 +1,104 @@
+%! Author = johannes
+%! Date = 11/2/21
+
+% Preamble
+\documentclass[10pt]{article}
+\title{Quantum I Assignment \#8}
+\author{Johannes Byle}
+
+
+% Packages
+\usepackage{amsmath}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{lipsum}
+\usepackage{physics}
+\usepackage{bbold}
+\usepackage{braket}
+\newcommand{\p}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\der}[2]{\frac{d #1}{d #2}}
+\newcommand{\OP}[1]{\tilde{\pmb{\text{#1}}}}
+\newcommand{\Fop}[1]{\mathcal{#1}}
+
+% Document
+\begin{document}
+  \maketitle
+  \begin{enumerate}
+    \item
+    \begin{enumerate}
+      \item Since $\psi(x,0)$ must be normalized:
+      \begin{gather*}
+        \int_{-\infty}^{\infty}\psi(x,0)dx=\frac{\sqrt{\pi } A \left(\sin (\beta )+\sqrt{2} \cos (\beta )\right)}{\sqrt{\alpha ^2}}=1\\
+        A=-\frac{\sqrt{\alpha ^2}}{\sqrt{\pi } (-\sin (\beta ))+\left(-\sqrt{2 \pi }\right) \cos (\beta )}
+      \end{gather*}
+      \item Since $E_n=(n+\frac{1}{2})\hbar\omega$:
+      \begin{gather*}
+        E=\frac{1}{2}\hbar\omega,\ \frac{5}{2}\hbar\omega
+      \end{gather*}
+      \item
+      \begin{gather*}
+        \int\psi(x,0)x\psi(x,0)=\frac{A^2 e^{\alpha ^2 \left(-x^2\right)} \left(2 \sqrt{2} \sin (2 \beta ) \left(2 \alpha ^2 x^2+1\right)-\cos (2 \beta ) \left(4 \alpha ^4 x^4+4 \alpha ^2 x^2+3\right)+4 \alpha ^4 x^4+4 \alpha ^2 x^2+7\right)}{8 \alpha ^2}\\
+        \int_{-\infty}^{\infty}\psi(x,0)x\psi(x,0)=0
+      \end{gather*}
+    \end{enumerate}
+    \item[2.15]\footnote{https://www3.nd.edu/~bjanko/p70007/qm1hw4answers.pdf}
+    \begin{enumerate}
+      \item Since $\psi(x)=\braket{x|e^{\frac{-ipa}{\hbar}}|0}$ which is the spatial translation operator where $e^{\frac{-ipa}{\hbar}}\ket{x}=\ket{x+a}$:
+      \begin{gather*}
+        \psi(x)=\int\braket{x|x'+a}\braket{x'|0}dx'\\
+        \psi(x)=\int\delta(x'-(x-a))\braket{x'|0}dx'\\
+        \psi(x)=\braket{x-a|0}
+      \end{gather*}
+      Plugging this into the equation given:
+      \begin{gather*}
+        \psi(x)=\braket{x-a|0}=\pi^{-1/4}x_0^{-1/2}\exp\left[ -\frac{1}{2}\left( \frac{x-a}{x_0} \right)^2 \right]
+      \end{gather*}
+      \item The probability is:
+      \begin{gather*}
+        \text{Probability}=\left| \int\braket{x'|0}*\braket{x'|0}dx' \right|^2\\
+        \text{Probability}=\left| \int\left( \pi^{-1/4}x_0^{-1/2}\exp\left[ -\frac{1}{2}\left( \frac{x'}{x_0} \right)^2 \right]\right)^2\right|^2\\
+        \text{Probability}=-\frac{h e^{-\frac{m x \omega }{h}}}{\sqrt{\pi } m \omega  \sqrt{\frac{h}{m \omega }}}
+      \end{gather*}
+      Which doesn not change for $t>0$
+    \end{enumerate}
+    \item[2.16]
+    \begin{enumerate}
+      \item Starting by solving for $x$ and $p$:
+      \begin{gather*}
+        x=\sqrt{\frac{\hbar}{2m\omega}}(a+a^{\dagger})\\
+        p=-\sqrt{\frac{\hbar m\omega}{2}}(a-a^{\dagger})
+      \end{gather*}
+      Solving for $\braket{m|x|n}$:
+      \begin{gather*}
+        \braket{m|x|n}=\sqrt{\frac{\hbar}{2m\omega}}\braket{m|a+a^{\dagger}|n}\\
+        \braket{m|x|n}=\sqrt{\frac{\hbar}{2m\omega}}\braket{m|}\left(\sqrt{n}\ket{n-1}+\sqrt{n+1}\ket{n+1}  \right)\\
+        \braket{m|x|n}=\sqrt{\frac{\hbar}{2m\omega}}\left( \sqrt{n}\delta_{m,n-1}+\sqrt{n+1}\delta_{m,n+1}\right)
+      \end{gather*}
+      Solving for $\braket{m|p|n}$:
+      \begin{gather*}
+        \braket{m|x|n}=-\sqrt{\frac{\hbar m\omega}{2}}\braket{m|a-a^{\dagger}|n}\\
+        \braket{m|x|n}=-\sqrt{\frac{\hbar m\omega}{2}}\braket{m|}\left(\sqrt{n}\ket{n-1}-\sqrt{n+1}\ket{n+1}  \right)\\
+        \braket{m|x|n}=-\sqrt{\frac{\hbar m\omega}{2}}\left( \sqrt{n}\delta_{m,n-1}-\sqrt{n+1}\delta_{m,n+1}\right)
+      \end{gather*}
+      Solving for $\braket{m|\{x,p\}|n}$, using $\{x,p\}=i\hbar(a^{\dagger}^2-a^2)$:
+      \begin{gather*}
+        \braket{m|x|n}=i\hbar\left(\sqrt{(n+1)(n+2)}\delta_{m,n+2}-\sqrt{n(n-1)}\delta_{m,n-2}\right)
+      \end{gather*}
+      Solving for $\braket{m|x^2|n}$:
+      \begin{gather*}
+        \braket{m|x^2|n}=\braket{m|\left(\sqrt{\frac{\hbar}{2m\omega}}(a+a^{\dagger})\right)^2|n}
+      \end{gather*}
+      Solving for $\braket{m|p^2|n}$:
+      \begin{gather*}
+        \braket{m|p^2|n}=\braket{m|\left(\sqrt{\frac{\hbar m\omega}{2}}(a-a^{\dagger})\right)^2|n}
+      \end{gather*}
+      \item[2.19]
+      \begin{enumerate}
+        \item
+        \item
+        \item
+      \end{enumerate}
+
+    \end{enumerate}
+  \end{enumerate}
+
+\end{document}
